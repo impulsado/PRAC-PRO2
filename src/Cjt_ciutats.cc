@@ -1,9 +1,6 @@
 #include <exception>
 #include "Cjt_ciutats.hh"
 
-/* CONSTANTS */
-const char *ER1 = "CIUTAT NO VALIDA";
-
 Cjt_ciutats::Cjt_ciutats() {
     cmap = map<string,Ciutat>();
 }
@@ -20,9 +17,12 @@ void Cjt_ciutats::afegirProdACiutat(string id_city, int id_prod, int oferta, int
     cmap[id_city].afegirProdAlInventari(id_prod,oferta,demanda,pes,volum);
 }
 
-
 // ?? No sé si ordre afecta en aquest cas ??
 bool Cjt_ciutats::existeixCiutat(string id_city) {
     auto it = cmap.find(id_city);
     return it!=cmap.end();
+}
+
+Ciutat Cjt_ciutats::consultarCiutat(string id_city) {
+    return cmap[id_city];
 }

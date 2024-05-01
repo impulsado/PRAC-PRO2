@@ -61,6 +61,20 @@ void agregar_productos(Cjt_productes& productes) {
     productes.afegirProducte(pes,volum);
 }
 
+void escribir_producto(Cjt_productes& productes) {
+    int id_prod;
+    if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; return;}
+    Producte temp_prod = productes.consultarProducte(id_prod);
+    temp_prod.escriure();
+}
+
+void escribir_ciudad(Cjt_ciutats& ciutats) {
+    string id_city;
+    if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
+    Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    temp_city.escriure();
+}
+
 int main () {
     Vaixell barco;
     Cjt_ciutats ciutats;
@@ -92,6 +106,12 @@ int main () {
         }
         else if (usr_op=="agregar_productos" or usr_op=="ap") {
             agregar_productos(productes);
+        }
+        else if (usr_op=="escribir_producto" or usr_op=="ep") {
+            escribir_producto(productes);
+        }
+        else if (usr_op=="escribir_ciudad" or usr_op=="ec") {
+            escribir_ciudad(ciutats);
         }
         else if (usr_op=="poner_prod" or usr_op=="pp");
         else if (usr_op=="modificar_prod" or usr_op=="mp");

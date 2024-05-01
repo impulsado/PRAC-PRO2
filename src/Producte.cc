@@ -31,6 +31,7 @@ double Producte::consultarVolum() const {
     return this->volum;
 }
 
+// ?? Revisar Format ?? 
 void Producte::escriure() const {
     cout << this->pes << ' ' << this->volum << endl;
 }

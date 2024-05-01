@@ -19,6 +19,7 @@ public:
 
     /* CONSULTORS */
     bool existeixCiutat(string id_city);
+    Ciutat consultarCiutat(string id_city);
 };
 
 #endif

@@ -76,7 +76,7 @@ void Ciutat::eliminarProdDelInventari(int id, double pes, double volum) {
     inventari.erase(id);
 }
 
-// - [ ] Revisar el format de sortida 
+// ?? Revisar format ??
 void Ciutat::escriure() const {
     if (not teInventari()) throw PRO2Excepcio(ER1);
     for (auto it = inventari.begin(); it!=inventari.end(); it++) {
