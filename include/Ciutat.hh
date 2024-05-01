@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <utility>
+using namespace std;
 
 class Ciutat {
 
@@ -29,6 +31,8 @@ public:
     bool teProducte(int id) const;
     int consultarOferta(int id) const;
     int consultarDemanda(int id) const;
+    double consultarPesTotal() const;
+    double consultarVolumTotal() const;
 
     /* MODIFICADORS */
     void afegirProdAlInventari(int id, int oferta, int demanda, double pes, double volum);

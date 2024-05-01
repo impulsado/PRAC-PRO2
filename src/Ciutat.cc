@@ -1,5 +1,6 @@
 #include <exception>
 #include "Ciutat.hh"
+using namespace std;
 
 /* CONSTANTS */
 const char *ER1 = "CIUTAT NO TE INVENTARI";
@@ -37,6 +38,15 @@ int Ciutat::consultarDemanda(int id) const {
     if (it==inventari.end()) throw PRO2_EXCEPCIO(ER2);
     return it->second.second;
 }
+
+double Ciutat::consultarPesTotal() const {
+    return pes_total;
+}
+
+double Ciutat::consultarVolumTotal() const {
+    return volum_total;
+}
+
 
 /**
  * \pre Ciutat no té el producte. Oferta/Demanda/Pes/Volum són valors vàlids.
@@ -78,7 +88,7 @@ void Ciutat::eliminarProdDelInventari(int id, double pes, double volum) {
 
 // ?? Revisar format ??
 void Ciutat::escriure() const {
-    if (not teInventari()) throw PRO2Excepcio(ER1);
+    if (not teInventari()) {cout << "Error: Ciutat no te inventari" << endl; return;}
     for (auto it = inventari.begin(); it!=inventari.end(); it++) {
         cout << "Producte: " << it->first << " Oferta: " << it->second.first << " Demanda: " << it->second.second << endl;
     }

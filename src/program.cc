@@ -75,6 +75,70 @@ void escribir_ciudad(Cjt_ciutats& ciutats) {
     temp_city.escriure();
 }
 
+void poner_prod(Cjt_ciutats& ciutats,Cjt_productes& productes) {
+    string id_city;
+    int id_prod, oferta, demanda;
+    cin >> id_city >> id_prod >> oferta >> demanda;
+    if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; return;}
+    if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
+    if (0<oferta) {cout << "Error: Oferta no valida" << endl; return;}
+    if (0<=demanda) {cout << "Error: Demanda no valida" << endl; return;}
+    Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    if (temp_city.teProducte(id_prod)) {cout << "Error: La ciutat ja té aquest producte" << endl; return;}
+    Producte temp_prod = productes.consultarProducte(id_prod);
+    double pes = temp_prod.consultarPes();
+    double volum = temp_prod.consultarVolum();
+    temp_city.afegirProdAlInventari(id_prod,oferta,demanda,pes,volum);
+    ciutats.modificarCiutat(id_city,temp_city);
+    cout << "Pes Total: " << temp_city.consultarPesTotal() << endl;
+    cout << "Volum Total: " << temp_city.consultarVolumTotal() << endl;
+}
+
+void modificar_prod(Cjt_ciutats& ciutats,Cjt_productes& productes) {
+    string id_city;
+    int id_prod, oferta, demanda;
+    cin >> id_city >> id_prod >> oferta >> demanda;
+    if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; return;}
+    if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
+    if (0<oferta) {cout << "Error: Oferta no valida" << endl; return;}
+    if (0<=demanda) {cout << "Error: Demanda no valida" << endl; return;}
+    Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    if (not temp_city.teProducte(id_prod)) {cout << "Error: La ciutat no té aquest producte" << endl; return;}
+    temp_city.modificarProdDelInventari(id_prod,oferta,demanda);
+    ciutats.modificarCiutat(id_city,temp_city);
+    cout << "Pes Total: " << temp_city.consultarPesTotal() << endl;
+    cout << "Volum Total: " << temp_city.consultarVolumTotal() << endl;
+}
+
+void quitar_prod(Cjt_ciutats& ciutats,Cjt_productes& productes) {
+    string id_city;
+    int id_prod;
+    cin >> id_city >> id_prod;
+    if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; return;}
+    if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
+    Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    if (not temp_city.teProducte(id_prod)) {cout << "Error: La ciutat no té aquest producte" << endl; return;}
+    Producte temp_prod = productes.consultarProducte(id_prod);
+    double pes = temp_prod.consultarPes();
+    double volum = temp_prod.consultarVolum();
+    temp_city.eliminarProdDelInventari(id_prod,pes,volum);
+    ciutats.modificarCiutat(id_city,temp_city);
+    cout << "Pes Total: " << temp_city.consultarPesTotal() << endl;
+    cout << "Volum Total: " << temp_city.consultarVolumTotal() << endl;
+}
+
+void consultar_prod(Cjt_ciutats& ciutats,Cjt_productes& productes) {
+    string id_city;
+    int id_prod;
+    cin >> id_city >> id_prod;
+    if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; return;}
+    if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
+    Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    if (not temp_city.teProducte(id_prod)) {cout << "Error: La ciutat no té aquest producte" << endl; return;}
+    cout << "Oferta: " << temp_city.consultarOferta(id_prod) << endl;
+    cout << "Demanda: " << temp_city.consultarDemanda(id_prod) << endl;
+}
+
 int main () {
     Vaixell barco;
     Cjt_ciutats ciutats;
@@ -113,9 +177,18 @@ int main () {
         else if (usr_op=="escribir_ciudad" or usr_op=="ec") {
             escribir_ciudad(ciutats);
         }
-        else if (usr_op=="poner_prod" or usr_op=="pp");
-        else if (usr_op=="modificar_prod" or usr_op=="mp");
-        else if (usr_op=="consultar_prod" or usr_op=="cp");
+        else if (usr_op=="poner_prod" or usr_op=="pp") {
+            poner_prod(ciutats,productes);
+        }
+        else if (usr_op=="modificar_prod" or usr_op=="mp") {
+            modificar_prod(ciutats,productes);
+        }
+        else if (usr_op=="quitar_prod" or usr_op=="qp") {
+            quitar_prod(ciutats,productes);
+        }
+        else if (usr_op=="consultar_prod" or usr_op=="cp") {
+            consultar_prod(ciutats,productes);
+        }
         else if (usr_op=="comerciar" or usr_op=="co");
         else if (usr_op=="redistribuir" or usr_op=="re");
         else if (usr_op=="hacer_viaje" or usr_op=="hv");
