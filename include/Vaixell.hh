@@ -4,6 +4,8 @@
 #include "PRO2Excepcio.hh"
 #include <iostream>
 #include <vector>
+#include <string>
+#include <utility>  // Per a "pair"
 
 class Vaixell {
 
@@ -16,6 +18,8 @@ public:
     /* CONSTRUCTORS */
     Vaixell();
 
+    /* MODIFICADORS */
+    void modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta);
 };
 
 #endif

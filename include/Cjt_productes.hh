@@ -20,6 +20,7 @@ public:
     void modificarProducte(int id, const Producte& prod);
 
     /* CONSULTORS */
+    bool existeixProducte(int id) const;
     int consultarQuantitatProd() const;
     Producte consultarProducte(int id) const;
 };

@@ -31,7 +31,7 @@ public:
     int consultarDemanda(int id) const;
 
     /* MODIFICADORS */
-    void afegirProdAlInventari(int id, double pes, double volum);
+    void afegirProdAlInventari(int id, int oferta, int demanda, double pes, double volum);
     void modificarProdDelInventari(int id, double pes, double volum);
     void eliminarProdDelInventari(int id, double pes, double volum);
 

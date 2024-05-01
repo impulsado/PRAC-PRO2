@@ -39,14 +39,11 @@ int Ciutat::consultarDemanda(int id) const {
 }
 
 /**
- * \pre Ciutat té el producte. Pes/Volum són valors vàlids.
+ * \pre Ciutat no té el producte. Oferta/Demanda/Pes/Volum són valors vàlids.
 */
-void Ciutat::afegirProdAlInventari(int id, double pes, double volum) {
-    int oferta = inventari[id].first;
-    int demanda = inventari[id].second;
-    
-    inventari[id].first = oferta;
-    inventari[id].second = demanda;
+void Ciutat::afegirProdAlInventari(int id_prod, int oferta, int demanda, double pes, double volum) {
+    inventari[id_prod].first = oferta;
+    inventari[id_prod].second = demanda;
     this->pes_total += oferta*pes;
     this->volum_total += oferta*volum;
 }

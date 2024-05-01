@@ -5,16 +5,24 @@
 const char *ER1 = "CIUTAT NO VALIDA";
 
 Cjt_ciutats::Cjt_ciutats() {
-    this->cmap = map<string,Ciutat>();
+    cmap = map<string,Ciutat>();
 }
 
-void Cjt_ciutats::modificarCiutat(string id, const Ciutat& city) {
-    if (not existeixCiutat(id)) throw PRO2Excepcio(ER1);
-    cmap[id] = city;
+/**
+ * \pre Ciutat existeix i la ciutat per referència es vàlida
+ * \post 
+ */
+void Cjt_ciutats::modificarCiutat(string id_city, const Ciutat& city) {
+    cmap[id_city] = city;
 }
+
+void Cjt_ciutats::afegirProdACiutat(string id_city, int id_prod, int oferta, int demanda, double pes, double volum) {
+    cmap[id_city].afegirProdAlInventari(id_prod,oferta,demanda,pes,volum);
+}
+
 
 // ?? No sé si ordre afecta en aquest cas ??
-bool Cjt_ciutats::existeixCiutat(string id) {
-    auto it = cmap.find(id);
+bool Cjt_ciutats::existeixCiutat(string id_city) {
+    auto it = cmap.find(id_city);
     return it!=cmap.end();
 }

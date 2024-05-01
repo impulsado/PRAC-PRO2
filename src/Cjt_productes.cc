@@ -7,27 +7,32 @@ const char *ER2 = "PES NO VALID";
 const char *ER3 = "VOLUM NO VALID";
 
 Cjt_productes::Cjt_productes() {
-    this->quant_prod = 0;
-    this->vprod = vector<Producte>();
+    quant_prod = 0;
+    vprod = vector<Producte>();
 }
 
 Cjt_productes::Cjt_productes(int mida) {
-    this->quant_prod = mida;
-    this->vprod = vector<Producte>(mida+1);
+    quant_prod = mida;
+    vprod = vector<Producte>(mida+1);
 }
 
 void Cjt_productes::afegirProducte(double pes, double volum) {
     if (pes<=0) throw PRO2Excepcio(ER2);
     if (volum<=0) throw PRO2Excepcio(ER3);
-    int id = this->quant_prod+1;
+    int id = quant_prod+1;
     Producte temp(id,pes,volum);
     vprod.push_back(temp);
-    this->quant_prod++;
+    quant_prod++;
 }
 
 void Cjt_productes::modificarProducte(int id, const Producte& prod) {
     if (id<=0 or id>quant_prod) throw PRO2Excepcio(ER1);
     vprod[id] = prod;
+}
+
+bool Cjt_productes::existeixProducte(int id) const {
+    if (id<=0 or id>quant_prod) return false;
+    return true;
 }
 
 int Cjt_productes::consultarQuantitatProd() const {
