@@ -46,6 +46,21 @@ void modificar_barco(Vaixell& barco, Cjt_productes& productes) {
     barco.modificarMercancia(prod_compra, quant_compra, prod_venta, quant_venta);
 }
 
+// ?? Revisar Format ??
+void escribir_barco(Vaixell& barco) {
+    barco.mostrarProdAComprar();
+    barco.mostrarProdAVendre();
+    barco.mostrarRegistreViatjes();
+}
+
+void agregar_productos(Cjt_productes& productes) {
+    double pes, volum;
+    cin >> pes >> volum;
+    if (pes<=0) {cout << "Error: Pes no vàlid" << endl; return;}
+    if (volum<=0) {cout << "Error: Volum no vàlid" << endl; return;}
+    productes.afegirProducte(pes,volum);
+}
+
 int main () {
     Vaixell barco;
     Cjt_ciutats ciutats;
@@ -68,9 +83,16 @@ int main () {
         else if (usr_op=="modificar_barco" or usr_op=="mb") {
             modificar_barco(barco, productes);
         }
-        else if (usr_op=="escribir_barco" or usr_op=="eb");
-        else if (usr_op=="consultar_num" or usr_op=="cn");
-        else if (usr_op=="agregar_productos" or usr_op=="ap");
+        else if (usr_op=="escribir_barco" or usr_op=="eb") {
+            escribir_barco(barco);
+        }
+        else if (usr_op=="consultar_num" or usr_op=="cn") {
+            // ?? Revisar format ??
+            cout << productes.consultarQuantitatProd() << endl;
+        }
+        else if (usr_op=="agregar_productos" or usr_op=="ap") {
+            agregar_productos(productes);
+        }
         else if (usr_op=="poner_prod" or usr_op=="pp");
         else if (usr_op=="modificar_prod" or usr_op=="mp");
         else if (usr_op=="consultar_prod" or usr_op=="cp");

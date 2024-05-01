@@ -18,6 +18,11 @@ public:
     /* CONSTRUCTORS */
     Vaixell();
 
+    /* CONSULTORS */
+    void mostrarProdAComprar();
+    void mostrarProdAVendre();
+    void mostrarRegistreViatjes();
+
     /* MODIFICADORS */
     void modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta);
 };
