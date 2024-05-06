@@ -1,7 +1,6 @@
 #ifndef VAIXELL_HH
 #define VAIXELL_HH
 
-#include "PRO2Excepcio.hh"
 #include <iostream>
 #include <vector>
 #include <string>

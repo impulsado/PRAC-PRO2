@@ -1,7 +1,6 @@
 #ifndef PRODUCTE_HH
 #define PRODUCTE_HH
 
-#include "PRO2Excepcio.hh"
 #include <iostream>
 
 class Producte {

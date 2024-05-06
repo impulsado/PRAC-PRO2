@@ -11,33 +11,46 @@ void leer_rio(BinTree<string>& t);
 
 void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes, int num_ciutats) {
     for (int i = 0; i<num_ciutats; i++) {
+        // Info sobre Ciutat
         string id_ciutat;
         cin >> id_ciutat;
         if (not ciutats.existeixCiutat(id_ciutat)) {cout << "Error: No existeix la ciutat" << endl; break;}
         
+        // Info sobre els productes
         int quant_prod;
         cin >> quant_prod;
         for (int j = 0; j<quant_prod; j++) {
+            // Info sobre el producte
             int id_prod, oferta, demanda;
             cin >> id_prod >> oferta >> demanda;
-            // ?? Aqui paro tota l'execucio?
+            // ?? Aqui paro tota l'execucio ??
             if (0<oferta) {cout << "Error: Oferta no valida" << endl; continue;}
             if (0<=demanda) {cout << "Error: Demanda no valida" << endl; continue;}
             if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; continue;}
+            // ?? Que passa si la ciutat ja té el producte ??
+            /*
+            Ciutat temp_city = ciutats.consultarCiutat(id_ciutat);
+            if (temp_city.teProducte(id_prod)) {cout << "Error: La ciutat ja té el producte" << endl; continue;}
+            */
+            
+            // Saber les dades sobre el producte a afegir
             Producte temp_prod = productes.consultarProducte(id_prod);
             double pes = temp_prod.consultarPes();
             double volum = temp_prod.consultarVolum();
+            // Afegir el producte a la ciutat directament
             ciutats.afegirProdACiutat(id_ciutat,id_prod,oferta,demanda,pes,volum);
         }
     }
 }
 
 void modificar_barco(Vaixell& barco, Cjt_productes& productes) {
-    // Venta
+    // NOTA: Es garantitza que les quantitats seràn valides.
+    // Info sobre la Venta
     int prod_venta, quant_venta;
     cin >> prod_venta >> quant_venta;
     if (not productes.existeixProducte(prod_venta)) {cout << "Error: No existeix el producte" << endl; return;}
-    // Compra
+    
+    // Info sobre la Compra
     int prod_compra, quant_compra;
     cin >> prod_compra >> quant_compra;
     if (not productes.existeixProducte(prod_compra)) {cout << "Error: No existeix el producte" << endl; return;}
@@ -47,6 +60,7 @@ void modificar_barco(Vaixell& barco, Cjt_productes& productes) {
 }
 
 // ?? Revisar Format ??
+// ?? Que passa si barco encara no te les dades correctes ??
 void escribir_barco(Vaixell& barco) {
     barco.mostrarProdAComprar();
     barco.mostrarProdAVendre();
@@ -58,13 +72,17 @@ void agregar_productos(Cjt_productes& productes) {
     cin >> pes >> volum;
     if (pes<=0) {cout << "Error: Pes no vàlid" << endl; return;}
     if (volum<=0) {cout << "Error: Volum no vàlid" << endl; return;}
+    
     productes.afegirProducte(pes,volum);
 }
 
 void escribir_producto(Cjt_productes& productes) {
     int id_prod;
+    cin >> id_prod;
     if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; return;}
+    
     Producte temp_prod = productes.consultarProducte(id_prod);
+    
     temp_prod.escriure();
 }
 
@@ -83,11 +101,14 @@ void poner_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
     if (0<oferta) {cout << "Error: Oferta no valida" << endl; return;}
     if (0<=demanda) {cout << "Error: Demanda no valida" << endl; return;}
+    
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
     if (temp_city.teProducte(id_prod)) {cout << "Error: La ciutat ja té aquest producte" << endl; return;}
+    
     Producte temp_prod = productes.consultarProducte(id_prod);
     double pes = temp_prod.consultarPes();
     double volum = temp_prod.consultarVolum();
+
     temp_city.afegirProdAlInventari(id_prod,oferta,demanda,pes,volum);
     ciutats.modificarCiutat(id_city,temp_city);
     cout << "Pes Total: " << temp_city.consultarPesTotal() << endl;
@@ -102,11 +123,15 @@ void modificar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
     if (0<oferta) {cout << "Error: Oferta no valida" << endl; return;}
     if (0<=demanda) {cout << "Error: Demanda no valida" << endl; return;}
+    
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    if (not temp_city.teInventari()) {cout << "Error: La ciutat no té inventari" << endl; return;}
     if (not temp_city.teProducte(id_prod)) {cout << "Error: La ciutat no té aquest producte" << endl; return;}
+    
     Producte temp_prod = productes.consultarProducte(id_prod);
     double pes = temp_prod.consultarPes();
     double volum = temp_prod.consultarVolum();
+    
     temp_city.modificarProdDelInventari(id_prod,oferta,demanda,pes,volum);
     ciutats.modificarCiutat(id_city,temp_city);
     cout << "Pes Total: " << temp_city.consultarPesTotal() << endl;
@@ -119,11 +144,15 @@ void quitar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     cin >> id_city >> id_prod;
     if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; return;}
     if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
+    
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    if (not temp_city.teInventari()) {cout << "Error: La ciutat no té inventari" << endl; return;}
     if (not temp_city.teProducte(id_prod)) {cout << "Error: La ciutat no té aquest producte" << endl; return;}
+    
     Producte temp_prod = productes.consultarProducte(id_prod);
     double pes = temp_prod.consultarPes();
     double volum = temp_prod.consultarVolum();
+    
     temp_city.eliminarProdDelInventari(id_prod,pes,volum);
     ciutats.modificarCiutat(id_city,temp_city);
     cout << "Pes Total: " << temp_city.consultarPesTotal() << endl;
@@ -135,6 +164,7 @@ void comerciar(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     cin >> id_city1 >> id_city2;
     if (not ciutats.existeixCiutat(id_city1)) {cout << "Error: No existeix la ciutat1" << endl; return;}
     if (not ciutats.existeixCiutat(id_city2)) {cout << "Error: No existeix la ciutat2" << endl; return;}
+    
     ciutats.comerciar(id_city1, id_city2, productes);
 }
 
@@ -144,8 +174,11 @@ void consultar_prod(Cjt_ciutats& ciutats,Cjt_productes& productes) {
     cin >> id_city >> id_prod;
     if (not productes.existeixProducte(id_prod)) {cout << "Error: No existeix el producte" << endl; return;}
     if (not ciutats.existeixCiutat(id_city)) {cout << "Error: No existeix la ciutat" << endl; return;}
+    
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    if (not temp_city.teInventari()) {cout << "Error: La ciutat no té inventari" << endl; return;}
     if (not temp_city.teProducte(id_prod)) {cout << "Error: La ciutat no té aquest producte" << endl; return;}
+    
     cout << "Oferta: " << temp_city.consultarOferta(id_prod) << endl;
     cout << "Demanda: " << temp_city.consultarDemanda(id_prod) << endl;
 }

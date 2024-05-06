@@ -1,37 +1,55 @@
 #include <exception>
 #include "Producte.hh"
 
-/* CONSTANTS */
-const char *ER1 = "ID NO VALID";
-const char *ER2 = "PES NO VALID";
-const char *ER3 = "VOLUM NO VALID";
-
+/**
+ * @brief Constructora Producte per defecte.
+ * 
+ * \pre Cert.
+ * \post Producte amb id,pes i volum 0.
+ */
 Producte::Producte() {
-    id = 0;
+    id = pes = volum = 0;
 }
 
+/**
+ * @brief Constructura Producte amb valors específics.
+ * 
+ * \pre id,pes,volum son valors vàlids.
+ * \post Retorna producte amb id,pes i volum.
+ */
 Producte::Producte(int id, double pes, double volum) {
-    if (id<=0) throw PRO2Excepcio(ER1);
-    if (pes<=0) throw PRO2Excepcio(ER2);
-    if (volum<=0) throw PRO2Excepcio(ER3);
     this->id = id;
     this->pes = pes;
     this->volum = volum;
 }
 
-int Producte::consultarId() const {
-    return this->id;
-}
-
+/**
+ * @brief Consultar pes del producte.
+ * 
+ * \pre Cert.
+ * \post Retornar pes del producte.
+ */
 double Producte::consultarPes() const {
-    return this->pes;
+    return pes;
 }
 
+/**
+ * @brief Consultar volum del producte.
+ * 
+ * \pre Cert.
+ * \post Retornar volum del producte.
+ */
 double Producte::consultarVolum() const {
-    return this->volum;
+    return volum;
 }
 
-// ?? Revisar Format ?? 
+/**
+ * @brief Escriure per consola el pes i volum del producte.
+ * 
+ * \pre Cert.
+ * \post Mostrar dades del producte.
+ */
 void Producte::escriure() const {
-    cout << this->pes << ' ' << this->volum << endl;
+    // ?? Revisar Format ?? 
+    cout << "Pes: " << pes << " Volum: " << volum << endl;
 }

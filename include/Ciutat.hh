@@ -1,7 +1,6 @@
 #ifndef CIUTAT_HH
 #define CIUTAT_HH
 
-#include "PRO2Excepcio.hh"
 #include "Producte.hh"
 #include <iostream>
 #include <string>
@@ -15,12 +14,12 @@ class Ciutat {
 private:
     string id;
     map<int, pair< pair<int,int> ,int>> inventari;
-    // first = oferta
-    // second = demanda
+    // first.first -> oferta
+    // first.second -> demanda
+    // second -> necessitat
     double pes_total;
     double volum_total;
 
-    bool teInventari() const;
 
 public:
     /* CONSTRUCTORS */
@@ -28,7 +27,7 @@ public:
     // - [ ] Com es l'entrada de ciutats?
 
     /* CONSULTORS */
-    string consultarId() const;
+    bool teInventari() const;
     bool teProducte(int id) const;
     int consultarOferta(int id) const;
     int consultarDemanda(int id) const;
