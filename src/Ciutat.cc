@@ -15,6 +15,18 @@ Ciutat::Ciutat() {
 }
 
 /**
+ * @brief Constructura amb id especificat.
+ * 
+ * \pre Cert.
+ * \post Ciutat té id_city. pes_total i volum_total a 0.
+ */
+Ciutat::Ciutat(string id_city) {
+    id = id_city;
+    pes_total = 0;
+    volum_total = 0;
+}
+
+/**
  * @brief Comprova si la ciutat té inventari.
  * 
  * \pre Cert.

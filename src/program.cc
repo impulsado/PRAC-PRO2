@@ -7,9 +7,20 @@
 
 using namespace std;
 
-void leer_rio(BinTree<string>& t) {
-    cout << "TODO" << endl;
-    t.getInputFormat();  // Això és temporal
+BinTree<string> leer_rio(Cjt_ciutats& ciutats) {
+    string id_city;
+    cin >> id_city;
+
+    // Base Case
+    if (id_city=="#") return BinTree<string>();
+
+    // General Case
+    Ciutat node(id_city);
+    ciutats.afegirCiutat(id_city, node);
+    BinTree<string> esq = leer_rio(ciutats);
+    BinTree<string> dret = leer_rio(ciutats);
+    
+    return BinTree<string>(id_city,esq,dret);
 }
 
 void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes, int num_ciutats) {
@@ -200,7 +211,9 @@ int main () {
         cin >> usr_prod_pes >> usr_prod_volum; 
         productes.afegirProducte(usr_prod_pes,usr_prod_volum);
     }
+    
     // Demanar cuenca
+    cuenca = leer_rio(ciutats);
 
     // Demanar vaixell
     Vaixell barco;
@@ -214,7 +227,7 @@ int main () {
             continue; // Ir a la siguiente iteración del bucle
         }
         else if (usr_op=="leer_rio" or usr_op=="lr") {
-            leer_rio(cuenca);
+            cuenca = leer_rio(ciutats);
         }
         else if (usr_op=="leer_inventario" or usr_op=="li") {
             leer_inventario(ciutats, productes, 1);

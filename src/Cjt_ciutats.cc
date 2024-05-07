@@ -1,11 +1,24 @@
 #include <exception>
 #include "Cjt_ciutats.hh"
 
-/* CONSTANTS */
-const char *ER1 = "Error: No existeix ciutat";
-
+/**
+ * @brief Constructura classe Cjt_ciutats per defecte.
+ * 
+ * \pre Cert.
+ * \post Conjunt de ciutats buit.
+ */
 Cjt_ciutats::Cjt_ciutats() {
     cmap = map<string,Ciutat>();
+}
+
+/**
+ * @brief Afegir nova ciutat al conjunt
+ * 
+ * \pre id_city i la ciutat son vàlids.
+ * \post El conjunt conté la nova ciutat.
+ */
+void Cjt_ciutats::afegirCiutat(string id_city, const Ciutat& city) {
+    cmap[id_city] = city;
 }
 
 /** 

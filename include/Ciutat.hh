@@ -23,23 +23,23 @@ private:
 public:
     /* CONSTRUCTORS */
     Ciutat();
-    // - [ ] Com es l'entrada de ciutats?
+    Ciutat(string id_city);
 
     /* CONSULTORS */
     bool teInventari() const;
-    bool teProducte(int id) const;
-    int consultarOferta(int id) const;
-    int consultarDemanda(int id) const;
-    int consultarDiferencia(int id) const;
+    bool teProducte(int id_prod) const;
+    int consultarOferta(int id_prod) const;
+    int consultarDemanda(int id_prod) const;
+    int consultarDiferencia(int id_prod) const;
     int consultarPesTotal() const;
     int consultarVolumTotal() const;
     vector<int> consultarProductes() const;
 
     /* MODIFICADORS */
-    void afegirProdAlInventari(int id, int oferta, int demanda, int pes, int volum);
-    void modificarProdDelInventari(int id, int oferta, int demanda, int pes, int volum);
-    void modificarOfertaProd(int id, int oferta, int pes, int volum);
-    void eliminarProdDelInventari(int id, int pes, int volum);
+    void afegirProdAlInventari(int id_prod, int oferta, int demanda, int pes, int volum);
+    void modificarProdDelInventari(int id_prod, int oferta, int demanda, int pes, int volum);
+    void modificarOfertaProd(int id_prod, int oferta, int pes, int volum);
+    void eliminarProdDelInventari(int id_prod, int pes, int volum);
 
     /* ESCRIPTURA */
     void escriure() const;
