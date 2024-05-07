@@ -3,8 +3,8 @@ INCLUDES = -I include
 
 all: directories main.exe
 
-main.exe: objects/program.o objects/Producte.o
-	g++ $(OPCIONS) -o main.exe objects/program.o objects/Producte.o
+main.exe: objects/program.o objects/Producte.o objects/Ciutat.o objects/Cjt_ciutats.o objects/Cjt_productes.o objects/Vaixell.o
+	g++ $(OPCIONS) -o main.exe objects/program.o objects/Producte.o objects/Ciutat.o objects/Cjt_ciutats.o objects/Cjt_productes.o objects/Vaixell.o
 
 objects/program.o: src/program.cc
 	g++ $(OPCIONS) -c src/program.cc -o objects/program.o $(INCLUDES)

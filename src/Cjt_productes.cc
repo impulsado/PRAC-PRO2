@@ -1,5 +1,5 @@
-#include <exception>
 #include "Cjt_productes.hh"
+using namespace std;
 
 /**
  * @brief Constructora de Cjt_productes per defecte.
@@ -16,10 +16,10 @@ Cjt_productes::Cjt_productes() {
  * @brief Constructora de Cjt_productes amb quantitat de productes determinada.
  * 
  * \pre mida és un valor vàlid
- * \post Conjunt de productes amb quantiat de productes igual a mida i conjunt buit, però size = mida+1.
+ * \post Conjunt de productes amb quantiat igual a 0, però size del vector = mida+1.
  */
 Cjt_productes::Cjt_productes(int mida) {
-    quant_prod = mida;
+    quant_prod = 0;
     vprod = vector<Producte>(mida+1);
 }
 
@@ -29,7 +29,7 @@ Cjt_productes::Cjt_productes(int mida) {
  * \pre pes/volum son valors vàlids.
  * \post Existeix producte amb el id autoincrementat. quant_prod actualitzat.
  */
-void Cjt_productes::afegirProducte(double pes, double volum) {
+void Cjt_productes::afegirProducte(int pes, int volum) {
     int id = quant_prod+1;
     Producte temp(id,pes,volum);
     vprod.push_back(temp);

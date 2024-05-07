@@ -8,7 +8,7 @@ class Cjt_productes {
 
 private:
     int quant_prod;
-    vector<Producte> vprod;
+    std::vector<Producte> vprod;  // Si no fico "std::" no ho reconeix
 
 public:
     /* CONSTRUCTORS */
@@ -16,7 +16,7 @@ public:
     Cjt_productes(int mida);
 
     /* MODIFICADORS */
-    void afegirProducte(double pes, double volumen);
+    void afegirProducte(int pes, int volumen);
     void modificarProducte(int id, const Producte& prod);
 
     /* CONSULTORS */

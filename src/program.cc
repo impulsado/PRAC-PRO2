@@ -7,7 +7,10 @@
 
 using namespace std;
 
-void leer_rio(BinTree<string>& t);
+void leer_rio(BinTree<string>& t) {
+    cout << "TODO" << endl;
+    t.getInputFormat();  // Això és temporal
+}
 
 void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes, int num_ciutats) {
     for (int i = 0; i<num_ciutats; i++) {
@@ -35,8 +38,8 @@ void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes, int num_ciu
             
             // Saber les dades sobre el producte a afegir
             Producte temp_prod = productes.consultarProducte(id_prod);
-            double pes = temp_prod.consultarPes();
-            double volum = temp_prod.consultarVolum();
+            int pes = temp_prod.consultarPes();
+            int volum = temp_prod.consultarVolum();
             // Afegir el producte a la ciutat directament
             ciutats.afegirProdACiutat(id_ciutat,id_prod,oferta,demanda,pes,volum);
         }
@@ -68,7 +71,7 @@ void escribir_barco(Vaixell& barco) {
 }
 
 void agregar_productos(Cjt_productes& productes) {
-    double pes, volum;
+    int pes, volum;
     cin >> pes >> volum;
     if (pes<=0) {cout << "Error: Pes no vàlid" << endl; return;}
     if (volum<=0) {cout << "Error: Volum no vàlid" << endl; return;}
@@ -106,8 +109,8 @@ void poner_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     if (temp_city.teProducte(id_prod)) {cout << "Error: La ciutat ja té aquest producte" << endl; return;}
     
     Producte temp_prod = productes.consultarProducte(id_prod);
-    double pes = temp_prod.consultarPes();
-    double volum = temp_prod.consultarVolum();
+    int pes = temp_prod.consultarPes();
+    int volum = temp_prod.consultarVolum();
 
     temp_city.afegirProdAlInventari(id_prod,oferta,demanda,pes,volum);
     ciutats.modificarCiutat(id_city,temp_city);
@@ -129,8 +132,8 @@ void modificar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     if (not temp_city.teProducte(id_prod)) {cout << "Error: La ciutat no té aquest producte" << endl; return;}
     
     Producte temp_prod = productes.consultarProducte(id_prod);
-    double pes = temp_prod.consultarPes();
-    double volum = temp_prod.consultarVolum();
+    int pes = temp_prod.consultarPes();
+    int volum = temp_prod.consultarVolum();
     
     temp_city.modificarProdDelInventari(id_prod,oferta,demanda,pes,volum);
     ciutats.modificarCiutat(id_city,temp_city);
@@ -150,8 +153,8 @@ void quitar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     if (not temp_city.teProducte(id_prod)) {cout << "Error: La ciutat no té aquest producte" << endl; return;}
     
     Producte temp_prod = productes.consultarProducte(id_prod);
-    double pes = temp_prod.consultarPes();
-    double volum = temp_prod.consultarVolum();
+    int pes = temp_prod.consultarPes();
+    int volum = temp_prod.consultarVolum();
     
     temp_city.eliminarProdDelInventari(id_prod,pes,volum);
     ciutats.modificarCiutat(id_city,temp_city);
@@ -184,14 +187,33 @@ void consultar_prod(Cjt_ciutats& ciutats,Cjt_productes& productes) {
 }
 
 int main () {
-    Vaixell barco;
     Cjt_ciutats ciutats;
     BinTree<string> cuenca;
-    Cjt_productes productes;
 
+    // === Introducció
+    // Demanar productes
+    int usr_quant_prod;
+    cin >> usr_quant_prod;
+    Cjt_productes productes(usr_quant_prod);
+    for (int i = 0; i<usr_quant_prod; i++) {
+        int usr_prod_pes, usr_prod_volum;
+        cin >> usr_prod_pes >> usr_prod_volum; 
+        productes.afegirProducte(usr_prod_pes,usr_prod_volum);
+    }
+    // Demanar cuenca
+
+    // Demanar vaixell
+    Vaixell barco;
+    barco.llegir(productes);
+
+    // Commandes
     string usr_op;
     while (cin >> usr_op and usr_op!="fin") {
-        if (usr_op=="leer_rio" or usr_op=="lr") {
+        if (usr_op == "//") {
+            getline(cin, usr_op);
+            continue; // Ir a la siguiente iteración del bucle
+        }
+        else if (usr_op=="leer_rio" or usr_op=="lr") {
             leer_rio(cuenca);
         }
         else if (usr_op=="leer_inventario" or usr_op=="li") {
@@ -236,7 +258,11 @@ int main () {
         else if (usr_op=="comerciar" or usr_op=="co") {
             comerciar(ciutats,productes);
         }
-        else if (usr_op=="redistribuir" or usr_op=="re");
-        else if (usr_op=="hacer_viaje" or usr_op=="hv");
+        else if (usr_op=="redistribuir" or usr_op=="re") {
+            cout << "TODO" << endl;
+        }
+        else if (usr_op=="hacer_viaje" or usr_op=="hv") {
+            cout << "TODO" << endl;
+        }
     }
 }

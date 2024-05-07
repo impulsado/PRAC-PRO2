@@ -25,7 +25,7 @@ void Cjt_ciutats::modificarCiutat(string id_city, const Ciutat& city) {
  * \pre La ciutat existeix. El producte existeix. Oferta/Demanda/Pes/Volum son vàlids.
  * \post La ciutat té el producte al seu inventari i pes_total/volum_total actualitzats.
  */
-void Cjt_ciutats::afegirProdACiutat(string id_city, int id_prod, int oferta, int demanda, double pes, double volum) {
+void Cjt_ciutats::afegirProdACiutat(string id_city, int id_prod, int oferta, int demanda, int pes, int volum) {
     cmap[id_city].afegirProdAlInventari(id_prod,oferta,demanda,pes,volum);
 }
 
@@ -54,8 +54,8 @@ void Cjt_ciutats::comerciar(string id_city1, string id_city2, const Cjt_producte
         if ((dif1>0 and dif2>0) or (dif1<0 and dif2<0)) continue;
 
         Producte temp_prod = productes.consultarProducte(vids[i]);
-        double pes = temp_prod.consultarPes();
-        double volum = temp_prod.consultarVolum();
+        int pes = temp_prod.consultarPes();
+        int volum = temp_prod.consultarVolum();
         
         int quantiat = determinarDiferencia(dif1,dif2);
         if (dif1<0 and dif2>0) {  // A la ciutat1 li falta, a la ciutat 2 li sobra

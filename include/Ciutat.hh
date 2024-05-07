@@ -1,7 +1,6 @@
 #ifndef CIUTAT_HH
 #define CIUTAT_HH
 
-#include "Producte.hh"
 #include <iostream>
 #include <string>
 #include <map>
@@ -13,12 +12,12 @@ class Ciutat {
 
 private:
     string id;
-    map<int, pair< pair<int,int> ,int>> inventari;
+    std::map<int, pair< pair<int,int> ,int>> inventari;
     // first.first -> oferta
     // first.second -> demanda
     // second -> necessitat
-    double pes_total;
-    double volum_total;
+    int pes_total;
+    int volum_total;
 
 
 public:
@@ -32,15 +31,15 @@ public:
     int consultarOferta(int id) const;
     int consultarDemanda(int id) const;
     int consultarDiferencia(int id) const;
-    double consultarPesTotal() const;
-    double consultarVolumTotal() const;
+    int consultarPesTotal() const;
+    int consultarVolumTotal() const;
     vector<int> consultarProductes() const;
 
     /* MODIFICADORS */
-    void afegirProdAlInventari(int id, int oferta, int demanda, double pes, double volum);
-    void modificarProdDelInventari(int id, int oferta, int demanda, double pes, double volum);
-    void modificarOfertaProd(int id, int oferta, double pes, double volum);
-    void eliminarProdDelInventari(int id, double pes, double volum);
+    void afegirProdAlInventari(int id, int oferta, int demanda, int pes, int volum);
+    void modificarProdDelInventari(int id, int oferta, int demanda, int pes, int volum);
+    void modificarOfertaProd(int id, int oferta, int pes, int volum);
+    void eliminarProdDelInventari(int id, int pes, int volum);
 
     /* ESCRIPTURA */
     void escriure() const;

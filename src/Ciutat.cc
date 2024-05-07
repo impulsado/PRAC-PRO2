@@ -62,7 +62,7 @@ int Ciutat::consultarDemanda(int id_prod) const {
  * \pre Cert.
  * \post Pes total.
  */
-double Ciutat::consultarPesTotal() const {
+int Ciutat::consultarPesTotal() const {
     return pes_total;
 }
 
@@ -72,7 +72,7 @@ double Ciutat::consultarPesTotal() const {
  * \pre Cert.
  * \post Volum total.
  */
-double Ciutat::consultarVolumTotal() const {
+int Ciutat::consultarVolumTotal() const {
     return volum_total;
 }
 
@@ -110,7 +110,7 @@ vector<int> Ciutat::consultarProductes() const {
  * \pre Ciutat no té el producte. Oferta/Demanda/Pes/Volum son vàlids.
  * \post Ciutat si té el producte. pes_total/volum_total actualitzats.
  */
-void Ciutat::afegirProdAlInventari(int id_prod, int oferta, int demanda, double pes, double volum) {
+void Ciutat::afegirProdAlInventari(int id_prod, int oferta, int demanda, int pes, int volum) {
     inventari[id_prod].first.first = oferta;
     inventari[id_prod].first.second = demanda;
     inventari[id_prod].second = oferta-demanda;  // Necessitat del producte
@@ -121,7 +121,7 @@ void Ciutat::afegirProdAlInventari(int id_prod, int oferta, int demanda, double 
 /**
  * \pre Ciutat té el producte. Pes/Volum són valors vàlids.
 */
-void Ciutat::modificarProdDelInventari(int id, int oferta, int demanda, double pes, double volum) {
+void Ciutat::modificarProdDelInventari(int id, int oferta, int demanda, int pes, int volum) {
     auto it = inventari.find(id);
     
     if (it->second.first.first!=oferta) {  // No diferenciem entre cassos perquè si la diferència és negativa, al fer la suma, ja farà resta.
@@ -141,7 +141,7 @@ void Ciutat::modificarProdDelInventari(int id, int oferta, int demanda, double p
  * \pre La ciutat té el producte. id_prod, quantiat, pes i volum son valors valids.
  * \post La ciutat té la nova quanitat d'oferta d'aquell producte. S'actualitza el pes i volum totals.
  */
-void Ciutat::modificarOfertaProd(int id_prod, int quantitat, double pes, double volum) {
+void Ciutat::modificarOfertaProd(int id_prod, int quantitat, int pes, int volum) {
     auto it = inventari.find(id_prod);
     
     pes_total += quantitat*pes;
@@ -156,7 +156,7 @@ void Ciutat::modificarOfertaProd(int id_prod, int quantitat, double pes, double 
  * \pre Ciutat si té el producte. id_prod/pes/volum són valors vàlids.
  * \post La ciutat no té el producte. Dades sobre pes i volum totals actualitzades.
  */
-void Ciutat::eliminarProdDelInventari(int id_prod, double pes, double volum) {
+void Ciutat::eliminarProdDelInventari(int id_prod, int pes, int volum) {
     int oferta = inventari[id_prod].first.first;
     
     pes_total -= oferta*pes;

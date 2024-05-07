@@ -1,5 +1,5 @@
-#include <exception>
 #include "Producte.hh"
+using namespace std;
 
 /**
  * @brief Constructora Producte per defecte.
@@ -17,7 +17,7 @@ Producte::Producte() {
  * \pre id,pes,volum son valors vàlids.
  * \post Retorna producte amb id,pes i volum.
  */
-Producte::Producte(int id, double pes, double volum) {
+Producte::Producte(int id, int pes, int volum) {
     this->id = id;
     this->pes = pes;
     this->volum = volum;
@@ -29,7 +29,7 @@ Producte::Producte(int id, double pes, double volum) {
  * \pre Cert.
  * \post Retornar pes del producte.
  */
-double Producte::consultarPes() const {
+int Producte::consultarPes() const {
     return pes;
 }
 
@@ -39,7 +39,7 @@ double Producte::consultarPes() const {
  * \pre Cert.
  * \post Retornar volum del producte.
  */
-double Producte::consultarVolum() const {
+int Producte::consultarVolum() const {
     return volum;
 }
 

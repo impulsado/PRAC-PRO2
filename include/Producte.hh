@@ -7,18 +7,18 @@ class Producte {
 
 private:
     int id;
-    double pes;
-    double volum;
+    int pes;
+    int volum;
 
 public:
     /* CONSTRUCTORS */
     Producte();
-    Producte(int id, double pes, double volumen);
+    Producte(int id, int pes, int volumen);
 
     /* CONSULTORS */
     int consultarId() const;
-    double consultarPes() const;
-    double consultarVolum() const;
+    int consultarPes() const;
+    int consultarVolum() const;
 
     /* MODIFICADORS */
     // No es demanen en la practica

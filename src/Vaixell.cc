@@ -1,4 +1,5 @@
 #include "Vaixell.hh"
+using namespace std;
 
 /**
  * @brief Constructora per defecte de la classe Vaixell
@@ -53,4 +54,21 @@ void Vaixell::mostrarRegistreViatjes() {
 void Vaixell::modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta) {
     comprar = std::make_pair(id_compra, quant_compra);
     vendre = std::make_pair(id_venta, quant_venta);
+}
+
+/**
+ * @brief LLegeix els valors necessaris del vaixell.
+ * 
+ * \pre Cert.
+ * \post El vaixell té com atributs les dades llegides.
+ */
+void Vaixell::llegir(Cjt_productes productes) {
+    int id_prod_comprar, quant_prod_comprar;
+    cin >> id_prod_comprar >> quant_prod_comprar;
+    if (not productes.existeixProducte(id_prod_comprar)) {cout << "Error: El producte no existeix" << endl; return;}
+    int id_prod_vendre, quant_prod_vendre;
+    cin >> id_prod_vendre >> quant_prod_vendre;
+    if (not productes.existeixProducte(id_prod_vendre)) {cout << "Error: El producte no existeix" << endl; return;}
+    comprar = make_pair(id_prod_comprar,quant_prod_comprar);
+    vendre = make_pair(id_prod_vendre,quant_prod_vendre);
 }
