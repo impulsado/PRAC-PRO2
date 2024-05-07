@@ -14,32 +14,15 @@ Vaixell::Vaixell() {
 }
 
 /**
- * @brief Mostrar el producte que ha de comprar el vaixell.
+ * @brief Mostra tota la informació del barco.
  * 
  * \pre Cert.
- * \post Mostra la quantitat per la terminal.
+ * \post Mostra el producte a comprar i vendre, juntament amb la seva respectica quantitat i ultimes ciutats, per la terminal.
  */
-void Vaixell::mostrarProdAComprar() {
-    cout << "Id: " << comprar.first << "Quantitat: " << comprar.second << endl; 
-}
-
-/**
- * @brief Mostrar el producte que ha de vendre el vaixell.
- * 
- * \pre Cert.
- * \post Mostra la quantitat per la terminal.
- */
-void Vaixell::mostrarProdAVendre() {
-    cout << "Id: " << vendre.first << "Quantitat: " << vendre.second << endl; 
-}
-
-/**
- * @brief Mostra les ultimes ciutats visitades a cadascun dels viatges realitzats.
- * 
- * \pre Cert.
- * \post Mostra les ultimes ciutats per la terminal.
- */
-void Vaixell::mostrarRegistreViatjes() {
+void Vaixell::escriure() {
+    cout << comprar.first << ' ' << comprar.second; 
+    cout << ' ' << vendre.first << ' ' << vendre.second << endl; 
+    
     for (int i = 0; i<registre_ultimes_ciutats.size(); i++) {
         cout << registre_ultimes_ciutats[i] << endl;
     }

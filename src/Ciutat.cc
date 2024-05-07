@@ -183,11 +183,10 @@ void Ciutat::eliminarProdDelInventari(int id_prod, int pes, int volum) {
  * \post Mostra per terminal per cada producte en l'inventari l'oferta i la demanda. Després mostra el pes i volum total de la ciutat.
  */
 void Ciutat::escriure() const {
-    // ?? Revisar format ??
-    if (not teInventari()) {cout << "Error: Ciutat no té inventari" << endl; return;}
+    if (not teInventari()) {cout << "0 0" << endl; return;}  // Només mostraria el pes i volum total
+    
     for (auto it = inventari.begin(); it!=inventari.end(); it++) {
-        cout << "Producte: " << it->first << " Oferta: " << it->second.first.first << " Demanda: " << it->second.first.second << endl;
+        cout << it->first << ' ' << it->second.first.first << ' ' << it->second.first.second << endl;
     }
-    cout << "Pes Total: " << pes_total << endl;
-    cout << "Volum Total: " << volum_total << endl;
+    cout << pes_total << ' ' << volum_total << endl;
 }

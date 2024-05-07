@@ -50,6 +50,5 @@ int Producte::consultarVolum() const {
  * \post Mostrar dades del producte.
  */
 void Producte::escriure() const {
-    // ?? Revisar Format ?? 
-    cout << "Pes: " << pes << " Volum: " << volum << endl;
+    cout << id << ' ' << pes << ' ' << volum << endl;
 }
