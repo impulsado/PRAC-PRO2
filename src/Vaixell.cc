@@ -20,8 +20,8 @@ Vaixell::Vaixell() {
  * \post Mostra el producte a comprar i vendre, juntament amb la seva respectica quantitat i ultimes ciutats, per la terminal.
  */
 void Vaixell::escriure() {
-    cout << comprar.first << ' ' << comprar.second; 
-    cout << ' ' << vendre.first << ' ' << vendre.second << endl; 
+    cout << vendre.first << ' ' << vendre.second; 
+    cout << ' ' << comprar.first << ' ' << comprar.second << endl; 
     
     for (int i = 0; i<registre_ultimes_ciutats.size(); i++) {
         cout << registre_ultimes_ciutats[i] << endl;
@@ -34,9 +34,9 @@ void Vaixell::escriure() {
  * \pre id_compra, id_venta existeixen. quant_compra_quant_venta son valors vàlids.
  * \post Vaixell te dades sobre el producte a comprar i vendre actualitzat.
  */
-void Vaixell::modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta) {
-    comprar = std::make_pair(id_compra, quant_compra);
+void Vaixell::modificarMercancia(int id_venta, int quant_venta, int id_compra, int quant_compra) {
     vendre = std::make_pair(id_venta, quant_venta);
+    comprar = std::make_pair(id_compra, quant_compra);
 }
 
 /**

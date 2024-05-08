@@ -43,7 +43,7 @@ void Cjt_productes::afegirProducte(int pes, int volum) {
  * \post Conjunt modificat amb el nou producte.
  */
 void Cjt_productes::modificarProducte(int id_prod, const Producte& prod) {
-    vprod[id_prod] = prod;
+    vprod[id_prod-1] = prod;
 }
 
 
@@ -75,5 +75,10 @@ int Cjt_productes::consultarQuantitatProd() const {
  * \post Retorna còpia del producte.
  */
 Producte Cjt_productes::consultarProducte(int id_prod) const {
-    return vprod[id_prod];
+    return vprod[id_prod-1];
+}
+
+/* TO-DELETE */
+void Cjt_productes::mostrarProductes() const {
+    for (int i = 0; i<quant_prod; i++) vprod[i].escriure();
 }

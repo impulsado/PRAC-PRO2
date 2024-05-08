@@ -23,6 +23,9 @@ public:
     bool existeixProducte(int id) const;
     int consultarQuantitatProd() const;
     Producte consultarProducte(int id) const;
+
+    /* TO-DELETE */
+    void mostrarProductes() const;
 };
 
 #endif

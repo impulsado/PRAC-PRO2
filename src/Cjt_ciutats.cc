@@ -48,19 +48,19 @@ void Cjt_ciutats::afegirProdACiutat(string id_city, int id_prod, int oferta, int
  * \pre Les dues ciutats existeixen.
  * \post Cada ciutat ha donat el seu excedent a l'altra ciutat.
  */
-void Cjt_ciutats::comerciar(string id_city1, string id_city2, const Cjt_productes& productes) {
+void Cjt_ciutats::comerciar(Cjt_ciutats& ciutats, string id_city1, string id_city2, const Cjt_productes& productes) {
     // NOTA: Agafo de referencia ciutat1, però no afecta al resultat.
     Ciutat city1 = consultarCiutat(id_city1);
     Ciutat city2 = consultarCiutat(id_city2);
-    if (not city1.teInventari()) {cout << "Error: La ciutat1 no té inventari" << endl; return;}
-    if (not city2.teInventari()) {cout << "Error: La ciutat2 no té inventari" << endl; return;}
+    // No mostro cap error per pantalla però no comercien. (Optimització)
+    if (not city1.teInventari()) return;
+    if (not city2.teInventari()) return;
 
     vector<int> vids = city1.consultarProductes();
     for (int i = 0; i<vids.size(); i++) {
         // Ciutat2 no té el producte
         if (not city2.teProducte(vids[i])) continue;
-        
-        int dif1 = city1.consultarDiferencia(vids[i]); 
+        int dif1 = city1.consultarDiferencia(vids[i]);
         int dif2 = city2.consultarDiferencia(vids[i]); 
 
         // No tenen quantitats vàlides per a realitzar intercanvi
@@ -77,8 +77,10 @@ void Cjt_ciutats::comerciar(string id_city1, string id_city2, const Cjt_producte
         }
         else if (dif1>0 and dif2<0) {  // A la ciuta1 li sobra, a la ciutat2 li falta
             city1.modificarOfertaProd(vids[i],-quantiat,pes,volum);  // Treure els productes comerciats
-            city2.modificarOfertaProd(vids[i],+quantiat,pes,volum);  // Afegir nova oferta de producte
+            city2.modificarOfertaProd(vids[i],quantiat,pes,volum);  // Afegir nova oferta de producte
         }
+        ciutats.modificarCiutat(id_city1,city1);
+        ciutats.modificarCiutat(id_city2,city2);
     }
 }
 

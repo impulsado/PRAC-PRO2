@@ -19,7 +19,7 @@ public:
     void afegirCiutat(string id_city, const Ciutat& city);
     void modificarCiutat(string id_city, const Ciutat& city);
     void afegirProdACiutat(string id_city, int id_prod, int oferta, int demanda, int pes, int volum);
-    void comerciar(string id_city1, string id_city2, const Cjt_productes& productes);
+    void comerciar(Cjt_ciutats& ciutats, string id_city1, string id_city2, const Cjt_productes& productes);
 
     /* CONSULTORS */
     bool existeixCiutat(string id_city) const;
