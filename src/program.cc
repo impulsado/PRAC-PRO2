@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <list>
 #include "BinTree.hh"
 #include "Vaixell.hh"
 #include "Cjt_ciutats.hh"
@@ -209,16 +210,6 @@ void quitar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     cout << temp_city.consultarPesTotal() << ' ' << temp_city.consultarVolumTotal() << endl;
 }
 
-void comerciar(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
-    string id_city1, id_city2;
-    cin >> id_city1 >> id_city2;
-    cout << ' ' << id_city1 << ' ' << id_city2 << endl;
-    if (not ciutats.existeixCiutat(id_city1)) {cout << "error: no existe la ciudad" << endl; return;}
-    if (not ciutats.existeixCiutat(id_city2)) {cout << "error: no existe la ciudad" << endl; return;}
-    
-    ciutats.comerciar(ciutats, id_city1, id_city2, productes);
-}
-
 void consultar_prod(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     string id_city;
     int id_prod;
@@ -234,6 +225,16 @@ void consultar_prod(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     cout << temp_city.consultarOferta(id_prod) << ' ' << temp_city.consultarDemanda(id_prod) << endl;
 }
 
+void comerciar(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
+    string id_city1, id_city2;
+    cin >> id_city1 >> id_city2;
+    cout << ' ' << id_city1 << ' ' << id_city2 << endl;
+    if (not ciutats.existeixCiutat(id_city1)) {cout << "error: no existe la ciudad" << endl; return;}
+    if (not ciutats.existeixCiutat(id_city2)) {cout << "error: no existe la ciudad" << endl; return;}
+    
+    ciutats.comerciar(ciutats, id_city1, id_city2, productes);
+}
+
 void redistribuir(const BinTree<string>& Cuenca, Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     // Base Case
     if (Cuenca.empty()) return;
@@ -246,6 +247,10 @@ void redistribuir(const BinTree<string>& Cuenca, Cjt_ciutats& ciutats, const Cjt
     if (not Cuenca.right().empty()) redistribuir(Cuenca.right(),ciutats,productes);
     if (not Cuenca.left().empty()) redistribuir(Cuenca.left(),ciutats,productes);
     return;
+}
+
+void hacer_viaje(const BinTree<string>& cuenca, Vaixell& barco, const Cjt_ciutats& ciutats, const Cjt_productes productes) {
+    if (barco.quantitatPerComprar()==0 and barco.quantitatPerVendre()==0) {cout << "error: el barco no tiene unidades" << endl; return;}
 }
 
 int main () {
@@ -338,7 +343,8 @@ int main () {
             redistribuir(cuenca, ciutats, productes);
         }
         else if (usr_op=="hacer_viaje" or usr_op=="hv") {
-            cout << "TODO" << endl;
+            cout << "#" << usr_op << endl;
+            hacer_viaje(cuenca, barco, ciutats, productes);
         }
         // TO-DELETE
         else if (usr_op=="debug") {

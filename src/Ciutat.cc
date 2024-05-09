@@ -148,9 +148,9 @@ void Ciutat::modificarProdDelInventari(int id, int oferta, int demanda, int pes,
 }
 
 /**
- * @brief Modificar la quantitat d'oferta respecte un producte determinat
+ * @brief Modificar la quantitat d'oferta respecte un producte determinat.
  * 
- * \pre La ciutat té el producte. id_prod, quantiat, pes i volum son valors valids.
+ * \pre La ciutat té el producte. id_prod, quantiat, pes i volum son valors vàlids.
  * \post La ciutat té la nova quanitat d'oferta d'aquell producte. S'actualitza el pes i volum totals.
  */
 void Ciutat::modificarOfertaProd(int id_prod, int quantitat, int pes, int volum) {
@@ -159,6 +159,21 @@ void Ciutat::modificarOfertaProd(int id_prod, int quantitat, int pes, int volum)
     pes_total += quantitat*pes;
     volum_total += quantitat*volum;
     it->second.first.first += quantitat;  // Afegir la nova quanitat d'oferta
+    it->second.second += quantitat;  // Actualitzar la necessitat del producte
+}
+
+/**
+ * @brief Modificar la quantitat de demanda respecte un producte determinat.
+ * 
+ * \pre La ciutat té el producte. id_prod, quantiat, pes i volum son valors vàlids.
+ * \post La ciutat té la nova quanitat de demanda d'aquell producte. S'actualitza el pes i volum totals.
+ */
+void Ciutat::modificarDemandaProd(int id_prod, int quantitat, int pes, int volum) {
+    auto it = inventari.find(id_prod);
+    
+    pes_total += quantitat*pes;
+    volum_total += quantitat*volum;
+    it->second.first.second += quantitat;  // Afegir la nova quanitat de demanda
     it->second.second += quantitat;  // Actualitzar la necessitat del producte
 }
 

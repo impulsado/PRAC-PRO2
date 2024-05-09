@@ -2,6 +2,7 @@
 #define VAIXELL_HH
 
 #include "Cjt_productes.hh"
+#include "Ciutat.hh"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -17,11 +18,17 @@ private:
 public:
     /* CONSTRUCTORS */
     Vaixell();
+    Vaixell(const Vaixell& v);
 
     /* CONSULTORS */
-
+    int quantitatPerVendre();
+    int quantitatPerComprar();
+    
     /* MODIFICADORS */
     void modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta);
+    int comerciar(Ciutat& city, const Cjt_productes& productes);
+
+    /* LECTURA */
     void llegir(Cjt_productes productes);
     
     /* ESCRIPTURA */

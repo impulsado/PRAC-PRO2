@@ -13,9 +13,10 @@ class Ciutat {
 private:
     string id;
     std::map<int, pair< pair<int,int> ,int>> inventari;
-    // first.first -> oferta
-    // first.second -> demanda
-    // second -> necessitat
+    // first -> id producte
+    // second.first.first -> oferta
+    // second.first.second -> demanda
+    // second.second -> necessitat
     int pes_total;
     int volum_total;
 
@@ -39,6 +40,7 @@ public:
     void afegirProdAlInventari(int id_prod, int oferta, int demanda, int pes, int volum);
     void modificarProdDelInventari(int id_prod, int oferta, int demanda, int pes, int volum);
     void modificarOfertaProd(int id_prod, int oferta, int pes, int volum);
+    void modificarDemandaProd(int id_prod, int quantitat, int pes, int volum);
     void eliminarProdDelInventari(int id_prod, int pes, int volum);
 
     /* ESCRIPTURA */
