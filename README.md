@@ -37,7 +37,8 @@ public:
 	void actQuant(int quant);
 
 	/* CONSULTORS */
-	void consultarRuta();
+	list<string> consultarRuta();
+	string consultarUltimaCiutat();
 	int consultarQuant();
 };
 
