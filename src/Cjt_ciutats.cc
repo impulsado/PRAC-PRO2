@@ -115,3 +115,13 @@ Ciutat Cjt_ciutats::consultarCiutat(string id_city) const {
 int Cjt_ciutats::determinarDiferencia(int c1, int c2) const {
     return min(abs(c1), abs(c2));
 }
+
+/**
+ * @brief Eliminar totes les ciutats registrades.
+ * 
+ * \pre Cert.
+ * \post Mapa de les ciutats buit.
+ */
+void Cjt_ciutats::eliminarCiutats() {
+    cmap.clear();
+}

@@ -249,9 +249,11 @@ void redistribuir(const BinTree<string>& Cuenca, Cjt_ciutats& ciutats, const Cjt
     return;
 }
 
+/*
 void hacer_viaje(const BinTree<string>& cuenca, Vaixell& barco, const Cjt_ciutats& ciutats, const Cjt_productes productes) {
     if (barco.quantitatPerComprar()==0 and barco.quantitatPerVendre()==0) {cout << "error: el barco no tiene unidades" << endl; return;}
 }
+*/
 
 int main () {
     Cjt_ciutats ciutats;
@@ -284,6 +286,7 @@ int main () {
         }
         else if (usr_op=="leer_rio" or usr_op=="lr") {
             cout << "#" << usr_op << endl;
+            ciutats.eliminarCiutats();
             cuenca = leer_rio(ciutats);
         }
         else if (usr_op=="leer_inventario" or usr_op=="li") {
@@ -343,8 +346,9 @@ int main () {
             redistribuir(cuenca, ciutats, productes);
         }
         else if (usr_op=="hacer_viaje" or usr_op=="hv") {
-            cout << "#" << usr_op << endl;
-            hacer_viaje(cuenca, barco, ciutats, productes);
+            cout << "TODO" << endl;
+            //cout << "#" << usr_op << endl;
+            //hacer_viaje(cuenca, barco, ciutats, productes);
         }
         // TO-DELETE
         else if (usr_op=="debug") {
