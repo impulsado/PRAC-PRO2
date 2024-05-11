@@ -10,6 +10,7 @@ class Viatge {
 private:
 	std::list<std::string> ruta;
 	int quant_comerciat;
+	std::string ordre;  // 'r' root; 'e' esquerra; 'd' dreta;
 	void eliminarCiutat();
 
 public:
@@ -17,11 +18,12 @@ public:
 	Viatge();
 
 	/* MODIFICADORS */
-	void afegirCiutat(std::string id_city);
+	void afegirCiutat(std::string id_city, char dir);
 	void actQuant(int quant);
 
 	/* CONSULTORS */
 	std::list<std::string> consultarRuta() const;
+	std::string consultarOrdre() const;
 	std::string consultarProxCiutat();  // No és const perquè elimina la ciutat actual.
 	int consultarQuant() const;
 	std::string consultarUltimaCiutat() const;

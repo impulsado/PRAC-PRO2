@@ -4,10 +4,12 @@ using namespace std;
 Viatge::Viatge() {
     ruta = list<string>();
     quant_comerciat = 0;
+    ordre = "";
 }
 
-void Viatge::afegirCiutat(string id_city) {
+void Viatge::afegirCiutat(string id_city, char dir) {
     ruta.push_back(id_city);
+    ordre += dir;
 }
 
 void Viatge::eliminarCiutat() {
@@ -20,6 +22,10 @@ void Viatge::actQuant(int quant) {
 
 list<string> Viatge::consultarRuta() const {
     return ruta;
+}
+
+string Viatge::consultarOrdre() const {
+    return ordre;
 }
 
 string Viatge::consultarProxCiutat() {

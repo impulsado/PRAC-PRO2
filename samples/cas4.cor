@@ -1,0 +1,28 @@
+#leer_inventario B
+#leer_inventario C
+#leer_inventario D
+#escribir_barco
+1 11 2 10
+#escribir_ciudad B
+1 11 1
+55 55
+#escribir_ciudad C
+1 6 1
+30 30
+#escribir_ciudad D
+1 7 1
+35 35
+#hacer_viaje
+11
+#eb
+1 11 2 10
+D
+#ec B
+1 11 1
+55 55
+#ec C
+1 1 1
+5 5
+#ec D
+1 1 1
+5 5

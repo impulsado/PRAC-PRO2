@@ -1,0 +1,33 @@
+2
+5 5
+10 10
+A
+B
+#
+#
+C
+#
+D
+#
+#
+1 10
+2 10
+// bucle
+leer_inventario B
+1
+1 11 1
+leer_inventario C
+1
+1 6 1
+leer_inventario D
+1
+1 6 1
+escribir_barco
+escribir_ciudad B
+escribir_ciudad C
+escribir_ciudad D
+hacer_viaje
+eb
+ec B
+ec C
+ec D

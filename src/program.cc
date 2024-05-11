@@ -244,16 +244,20 @@ void redistribuir(const BinTree<string>& Cuenca, Cjt_ciutats& ciutats, const Cjt
     return;
 }
 
-bool determinar_millor_viatge(const Viatge& viatge_act, const Viatge& viatge_top, const string& direccio) {
+bool determinar_millor_viatge(const Viatge& viatge_act, const Viatge& viatge_top) {
     if (viatge_act.consultarQuant()>viatge_top.consultarQuant()) return true;
     else if (viatge_act.consultarQuant()==viatge_top.consultarQuant()) {
         if (viatge_act.consultarRuta().size()<viatge_top.consultarRuta().size()) return true;
-        else if (viatge_act.consultarRuta().size()==viatge_top.consultarRuta().size() && direccio=="esquerra") return true;
+        else if (viatge_act.consultarRuta().size()==viatge_top.consultarRuta().size()) {
+            // Com que e>d dona preferencia a l'esquerra
+            // cout << "ACT : " << viatge_act.consultarOrdre() << " TOP: " << viatge_top.consultarOrdre() << endl;
+            return viatge_act.consultarOrdre() > viatge_top.consultarOrdre();
+        }
     }
     return false;
 }
 
-void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_act, Viatge& viatge_top, Vaixell& barco, Cjt_ciutats& ciutats, const string& direccio) {
+void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_act, Viatge& viatge_top, Vaixell& barco, Cjt_ciutats& ciutats, char direccio) {
     // === Base Case
     if (cuenca.empty()) return;
 
@@ -263,15 +267,15 @@ void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& produ
     
     // Fer intercanvi
     int quant_comerciat = barco.comerciar(temp_city,productes);
-    cout << "CITY: " << id_city << " QUANT: "<< quant_comerciat << endl;
+    //cout << "CITY: " << id_city << " QUANT: "<< quant_comerciat << endl;
     ciutats.modificarCiutat(id_city,temp_city);
 
     // Actualitzar viatge actual
-    viatge_act.afegirCiutat(id_city);
+    viatge_act.afegirCiutat(id_city, direccio);
     viatge_act.actQuant(quant_comerciat);
 
     // Mirar si el viatge actual és millor que el millor viatge, llavors intercanvio.
-    if (determinar_millor_viatge(viatge_act, viatge_top, direccio)) {
+    if (determinar_millor_viatge(viatge_act, viatge_top)) {
         viatge_top = viatge_act;
     }
 
@@ -284,17 +288,18 @@ void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& produ
     if (not cuenca.left().empty()) {
         Vaixell nou_barco_esquerra = barco;
         Viatge nou_viatge_esquerra = viatge_act;
-        determinar_viatge(cuenca.left(), productes, nou_viatge_esquerra, viatge_top, nou_barco_esquerra, ciutats, "esquerra");
+        determinar_viatge(cuenca.left(), productes, nou_viatge_esquerra, viatge_top, nou_barco_esquerra, ciutats, 'e');
     }
 
     // Explorar ciutat de la dreta
     if (not cuenca.right().empty()) {
         Vaixell nou_barco_dreta = barco;
         Viatge nou_viatge_dreta = viatge_act;
-        determinar_viatge(cuenca.right(), productes, nou_viatge_dreta, viatge_top, nou_barco_dreta, ciutats, "dreta");
+        determinar_viatge(cuenca.right(), productes, nou_viatge_dreta, viatge_top, nou_barco_dreta, ciutats, 'd');
     }
 
-    cout << "VIATGE QUANT: " << viatge_act.consultarQuant() << endl;
+    //cout << "VIATGE QUANT: " << viatge_act.consultarQuant() << endl;
+    //cout << "VIATGE ORDRE: " << viatge_act.consultarOrdre() << endl;
 }
 
 void realitzar_millor_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_top, Vaixell barco, Cjt_ciutats& ciutats) {
@@ -421,7 +426,7 @@ int main () {
             Viatge ruta, ruta_top;
             Vaixell temp_barco = barco;
             Cjt_ciutats tmp_ciutats = ciutats;
-            determinar_viatge(cuenca,productes,ruta,ruta_top,temp_barco,tmp_ciutats,"");
+            determinar_viatge(cuenca,productes,ruta,ruta_top,temp_barco,tmp_ciutats,'r');
             int quantitat = ruta_top.consultarQuant();
             cout << quantitat << endl;            
             if (quantitat!=0) {

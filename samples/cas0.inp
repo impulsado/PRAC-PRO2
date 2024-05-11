@@ -1,0 +1,27 @@
+5
+5 5
+10 10
+15 15
+20 20
+25 25
+A
+B
+#
+#
+C
+#
+D
+#
+#
+4 3
+5 3
+// bucle
+leer_inventario A
+2
+1 0 3
+2 4 1
+escribir_barco
+escribir_ciudad A
+hacer_viaje
+eb
+ec A

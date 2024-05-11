@@ -1,0 +1,21 @@
+#leer_inventario D
+#leer_inventario E
+#escribir_barco
+1 11 2 10
+#escribir_ciudad D
+1 6 1
+30 30
+#escribir_ciudad E
+1 6 1
+30 30
+#hacer_viaje
+5
+#eb
+1 11 2 10
+D
+#ec D
+1 1 1
+5 5
+#ec E
+1 6 1
+30 30
