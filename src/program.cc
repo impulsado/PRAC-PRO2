@@ -236,11 +236,11 @@ void redistribuir(const BinTree<string>& Cuenca, Cjt_ciutats& ciutats, const Cjt
 
     // === General Case
     // Comerciar
-    if (not Cuenca.right().empty()) ciutats.comerciar(ciutats, Cuenca.value(), Cuenca.right().value(), productes);
     if (not Cuenca.left().empty()) ciutats.comerciar(ciutats, Cuenca.value(), Cuenca.left().value(), productes);
+    if (not Cuenca.right().empty()) ciutats.comerciar(ciutats, Cuenca.value(), Cuenca.right().value(), productes);
     // Recursivitat
-    if (not Cuenca.right().empty()) redistribuir(Cuenca.right(),ciutats,productes);
     if (not Cuenca.left().empty()) redistribuir(Cuenca.left(),ciutats,productes);
+    if (not Cuenca.right().empty()) redistribuir(Cuenca.right(),ciutats,productes);
     return;
 }
 
@@ -248,7 +248,7 @@ bool determinar_millor_viatge(const Viatge& viatge_act, const Viatge& viatge_top
     if (viatge_act.consultarQuant()>viatge_top.consultarQuant()) return true;
     else if (viatge_act.consultarQuant()==viatge_top.consultarQuant()) {
         if (viatge_act.consultarRuta().size()<viatge_top.consultarRuta().size()) return true;
-        else if (viatge_act.consultarRuta().size()==viatge_top.consultarRuta().size() && direccio=="dreta") return true;
+        else if (viatge_act.consultarRuta().size()==viatge_top.consultarRuta().size() && direccio=="esquerra") return true;
     }
     return false;
 }
@@ -263,6 +263,7 @@ void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& produ
     
     // Fer intercanvi
     int quant_comerciat = barco.comerciar(temp_city,productes);
+    cout << "CITY: " << id_city << " QUANT: "<< quant_comerciat << endl;
     ciutats.modificarCiutat(id_city,temp_city);
 
     // Actualitzar viatge actual
@@ -279,17 +280,21 @@ void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& produ
         return;
     }
 
-    // Explorar ciutat de la dreta
-    if (not cuenca.right().empty()) {
-        Viatge nou_viatge = viatge_act;
-        determinar_viatge(cuenca.right(), productes, nou_viatge, viatge_top, barco, ciutats, "dreta");
-    }
-
     // Explorar ciutat de l'esquerra
     if (not cuenca.left().empty()) {
-        Viatge nou_viatge = viatge_act;
-        determinar_viatge(cuenca.left(), productes, nou_viatge, viatge_top, barco, ciutats, "esquerra");
+        Vaixell nou_barco_esquerra = barco;
+        Viatge nou_viatge_esquerra = viatge_act;
+        determinar_viatge(cuenca.left(), productes, nou_viatge_esquerra, viatge_top, nou_barco_esquerra, ciutats, "esquerra");
     }
+
+    // Explorar ciutat de la dreta
+    if (not cuenca.right().empty()) {
+        Vaixell nou_barco_dreta = barco;
+        Viatge nou_viatge_dreta = viatge_act;
+        determinar_viatge(cuenca.right(), productes, nou_viatge_dreta, viatge_top, nou_barco_dreta, ciutats, "dreta");
+    }
+
+    cout << "VIATGE QUANT: " << viatge_act.consultarQuant() << endl;
 }
 
 void realitzar_millor_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_top, Vaixell barco, Cjt_ciutats& ciutats) {
@@ -307,11 +312,11 @@ void realitzar_millor_viatge(const BinTree<string>& cuenca, const Cjt_productes&
     // NO hi ha més ciutats per explorar
     if (id_next_city=="") return;   
     
-    if (not cuenca.right().empty() and cuenca.right().value()==id_next_city) {
-        realitzar_millor_viatge(cuenca.right(), productes, viatge_top, barco, ciutats);
-    }
-    else if (not cuenca.left().empty() and cuenca.left().value()==id_next_city) {
+    if (not cuenca.left().empty() and cuenca.left().value()==id_next_city) {
         realitzar_millor_viatge(cuenca.left(), productes, viatge_top, barco, ciutats);
+    }
+    else if (not cuenca.right().empty() and cuenca.right().value()==id_next_city) {
+        realitzar_millor_viatge(cuenca.right(), productes, viatge_top, barco, ciutats);
     }
 }
 
