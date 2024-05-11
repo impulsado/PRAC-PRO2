@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include "Viatge.hh"
 #include "BinTree.hh"
 #include "Vaixell.hh"
 #include "Cjt_ciutats.hh"
@@ -38,20 +39,16 @@ void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes) {
         // Info sobre el producte
         int id_prod, oferta, demanda;
         cin >> id_prod >> oferta >> demanda;
-        // ?? Aqui paro tota l'execucio ??
+
         if (0>oferta) {cout << "error: oferta no valida" << endl; continue;}
         if (0>=demanda) {cout << "error: demanda no valida" << endl; continue;}
         if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; continue;}
-        // ?? Que passa si la ciutat ja té el producte ??
-        /*
-        Ciutat temp_city = ciutats.consultarCiutat(id_ciutat);
-        if (temp_city.teProducte(id_prod)) {cout << "Error: La ciutat ja té el producte" << endl; continue;}
-        */
         
         // Saber les dades sobre el producte a afegir
         Producte temp_prod = productes.consultarProducte(id_prod);
         int pes = temp_prod.consultarPes();
         int volum = temp_prod.consultarVolum();
+        
         // Afegir el producte a la ciutat directament
         ciutats.afegirProdACiutat(id_ciutat,id_prod,oferta,demanda,pes,volum);
     }
@@ -69,20 +66,16 @@ void leer_inventarios(Cjt_ciutats& ciutats, Cjt_productes& productes) {
             // Info sobre el producte
             int id_prod, oferta, demanda;
             cin >> id_prod >> oferta >> demanda;
-            // ?? Aqui paro tota l'execucio ??
+            
             if (0>oferta) {cout << "error: oferta no valida" << endl; continue;}
             if (0>=demanda) {cout << "error: demanda no valida" << endl; continue;}
             if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; continue;}
-            // ?? Que passa si la ciutat ja té el producte ??
-            /*
-            Ciutat temp_city = ciutats.consultarCiutat(id_ciutat);
-            if (temp_city.teProducte(id_prod)) {cout << "Error: La ciutat ja té el producte" << endl; continue;}
-            */
 
             // Saber les dades sobre el producte a afegir
             Producte temp_prod = productes.consultarProducte(id_prod);
             int pes = temp_prod.consultarPes();
             int volum = temp_prod.consultarVolum();
+            
             // Afegir el producte a la ciutat directament
             ciutats.afegirProdACiutat(id_ciutat,id_prod,oferta,demanda,pes,volum);
         }
@@ -91,18 +84,19 @@ void leer_inventarios(Cjt_ciutats& ciutats, Cjt_productes& productes) {
 
 void modificar_barco(Vaixell& barco, Cjt_productes& productes) {
     // NOTA: Es garantitza que les quantitats seràn valides.
-    // Info sobre la Venta
-    int prod_venta, quant_venta;
-    cin >> prod_venta >> quant_venta;
-    if (not productes.existeixProducte(prod_venta)) {cout << "error: no existe el producto" << endl; return;}
-    
+
     // Info sobre la Compra
     int prod_compra, quant_compra;
     cin >> prod_compra >> quant_compra;
     if (not productes.existeixProducte(prod_compra)) {cout << "error: no existe el producto" << endl; return;}
+    
+    // Info sobre la Venta
+    int prod_venta, quant_venta;
+    cin >> prod_venta >> quant_venta;
+    if (not productes.existeixProducte(prod_venta)) {cout << "error: no existe el producto" << endl; return;}
 
     if (prod_compra==prod_venta) {cout<< "error: no se puede comprar y vender el mismo producto" << endl; return;}
-    barco.modificarMercancia(prod_venta, quant_venta, prod_compra, quant_compra);
+    barco.modificarMercancia(prod_compra, quant_compra, prod_venta, quant_venta);
 }
 
 void escribir_barco(Vaixell& barco) {
@@ -229,6 +223,7 @@ void comerciar(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     string id_city1, id_city2;
     cin >> id_city1 >> id_city2;
     cout << ' ' << id_city1 << ' ' << id_city2 << endl;
+    if (id_city1==id_city2) {cout << "error: ciudad repetida" << endl; return;}
     if (not ciutats.existeixCiutat(id_city1)) {cout << "error: no existe la ciudad" << endl; return;}
     if (not ciutats.existeixCiutat(id_city2)) {cout << "error: no existe la ciudad" << endl; return;}
     
@@ -236,24 +231,91 @@ void comerciar(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
 }
 
 void redistribuir(const BinTree<string>& Cuenca, Cjt_ciutats& ciutats, const Cjt_productes& productes) {
-    // Base Case
+    // === Base Case
     if (Cuenca.empty()) return;
 
-    // General Case
+    // === General Case
     // Comerciar
     if (not Cuenca.right().empty()) ciutats.comerciar(ciutats, Cuenca.value(), Cuenca.right().value(), productes);
-    if (not Cuenca.left().empty()) ciutats.comerciar(ciutats, Cuenca.value(), Cuenca.right().value(), productes);
+    if (not Cuenca.left().empty()) ciutats.comerciar(ciutats, Cuenca.value(), Cuenca.left().value(), productes);
     // Recursivitat
     if (not Cuenca.right().empty()) redistribuir(Cuenca.right(),ciutats,productes);
     if (not Cuenca.left().empty()) redistribuir(Cuenca.left(),ciutats,productes);
     return;
 }
 
-/*
-void hacer_viaje(const BinTree<string>& cuenca, Vaixell& barco, const Cjt_ciutats& ciutats, const Cjt_productes productes) {
-    if (barco.quantitatPerComprar()==0 and barco.quantitatPerVendre()==0) {cout << "error: el barco no tiene unidades" << endl; return;}
+bool determinar_millor_viatge(const Viatge& viatge_act, const Viatge& viatge_top, const string& direccio) {
+    if (viatge_act.consultarQuant()>viatge_top.consultarQuant()) return true;
+    else if (viatge_act.consultarQuant()==viatge_top.consultarQuant()) {
+        if (viatge_act.consultarRuta().size()<viatge_top.consultarRuta().size()) return true;
+        else if (viatge_act.consultarRuta().size()==viatge_top.consultarRuta().size() && direccio=="dreta") return true;
+    }
+    return false;
 }
-*/
+
+void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_act, Viatge& viatge_top, Vaixell& barco, Cjt_ciutats& ciutats, const string& direccio) {
+    // === Base Case
+    if (cuenca.empty()) return;
+
+    // === General Case
+    string id_city = cuenca.value();
+    Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    
+    // Fer intercanvi
+    int quant_comerciat = barco.comerciar(temp_city,productes);
+    ciutats.modificarCiutat(id_city,temp_city);
+
+    // Actualitzar viatge actual
+    viatge_act.afegirCiutat(id_city);
+    viatge_act.actQuant(quant_comerciat);
+
+    // Mirar si el viatge actual és millor que el millor viatge, llavors intercanvio.
+    if (determinar_millor_viatge(viatge_act, viatge_top, direccio)) {
+        viatge_top = viatge_act;
+    }
+
+    // Si el barco ja no té unitats per intercanviar, es para tot.
+    if (barco.quantitatPerComprar()==0 and barco.quantitatPerVendre()==0) {
+        return;
+    }
+
+    // Explorar ciutat de la dreta
+    if (not cuenca.right().empty()) {
+        Viatge nou_viatge = viatge_act;
+        determinar_viatge(cuenca.right(), productes, nou_viatge, viatge_top, barco, ciutats, "dreta");
+    }
+
+    // Explorar ciutat de l'esquerra
+    if (not cuenca.left().empty()) {
+        Viatge nou_viatge = viatge_act;
+        determinar_viatge(cuenca.left(), productes, nou_viatge, viatge_top, barco, ciutats, "esquerra");
+    }
+}
+
+void realitzar_millor_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_top, Vaixell& barco, Cjt_ciutats& ciutats) {
+    // === Base Case
+    if (cuenca.empty()) return;
+    
+    // === General Case
+    string id_city = cuenca.value();
+    Ciutat temp_city = ciutats.consultarCiutat(id_city);
+    int quant_comerciat = barco.comerciar(temp_city,productes);
+    ciutats.modificarCiutat(id_city,temp_city);  // Guardar modificacions de la ciutat
+    
+    string id_next_city = viatge_top.consultarProxCiutat();
+    
+    if (id_next_city=="" and quant_comerciat!=0) {  // NO hi ha més ciutats per explorar
+        barco.afegirCiutat(id_city);
+        return;   
+    }
+    
+    if (not cuenca.right().empty() and cuenca.right().value()==id_next_city) {
+        realitzar_millor_viatge(cuenca.right(), productes, viatge_top, barco, ciutats);
+    }
+    else if (not cuenca.left().empty() and cuenca.left().value()==id_next_city) {
+        realitzar_millor_viatge(cuenca.left(), productes, viatge_top, barco, ciutats);
+    }
+}
 
 int main () {
     Cjt_ciutats ciutats;
@@ -287,6 +349,7 @@ int main () {
         else if (usr_op=="leer_rio" or usr_op=="lr") {
             cout << "#" << usr_op << endl;
             ciutats.eliminarCiutats();
+            barco.eliminarRegistre();
             cuenca = leer_rio(ciutats);
         }
         else if (usr_op=="leer_inventario" or usr_op=="li") {
@@ -346,9 +409,13 @@ int main () {
             redistribuir(cuenca, ciutats, productes);
         }
         else if (usr_op=="hacer_viaje" or usr_op=="hv") {
-            cout << "TODO" << endl;
-            //cout << "#" << usr_op << endl;
-            //hacer_viaje(cuenca, barco, ciutats, productes);
+            cout << "#" << usr_op << endl;
+            Viatge ruta, ruta_top;
+            Vaixell temp_barco = barco;
+            Cjt_ciutats tmp_ciutats = ciutats;
+            determinar_viatge(cuenca,productes,ruta,ruta_top,temp_barco,tmp_ciutats,"");
+            cout << ruta_top.consultarQuant() << endl;
+            realitzar_millor_viatge(cuenca,productes,ruta_top,barco,ciutats);
         }
         // TO-DELETE
         else if (usr_op=="debug") {

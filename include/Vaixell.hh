@@ -27,6 +27,8 @@ public:
     /* MODIFICADORS */
     void modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta);
     int comerciar(Ciutat& city, const Cjt_productes& productes);
+    void afegirCiutat(std::string id_city);
+    void eliminarRegistre();
 
     /* LECTURA */
     void llegir(Cjt_productes productes);

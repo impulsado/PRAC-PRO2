@@ -51,9 +51,9 @@ int Vaixell::quantitatPerComprar() {
  * \pre id_compra, id_venta existeixen. quant_compra_quant_venta son valors vàlids.
  * \post Vaixell te dades sobre el producte a comprar i vendre actualitzat.
  */
-void Vaixell::modificarMercancia(int id_venta, int quant_venta, int id_compra, int quant_compra) {
-    vendre = std::make_pair(id_venta, quant_venta);
+void Vaixell::modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta) {
     comprar = std::make_pair(id_compra, quant_compra);
+    vendre = std::make_pair(id_venta, quant_venta);
 }
 
 int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
@@ -89,7 +89,7 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
             int quant_comerciar = min(quant_vendre_barco,-dif);
             Producte tmp_prod = productes.consultarProducte(id_prod_venta);
             // Treure la quantitat venuda per la ciutat
-            city.modificarDemandaProd(id_prod_venta, -quant_comerciar, tmp_prod.consultarPes(), tmp_prod.consultarVolum());
+            city.modificarOfertaProd(id_prod_venta, quant_comerciar, tmp_prod.consultarPes(), tmp_prod.consultarVolum());
             // Actualitzar la nova quantitat necessaria
             vendre.second -= quant_comerciar;
             quant_total += quant_comerciar;
@@ -97,6 +97,26 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
     }
     
     return quant_total;
+}
+
+/**
+ * @brief Afegir última ciutat al registre d'últimes ciutats visitades a cada viatge.
+ * 
+ * \pre id_city és vàlid.
+ * \post El registre d'últimes ciutats conté el id_city.
+ */
+void Vaixell::afegirCiutat(string id_city) {
+    registre_ultimes_ciutats.push_back(id_city);
+}
+
+/**
+ * @brief Eliminar totes les ciutats del registre.
+ * 
+ * \pre Cert.
+ * \post El vaixell no conté cap registre de les últimes ciutats visitades.
+ */
+void Vaixell::eliminarRegistre() {
+    if (not registre_ultimes_ciutats.empty()) registre_ultimes_ciutats.clear();
 }
 
 /**
@@ -109,9 +129,11 @@ void Vaixell::llegir(Cjt_productes productes) {
     int id_prod_comprar, quant_prod_comprar;
     cin >> id_prod_comprar >> quant_prod_comprar;
     if (not productes.existeixProducte(id_prod_comprar)) {cout << "Error: El producte no existeix" << endl; return;}
+    
     int id_prod_vendre, quant_prod_vendre;
     cin >> id_prod_vendre >> quant_prod_vendre;
     if (not productes.existeixProducte(id_prod_vendre)) {cout << "Error: El producte no existeix" << endl; return;}
+    
     comprar = make_pair(id_prod_comprar,quant_prod_comprar);
     vendre = make_pair(id_prod_vendre,quant_prod_vendre);
 }
@@ -123,8 +145,8 @@ void Vaixell::llegir(Cjt_productes productes) {
  * \post Mostra el producte a comprar i vendre, juntament amb la seva respectica quantitat i ultimes ciutats, per la terminal.
  */
 void Vaixell::escriure() {
-    cout << vendre.first << ' ' << vendre.second; 
-    cout << ' ' << comprar.first << ' ' << comprar.second << endl; 
+    cout << comprar.first << ' ' << comprar.second; 
+    cout << ' ' << vendre.first << ' ' << vendre.second << endl; 
     
     for (int i = 0; i<registre_ultimes_ciutats.size(); i++) {
         cout << registre_ultimes_ciutats[i] << endl;

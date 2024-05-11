@@ -30,10 +30,10 @@ Cjt_productes::Cjt_productes(int mida) {
  * \post Existeix producte amb el id autoincrementat. quant_prod actualitzat.
  */
 void Cjt_productes::afegirProducte(int pes, int volum) {
-    int id = quant_prod+1;
+    quant_prod++;
+    int id = quant_prod;
     Producte temp(id,pes,volum);
     vprod.push_back(temp);
-    quant_prod++;
 }
 
 /**
