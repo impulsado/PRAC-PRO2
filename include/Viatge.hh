@@ -24,6 +24,7 @@ public:
 	std::list<std::string> consultarRuta() const;
 	std::string consultarProxCiutat();  // No és const perquè elimina la ciutat actual.
 	int consultarQuant() const;
+	std::string consultarUltimaCiutat() const;
 };
 
 #endif

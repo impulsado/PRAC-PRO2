@@ -292,22 +292,20 @@ void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& produ
     }
 }
 
-void realitzar_millor_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_top, Vaixell& barco, Cjt_ciutats& ciutats) {
+void realitzar_millor_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_top, Vaixell barco, Cjt_ciutats& ciutats) {
     // === Base Case
     if (cuenca.empty()) return;
     
     // === General Case
     string id_city = cuenca.value();
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
-    int quant_comerciat = barco.comerciar(temp_city,productes);
+    barco.comerciar(temp_city,productes);
     ciutats.modificarCiutat(id_city,temp_city);  // Guardar modificacions de la ciutat
     
     string id_next_city = viatge_top.consultarProxCiutat();
     
-    if (id_next_city=="" and quant_comerciat!=0) {  // NO hi ha més ciutats per explorar
-        barco.afegirCiutat(id_city);
-        return;   
-    }
+    // NO hi ha més ciutats per explorar
+    if (id_next_city=="") return;   
     
     if (not cuenca.right().empty() and cuenca.right().value()==id_next_city) {
         realitzar_millor_viatge(cuenca.right(), productes, viatge_top, barco, ciutats);
@@ -315,6 +313,11 @@ void realitzar_millor_viatge(const BinTree<string>& cuenca, const Cjt_productes&
     else if (not cuenca.left().empty() and cuenca.left().value()==id_next_city) {
         realitzar_millor_viatge(cuenca.left(), productes, viatge_top, barco, ciutats);
     }
+}
+
+void guardar_ultima_ciutat(const Viatge& viatge_top, Vaixell& barco) {
+    string id_last_city = viatge_top.consultarUltimaCiutat();
+    barco.afegirCiutat(id_last_city);
 }
 
 int main () {
@@ -414,8 +417,12 @@ int main () {
             Vaixell temp_barco = barco;
             Cjt_ciutats tmp_ciutats = ciutats;
             determinar_viatge(cuenca,productes,ruta,ruta_top,temp_barco,tmp_ciutats,"");
-            cout << ruta_top.consultarQuant() << endl;
-            realitzar_millor_viatge(cuenca,productes,ruta_top,barco,ciutats);
+            int quantitat = ruta_top.consultarQuant();
+            cout << quantitat << endl;            
+            if (quantitat!=0) {
+                guardar_ultima_ciutat(ruta_top,barco);
+                realitzar_millor_viatge(cuenca,productes,ruta_top,barco,ciutats);
+            }
         }
         // TO-DELETE
         else if (usr_op=="debug") {

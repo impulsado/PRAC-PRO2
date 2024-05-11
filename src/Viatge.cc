@@ -33,3 +33,7 @@ string Viatge::consultarProxCiutat() {
 int Viatge::consultarQuant() const {
     return quant_comerciat;
 }
+
+string Viatge::consultarUltimaCiutat() const {
+    return ruta.back();
+}

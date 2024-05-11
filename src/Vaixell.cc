@@ -14,18 +14,6 @@ Vaixell::Vaixell() {
 }
 
 /**
- * @brief Constructora per còpia de la classe Vaixell
- * 
- * \pre Cert.
- * \post Vaixell amb mateixos parametres que el vaixell referenciat.
- */
-Vaixell::Vaixell(const Vaixell& v) {
-    comprar = v.comprar;
-    vendre = v.vendre;
-    registre_ultimes_ciutats = v.registre_ultimes_ciutats;
-}
-
-/**
  * @brief Quantitat d'unitats restants per vendre.
  * 
  * \pre Cert.

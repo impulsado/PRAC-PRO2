@@ -1,34 +1,35 @@
 OPCIONS = -D_JUDGE_ -D_GLIBCXX_DEBUG -O2 -Wall -Wextra -Werror -Wno-sign-compare -std=c++11 -fno-extended-identifiers
 INCLUDES = -I include
 
-all: directories main.exe
+all: program.exe
 
-main.exe: objects/program.o objects/Producte.o objects/Ciutat.o objects/Cjt_ciutats.o objects/Cjt_productes.o objects/Vaixell.o objects/Viatge.o
-	g++ $(OPCIONS) -o main.exe objects/program.o objects/Producte.o objects/Ciutat.o objects/Cjt_ciutats.o objects/Cjt_productes.o objects/Vaixell.o objects/Viatge.o
+program.exe: program.o Producte.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o
+	g++ $(OPCIONS) -o program.exe program.o Producte.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o
+	rm *.o
 
-objects/program.o: src/program.cc
-	g++ $(OPCIONS) -c src/program.cc -o objects/program.o $(INCLUDES)
+program.o: src/program.cc
+	g++ $(OPCIONS) -c src/program.cc -o program.o $(INCLUDES)
 
-objects/Ciutat.o: src/Ciutat.cc
-	g++ $(OPCIONS) -c src/Ciutat.cc -o objects/Ciutat.o $(INCLUDES)
+Ciutat.o: src/Ciutat.cc
+	g++ $(OPCIONS) -c src/Ciutat.cc -o Ciutat.o $(INCLUDES)
 
-objects/Cjt_ciutats.o: src/Cjt_ciutats.cc
-	g++ $(OPCIONS) -c src/Cjt_ciutats.cc -o objects/Cjt_ciutats.o $(INCLUDES)
+Cjt_ciutats.o: src/Cjt_ciutats.cc
+	g++ $(OPCIONS) -c src/Cjt_ciutats.cc -o Cjt_ciutats.o $(INCLUDES)
 
-objects/Cjt_productes.o: src/Cjt_productes.cc
-	g++ $(OPCIONS) -c src/Cjt_productes.cc -o objects/Cjt_productes.o $(INCLUDES)
+Cjt_productes.o: src/Cjt_productes.cc
+	g++ $(OPCIONS) -c src/Cjt_productes.cc -o Cjt_productes.o $(INCLUDES)
 
-objects/Producte.o: src/Producte.cc
-	g++ $(OPCIONS) -c src/Producte.cc -o objects/Producte.o $(INCLUDES)
+Producte.o: src/Producte.cc
+	g++ $(OPCIONS) -c src/Producte.cc -o Producte.o $(INCLUDES)
 
-objects/Vaixell.o: src/Vaixell.cc
-	g++ $(OPCIONS) -c src/Vaixell.cc -o objects/Vaixell.o $(INCLUDES)
+Vaixell.o: src/Vaixell.cc
+	g++ $(OPCIONS) -c src/Vaixell.cc -o Vaixell.o $(INCLUDES)
 
-objects/Viatge.o: src/Viatge.cc
-	g++ $(OPCIONS) -c src/Viatge.cc -o objects/Viatge.o $(INCLUDES)
+Viatge.o: src/Viatge.cc
+	g++ $(OPCIONS) -c src/Viatge.cc -o Viatge.o $(INCLUDES)
 
-directories:
-	mkdir -p objects
+entrega:
+	tar -cvf practica.tar Makefile src/*.cc include/*.hh
 
 clean:
-	rm -rf objects main.exe
+	rm -rf *.o main.exe

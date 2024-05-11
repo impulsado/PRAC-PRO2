@@ -18,7 +18,6 @@ private:
 public:
     /* CONSTRUCTORS */
     Vaixell();
-    Vaixell(const Vaixell& v);
 
     /* CONSULTORS */
     int quantitatPerVendre();
