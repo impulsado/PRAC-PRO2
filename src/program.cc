@@ -250,8 +250,7 @@ bool determinar_millor_viatge(const Viatge& viatge_act, const Viatge& viatge_top
         if (viatge_act.consultarRuta().size()<viatge_top.consultarRuta().size()) return true;
         else if (viatge_act.consultarRuta().size()==viatge_top.consultarRuta().size()) {
             // Com que e>d dona preferencia a l'esquerra
-            // cout << "ACT : " << viatge_act.consultarOrdre() << " TOP: " << viatge_top.consultarOrdre() << endl;
-            return viatge_act.consultarOrdre() > viatge_top.consultarOrdre();
+            return viatge_act.consultarOrdre() < viatge_top.consultarOrdre();
         }
     }
     return false;
@@ -428,7 +427,7 @@ int main () {
             Cjt_ciutats tmp_ciutats = ciutats;
             determinar_viatge(cuenca,productes,ruta,ruta_top,temp_barco,tmp_ciutats,'r');
             int quantitat = ruta_top.consultarQuant();
-            cout << quantitat << endl;            
+            cout << quantitat << endl;
             if (quantitat!=0) {
                 guardar_ultima_ciutat(ruta_top,barco);
                 realitzar_millor_viatge(cuenca,productes,ruta_top,barco,ciutats);
