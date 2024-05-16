@@ -250,7 +250,7 @@ bool determinar_millor_viatge(const Viatge& viatge_act, const Viatge& viatge_top
         if (viatge_act.consultarRuta().size()<viatge_top.consultarRuta().size()) return true;
         else if (viatge_act.consultarRuta().size()==viatge_top.consultarRuta().size()) {
             // Com que e>d dona preferencia a l'esquerra
-            return viatge_act.consultarOrdre() < viatge_top.consultarOrdre();
+            return viatge_act.consultarOrdre()>viatge_top.consultarOrdre();
         }
     }
     return false;
