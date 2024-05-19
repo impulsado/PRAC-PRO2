@@ -31,7 +31,8 @@ void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     cin >> id_ciutat;
     cout << ' ' << id_ciutat << endl;
     if (not ciutats.existeixCiutat(id_ciutat)) {cout << "error: no existe la ciudad" << endl; return;}
-
+    ciutats.eliminarTotsProdDeCiutat(id_ciutat);
+    
     // Info sobre els productes
     int quant_prod;
     cin >> quant_prod;
@@ -50,7 +51,7 @@ void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes) {
         int volum = temp_prod.consultarVolum();
         
         // Afegir el producte a la ciutat directament
-        ciutats.afegirProdACiutat(id_ciutat,id_prod,oferta,demanda,pes,volum);
+        ciutats.afegirProdACiutat(id_ciutat, id_prod, oferta, demanda, pes, volum);
     }
 }
 
@@ -58,7 +59,8 @@ void leer_inventarios(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     string id_ciutat;
     while (cin >> id_ciutat and id_ciutat!="#") {
         if (not ciutats.existeixCiutat(id_ciutat)) {cout << "error: no existe la ciudad" << endl; return;}
-
+        ciutats.eliminarTotsProdDeCiutat(id_ciutat);
+        
         // Info sobre els productes
         int quant_prod;
         cin >> quant_prod;

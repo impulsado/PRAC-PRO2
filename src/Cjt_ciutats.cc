@@ -84,6 +84,12 @@ void Cjt_ciutats::comerciar(Cjt_ciutats& ciutats, string id_city1, string id_cit
     }
 }
 
+void Cjt_ciutats::eliminarTotsProdDeCiutat(string id_city) {
+    Ciutat temp_city = consultarCiutat(id_city);
+    temp_city.eliminarTotsProd();
+    modificarCiutat(id_city, temp_city);
+}
+
 /**
  * @brief Comprovar si la ciutat amb la id especificada existeix.
  * 

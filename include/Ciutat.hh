@@ -41,6 +41,7 @@ public:
     void modificarProdDelInventari(int id_prod, int oferta, int demanda, int pes, int volum);
     void modificarOfertaProd(int id_prod, int oferta, int pes, int volum);
     void eliminarProdDelInventari(int id_prod, int pes, int volum);
+    void eliminarTotsProd();
 
     /* ESCRIPTURA */
     void escriure() const;

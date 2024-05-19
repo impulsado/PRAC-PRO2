@@ -177,6 +177,12 @@ void Ciutat::eliminarProdDelInventari(int id_prod, int pes, int volum) {
     inventari.erase(id_prod);
 }
 
+void Ciutat::eliminarTotsProd() {
+    inventari.clear();
+    pes_total = 0;
+    volum_total = 0;
+}
+
 /**
  * @brief Mostrar informació (Inventari, Pes i Volum total) de la ciutat.
  * 
