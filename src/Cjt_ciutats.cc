@@ -53,34 +53,48 @@ void Cjt_ciutats::comerciar(Cjt_ciutats& ciutats, string id_city1, string id_cit
     Ciutat city1 = consultarCiutat(id_city1);
     Ciutat city2 = consultarCiutat(id_city2);
     // No mostro cap error per pantalla però no comercien. (Optimització)
-    if (not city1.teInventari()) return;
-    if (not city2.teInventari()) return;
+    if (not city1.teInventari() or not city2.teInventari()) return;
 
-    vector<int> vids = city1.consultarProductes();
-    for (int i = 0; i<vids.size(); i++) {
-        // Ciutat2 no té el producte
-        if (not city2.teProducte(vids[i])) continue;
-        int dif1 = city1.consultarDiferencia(vids[i]);
-        int dif2 = city2.consultarDiferencia(vids[i]); 
+    vector<int> vids1 = city1.consultarProductes();
+    vector<int> vids2 = city2.consultarProductes();
+    auto it1 = vids1.begin();
+    auto it2 = vids2.begin();
 
-        // No tenen quantitats vàlides per a realitzar intercanvi
-        if ((dif1>0 and dif2>0) or (dif1<0 and dif2<0)) continue;
+    while (it1!=vids1.end() and it2!=vids2.end()) {
+        if (*it1==*it2) {
+            int dif1 = city1.consultarDiferencia(*it1);
+            int dif2 = city2.consultarDiferencia(*it2); 
+            // No tenen quantitats vàlides per a realitzar intercanvi
+            if ((dif1>0 and dif2>0) or (dif1<0 and dif2<0)) {
+                it1++;
+                it2++;
+                continue;
+            }
 
-        Producte temp_prod = productes.consultarProducte(vids[i]);
-        int pes = temp_prod.consultarPes();
-        int volum = temp_prod.consultarVolum();
-        
-        int quantiat = determinarDiferencia(dif1,dif2);
-        if (dif1<0 and dif2>0) {  // A la ciutat1 li falta, a la ciutat 2 li sobra
-            city1.modificarOfertaProd(vids[i],quantiat,pes,volum);  // Afegir nova oferta de producte
-            city2.modificarOfertaProd(vids[i],-quantiat,pes,volum);  // Treure els productes comerciats
+            Producte temp_prod = productes.consultarProducte(*it1);
+            int pes = temp_prod.consultarPes();
+            int volum = temp_prod.consultarVolum();
+
+            int quantiat = determinarDiferencia(dif1,dif2);
+            if (dif1<0 and dif2>0) {  // A la ciutat1 li falta, a la ciutat 2 li sobra
+                city1.modificarOfertaProd(*it1,quantiat,pes,volum);  // Afegir nova oferta de producte
+                city2.modificarOfertaProd(*it1,-quantiat,pes,volum);  // Treure els productes comerciats
+            }
+            else if (dif1>0 and dif2<0) {  // A la ciuta1 li sobra, a la ciutat2 li falta
+                city1.modificarOfertaProd(*it1,-quantiat,pes,volum);  // Treure els productes comerciats
+                city2.modificarOfertaProd(*it1,quantiat,pes,volum);  // Afegir nova oferta de producte
+            }
+            ciutats.modificarCiutat(id_city1,city1);
+            ciutats.modificarCiutat(id_city2,city2);
+            it1++;
+            it2++;
         }
-        else if (dif1>0 and dif2<0) {  // A la ciuta1 li sobra, a la ciutat2 li falta
-            city1.modificarOfertaProd(vids[i],-quantiat,pes,volum);  // Treure els productes comerciats
-            city2.modificarOfertaProd(vids[i],quantiat,pes,volum);  // Afegir nova oferta de producte
+        else if (*it1<*it2) {
+            it1++;
         }
-        ciutats.modificarCiutat(id_city1,city1);
-        ciutats.modificarCiutat(id_city2,city2);
+        else {
+            it2++;
+        }
     }
 }
 

@@ -286,21 +286,21 @@ void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& produ
     }
 
     // Si el barco ja no té unitats per intercanviar, es para tot.
-    if (barco.quantitatPerComprar() == 0 and barco.quantitatPerVendre() == 0) {
+    if (barco.quantitatPerComprar()==0 and barco.quantitatPerVendre()==0) {
         viatge_top.actTotComerciat();  // Limitar futures exploracions
         //cout << "ESTA LIMITAT A : " << viatge_top.consultarDist() << endl;
         return;
     }
 
     // Explorar ciutat de l'esquerra
-    if (!cuenca.left().empty()) {
+    if (not cuenca.left().empty()) {
         Vaixell nou_barco_esquerra = barco;
         Viatge nou_viatge_esquerra = viatge_act;
         determinar_viatge(cuenca.left(), productes, nou_viatge_esquerra, viatge_top, nou_barco_esquerra, ciutats, 'e', distancia+1);
     }
 
     // Explorar ciutat de la dreta
-    if (!cuenca.right().empty()) {
+    if (not cuenca.right().empty()) {
         Vaixell nou_barco_dreta = barco;
         Viatge nou_viatge_dreta = viatge_act;
         determinar_viatge(cuenca.right(), productes, nou_viatge_dreta, viatge_top, nou_barco_dreta, ciutats, 'd', distancia+1);

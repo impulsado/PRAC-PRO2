@@ -17,6 +17,14 @@ leer_inventario A
 2
 1 0 3
 2 4 1
+leer_inventario B
+2
+1 0 3
+2 4 1
+leer_inventario A
+2
+1 0 3
+2 4 1
 escribir_barco
 escribir_ciudad A
 hacer_viaje
