@@ -1,0 +1,40 @@
+2
+5 5
+10 10
+A
+B
+C
+D
+#
+#
+E
+#
+#
+F
+H
+#
+#
+I
+#
+#
+G
+#
+#
+1 11
+2 10
+leer_inventario A
+1
+2 0 10
+leer_inventario B
+1
+1 6 1
+leer_inventario C
+1
+1 6 1
+leer_inventario D
+1
+1 2 1
+leer_inventario F
+1
+1 7 1
+hv

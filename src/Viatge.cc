@@ -1,45 +1,48 @@
-#include "Viatge.hh"
-using namespace std;
+    #include "Viatge.hh"
+    using namespace std;
 
-Viatge::Viatge() {
-    ruta = list<string>();
-    quant_comerciat = 0;
-    ordre = "";
-}
-
-void Viatge::afegirCiutat(string id_city, char dir) {
-    ruta.push_back(id_city);
-    ordre += dir;
-}
-
-void Viatge::eliminarCiutat() {
-    if (not ruta.empty()) ruta.pop_front();
-}
-
-void Viatge::actQuant(int quant) {
-    quant_comerciat += quant;
-}
-
-list<string> Viatge::consultarRuta() const {
-    return ruta;
-}
-
-string Viatge::consultarOrdre() const {
-    return ordre;
-}
-
-string Viatge::consultarProxCiutat() {
-    eliminarCiutat();
-    if (not ruta.empty()) {
-        return ruta.front();
+    Viatge::Viatge() {
+        quant_comerciat = 0;
+        ordre = "";
+        distancia = 0;
+        tot_comerciat = false;
     }
-    return "";  // En aquest cas ja no hi ha ciutats per visitar
-}
 
-int Viatge::consultarQuant() const {
-    return quant_comerciat;
-}
+    void Viatge::afegirCiutat(string id_city, char dir, Cjt_ciutats& conjunt) {
+        ultima_ciutat = id_city;
+        ordre += dir;
+        distancia++;
+        snapshot = conjunt;  // ?? Això ho haig de fer personalitzat o el per defecte serveix ??
+    }
 
-string Viatge::consultarUltimaCiutat() const {
-    return ruta.back();
-}
+    void Viatge::actQuant(int quant) {
+        quant_comerciat += quant;
+    }
+
+    void Viatge::actTotComerciat() {
+        tot_comerciat = true;
+    }
+
+    string Viatge::consultarOrdre() const {
+        return ordre;
+    }
+
+    int Viatge::consultarQuant() const {
+        return quant_comerciat;
+    }
+
+    int Viatge::consultarDist() const {
+        return distancia;
+    }
+
+    string Viatge::consultarUltimaCiutat() const {
+        return ultima_ciutat;
+    }
+
+    Cjt_ciutats Viatge::consultarSnapshot() const {
+        return snapshot;
+    }
+
+    bool Viatge::estaTotComerciat() const {
+        return tot_comerciat;
+    }
