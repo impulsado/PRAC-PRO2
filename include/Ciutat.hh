@@ -26,6 +26,13 @@ public:
     Ciutat();
     Ciutat(string id_city);
 
+    /* MODIFICADORS */
+    void afegirProdAlInventari(int id_prod, int oferta, int demanda, int pes, int volum);
+    void modificarProdDelInventari(int id_prod, int oferta, int demanda, int pes, int volum);
+    void modificarOfertaProd(int id_prod, int oferta, int pes, int volum);
+    void eliminarProdDelInventari(int id_prod, int pes, int volum);
+    void eliminarTotsProd();
+
     /* CONSULTORS */
     bool teInventari() const;
     bool teProducte(int id_prod) const;
@@ -35,13 +42,6 @@ public:
     int consultarPesTotal() const;
     int consultarVolumTotal() const;
     vector<int> consultarProductes() const;
-
-    /* MODIFICADORS */
-    void afegirProdAlInventari(int id_prod, int oferta, int demanda, int pes, int volum);
-    void modificarProdDelInventari(int id_prod, int oferta, int demanda, int pes, int volum);
-    void modificarOfertaProd(int id_prod, int oferta, int pes, int volum);
-    void eliminarProdDelInventari(int id_prod, int pes, int volum);
-    void eliminarTotsProd();
 
     /* ESCRIPTURA */
     void escriure() const;

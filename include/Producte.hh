@@ -20,9 +20,6 @@ public:
     int consultarPes() const;
     int consultarVolum() const;
 
-    /* MODIFICADORS */
-    // No es demanen en la practica
-
     /* ESCRIPTURA */
     void escriure() const;
 };

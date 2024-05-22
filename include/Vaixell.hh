@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <utility>  // Per a "pair"
+#include <utility>
 
 class Vaixell {
 
@@ -19,15 +19,15 @@ public:
     /* CONSTRUCTORS */
     Vaixell();
 
-    /* CONSULTORS */
-    int quantitatPerVendre();
-    int quantitatPerComprar();
-    
     /* MODIFICADORS */
     void modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta);
     int comerciar(Ciutat& city, const Cjt_productes& productes);
     void afegirCiutat(std::string id_city);
     void eliminarRegistre();
+
+    /* CONSULTORS */
+    int quantitatPerVendre();
+    int quantitatPerComprar();
 
     /* LECTURA */
     void llegir(Cjt_productes productes);
