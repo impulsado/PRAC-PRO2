@@ -10,9 +10,9 @@
 #ifndef NO_DIAGRAM
 #include <iostream>
 #include <vector>
+#include <utility>
 #endif
 
-#include "Producte.hh"
 using namespace std;
 
 /**
@@ -25,7 +25,7 @@ class Cjt_productes {
 
 private:
     int quant_prod;  ///< Quantitat de productes
-    vector<Producte> vprod;  ///< Vector de productes
+    vector<pair<int,int>> vprod;  ///< Vector de productes
 
 public:
     /* CONSTRUCTORS */
@@ -36,14 +36,6 @@ public:
      * \post Conjunt de productes amb quantitat de productes igual a 0 i conjunt buit.
      */
     Cjt_productes();
-
-    /**
-     * @brief Constructora de Cjt_productes amb quantitat de productes determinada.
-     * 
-     * \pre mida és un valor vàlid.
-     * \post Conjunt de productes amb quantitat igual a 0, però mida del vector = mida+1.
-     */
-    Cjt_productes(int mida);
 
     /* MODIFICADORS */
     /**
@@ -60,7 +52,7 @@ public:
      * \pre El producte existeix. El producte per referència és vàlid.
      * \post Conjunt modificat amb el nou producte.
      */
-    void modificarProducte(int id, const Producte& prod);
+    void modificarProducte(int id, int pes, int volumen);
 
     /* CONSULTORS */
     /**
@@ -80,12 +72,12 @@ public:
     int consultarQuantitatProd() const;
 
     /**
-     * @brief Retornar el producte especificat.
+     * @brief Consultar producte.
      * 
      * \pre El producte existeix.
-     * \post Retorna una còpia del producte.
+     * \post Retorna el pes i volum del producte.
      */
-    Producte consultarProducte(int id) const;
+    pair<int,int> consultarProducte(int id) const;
 
     /* ESCRIPTURA */
     /**

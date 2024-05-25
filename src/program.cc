@@ -12,7 +12,6 @@
  * - Ciutat: Classe que representa una ciutat amb un identificador i un inventari de productes.
  * - Cjt_ciutats: Classe que representa un conjunt de ciutats.
  * - Cjt_productes: Classe que representa un conjunt de productes.
- * - Producte: Classe que representa un producte amb un identificador, pes i volum.
  * - Vaixell: Classe que representa un vaixell amb un inventari de productes.
  * - Viatge: Classe que representa un viatge entre ciutats.
  * 
@@ -43,13 +42,13 @@
  * - No s'ha fet servir un BinTree de ciutats donat que modificar les ciutats dins de l'arbre gran perdem eficiencia.
  * - Els parametres que es passen a una mètode de la classe sempre són correctes menys quan es llegeixen les dades.
  * 
- * - NOTA: Tot i que s'hagués pogut tindre només la classe Cjt_productes i hagués fet el codi més eficient, s'ha decidit tenir una classe Producte per a tenir més control sobre els productes.
  */
 
 #ifndef NO_DIAGRAM
 #include <iostream>
 #include <string>
 #include <list>
+#include <utility>
 #endif
 
 #include "Viatge.hh"
@@ -92,12 +91,10 @@ void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes) {
         if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; continue;}
         
         // Saber les dades sobre el producte a afegir
-        Producte temp_prod = productes.consultarProducte(id_prod);
-        int pes = temp_prod.consultarPes();
-        int volum = temp_prod.consultarVolum();
+        pair<int,int> pesVol = productes.consultarProducte(id_prod);
         
         // Afegir el producte a la ciutat directament
-        ciutats.afegirProdACiutat(id_ciutat, id_prod, oferta, demanda, pes, volum);
+        ciutats.afegirProdACiutat(id_ciutat, id_prod, oferta, demanda, pesVol.first, pesVol.second);
     }
 }
 
@@ -131,12 +128,10 @@ void leer_inventarios(Cjt_ciutats& ciutats, Cjt_productes& productes) {
             if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; continue;}
 
             // Saber les dades sobre el producte a afegir
-            Producte temp_prod = productes.consultarProducte(id_prod);
-            int pes = temp_prod.consultarPes();
-            int volum = temp_prod.consultarVolum();
+            pair<int,int> pesVol = productes.consultarProducte(id_prod);
             
             // Afegir el producte a la ciutat directament
-            ciutats.afegirProdACiutat(id_ciutat,id_prod,oferta,demanda,pes,volum);
+            ciutats.afegirProdACiutat(id_ciutat, id_prod, oferta, demanda, pesVol.first, pesVol.second);
         }
     }
 }
@@ -256,12 +251,10 @@ void poner_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     if (temp_city.teProducte(id_prod)) {cout << "error: la ciudad ya tiene el producto" << endl; return;}
     
     // Saber les dades sobre el producte a afegir
-    Producte temp_prod = productes.consultarProducte(id_prod);
-    int pes = temp_prod.consultarPes();
-    int volum = temp_prod.consultarVolum();
+    pair<int,int> pesVol = productes.consultarProducte(id_prod);
 
     // Afegir el producte a la ciutat
-    temp_city.afegirProdAlInventari(id_prod, oferta, demanda, pes, volum);
+    temp_city.afegirProdAlInventari(id_prod, oferta, demanda, pesVol.first, pesVol.second);
     ciutats.modificarCiutat(id_city, temp_city);
     
     // Mostrar nou pes i volum total de la ciutat
@@ -296,12 +289,10 @@ void modificar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     if (not temp_city.teProducte(id_prod)) {cout << "error: la ciudad no tiene el producto" << endl; return;}
     
     // Saber les dades sobre el producte a modiuficar
-    Producte temp_prod = productes.consultarProducte(id_prod);
-    int pes = temp_prod.consultarPes();
-    int volum = temp_prod.consultarVolum();
+    pair<int,int> pesVol = productes.consultarProducte(id_prod);
     
     // Modificar el producte a la ciutat
-    temp_city.modificarProdDelInventari(id_prod,oferta,demanda,pes,volum);
+    temp_city.modificarProdDelInventari(id_prod, oferta, demanda, pesVol.first, pesVol.second);
     ciutats.modificarCiutat(id_city,temp_city);
 
     // Mostrar nou pes i volum total de la ciutat
@@ -334,12 +325,10 @@ void quitar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     if (not temp_city.teProducte(id_prod)) {cout << "error: la ciudad no tiene el producto" << endl; return;}
     
     // Saber les dades sobre el producte a eliminar
-    Producte temp_prod = productes.consultarProducte(id_prod);
-    int pes = temp_prod.consultarPes();
-    int volum = temp_prod.consultarVolum();
+    pair<int,int> pesVol = productes.consultarProducte(id_prod);
     
     // Eliminar el producte de la ciutat
-    temp_city.eliminarProdDelInventari(id_prod,pes,volum);
+    temp_city.eliminarProdDelInventari(id_prod, pesVol.first, pesVol.second);
     ciutats.modificarCiutat(id_city,temp_city);
 
     // Mostrar nou pes i volum total de la ciutat

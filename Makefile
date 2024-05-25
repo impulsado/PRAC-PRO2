@@ -3,8 +3,8 @@ INCLUDES = -I include
 
 all: program.exe
 
-program.exe: program.o Producte.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o
-	g++ $(OPCIONS) -o program.exe program.o Producte.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o
+program.exe: program.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o
+	g++ $(OPCIONS) -o program.exe program.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o
 	rm *.o
 
 program.o: src/program.cc
@@ -18,9 +18,6 @@ Cjt_ciutats.o: src/Cjt_ciutats.cc
 
 Cjt_productes.o: src/Cjt_productes.cc
 	g++ $(OPCIONS) -c src/Cjt_productes.cc -o Cjt_productes.o $(INCLUDES)
-
-Producte.o: src/Producte.cc
-	g++ $(OPCIONS) -c src/Producte.cc -o Producte.o $(INCLUDES)
 
 Vaixell.o: src/Vaixell.cc
 	g++ $(OPCIONS) -c src/Vaixell.cc -o Vaixell.o $(INCLUDES)

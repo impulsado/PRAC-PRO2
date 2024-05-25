@@ -80,37 +80,33 @@ void Ciutat::comerciar(Ciutat& other, const Cjt_productes& productes) {
             
             // A la ciutat1 li falta, a la ciutat2 li sobra
             if (dif1<0 and dif2>0) {  
-                Producte temp_prod = productes.consultarProducte(prod_id1);
-                int pes = temp_prod.consultarPes();
-                int volum = temp_prod.consultarVolum();
+                pair<int,int> pesVol = productes.consultarProducte(prod_id1);
                 int quantiat = min(abs(dif1), abs(dif2));
                 
                 it1->second.first.first += quantiat;
                 it1->second.second += quantiat;
-                this->pes_total += quantiat*pes;
-                this->volum_total += quantiat*volum;
+                this->pes_total += quantiat*pesVol.first;
+                this->volum_total += quantiat*pesVol.second;
                 
                 it2->second.first.first -= quantiat;
                 it2->second.second -= quantiat;
-                other.pes_total -= quantiat*pes;
-                other.volum_total -= quantiat*volum;
+                other.pes_total -= quantiat*pesVol.first;
+                other.volum_total -= quantiat*pesVol.second;
             }
             // A la ciutat1 li sobra, a la ciutat2 li falta
             else if (dif1 > 0 and dif2 < 0) {  
-                Producte temp_prod = productes.consultarProducte(prod_id1);
-                int pes = temp_prod.consultarPes();
-                int volum = temp_prod.consultarVolum();
+                pair<int,int> pesVol = productes.consultarProducte(prod_id1);
                 int quantiat = min(abs(dif1), abs(dif2));
                 
                 it1->second.first.first -= quantiat;
                 it1->second.second -= quantiat;
-                this->pes_total -= quantiat*pes;
-                this->volum_total -= quantiat*volum;
+                this->pes_total -= quantiat*pesVol.first;
+                this->volum_total -= quantiat*pesVol.second;
                 
                 it2->second.first.first += quantiat;
                 it2->second.second += quantiat;
-                other.pes_total += quantiat*pes;
-                other.volum_total += quantiat*volum;
+                other.pes_total += quantiat*pesVol.first;
+                other.volum_total += quantiat*pesVol.second;
             }
             it1++;
             it2++;

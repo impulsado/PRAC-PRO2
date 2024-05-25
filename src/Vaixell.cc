@@ -37,9 +37,9 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes, bool modifi
             // Determinar la maxima quantitat a comerciar
             int quant_comerciar = min(quant_comprar_barco, dif);
             // Consultar el producte
-            Producte tmp_prod = productes.consultarProducte(id_prod_comprar);
+            pair<int,int> pesVol = productes.consultarProducte(id_prod_comprar);
             // Treure la quantitat venuda per la ciutat
-            if (modificar_ciutat) city.modificarOfertaProd(id_prod_comprar, -quant_comerciar, tmp_prod.consultarPes(), tmp_prod.consultarVolum());
+            if (modificar_ciutat) city.modificarOfertaProd(id_prod_comprar, -quant_comerciar, pesVol.first, pesVol.second);
             // Actualitzar la nova quantitat necessària del vaixell
             comprar.second -= quant_comerciar;
             // Actualitzar la quantitat total comerciada
@@ -61,9 +61,9 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes, bool modifi
             // Determinar la maxima quantitat a comerciar
             int quant_comerciar = min(quant_vendre_barco, -dif);
             // Consultar el producte
-            Producte tmp_prod = productes.consultarProducte(id_prod_venta);
+            pair<int,int> pesVol = productes.consultarProducte(id_prod_venta);
             // Afegir la quantitat venuda a la ciutat
-            if (modificar_ciutat) city.modificarOfertaProd(id_prod_venta, quant_comerciar, tmp_prod.consultarPes(), tmp_prod.consultarVolum());
+            if (modificar_ciutat) city.modificarOfertaProd(id_prod_venta, quant_comerciar, pesVol.first, pesVol.second);
             // Actualitzar la nova quantitat necessària del vaixell
             vendre.second -= quant_comerciar;
             // Actualitzar la quantitat total comerciada
