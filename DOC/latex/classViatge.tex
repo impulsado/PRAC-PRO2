@@ -1,0 +1,280 @@
+\hypertarget{classViatge}{}\doxysection{Referencia de la Clase Viatge}
+\label{classViatge}\index{Viatge@{Viatge}}
+
+
+Representa un viatge amb una ruta, una quantitat de productes comerciats i una distància recorreguda.  
+
+
+
+
+{\ttfamily \#include $<$Viatge.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classViatge_ac35d9bc677d39a2706b89c3c5edfba7f}{Viatge}} ()
+\begin{DoxyCompactList}\small\item\em Constructora per defecte de la classe \mbox{\hyperlink{classViatge}{Viatge}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classViatge_adfd63bc784d9dd3aba18290c5555441b}{afegir\+Ciutat}} (std\+::string id\+\_\+city)
+\begin{DoxyCompactList}\small\item\em Afegir una ciutat a la ruta del viatge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classViatge_afa84ab6a9b842d058b6efe3902954b18}{act\+Quant}} (int quant)
+\begin{DoxyCompactList}\small\item\em Actualitzar la quantitat total comerciada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{act\+Viatge}} (\mbox{\hyperlink{classViatge}{Viatge}} \&v)
+\begin{DoxyCompactList}\small\item\em Incorporar millor subviatge al viatge actual. \end{DoxyCompactList}\item 
+list$<$ string $>$ \mbox{\hyperlink{classViatge_a64e70653d734a187e23379e7744cef07}{consultar\+Ruta}} () const
+\begin{DoxyCompactList}\small\item\em Consultar ruta del viatge. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultar\+Quant}} () const
+\begin{DoxyCompactList}\small\item\em Consultar la quantitat total comerciada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classViatge_ad615727140707685e07093a605be2660}{consultar\+Dist}} () const
+\begin{DoxyCompactList}\small\item\em Consultar la distància total recorreguda. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classViatge_a2bdb9e677e4fc51136252fb1803945c0}{consultar\+Ultima\+Ciutat}} () const
+\begin{DoxyCompactList}\small\item\em Consultar l\textquotesingle{}última ciutat visitada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ string $>$ \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}
+\begin{DoxyCompactList}\small\item\em Llista de ciutats visitades. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\+\_\+comerciat}}
+\begin{DoxyCompactList}\small\item\em Quantitat de productes comerciats. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}}
+\begin{DoxyCompactList}\small\item\em Distància recorreguda. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa un viatge amb una ruta, una quantitat de productes comerciats i una distància recorreguda. 
+
+Un objecte de la classe \mbox{\hyperlink{classViatge}{Viatge}} conté una llista de ciutats visitades, una quantitat de productes comerciats i una distància recorreguda. 
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classViatge_ac35d9bc677d39a2706b89c3c5edfba7f}\label{classViatge_ac35d9bc677d39a2706b89c3c5edfba7f}} 
+\index{Viatge@{Viatge}!Viatge@{Viatge}}
+\index{Viatge@{Viatge}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{Viatge()}{Viatge()}}
+{\footnotesize\ttfamily Viatge\+::\+Viatge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructora per defecte de la classe \mbox{\hyperlink{classViatge}{Viatge}}. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classViatge}{Viatge}} amb tots els paràmetres inicialitzats a valors per defecte. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6                \{}
+\DoxyCodeLine{7     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}} = list<string>();}
+\DoxyCodeLine{8     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} = 0;}
+\DoxyCodeLine{9     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}} = 0;}
+\DoxyCodeLine{10 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classViatge_afa84ab6a9b842d058b6efe3902954b18}\label{classViatge_afa84ab6a9b842d058b6efe3902954b18}} 
+\index{Viatge@{Viatge}!actQuant@{actQuant}}
+\index{actQuant@{actQuant}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{actQuant()}{actQuant()}}
+{\footnotesize\ttfamily void Viatge\+::act\+Quant (\begin{DoxyParamCaption}\item[{int}]{quant }\end{DoxyParamCaption})}
+
+
+
+Actualitzar la quantitat total comerciada. 
+
+\begin{DoxyPrecond}{Precondición}
+quant és un valor vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+S\textquotesingle{}ha incrementat la quantitat comerciada pel valor de quant. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{19                                \{}
+\DoxyCodeLine{20     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} += quant;}
+\DoxyCodeLine{21 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classViatge_ab313588a14b32e853895d0345b32f251}\label{classViatge_ab313588a14b32e853895d0345b32f251}} 
+\index{Viatge@{Viatge}!actViatge@{actViatge}}
+\index{actViatge@{actViatge}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{actViatge()}{actViatge()}}
+{\footnotesize\ttfamily void Viatge\+::act\+Viatge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classViatge}{Viatge}} \&}]{v }\end{DoxyParamCaption})}
+
+
+
+Incorporar millor subviatge al viatge actual. 
+
+\begin{DoxyPrecond}{Precondición}
+v és un viatge vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+S\textquotesingle{}ha actualitzat el viatge amb les dades del subviatge. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23                                 \{}
+\DoxyCodeLine{24     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} += v.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}};}
+\DoxyCodeLine{25     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}} += v.\mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}};}
+\DoxyCodeLine{26     \textcolor{comment}{// Afegir ciutats del subviatge}}
+\DoxyCodeLine{27     \textcolor{comment}{// NOTA: Aquesta funció simplement modifica els punters en comptes d'anar eliminant i afegint.}}
+\DoxyCodeLine{28     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.splice(\mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.end(), v.\mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}});}
+\DoxyCodeLine{29 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classViatge_adfd63bc784d9dd3aba18290c5555441b}\label{classViatge_adfd63bc784d9dd3aba18290c5555441b}} 
+\index{Viatge@{Viatge}!afegirCiutat@{afegirCiutat}}
+\index{afegirCiutat@{afegirCiutat}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{afegirCiutat()}{afegirCiutat()}}
+{\footnotesize\ttfamily void Viatge\+::afegir\+Ciutat (\begin{DoxyParamCaption}\item[{std\+::string}]{id\+\_\+city }\end{DoxyParamCaption})}
+
+
+
+Afegir una ciutat a la ruta del viatge. 
+
+\begin{DoxyPrecond}{Precondición}
+id\+\_\+city és un identificador vàlid. dir és una direcció vàlida \{\textquotesingle{}d\textquotesingle{},\textquotesingle{}e\textquotesingle{},\textquotesingle{}r\textquotesingle{}\}. conjunt és vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La ciutat s\textquotesingle{}ha afegit a la ruta i s\textquotesingle{}ha actualitzat la distància i l\textquotesingle{}ordre. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14                                         \{}
+\DoxyCodeLine{15     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.push\_back(id\_city);}
+\DoxyCodeLine{16     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}}++;}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classViatge_ad615727140707685e07093a605be2660}\label{classViatge_ad615727140707685e07093a605be2660}} 
+\index{Viatge@{Viatge}!consultarDist@{consultarDist}}
+\index{consultarDist@{consultarDist}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{consultarDist()}{consultarDist()}}
+{\footnotesize\ttfamily int Viatge\+::consultar\+Dist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultar la distància total recorreguda. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la distància total recorreguda. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41                                 \{}
+\DoxyCodeLine{42     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}};}
+\DoxyCodeLine{43 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classViatge_a9a91de1f64452016cda3190d45fdee47}\label{classViatge_a9a91de1f64452016cda3190d45fdee47}} 
+\index{Viatge@{Viatge}!consultarQuant@{consultarQuant}}
+\index{consultarQuant@{consultarQuant}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{consultarQuant()}{consultarQuant()}}
+{\footnotesize\ttfamily int Viatge\+::consultar\+Quant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultar la quantitat total comerciada. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat total comerciada. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37                                  \{}
+\DoxyCodeLine{38     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}};}
+\DoxyCodeLine{39 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classViatge_a64e70653d734a187e23379e7744cef07}\label{classViatge_a64e70653d734a187e23379e7744cef07}} 
+\index{Viatge@{Viatge}!consultarRuta@{consultarRuta}}
+\index{consultarRuta@{consultarRuta}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{consultarRuta()}{consultarRuta()}}
+{\footnotesize\ttfamily list$<$ string $>$ Viatge\+::consultar\+Ruta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultar ruta del viatge. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la llista de ciutats visitades. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33                                          \{}
+\DoxyCodeLine{34     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}};}
+\DoxyCodeLine{35 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classViatge_a2bdb9e677e4fc51136252fb1803945c0}\label{classViatge_a2bdb9e677e4fc51136252fb1803945c0}} 
+\index{Viatge@{Viatge}!consultarUltimaCiutat@{consultarUltimaCiutat}}
+\index{consultarUltimaCiutat@{consultarUltimaCiutat}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{consultarUltimaCiutat()}{consultarUltimaCiutat()}}
+{\footnotesize\ttfamily string Viatge\+::consultar\+Ultima\+Ciutat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consultar l\textquotesingle{}última ciutat visitada. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna el id de l\textquotesingle{}última ciutat visitada. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45                                            \{}
+\DoxyCodeLine{46     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.back();}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}\label{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}} 
+\index{Viatge@{Viatge}!distancia@{distancia}}
+\index{distancia@{distancia}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{distancia}{distancia}}
+{\footnotesize\ttfamily int Viatge\+::distancia\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Distància recorreguda. 
+
+\mbox{\Hypertarget{classViatge_abb14c5265d87a108b644afc9d5204930}\label{classViatge_abb14c5265d87a108b644afc9d5204930}} 
+\index{Viatge@{Viatge}!quant\_comerciat@{quant\_comerciat}}
+\index{quant\_comerciat@{quant\_comerciat}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{quant\_comerciat}{quant\_comerciat}}
+{\footnotesize\ttfamily int Viatge\+::quant\+\_\+comerciat\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Quantitat de productes comerciats. 
+
+\mbox{\Hypertarget{classViatge_af511af2e6f2970e70ae63784fc2d8059}\label{classViatge_af511af2e6f2970e70ae63784fc2d8059}} 
+\index{Viatge@{Viatge}!ruta@{ruta}}
+\index{ruta@{ruta}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{ruta}{ruta}}
+{\footnotesize\ttfamily list$<$string$>$ Viatge\+::ruta\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Llista de ciutats visitades. 
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Viatge_8hh}{Viatge.\+hh}}\item 
+\mbox{\hyperlink{Viatge_8cc}{Viatge.\+cc}}\end{DoxyCompactItemize}

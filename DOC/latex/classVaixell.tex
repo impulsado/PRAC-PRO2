@@ -1,0 +1,382 @@
+\hypertarget{classVaixell}{}\doxysection{Referencia de la Clase Vaixell}
+\label{classVaixell}\index{Vaixell@{Vaixell}}
+
+
+Representa un vaixell amb una determinada quantitat de productes per comprar i vendre.  
+
+
+
+
+{\ttfamily \#include $<$Vaixell.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVaixell_a87db4dc1f4f816d6b4277fab84bc6e2b}{Vaixell}} ()
+\begin{DoxyCompactList}\small\item\em Constructora per defecte de la classe \mbox{\hyperlink{classVaixell}{Vaixell}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVaixell_a72bbb30083416053eb57b3eb03a19b34}{modificar\+Mercancia}} (int id\+\_\+compra, int quant\+\_\+compra, int id\+\_\+venta, int quant\+\_\+venta)
+\begin{DoxyCompactList}\small\item\em Actualitzar informació sobre quin producte vendrà i comprarà el vaixell. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVaixell_ab806dd22cbd275c4b28f76079f210ed7}{comerciar}} (\mbox{\hyperlink{classCiutat}{Ciutat}} \&city, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes, bool modificar\+\_\+ciutat)
+\begin{DoxyCompactList}\small\item\em Realitza l\textquotesingle{}operació de comerç amb una ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVaixell_ae58cdeb92a9ab720544b7641d4043c7a}{afegir\+Ciutat}} (std\+::string id\+\_\+city)
+\begin{DoxyCompactList}\small\item\em Afegir una ciutat al registre de les últimes ciutats visitades. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVaixell_a6d3969acdc815b968b736b99c0da137f}{eliminar\+Registre}} ()
+\begin{DoxyCompactList}\small\item\em Eliminar totes les ciutats del registre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVaixell_aae3bd285c51ebbb32ead0703249a4415}{quantitat\+Per\+Vendre}} ()
+\begin{DoxyCompactList}\small\item\em Quantitat d\textquotesingle{}unitats restants per vendre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVaixell_af611b40c85d678118661792832b34303}{quantitat\+Per\+Comprar}} ()
+\begin{DoxyCompactList}\small\item\em Quantitat d\textquotesingle{}unitats restants per comprar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVaixell_a5177959b74871d22e79eb1ae6b96a0c6}{llegir}} (\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} productes)
+\begin{DoxyCompactList}\small\item\em Llegir els valors necessaris del vaixell des de l\textquotesingle{}entrada estàndard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVaixell_a4f6d9cb9511c241d37fac5d42ba355f0}{escriure}} ()
+\begin{DoxyCompactList}\small\item\em Mostra tota la informació del vaixell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+pair$<$ int, int $>$ \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classProducte}{Producte}} a comprar. \end{DoxyCompactList}\item 
+pair$<$ int, int $>$ \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classProducte}{Producte}} a vendre. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\+\_\+ultimes\+\_\+ciutats}}
+\begin{DoxyCompactList}\small\item\em Registre de les últimes ciutats visitades. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa un vaixell amb una determinada quantitat de productes per comprar i vendre. 
+
+Un objecte de la classe \mbox{\hyperlink{classVaixell}{Vaixell}} conté una parella de productes per comprar i vendre, així com un registre de les últimes ciutats visitades. 
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classVaixell_a87db4dc1f4f816d6b4277fab84bc6e2b}\label{classVaixell_a87db4dc1f4f816d6b4277fab84bc6e2b}} 
+\index{Vaixell@{Vaixell}!Vaixell@{Vaixell}}
+\index{Vaixell@{Vaixell}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{Vaixell()}{Vaixell()}}
+{\footnotesize\ttfamily Vaixell\+::\+Vaixell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructora per defecte de la classe \mbox{\hyperlink{classVaixell}{Vaixell}}. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classVaixell}{Vaixell}} amb tots els paràmetres inicialitzats a 0 o buits. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6                  \{}
+\DoxyCodeLine{7     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(0, 0);}
+\DoxyCodeLine{8     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(0, 0);}
+\DoxyCodeLine{9     \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}} = vector<string>();}
+\DoxyCodeLine{10 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classVaixell_ae58cdeb92a9ab720544b7641d4043c7a}\label{classVaixell_ae58cdeb92a9ab720544b7641d4043c7a}} 
+\index{Vaixell@{Vaixell}!afegirCiutat@{afegirCiutat}}
+\index{afegirCiutat@{afegirCiutat}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{afegirCiutat()}{afegirCiutat()}}
+{\footnotesize\ttfamily void Vaixell\+::afegir\+Ciutat (\begin{DoxyParamCaption}\item[{std\+::string}]{id\+\_\+city }\end{DoxyParamCaption})}
+
+
+
+Afegir una ciutat al registre de les últimes ciutats visitades. 
+
+\begin{DoxyPrecond}{Precondición}
+id\+\_\+city és vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El registre de les últimes ciutats conté id\+\_\+city. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77                                          \{}
+\DoxyCodeLine{78     \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.push\_back(id\_city);}
+\DoxyCodeLine{79 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVaixell_ab806dd22cbd275c4b28f76079f210ed7}\label{classVaixell_ab806dd22cbd275c4b28f76079f210ed7}} 
+\index{Vaixell@{Vaixell}!comerciar@{comerciar}}
+\index{comerciar@{comerciar}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{comerciar()}{comerciar()}}
+{\footnotesize\ttfamily int Vaixell\+::comerciar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCiutat}{Ciutat}} \&}]{city,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes,  }\item[{bool}]{modificar\+\_\+ciutat }\end{DoxyParamCaption})}
+
+
+
+Realitza l\textquotesingle{}operació de comerç amb una ciutat. 
+
+Aquesta funció pot modificar la ciutat si es desitja. Això és per optimitzar el càlcul de la millor ruta.
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat té un inventari vàlid. Els productes existeixen en el conjunt de productes. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Actualitza el vaixell i la ciutat segons l\textquotesingle{}operació de comerç. Retorna la quantitat total comerciada. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{19                                                                                           \{}
+\DoxyCodeLine{20     \textcolor{comment}{// La ciutat no té inventari (Optimització)}}
+\DoxyCodeLine{21     \textcolor{keywordflow}{if} (not city.\mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}()) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{22     }
+\DoxyCodeLine{23     \textcolor{comment}{// Total comerciat}}
+\DoxyCodeLine{24     \textcolor{keywordtype}{int} quant\_total = 0;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{comment}{// Comprar de la ciutat}}
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} id\_prod\_comprar = \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first;}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} quant\_comprar\_barco = \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second;}
+\DoxyCodeLine{29     }
+\DoxyCodeLine{30     \textcolor{comment}{// La ciutat té el producte i el vaixell pot comprar}}
+\DoxyCodeLine{31     \textcolor{keywordflow}{if} (quant\_comprar\_barco>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(id\_prod\_comprar)) \{}
+\DoxyCodeLine{32         \textcolor{comment}{// Saber quantitat disponible a la ciutat}}
+\DoxyCodeLine{33         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(id\_prod\_comprar);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{comment}{// La ciutat té quantitat per vendre al vaixell}}
+\DoxyCodeLine{36         \textcolor{keywordflow}{if} (dif>0) \{}
+\DoxyCodeLine{37             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
+\DoxyCodeLine{38             \textcolor{keywordtype}{int} quant\_comerciar = min(quant\_comprar\_barco, dif);}
+\DoxyCodeLine{39             \textcolor{comment}{// Consultar el producte}}
+\DoxyCodeLine{40             \mbox{\hyperlink{classProducte}{Producte}} tmp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(id\_prod\_comprar);}
+\DoxyCodeLine{41             \textcolor{comment}{// Treure la quantitat venuda per la ciutat}}
+\DoxyCodeLine{42             \textcolor{keywordflow}{if} (modificar\_ciutat) city.\mbox{\hyperlink{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}{modificarOfertaProd}}(id\_prod\_comprar, -\/quant\_comerciar, tmp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}(), tmp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}());}
+\DoxyCodeLine{43             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
+\DoxyCodeLine{44             \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second -\/= quant\_comerciar;}
+\DoxyCodeLine{45             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
+\DoxyCodeLine{46             quant\_total += quant\_comerciar;}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{comment}{// Vendre a la ciutat}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{int} id\_prod\_venta = \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first;}
+\DoxyCodeLine{52     \textcolor{keywordtype}{int} quant\_vendre\_barco = \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{comment}{// La ciutat necessita el producte i el vaixell pot vendre}}
+\DoxyCodeLine{55     \textcolor{keywordflow}{if} (quant\_vendre\_barco>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(id\_prod\_venta)) \{}
+\DoxyCodeLine{56         \textcolor{comment}{// Saber quantitat necessària a la ciutat}}
+\DoxyCodeLine{57         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(id\_prod\_venta);}
+\DoxyCodeLine{58         }
+\DoxyCodeLine{59         \textcolor{comment}{// La ciutat té necessitat del producte}}
+\DoxyCodeLine{60         \textcolor{keywordflow}{if} (dif<0) \{}
+\DoxyCodeLine{61             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
+\DoxyCodeLine{62             \textcolor{keywordtype}{int} quant\_comerciar = min(quant\_vendre\_barco, -\/dif);}
+\DoxyCodeLine{63             \textcolor{comment}{// Consultar el producte}}
+\DoxyCodeLine{64             \mbox{\hyperlink{classProducte}{Producte}} tmp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(id\_prod\_venta);}
+\DoxyCodeLine{65             \textcolor{comment}{// Afegir la quantitat venuda a la ciutat}}
+\DoxyCodeLine{66             \textcolor{keywordflow}{if} (modificar\_ciutat) city.\mbox{\hyperlink{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}{modificarOfertaProd}}(id\_prod\_venta, quant\_comerciar, tmp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}(), tmp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}());}
+\DoxyCodeLine{67             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
+\DoxyCodeLine{68             \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second -\/= quant\_comerciar;}
+\DoxyCodeLine{69             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
+\DoxyCodeLine{70             quant\_total += quant\_comerciar;}
+\DoxyCodeLine{71         \}}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73     }
+\DoxyCodeLine{74     \textcolor{keywordflow}{return} quant\_total;}
+\DoxyCodeLine{75 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVaixell_a6d3969acdc815b968b736b99c0da137f}\label{classVaixell_a6d3969acdc815b968b736b99c0da137f}} 
+\index{Vaixell@{Vaixell}!eliminarRegistre@{eliminarRegistre}}
+\index{eliminarRegistre@{eliminarRegistre}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{eliminarRegistre()}{eliminarRegistre()}}
+{\footnotesize\ttfamily void Vaixell\+::eliminar\+Registre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Eliminar totes les ciutats del registre. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El vaixell no conté cap registre de les últimes ciutats visitades. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{81                                \{}
+\DoxyCodeLine{82     \textcolor{keywordflow}{if} (not \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.empty()) \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.clear();}
+\DoxyCodeLine{83 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVaixell_a4f6d9cb9511c241d37fac5d42ba355f0}\label{classVaixell_a4f6d9cb9511c241d37fac5d42ba355f0}} 
+\index{Vaixell@{Vaixell}!escriure@{escriure}}
+\index{escriure@{escriure}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{escriure()}{escriure()}}
+{\footnotesize\ttfamily void Vaixell\+::escriure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mostra tota la informació del vaixell. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Mostra per consola el producte a comprar i vendre, juntament amb les respectives quantitats, i les últimes ciutats visitades. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121                        \{}
+\DoxyCodeLine{122     \textcolor{comment}{// Mostrar la informació sobre els productes a comprar i vendre}}
+\DoxyCodeLine{123     cout << \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second;}
+\DoxyCodeLine{124     cout << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second << endl;}
+\DoxyCodeLine{125     }
+\DoxyCodeLine{126     \textcolor{comment}{// Mostrar les ciutats visitades}}
+\DoxyCodeLine{127     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i<\mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.size(); i++) \{}
+\DoxyCodeLine{128         cout << \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}[i] << endl;}
+\DoxyCodeLine{129     \}}
+\DoxyCodeLine{130 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVaixell_a5177959b74871d22e79eb1ae6b96a0c6}\label{classVaixell_a5177959b74871d22e79eb1ae6b96a0c6}} 
+\index{Vaixell@{Vaixell}!llegir@{llegir}}
+\index{llegir@{llegir}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{llegir()}{llegir()}}
+{\footnotesize\ttfamily void Vaixell\+::llegir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}}}]{productes }\end{DoxyParamCaption})}
+
+
+
+Llegir els valors necessaris del vaixell des de l\textquotesingle{}entrada estàndard. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El vaixell té com atributs les dades llegides. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{97                                             \{}
+\DoxyCodeLine{98     \textcolor{comment}{// Demanar informació producte a comprar}}
+\DoxyCodeLine{99     \textcolor{keywordtype}{int} id\_prod\_comprar, quant\_prod\_comprar;}
+\DoxyCodeLine{100     cin >> id\_prod\_comprar >> quant\_prod\_comprar;}
+\DoxyCodeLine{101     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod\_comprar)) \{}
+\DoxyCodeLine{102         cout << \textcolor{stringliteral}{"{}Error: El producte no existeix"{}} << endl;}
+\DoxyCodeLine{103         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{104     \}}
+\DoxyCodeLine{105     }
+\DoxyCodeLine{106     \textcolor{comment}{// Demanar informació producte a vendre}}
+\DoxyCodeLine{107     \textcolor{keywordtype}{int} id\_prod\_vendre, quant\_prod\_vendre;}
+\DoxyCodeLine{108     cin >> id\_prod\_vendre >> quant\_prod\_vendre;}
+\DoxyCodeLine{109     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod\_vendre)) \{}
+\DoxyCodeLine{110         cout << \textcolor{stringliteral}{"{}Error: El producte no existeix"{}} << endl;}
+\DoxyCodeLine{111         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{112     \}}
+\DoxyCodeLine{113     }
+\DoxyCodeLine{114     \textcolor{comment}{// Actualitzar la informació del vaixell}}
+\DoxyCodeLine{115     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(id\_prod\_comprar, quant\_prod\_comprar);}
+\DoxyCodeLine{116     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(id\_prod\_vendre, quant\_prod\_vendre);}
+\DoxyCodeLine{117 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVaixell_a72bbb30083416053eb57b3eb03a19b34}\label{classVaixell_a72bbb30083416053eb57b3eb03a19b34}} 
+\index{Vaixell@{Vaixell}!modificarMercancia@{modificarMercancia}}
+\index{modificarMercancia@{modificarMercancia}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{modificarMercancia()}{modificarMercancia()}}
+{\footnotesize\ttfamily void Vaixell\+::modificar\+Mercancia (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+compra,  }\item[{int}]{quant\+\_\+compra,  }\item[{int}]{id\+\_\+venta,  }\item[{int}]{quant\+\_\+venta }\end{DoxyParamCaption})}
+
+
+
+Actualitzar informació sobre quin producte vendrà i comprarà el vaixell. 
+
+\begin{DoxyPrecond}{Precondición}
+id\+\_\+compra i id\+\_\+venta existeixen. quant\+\_\+compra i quant\+\_\+venta són valors vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+El vaixell té les dades sobre el producte a comprar i vendre actualitzades. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{14                                                                                                \{}
+\DoxyCodeLine{15     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(id\_compra, quant\_compra);}
+\DoxyCodeLine{16     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(id\_venta, quant\_venta);}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVaixell_af611b40c85d678118661792832b34303}\label{classVaixell_af611b40c85d678118661792832b34303}} 
+\index{Vaixell@{Vaixell}!quantitatPerComprar@{quantitatPerComprar}}
+\index{quantitatPerComprar@{quantitatPerComprar}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{quantitatPerComprar()}{quantitatPerComprar()}}
+{\footnotesize\ttfamily int Vaixell\+::quantitat\+Per\+Comprar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Quantitat d\textquotesingle{}unitats restants per comprar. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat d\textquotesingle{}unitats restants per comprar. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{91                                  \{}
+\DoxyCodeLine{92     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second;}
+\DoxyCodeLine{93 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVaixell_aae3bd285c51ebbb32ead0703249a4415}\label{classVaixell_aae3bd285c51ebbb32ead0703249a4415}} 
+\index{Vaixell@{Vaixell}!quantitatPerVendre@{quantitatPerVendre}}
+\index{quantitatPerVendre@{quantitatPerVendre}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{quantitatPerVendre()}{quantitatPerVendre()}}
+{\footnotesize\ttfamily int Vaixell\+::quantitat\+Per\+Vendre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Quantitat d\textquotesingle{}unitats restants per vendre. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat d\textquotesingle{}unitats restants per vendre. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{87                                 \{}
+\DoxyCodeLine{88     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second;}
+\DoxyCodeLine{89 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{classVaixell_afaf92a3700f500f905d750101ff71528}\label{classVaixell_afaf92a3700f500f905d750101ff71528}} 
+\index{Vaixell@{Vaixell}!comprar@{comprar}}
+\index{comprar@{comprar}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{comprar}{comprar}}
+{\footnotesize\ttfamily pair$<$int,int$>$ Vaixell\+::comprar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classProducte}{Producte}} a comprar. 
+
+\mbox{\Hypertarget{classVaixell_a996b5a16138db5c3d551c320de0978c4}\label{classVaixell_a996b5a16138db5c3d551c320de0978c4}} 
+\index{Vaixell@{Vaixell}!registre\_ultimes\_ciutats@{registre\_ultimes\_ciutats}}
+\index{registre\_ultimes\_ciutats@{registre\_ultimes\_ciutats}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{registre\_ultimes\_ciutats}{registre\_ultimes\_ciutats}}
+{\footnotesize\ttfamily vector$<$string$>$ Vaixell\+::registre\+\_\+ultimes\+\_\+ciutats\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Registre de les últimes ciutats visitades. 
+
+\mbox{\Hypertarget{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}\label{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}} 
+\index{Vaixell@{Vaixell}!vendre@{vendre}}
+\index{vendre@{vendre}!Vaixell@{Vaixell}}
+\doxysubsubsection{\texorpdfstring{vendre}{vendre}}
+{\footnotesize\ttfamily pair$<$int,int$>$ Vaixell\+::vendre\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classProducte}{Producte}} a vendre. 
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Vaixell_8hh}{Vaixell.\+hh}}\item 
+\mbox{\hyperlink{Vaixell_8cc}{Vaixell.\+cc}}\end{DoxyCompactItemize}

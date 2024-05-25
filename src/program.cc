@@ -1,6 +1,57 @@
+/** @mainpage <b> Pràctica PRO2 2023-2024: Comerç Fluvial </b>
+ * @author Pau Bru Ribes (pau.bru@estudiantat.upc.edu)
+ * 
+ * @brief Programa que simula el comerç entre ciutats i/o amb un vaixell en una cuenca fluvial.
+ * 
+ * El programa té una estructura tal que:
+ * - \b include/ : Carpeta on es troben els fitxers .hh amb les classes.
+ * - \b src/ : Carpeta on es troben els fitxers .cc amb la implementació de les classes.
+ * - \b samples/ : Carpeta on es troben els fitxers de prova.
+ * 
+ * Les classes principals del programa són:
+ * - Ciutat: Classe que representa una ciutat amb un identificador i un inventari de productes.
+ * - Cjt_ciutats: Classe que representa un conjunt de ciutats.
+ * - Cjt_productes: Classe que representa un conjunt de productes.
+ * - Producte: Classe que representa un producte amb un identificador, pes i volum.
+ * - Vaixell: Classe que representa un vaixell amb un inventari de productes.
+ * - Viatge: Classe que representa un viatge entre ciutats.
+ * 
+ */
+
+/**
+ * @file program.cc
+ * @brief Programa principal de la pràctica.
+ * 
+ * Aquest programa gestiona el comerç entre ciutats i un vaixell d'una cuenca fluvial. La cuenca és un arbre binari que representa les connexions entre les ciutats.
+ * 
+ * Aquest arbre només té els id's de les ciutats, després és fa servir un conjunt de ciutats per obtenir les dades de les ciutats.
+ * Una ciutat pot tindre 2 ciutats fills o cap. De la estructura d'arbre tradicional, el root seria l'ultima ciutat de la cuenca mentre que les fulles serien les ciutats d'on comença un afluent.
+ * 
+ * Hi ha un conjunt de productes que no pot ser buit on es guarden els productes disponibles. El id comença per 1 i és incremental.
+ * 
+ * Una ciutat pot tindre o no inventari de productes. Aquest inventari es pot modificar afegint, eliminant o modificant productes.
+ *
+ * Un vaixell sempre té un inventari valid on té una quantitat d'un determinat producte per a vendre i un altre per a comprar (diferents). Aquest inventari es pot modificar.
+ * El vaixell també té un registre de les ultimes ciutats on ha comerciat cada vegada que s'ha fet un viatge al llarg de la cuenca.
+ * 
+ * La classe viatge ajuda a organitzar les dades per a realitzar un viatge entre ciutats. Conté la quantitat total de productes comerciats si es realitza el viatge i les ciutats per on passa.
+ * 
+ * \details Les polítiques de programació són:
+ * - Per a la classe Cjt_productes s'ha decidit fer servir un vector per a tenir un accés ràpid donat que el id és númeric i incremental.
+ * - Per a la classe Cjt_ciutats s'ha decidit fer servir un map per a tenir un accés més ràpid a les ciutats.
+ * - Per a l'operació de viatge s'ha decidit crear una nova classe per millorar la llegibilitat del codi.
+ * - No s'ha fet servir un BinTree de ciutats donat que modificar les ciutats dins de l'arbre gran perdem eficiencia.
+ * - Els parametres que es passen a una mètode de la classe sempre són correctes menys quan es llegeixen les dades.
+ * 
+ * - NOTA: Tot i que s'hagués pogut tindre només la classe Cjt_productes i hagués fet el codi més eficient, s'ha decidit tenir una classe Producte per a tenir més control sobre els productes.
+ */
+
+#ifndef NO_DIAGRAM
 #include <iostream>
 #include <string>
 #include <list>
+#endif
+
 #include "Viatge.hh"
 #include "BinTree.hh"
 #include "Vaixell.hh"
@@ -9,22 +60,16 @@
 
 using namespace std;
 
-BinTree<string> leer_rio(Cjt_ciutats& ciutats) {
-    string id_city;
-    cin >> id_city;
-
-    // Base Case
-    if (id_city=="#") return BinTree<string>();
-
-    // General Case
-    Ciutat node(id_city);
-    ciutats.afegirCiutat(id_city, node);
-    BinTree<string> esq = leer_rio(ciutats);
-    BinTree<string> dret = leer_rio(ciutats);
-    
-    return BinTree<string>(id_city,esq,dret);
-}
-
+/**
+ * @brief Llegir inventari d'una ciutat.
+ * 
+ * Primer s'ha de llegir el nom de la ciutat i després la quantitat de productes a afegeir.
+ * És comprova si la ciutat existeix i les dades són vàlides.
+ * És modifica l'inventari de la ciutat amb els nous productes.
+ * 
+ * \pre ciutats i productes són vàlids.
+ * \post Ciutat modificada amb els nous productes.
+ */
 void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     // Info sobre Ciutat
     string id_ciutat;
@@ -41,6 +86,7 @@ void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes) {
         int id_prod, oferta, demanda;
         cin >> id_prod >> oferta >> demanda;
 
+        // Comprovar si les dades son correctes
         if (oferta<0) {cout << "error: oferta no valida" << endl; continue;}
         if (demanda<=0) {cout << "error: demanda no valida" << endl; continue;}
         if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; continue;}
@@ -55,6 +101,16 @@ void leer_inventario(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     }
 }
 
+/**
+ * @brief Llegir inventaris de les ciutats que es van especificant.
+ * 
+ * Mentre que la ciutat no sigui "#" s'ha de llegir l'inventari de la ciutat.
+ * És comprova si la ciutat existeix i les dades són vàlides.
+ * S'esborra tots els productes de la ciutat i s'afegeixen els nous productes.
+ * 
+ * \pre ciutats i productes són vàlids. 
+ * \post Ciutats modificades amb els nous productes.
+ */
 void leer_inventarios(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     string id_ciutat;
     while (cin >> id_ciutat and id_ciutat!="#") {
@@ -69,6 +125,7 @@ void leer_inventarios(Cjt_ciutats& ciutats, Cjt_productes& productes) {
             int id_prod, oferta, demanda;
             cin >> id_prod >> oferta >> demanda;
             
+            // Comprovar si les dades son correctes
             if (oferta<0) {cout << "error: oferta no valida" << endl; continue;}
             if (demanda<=0) {cout << "error: demanda no valida" << endl; continue;}
             if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; continue;}
@@ -84,9 +141,16 @@ void leer_inventarios(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     }
 }
 
+/**
+ * @brief Modificar el vaixell amb les noves dades.
+ * 
+ * És llegeixen les dades de compra i venda de productes i es comprova si són vàlides.
+ * Si no són el mateix producte, es modifica el vaixell amb els nous productes.
+ * 
+ * \pre barco i productes són vàlids.
+ * \post Vaixell modificat amb els nous productes.
+ */
 void modificar_barco(Vaixell& barco, Cjt_productes& productes) {
-    // NOTA: Es garantitza que les quantitats seràn valides.
-
     // Info sobre la Compra
     int prod_compra, quant_compra;
     cin >> prod_compra >> quant_compra;
@@ -101,247 +165,304 @@ void modificar_barco(Vaixell& barco, Cjt_productes& productes) {
     barco.modificarMercancia(prod_compra, quant_compra, prod_venta, quant_venta);
 }
 
+/**
+ * @brief Escriure les dades del vaixell.
+ * 
+ * Es mostren les dades del vaixell.
+ * 
+ * \pre barco és vàlid.
+ * \post Dades del vaixell mostrades per pantalla.
+ */
 void escribir_barco(Vaixell& barco) {
     barco.escriure();
 }
 
+/**
+ * @brief Afegir productes al conjunt de productes.
+ * 
+ * Es llegeix la quantitat de productes a afegir i s'afegeixen al conjunt de productes.
+ * 
+ * \pre productes és vàlid.
+ * \post Productes afegits al conjunt de productes.
+ */
 void agregar_productos(Cjt_productes& productes) {
     int usr_quant;
     cin >> usr_quant;
     cout << ' ' << usr_quant << endl;
-    for (int i = 0; i<usr_quant; i++) {
-        int pes, volum;
-        cin >> pes >> volum;
-        if (pes<=0) {cout << "error: peso no valido" << endl; return;}
-        if (volum<=0) {cout << "error: volumen no valido" << endl; return;}
-        productes.afegirProducte(pes,volum);
-    }
+    productes.llegir(usr_quant);
 }
 
+/**
+ * @brief Escriure les dades d'un producte.
+ * 
+ * Es llegeix l'identificador del producte i es comprova si existeix.
+ * Si existeix es mostren les dades del producte.
+ * 
+ * \pre productes és vàlid.
+ * \post Dades del producte mostrades per pantalla.
+ */
 void escribir_producto(Cjt_productes& productes) {
     int id_prod;
     cin >> id_prod;
     cout << ' ' << id_prod << endl;
     if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; return;}
     
-    Producte temp_prod = productes.consultarProducte(id_prod);
-    
-    temp_prod.escriure();
+    productes.escriureProd(id_prod);
 }
 
+/**
+ * @brief Escriure les dades d'una ciutat.
+ * 
+ * Es llegeix l'identificador de la ciutat i es comprova si existeix.
+ * Si existeix es mostren les dades de la ciutat.
+ * 
+ * \pre ciutats és vàlid.
+ * \post Dades de la ciutat mostrades per pantalla.
+ */
 void escribir_ciudad(Cjt_ciutats& ciutats) {
     string id_city;
     cin >> id_city;
     cout << ' ' << id_city << endl;
     if (not ciutats.existeixCiutat(id_city)) {cout << "error: no existe la ciudad" << endl; return;}
     
-    Ciutat temp_city = ciutats.consultarCiutat(id_city);
-    
-    temp_city.escriure();
+    ciutats.escriureCiutat(id_city);
 }
 
+/**
+ * @brief Afegir un producte a una ciutat.
+ * 
+ * És llegeixen les dades de la ciutat i del producte a afegir.
+ * És comprova si les dades són vàlides.
+ * Si la ciutat ja té el producte, és mostra un error.
+ * És modifica la ciutat amb el nou producte i es mostra el nou pes i volum total de la ciutat.
+ * 
+ * \pre ciutats i productes són vàlids.
+ * \post Ciutat modificada amb el nou producte.
+ */
 void poner_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     string id_city;
     int id_prod, oferta, demanda;
     cin >> id_city >> id_prod >> oferta >> demanda;
     cout << ' ' << id_city << ' ' << id_prod << endl;
+
+    // Comprovar si les dades son correctes
     if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; return;}
     if (not ciutats.existeixCiutat(id_city)) {cout << "error: no existe la ciudad" << endl; return;}
     if (oferta<0) {cout << "error: oferta no valida" << endl; return;}
     if (demanda<=0) {cout << "error: demanda no valida" << endl; return;}
     
+    // Comprovar si la ciutat ja té el producte
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
     if (temp_city.teProducte(id_prod)) {cout << "error: la ciudad ya tiene el producto" << endl; return;}
     
+    // Saber les dades sobre el producte a afegir
     Producte temp_prod = productes.consultarProducte(id_prod);
     int pes = temp_prod.consultarPes();
     int volum = temp_prod.consultarVolum();
 
-    temp_city.afegirProdAlInventari(id_prod,oferta,demanda,pes,volum);
-    ciutats.modificarCiutat(id_city,temp_city);
+    // Afegir el producte a la ciutat
+    temp_city.afegirProdAlInventari(id_prod, oferta, demanda, pes, volum);
+    ciutats.modificarCiutat(id_city, temp_city);
+    
+    // Mostrar nou pes i volum total de la ciutat
     cout << temp_city.consultarPesTotal() << ' ' << temp_city.consultarVolumTotal() << endl;
 }
 
+/**
+ * @brief Modificar un producte d'una ciutat.
+ * 
+ * És llegeixen les dades de la ciutat i del producte a modificar.
+ * És comprova si les dades són vàlides.
+ * Si la ciutat no té el producte, és mostra un error.
+ * És modifica la ciutat amb el producte modificat i es mostra el nou pes i volum total de la ciutat.
+ * 
+ * \pre ciutats i productes són vàlids.
+ * \post Ciutat modificada amb el producte modificat.
+ */
 void modificar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     string id_city;
     int id_prod, oferta, demanda;
     cin >> id_city >> id_prod >> oferta >> demanda;
     cout << ' ' << id_city << ' ' << id_prod << endl;
+
+    // Comprovar si les dades son correctes
     if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; return;}
     if (not ciutats.existeixCiutat(id_city)) {cout << "error: no existe la ciudad" << endl; return;}
     if (oferta<0) {cout << "error: oferta no valida" << endl; return;}
     if (demanda<=0) {cout << "error: demanda no valida" << endl; return;}
     
+    // Comprovar si la ciutat no té el producte
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
     if (not temp_city.teProducte(id_prod)) {cout << "error: la ciudad no tiene el producto" << endl; return;}
     
+    // Saber les dades sobre el producte a modiuficar
     Producte temp_prod = productes.consultarProducte(id_prod);
     int pes = temp_prod.consultarPes();
     int volum = temp_prod.consultarVolum();
     
+    // Modificar el producte a la ciutat
     temp_city.modificarProdDelInventari(id_prod,oferta,demanda,pes,volum);
     ciutats.modificarCiutat(id_city,temp_city);
+
+    // Mostrar nou pes i volum total de la ciutat
     cout << temp_city.consultarPesTotal() << ' ' << temp_city.consultarVolumTotal() << endl;
 }
 
+/**
+ * @brief Treure un producte d'una ciutat.
+ * 
+ * És llegeixen les dades de la ciutat i del producte a treure.
+ * És comprova si les dades són vàlides.
+ * Si la ciutat no té el producte, és mostra un error.
+ * És modifica la ciutat eliminant el producte i es mostra el nou pes i volum total de la ciutat.
+ * 
+ * \pre ciutats i productes són vàlids.
+ * \post Ciutat modificada sense el producte.
+ */
 void quitar_prod(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     string id_city;
     int id_prod;
     cin >> id_city >> id_prod;
     cout << ' ' << id_city << ' ' << id_prod << endl;
+
+    // Comprovar si les dades son correctes
     if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; return;}
     if (not ciutats.existeixCiutat(id_city)) {cout << "error: no existe la ciudad" << endl; return;}
     
+    // Comprovar si la ciutat no té el producte
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
     if (not temp_city.teProducte(id_prod)) {cout << "error: la ciudad no tiene el producto" << endl; return;}
     
+    // Saber les dades sobre el producte a eliminar
     Producte temp_prod = productes.consultarProducte(id_prod);
     int pes = temp_prod.consultarPes();
     int volum = temp_prod.consultarVolum();
     
+    // Eliminar el producte de la ciutat
     temp_city.eliminarProdDelInventari(id_prod,pes,volum);
     ciutats.modificarCiutat(id_city,temp_city);
+
+    // Mostrar nou pes i volum total de la ciutat
     cout << temp_city.consultarPesTotal() << ' ' << temp_city.consultarVolumTotal() << endl;
 }
 
+/**
+ * @brief Consultar les dades d'un producte d'una ciutat.
+ * 
+ * És llegeixen les dades de la ciutat i del producte a consultar.
+ * És comprova si les dades són vàlides.
+ * Si la ciutat no té el producte, és mostra un error.
+ * Es mostren les dades del producte respecte la ciutat especificada.
+ * 
+ * \pre ciutats i productes són vàlids.
+ * \post Dades del producte mostrades per pantalla.
+ */
 void consultar_prod(Cjt_ciutats& ciutats, Cjt_productes& productes) {
     string id_city;
     int id_prod;
     cin >> id_city >> id_prod;
     cout << ' ' << id_city << ' ' << id_prod << endl;
+
+    // Comprovar si les dades son correctes
     if (not productes.existeixProducte(id_prod)) {cout << "error: no existe el producto" << endl; return;}
     if (not ciutats.existeixCiutat(id_city)) {cout << "error: no existe la ciudad" << endl; return;}
     
+    // Comprovar si la ciutat no té el producte
     Ciutat temp_city = ciutats.consultarCiutat(id_city);
     if (not temp_city.teProducte(id_prod)) {cout << "error: la ciudad no tiene el producto" << endl; return;}
     
+    // Mostrar oferta i demanda del producte respecte la ciutat especificada
     cout << temp_city.consultarOferta(id_prod) << ' ' << temp_city.consultarDemanda(id_prod) << endl;
 }
 
+/**
+ * @brief Comerciar entre dues ciutats.
+ * 
+ * És llegeixen les dades de les dues ciutats a comerciar.
+ * És comprova que les dues ciutats existeixin i que no siguin la mateixa.
+ * Es realitza el comerç entre les dues ciutats.
+ * 
+ * \pre ciutats i productes són vàlids.
+ * \post Comerç realitzat entre les dues ciutats.
+ */
 void comerciar(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
     string id_city1, id_city2;
     cin >> id_city1 >> id_city2;
     cout << ' ' << id_city1 << ' ' << id_city2 << endl;
+
+    // Comprovar si les dades son correctes
     if (id_city1==id_city2) {cout << "error: ciudad repetida" << endl; return;}
     if (not ciutats.existeixCiutat(id_city1)) {cout << "error: no existe la ciudad" << endl; return;}
     if (not ciutats.existeixCiutat(id_city2)) {cout << "error: no existe la ciudad" << endl; return;}
     
-    ciutats.comerciar(ciutats, id_city1, id_city2, productes);
+    // Comerciar entre les ciutats
+    ciutats.comerciar(id_city1, id_city2, productes);
 }
 
-void redistribuir(const BinTree<string>& Cuenca, Cjt_ciutats& ciutats, const Cjt_productes& productes) {
-    // === Base Case
-    if (Cuenca.left().empty() or Cuenca.right().empty()) return;
-
-    // === General Case
-    // Comerciar
-    ciutats.comerciar(ciutats, Cuenca.value(), Cuenca.left().value(), productes);
-    ciutats.comerciar(ciutats, Cuenca.value(), Cuenca.right().value(), productes);
-    
-    // Recursivitat
-    redistribuir(Cuenca.left(),ciutats,productes);
-    redistribuir(Cuenca.right(),ciutats,productes);
-    return;
-}
-
-bool determinar_millor_viatge(const Viatge& viatge_act, const Viatge& viatge_top) {
-    if (viatge_act.consultarQuant()>viatge_top.consultarQuant()) return true;
-    else if (viatge_act.consultarQuant()==viatge_top.consultarQuant()) {
-        if (viatge_act.consultarDist()<viatge_top.consultarDist()) return true;
-        else if (viatge_act.consultarDist()==viatge_top.consultarDist()) {
-            // Com que e>d dona preferencia a l'esquerra
-            return viatge_act.consultarOrdre()>viatge_top.consultarOrdre();
-        }
-    }
-    return false;
-}
-
-void determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Viatge& viatge_act, Viatge& viatge_top, Vaixell& barco, Cjt_ciutats ciutats, char direccio, int distancia) {
-    // === Base Case
-    if (cuenca.empty()) return;
-    
-    // Límitar distància de búsqueda
-    if (viatge_top.estaTotComerciat() and distancia>viatge_top.consultarDist()) {
-        //cout << "LIMIT reached at CITY: " << cuenca.value() << " with QUANT: " << distancia << " > " << viatge_top.consultarQuant() << endl;
-        return;
-    }
-    
-    // === General Case
-    string id_city = cuenca.value();
-    Ciutat temp_city = ciutats.consultarCiutat(id_city);
-    //cout << "CITY: " << id_city << " DIST: " << distancia << endl;
-    
-    // Fer intercanvi
-    int quant_comerciat = barco.comerciar(temp_city, productes);
-    ciutats.modificarCiutat(id_city, temp_city);
-
-    // Actualitzar viatge actual
-    viatge_act.afegirCiutat(id_city, direccio, ciutats);
-    viatge_act.actQuant(quant_comerciat);
-
-    // Mirar si el viatge actual és millor que el millor viatge, llavors intercanvio.
-    if (determinar_millor_viatge(viatge_act, viatge_top)) {
-        viatge_top = viatge_act;
-        //cout << "MILLOR VIATGE EN " << id_city << endl;
-    }
-
-    // Si el barco ja no té unitats per intercanviar, es para tot.
-    if (barco.quantitatPerComprar()==0 and barco.quantitatPerVendre()==0) {
-        viatge_top.actTotComerciat();  // Limitar futures exploracions
-        //cout << "ESTA LIMITAT A : " << viatge_top.consultarDist() << endl;
-        return;
-    }
-
-    // Explorar ciutat de l'esquerra
-    if (not cuenca.left().empty()) {
-        Vaixell nou_barco_esquerra = barco;
-        Viatge nou_viatge_esquerra = viatge_act;
-        determinar_viatge(cuenca.left(), productes, nou_viatge_esquerra, viatge_top, nou_barco_esquerra, ciutats, 'e', distancia+1);
-    }
-
-    // Explorar ciutat de la dreta
-    if (not cuenca.right().empty()) {
-        Vaixell nou_barco_dreta = barco;
-        Viatge nou_viatge_dreta = viatge_act;
-        determinar_viatge(cuenca.right(), productes, nou_viatge_dreta, viatge_top, nou_barco_dreta, ciutats, 'd', distancia+1);
-    }
-}
-
+/**
+ * @brief Realitzar un viatge entre ciutats.
+ * 
+ * Es determina el millor viatge a realitzar i si es comercia algun producte es realitza.
+ * 
+ * \pre ciutats, productes i barco són vàlids.
+ * \post Viatge realitzat.
+ */
 void hacer_viaje(const BinTree<string>& cuenca, const Cjt_productes& productes, Vaixell& barco, Cjt_ciutats& ciutats) {
-    Viatge ruta, ruta_top;
-    Vaixell temp_barco = barco;
-    Cjt_ciutats tmp_ciutats = ciutats;
+    // Determinar el millor viatge a realitzar
+    Viatge ruta = ciutats.determinar_viatge(cuenca, productes, barco);
 
-    int distancia = 1;
-    determinar_viatge(cuenca, productes, ruta, ruta_top, temp_barco, tmp_ciutats, 'r', distancia);
-
-    int quantitat_comerciat = ruta_top.consultarQuant();
+    // Consultar quantitat de productes comerciats en el millor viatge
+    int quantitat_comerciat = ruta.consultarQuant();
     cout << quantitat_comerciat << endl;
 
-    if (quantitat_comerciat != 0) {
-        string id_last_city = ruta_top.consultarUltimaCiutat();
-        barco.afegirCiutat(id_last_city);  // Guardar l'última ciutat
-        ciutats = ruta_top.consultarSnapshot();  // Restaura el riu que tenia després de realitzar-se la millor ruta.
+    // Realitzar el viatge si hi ha productes a comerciar
+    if (quantitat_comerciat!=0) {
+        // Guardar l'última ciutat on s'ha comerciat
+        string id_last_city = ruta.consultarUltimaCiutat();
+        barco.afegirCiutat(id_last_city);
+
+        // Realitzar el millor viatge modificant les ciutats però el vaixell no
+        ciutats.realitzar_viatge(productes, ruta, barco);
     }
 }
 
+/**
+ * @brief Funció principal del programa.
+ * 
+ * El programa comença declarant els objectes necessaris.
+ * Un cop inicialitzades les variables prinicipals (productes, ciutats i vaixell) es comença a llegir les comandes.
+ * 
+ * Les comandes poden ser de diferents tipus:
+ * - Leer_rio: Llegir la cuenca.
+ * - Leer_inventario: Llegir l'inventari d'una ciutat.
+ * - Leer_inventarios: Llegir els inventaris de les ciutats.
+ * - Modificar_barco: Modificar el vaixell.
+ * - Escribir_barco: Escriure les dades del vaixell.
+ * - Consultar_num: Consultar el nombre de productes.
+ * - Agregar_productos: Afegir productes al conjunt de productes.
+ * - Escribir_producto: Escriure les dades d'un producte.
+ * - Escribir_ciudad: Escriure les dades d'una ciutat.
+ * - Poner_prod: Afegir un producte a una ciutat.
+ * - Modificar_prod: Modificar un producte d'una ciutat.
+ * - Quitar_prod: Treure un producte d'una ciutat.
+ * - Consultar_prod: Consultar les dades d'un producte d'una ciutat.
+ * - Comerciar: Comerciar entre dues ciutats.
+ * - Redistribuir: Redistribuir els productes entre les ciutats.
+ * - Hacer_viaje: Realitzar el viatge que faci que el vaixell comercii més quantitat entre ciutats.
+ * Nota: Si una comanda no és vàlida, es deixa passar.
+ * 
+ */
 int main () {
-    Cjt_ciutats ciutats;
-    BinTree<string> cuenca;
-
     // === Introducció
     // Demanar productes
-    int usr_quant_prod;
-    cin >> usr_quant_prod;
     Cjt_productes productes;
-    for (int i = 0; i<usr_quant_prod; i++) {
-        int usr_prod_pes, usr_prod_volum;
-        cin >> usr_prod_pes >> usr_prod_volum; 
-        productes.afegirProducte(usr_prod_pes,usr_prod_volum);
-    }
+    int quant_prod;
+    cin >> quant_prod;
+    productes.llegir(quant_prod);
 
     // Demanar cuenca
-    cuenca = leer_rio(ciutats);
+    Cjt_ciutats ciutats;
+    BinTree<string> cuenca = ciutats.leer_rio();
 
     // Demanar vaixell
     Vaixell barco;
@@ -356,9 +477,8 @@ int main () {
         }
         else if (usr_op=="leer_rio" or usr_op=="lr") {
             cout << "#" << usr_op << endl;
-            ciutats.eliminarCiutats();
             barco.eliminarRegistre();
-            cuenca = leer_rio(ciutats);
+            cuenca = ciutats.leer_rio();
         }
         else if (usr_op=="leer_inventario" or usr_op=="li") {
             cout << "#" << usr_op;
@@ -394,35 +514,31 @@ int main () {
         }
         else if (usr_op=="poner_prod" or usr_op=="pp") {
             cout << "#" << usr_op;
-            poner_prod(ciutats,productes);
+            poner_prod(ciutats, productes);
         }
         else if (usr_op=="modificar_prod" or usr_op=="mp") {
             cout << "#" << usr_op;
-            modificar_prod(ciutats,productes);
+            modificar_prod(ciutats, productes);
         }
         else if (usr_op=="quitar_prod" or usr_op=="qp") {
             cout << "#" << usr_op;
-            quitar_prod(ciutats,productes);
+            quitar_prod(ciutats, productes);
         }
         else if (usr_op=="consultar_prod" or usr_op=="cp") {
             cout << "#" << usr_op;
-            consultar_prod(ciutats,productes);
+            consultar_prod(ciutats, productes);
         }
         else if (usr_op=="comerciar" or usr_op=="co") {
             cout << "#" << usr_op;
-            comerciar(ciutats,productes);
+            comerciar(ciutats, productes);
         }
         else if (usr_op=="redistribuir" or usr_op=="re") {
             cout << "#" << usr_op << endl;
-            redistribuir(cuenca, ciutats, productes);
+            ciutats.redistribuir(cuenca, productes);
         }
         else if (usr_op == "hacer_viaje" or usr_op == "hv") {
             cout << "#" << usr_op << endl;
             hacer_viaje(cuenca, productes, barco, ciutats);
-        }
-        // TO-DELETE
-        else if (usr_op=="debug") {
-            productes.mostrarProductes();
         }
     }
 }

@@ -3,12 +3,6 @@ using namespace std;
 
 /* === CONSTRUCTORS === */
 
-/**
- * @brief Constructora per defecte de la classe Vaixell.
- * 
- * \pre Cert.
- * \post Vaixell amb tots els paràmetres inicialitzats a 0 o buits.
- */
 Vaixell::Vaixell() {
     comprar = make_pair(0, 0);
     vendre = make_pair(0, 0);
@@ -17,25 +11,14 @@ Vaixell::Vaixell() {
 
 /* === MODIFICADORS === */
 
-/**
- * @brief Actualitzar informació sobre quin producte vendrà i comprarà el vaixell.
- * 
- * \pre id_compra i id_venta existeixen. quant_compra i quant_venta són valors vàlids.
- * \post El vaixell té les dades sobre el producte a comprar i vendre actualitzades.
- */
 void Vaixell::modificarMercancia(int id_compra, int quant_compra, int id_venta, int quant_venta) {
     comprar = make_pair(id_compra, quant_compra);
     vendre = make_pair(id_venta, quant_venta);
 }
 
-/**
- * @brief Realitza l'operació de comerç amb una ciutat.
- * 
- * \pre La ciutat té un inventari vàlid. Els productes existeixen en el conjunt de productes.
- * \post Actualitza el vaixell i la ciutat segons l'operació de comerç. Retorna la quantitat total comerciada.
- */
-int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
-    if (not city.teInventari()) return 0;  // La ciutat no té inventari
+int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes, bool modificar_ciutat) {
+    // La ciutat no té inventari (Optimització)
+    if (not city.teInventari()) return 0;
     
     // Total comerciat
     int quant_total = 0;
@@ -43,16 +26,23 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
     // Comprar de la ciutat
     int id_prod_comprar = comprar.first;
     int quant_comprar_barco = comprar.second;
+    
+    // La ciutat té el producte i el vaixell pot comprar
     if (quant_comprar_barco>0 and city.teProducte(id_prod_comprar)) {
+        // Saber quantitat disponible a la ciutat
         int dif = city.consultarDiferencia(id_prod_comprar);
 
-        if (dif>0) {  // La ciutat té quantitat per vendre al vaixell
+        // La ciutat té quantitat per vendre al vaixell
+        if (dif>0) {
+            // Determinar la maxima quantitat a comerciar
             int quant_comerciar = min(quant_comprar_barco, dif);
+            // Consultar el producte
             Producte tmp_prod = productes.consultarProducte(id_prod_comprar);
             // Treure la quantitat venuda per la ciutat
-            city.modificarOfertaProd(id_prod_comprar, -quant_comerciar, tmp_prod.consultarPes(), tmp_prod.consultarVolum());
-            // Actualitzar la nova quantitat necessària
+            if (modificar_ciutat) city.modificarOfertaProd(id_prod_comprar, -quant_comerciar, tmp_prod.consultarPes(), tmp_prod.consultarVolum());
+            // Actualitzar la nova quantitat necessària del vaixell
             comprar.second -= quant_comerciar;
+            // Actualitzar la quantitat total comerciada
             quant_total += quant_comerciar;
         }
     }
@@ -60,16 +50,23 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
     // Vendre a la ciutat
     int id_prod_venta = vendre.first;
     int quant_vendre_barco = vendre.second;
+
+    // La ciutat necessita el producte i el vaixell pot vendre
     if (quant_vendre_barco>0 and city.teProducte(id_prod_venta)) {
+        // Saber quantitat necessària a la ciutat
         int dif = city.consultarDiferencia(id_prod_venta);
         
-        if (dif<0) {  // La ciutat té necessitat del producte
+        // La ciutat té necessitat del producte
+        if (dif<0) {
+            // Determinar la maxima quantitat a comerciar
             int quant_comerciar = min(quant_vendre_barco, -dif);
+            // Consultar el producte
             Producte tmp_prod = productes.consultarProducte(id_prod_venta);
             // Afegir la quantitat venuda a la ciutat
-            city.modificarOfertaProd(id_prod_venta, quant_comerciar, tmp_prod.consultarPes(), tmp_prod.consultarVolum());
-            // Actualitzar la nova quantitat necessària
+            if (modificar_ciutat) city.modificarOfertaProd(id_prod_venta, quant_comerciar, tmp_prod.consultarPes(), tmp_prod.consultarVolum());
+            // Actualitzar la nova quantitat necessària del vaixell
             vendre.second -= quant_comerciar;
+            // Actualitzar la quantitat total comerciada
             quant_total += quant_comerciar;
         }
     }
@@ -77,57 +74,28 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
     return quant_total;
 }
 
-/**
- * @brief Afegir una ciutat al registre de les últimes ciutats visitades.
- * 
- * \pre id_city és vàlid.
- * \post El registre de les últimes ciutats conté id_city.
- */
 void Vaixell::afegirCiutat(string id_city) {
     registre_ultimes_ciutats.push_back(id_city);
 }
 
-/**
- * @brief Eliminar totes les ciutats del registre.
- * 
- * \pre Cert.
- * \post El vaixell no conté cap registre de les últimes ciutats visitades.
- */
 void Vaixell::eliminarRegistre() {
     if (not registre_ultimes_ciutats.empty()) registre_ultimes_ciutats.clear();
 }
 
 /* === CONSULTORS === */
 
-/**
- * @brief Quantitat d'unitats restants per vendre.
- * 
- * \pre Cert.
- * \post Retorna la quantitat d'unitats restants per vendre.
- */
 int Vaixell::quantitatPerVendre() {
     return vendre.second;
 }
 
-/**
- * @brief Quantitat d'unitats restants per comprar.
- * 
- * \pre Cert.
- * \post Retorna la quantitat d'unitats restants per comprar.
- */
 int Vaixell::quantitatPerComprar() {
     return comprar.second;
 }
 
 /* === LECTURA === */
 
-/**
- * @brief Llegir els valors necessaris del vaixell des de l'entrada estàndard.
- * 
- * \pre Cert.
- * \post El vaixell té com atributs les dades llegides.
- */
 void Vaixell::llegir(Cjt_productes productes) {
+    // Demanar informació producte a comprar
     int id_prod_comprar, quant_prod_comprar;
     cin >> id_prod_comprar >> quant_prod_comprar;
     if (not productes.existeixProducte(id_prod_comprar)) {
@@ -135,6 +103,7 @@ void Vaixell::llegir(Cjt_productes productes) {
         return;
     }
     
+    // Demanar informació producte a vendre
     int id_prod_vendre, quant_prod_vendre;
     cin >> id_prod_vendre >> quant_prod_vendre;
     if (not productes.existeixProducte(id_prod_vendre)) {
@@ -142,22 +111,19 @@ void Vaixell::llegir(Cjt_productes productes) {
         return;
     }
     
+    // Actualitzar la informació del vaixell
     comprar = make_pair(id_prod_comprar, quant_prod_comprar);
     vendre = make_pair(id_prod_vendre, quant_prod_vendre);
 }
 
 /* === ESCRIPTURA === */
 
-/**
- * @brief Mostra tota la informació del vaixell.
- * 
- * \pre Cert.
- * \post Mostra per consola el producte a comprar i vendre, juntament amb les respectives quantitats, i les últimes ciutats visitades.
- */
 void Vaixell::escriure() {
+    // Mostrar la informació sobre els productes a comprar i vendre
     cout << comprar.first << ' ' << comprar.second;
     cout << ' ' << vendre.first << ' ' << vendre.second << endl;
     
+    // Mostrar les ciutats visitades
     for (int i = 0; i<registre_ultimes_ciutats.size(); i++) {
         cout << registre_ultimes_ciutats[i] << endl;
     }

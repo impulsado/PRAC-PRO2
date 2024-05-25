@@ -1,0 +1,578 @@
+\hypertarget{classCiutat}{}\doxysection{Referencia de la Clase Ciutat}
+\label{classCiutat}\index{Ciutat@{Ciutat}}
+
+
+Representa una ciutat amb un inventari de productes.  
+
+
+
+
+{\ttfamily \#include $<$Ciutat.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCiutat_a0a02d9e0c5c53d1436364c7d6cf6ad8d}{Ciutat}} ()
+\begin{DoxyCompactList}\small\item\em Constructor per defecte de la classe \mbox{\hyperlink{classCiutat}{Ciutat}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCiutat_ac97a1f561bd09010ffce05552a477fc3}{Ciutat}} (string id\+\_\+city)
+\begin{DoxyCompactList}\small\item\em Constructor de la classe \mbox{\hyperlink{classCiutat}{Ciutat}} amb un ID específic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCiutat_a3ec16c600fceb969a833006cea0e5041}{afegir\+Prod\+Al\+Inventari}} (int id\+\_\+prod, int oferta, int demanda, int pes, int volum)
+\begin{DoxyCompactList}\small\item\em Afegeix un producte no existent a l\textquotesingle{}inventari de la ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCiutat_a00e9c276bdb0b901394c146ed24d45c6}{modificar\+Prod\+Del\+Inventari}} (int id\+\_\+prod, int oferta, int demanda, int pes, int volum)
+\begin{DoxyCompactList}\small\item\em Modifica les dades d\textquotesingle{}un producte existent a l\textquotesingle{}inventari de la ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}{modificar\+Oferta\+Prod}} (int id\+\_\+prod, int oferta, int pes, int volum)
+\begin{DoxyCompactList}\small\item\em Modifica la quantitat d\textquotesingle{}oferta d\textquotesingle{}un producte determinat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCiutat_abfbd80bb78d24a9530f3e43fea7d839b}{eliminar\+Prod\+Del\+Inventari}} (int id\+\_\+prod, int pes, int volum)
+\begin{DoxyCompactList}\small\item\em Elimina un producte existent de l\textquotesingle{}inventari de la ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCiutat_a4f3a1a11171ba4baa60794c6b66232fe}{eliminar\+Tots\+Prod}} ()
+\begin{DoxyCompactList}\small\item\em Elimina tots els productes de l\textquotesingle{}inventari de la ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCiutat_a4e5a93cfbd2bb365b6d28a2c79d81b76}{comerciar}} (\mbox{\hyperlink{classCiutat}{Ciutat}} \&other, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Realitza un comerç entre dues ciutats. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{te\+Inventari}} () const
+\begin{DoxyCompactList}\small\item\em Comprova si la ciutat té inventari. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{te\+Producte}} (int id\+\_\+prod) const
+\begin{DoxyCompactList}\small\item\em Comprova si la ciutat té un producte específic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCiutat_aa09b8469ecf944323bbcf7a7b062f8b8}{consultar\+Oferta}} (int id\+\_\+prod) const
+\begin{DoxyCompactList}\small\item\em Consulta l\textquotesingle{}oferta d\textquotesingle{}un producte específic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCiutat_a6667cb6dcd81adb2255aaf163b8bcb73}{consultar\+Demanda}} (int id\+\_\+prod) const
+\begin{DoxyCompactList}\small\item\em Consulta la demanda d\textquotesingle{}un producte específic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultar\+Diferencia}} (int id\+\_\+prod) const
+\begin{DoxyCompactList}\small\item\em Consulta la quantitat d\textquotesingle{}excés d\textquotesingle{}un producte a la ciutat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCiutat_a34007a186f3c19466cd2e64dcc3c38e0}{consultar\+Pes\+Total}} () const
+\begin{DoxyCompactList}\small\item\em Consulta el pes total de la ciutat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCiutat_a99f5d70b8c1f95d5203b247d4ef69f14}{consultar\+Volum\+Total}} () const
+\begin{DoxyCompactList}\small\item\em Consulta el volum total de la ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCiutat_a15d7920b62c2c9dd41b51527748401a0}{escriure}} () const
+\begin{DoxyCompactList}\small\item\em Mostra informació (Inventari, Pes i Volum total) de la ciutat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classCiutat_a974a782da1bfbb54bd180e8bfff69f29}{id}}
+\begin{DoxyCompactList}\small\item\em Identificador de la ciutat. \end{DoxyCompactList}\item 
+map$<$ int, pair$<$ pair$<$ int, int $>$,int $>$ $>$ \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}
+\begin{DoxyCompactList}\small\item\em Inventari de la ciutat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\+\_\+total}}
+\begin{DoxyCompactList}\small\item\em Pes total de la ciutat. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\+\_\+total}}
+\begin{DoxyCompactList}\small\item\em Volum total de la ciutat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa una ciutat amb un inventari de productes. 
+
+Un objecte de la classe \mbox{\hyperlink{classCiutat}{Ciutat}} conté un identificador únic, un inventari de productes i les quantitats totals de pes i volum. 
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classCiutat_a0a02d9e0c5c53d1436364c7d6cf6ad8d}\label{classCiutat_a0a02d9e0c5c53d1436364c7d6cf6ad8d}} 
+\index{Ciutat@{Ciutat}!Ciutat@{Ciutat}}
+\index{Ciutat@{Ciutat}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{Ciutat()}{Ciutat()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Ciutat\+::\+Ciutat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor per defecte de la classe \mbox{\hyperlink{classCiutat}{Ciutat}}. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La ciutat té ID \char`\"{}0\char`\"{}, i els atributs pes\+\_\+total i volum\+\_\+total inicialitzats a 0. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6                \{}
+\DoxyCodeLine{7     \textcolor{keywordtype}{id} = \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{8     \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} = 0;}
+\DoxyCodeLine{9     \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} = 0;}
+\DoxyCodeLine{10 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_ac97a1f561bd09010ffce05552a477fc3}\label{classCiutat_ac97a1f561bd09010ffce05552a477fc3}} 
+\index{Ciutat@{Ciutat}!Ciutat@{Ciutat}}
+\index{Ciutat@{Ciutat}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{Ciutat()}{Ciutat()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Ciutat\+::\+Ciutat (\begin{DoxyParamCaption}\item[{string}]{id\+\_\+city }\end{DoxyParamCaption})}
+
+
+
+Constructor de la classe \mbox{\hyperlink{classCiutat}{Ciutat}} amb un ID específic. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La ciutat té l\textquotesingle{}ID especificat. pes\+\_\+total i volum\+\_\+total s\textquotesingle{}inicialitzen a 0. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12                              \{}
+\DoxyCodeLine{13     \textcolor{keywordtype}{id} = id\_city;}
+\DoxyCodeLine{14     \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} = 0;}
+\DoxyCodeLine{15     \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} = 0;}
+\DoxyCodeLine{16 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classCiutat_a3ec16c600fceb969a833006cea0e5041}\label{classCiutat_a3ec16c600fceb969a833006cea0e5041}} 
+\index{Ciutat@{Ciutat}!afegirProdAlInventari@{afegirProdAlInventari}}
+\index{afegirProdAlInventari@{afegirProdAlInventari}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{afegirProdAlInventari()}{afegirProdAlInventari()}}
+{\footnotesize\ttfamily void Ciutat\+::afegir\+Prod\+Al\+Inventari (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prod,  }\item[{int}]{oferta,  }\item[{int}]{demanda,  }\item[{int}]{pes,  }\item[{int}]{volum }\end{DoxyParamCaption})}
+
+
+
+Afegeix un producte no existent a l\textquotesingle{}inventari de la ciutat. 
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat no té el producte. Oferta/\+Demanda/\+Pes/\+Volum són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La ciutat ara té el producte. pes\+\_\+total i volum\+\_\+total actualitzats. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20                                                                                            \{}
+\DoxyCodeLine{21     \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}[id\_prod].first.first = oferta;}
+\DoxyCodeLine{22     \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}[id\_prod].first.second = demanda;}
+\DoxyCodeLine{23     \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}[id\_prod].second = oferta-\/demanda;  \textcolor{comment}{// Necessitat del producte}}
+\DoxyCodeLine{24     \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += oferta*pes;}
+\DoxyCodeLine{25     \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += oferta*volum;}
+\DoxyCodeLine{26 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a4e5a93cfbd2bb365b6d28a2c79d81b76}\label{classCiutat_a4e5a93cfbd2bb365b6d28a2c79d81b76}} 
+\index{Ciutat@{Ciutat}!comerciar@{comerciar}}
+\index{comerciar@{comerciar}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{comerciar()}{comerciar()}}
+{\footnotesize\ttfamily void Ciutat\+::comerciar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCiutat}{Ciutat}} \&}]{other,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Realitza un comerç entre dues ciutats. 
+
+\begin{DoxyPrecond}{Precondición}
+Les ciutats tenen inventari. Els productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Les ciutats intercanvien productes segons les seves necessitats. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{67                                                                     \{}
+\DoxyCodeLine{68     \textcolor{keywordflow}{if} (not this-\/>\mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}() or not other.\mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}()) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keyword}{auto} it1 = this-\/>\mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.begin();}
+\DoxyCodeLine{71     \textcolor{keyword}{auto} it2 = other.\mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.begin();}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordflow}{while} (it1!=this-\/>\mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.end() and it2!=other.\mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.end()) \{}
+\DoxyCodeLine{74         \textcolor{keywordtype}{int} prod\_id1 = it1-\/>first;}
+\DoxyCodeLine{75         \textcolor{keywordtype}{int} prod\_id2 = it2-\/>first;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77         \textcolor{keywordflow}{if} (prod\_id1 == prod\_id2) \{}
+\DoxyCodeLine{78             \textcolor{keywordtype}{int} dif1 = it1-\/>second.second;}
+\DoxyCodeLine{79             \textcolor{keywordtype}{int} dif2 = it2-\/>second.second;}
+\DoxyCodeLine{80             }
+\DoxyCodeLine{81             \textcolor{comment}{// A la ciutat1 li falta, a la ciutat2 li sobra}}
+\DoxyCodeLine{82             \textcolor{keywordflow}{if} (dif1<0 and dif2>0) \{  }
+\DoxyCodeLine{83                 \mbox{\hyperlink{classProducte}{Producte}} temp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(prod\_id1);}
+\DoxyCodeLine{84                 \textcolor{keywordtype}{int} pes = temp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}();}
+\DoxyCodeLine{85                 \textcolor{keywordtype}{int} volum = temp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}();}
+\DoxyCodeLine{86                 \textcolor{keywordtype}{int} quantiat = min(abs(dif1), abs(dif2));}
+\DoxyCodeLine{87                 }
+\DoxyCodeLine{88                 it1-\/>second.first.first += quantiat;}
+\DoxyCodeLine{89                 it1-\/>second.second += quantiat;}
+\DoxyCodeLine{90                 this-\/>\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += quantiat*pes;}
+\DoxyCodeLine{91                 this-\/>\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += quantiat*volum;}
+\DoxyCodeLine{92                 }
+\DoxyCodeLine{93                 it2-\/>second.first.first -\/= quantiat;}
+\DoxyCodeLine{94                 it2-\/>second.second -\/= quantiat;}
+\DoxyCodeLine{95                 other.\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} -\/= quantiat*pes;}
+\DoxyCodeLine{96                 other.\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} -\/= quantiat*volum;}
+\DoxyCodeLine{97             \}}
+\DoxyCodeLine{98             \textcolor{comment}{// A la ciutat1 li sobra, a la ciutat2 li falta}}
+\DoxyCodeLine{99             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dif1 > 0 and dif2 < 0) \{  }
+\DoxyCodeLine{100                 \mbox{\hyperlink{classProducte}{Producte}} temp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(prod\_id1);}
+\DoxyCodeLine{101                 \textcolor{keywordtype}{int} pes = temp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}();}
+\DoxyCodeLine{102                 \textcolor{keywordtype}{int} volum = temp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}();}
+\DoxyCodeLine{103                 \textcolor{keywordtype}{int} quantiat = min(abs(dif1), abs(dif2));}
+\DoxyCodeLine{104                 }
+\DoxyCodeLine{105                 it1-\/>second.first.first -\/= quantiat;}
+\DoxyCodeLine{106                 it1-\/>second.second -\/= quantiat;}
+\DoxyCodeLine{107                 this-\/>\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} -\/= quantiat*pes;}
+\DoxyCodeLine{108                 this-\/>\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} -\/= quantiat*volum;}
+\DoxyCodeLine{109                 }
+\DoxyCodeLine{110                 it2-\/>second.first.first += quantiat;}
+\DoxyCodeLine{111                 it2-\/>second.second += quantiat;}
+\DoxyCodeLine{112                 other.\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += quantiat*pes;}
+\DoxyCodeLine{113                 other.\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += quantiat*volum;}
+\DoxyCodeLine{114             \}}
+\DoxyCodeLine{115             it1++;}
+\DoxyCodeLine{116             it2++;}
+\DoxyCodeLine{117         \}}
+\DoxyCodeLine{118         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (prod\_id1<prod\_id2) it1 = this-\/>\mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.lower\_bound(prod\_id2);}
+\DoxyCodeLine{119         \textcolor{keywordflow}{else} it2 = other.\mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.lower\_bound(prod\_id1);}
+\DoxyCodeLine{120     \}}
+\DoxyCodeLine{121 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a6667cb6dcd81adb2255aaf163b8bcb73}\label{classCiutat_a6667cb6dcd81adb2255aaf163b8bcb73}} 
+\index{Ciutat@{Ciutat}!consultarDemanda@{consultarDemanda}}
+\index{consultarDemanda@{consultarDemanda}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{consultarDemanda()}{consultarDemanda()}}
+{\footnotesize\ttfamily int Ciutat\+::consultar\+Demanda (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prod }\end{DoxyParamCaption}) const}
+
+
+
+Consulta la demanda d\textquotesingle{}un producte específic. 
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat té el producte. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat de demanda del producte. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{138                                               \{}
+\DoxyCodeLine{139     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.find(id\_prod);}
+\DoxyCodeLine{140     \textcolor{keywordflow}{return} it-\/>second.first.second;}
+\DoxyCodeLine{141 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a7b3231f2b0328919430991da4421e683}\label{classCiutat_a7b3231f2b0328919430991da4421e683}} 
+\index{Ciutat@{Ciutat}!consultarDiferencia@{consultarDiferencia}}
+\index{consultarDiferencia@{consultarDiferencia}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{consultarDiferencia()}{consultarDiferencia()}}
+{\footnotesize\ttfamily int Ciutat\+::consultar\+Diferencia (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prod }\end{DoxyParamCaption}) const}
+
+
+
+Consulta la quantitat d\textquotesingle{}excés d\textquotesingle{}un producte a la ciutat. 
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat té el producte. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat d\textquotesingle{}excés del producte especificat. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{143                                                  \{ }
+\DoxyCodeLine{144     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.find(id\_prod);}
+\DoxyCodeLine{145     \textcolor{keywordflow}{return} it-\/>second.second;}
+\DoxyCodeLine{146 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_aa09b8469ecf944323bbcf7a7b062f8b8}\label{classCiutat_aa09b8469ecf944323bbcf7a7b062f8b8}} 
+\index{Ciutat@{Ciutat}!consultarOferta@{consultarOferta}}
+\index{consultarOferta@{consultarOferta}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{consultarOferta()}{consultarOferta()}}
+{\footnotesize\ttfamily int Ciutat\+::consultar\+Oferta (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prod }\end{DoxyParamCaption}) const}
+
+
+
+Consulta l\textquotesingle{}oferta d\textquotesingle{}un producte específic. 
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat té el producte. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat d\textquotesingle{}oferta del producte. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{133                                              \{}
+\DoxyCodeLine{134     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.find(id\_prod);}
+\DoxyCodeLine{135     \textcolor{keywordflow}{return} it-\/>second.first.first;}
+\DoxyCodeLine{136 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a34007a186f3c19466cd2e64dcc3c38e0}\label{classCiutat_a34007a186f3c19466cd2e64dcc3c38e0}} 
+\index{Ciutat@{Ciutat}!consultarPesTotal@{consultarPesTotal}}
+\index{consultarPesTotal@{consultarPesTotal}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{consultarPesTotal()}{consultarPesTotal()}}
+{\footnotesize\ttfamily int Ciutat\+::consultar\+Pes\+Total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consulta el pes total de la ciutat. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna el pes total. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{148                                     \{}
+\DoxyCodeLine{149     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}};}
+\DoxyCodeLine{150 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a99f5d70b8c1f95d5203b247d4ef69f14}\label{classCiutat_a99f5d70b8c1f95d5203b247d4ef69f14}} 
+\index{Ciutat@{Ciutat}!consultarVolumTotal@{consultarVolumTotal}}
+\index{consultarVolumTotal@{consultarVolumTotal}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{consultarVolumTotal()}{consultarVolumTotal()}}
+{\footnotesize\ttfamily int Ciutat\+::consultar\+Volum\+Total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Consulta el volum total de la ciutat. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna el volum total. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{152                                       \{}
+\DoxyCodeLine{153     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}};}
+\DoxyCodeLine{154 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_abfbd80bb78d24a9530f3e43fea7d839b}\label{classCiutat_abfbd80bb78d24a9530f3e43fea7d839b}} 
+\index{Ciutat@{Ciutat}!eliminarProdDelInventari@{eliminarProdDelInventari}}
+\index{eliminarProdDelInventari@{eliminarProdDelInventari}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{eliminarProdDelInventari()}{eliminarProdDelInventari()}}
+{\footnotesize\ttfamily void Ciutat\+::eliminar\+Prod\+Del\+Inventari (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prod,  }\item[{int}]{pes,  }\item[{int}]{volum }\end{DoxyParamCaption})}
+
+
+
+Elimina un producte existent de l\textquotesingle{}inventari de la ciutat. 
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat té el producte. id\+\_\+prod, pes i volum són valors vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La ciutat no té el producte. Dades sobre pes i volum totals actualitzades. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53                                                                      \{}
+\DoxyCodeLine{54     \textcolor{keywordtype}{int} oferta = \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}[id\_prod].first.first;}
+\DoxyCodeLine{55     }
+\DoxyCodeLine{56     \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} -\/= oferta*pes;}
+\DoxyCodeLine{57     \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} -\/= oferta*volum;}
+\DoxyCodeLine{58     \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.erase(id\_prod);}
+\DoxyCodeLine{59 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a4f3a1a11171ba4baa60794c6b66232fe}\label{classCiutat_a4f3a1a11171ba4baa60794c6b66232fe}} 
+\index{Ciutat@{Ciutat}!eliminarTotsProd@{eliminarTotsProd}}
+\index{eliminarTotsProd@{eliminarTotsProd}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{eliminarTotsProd()}{eliminarTotsProd()}}
+{\footnotesize\ttfamily void Ciutat\+::eliminar\+Tots\+Prod (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Elimina tots els productes de l\textquotesingle{}inventari de la ciutat. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La ciutat no té cap producte a l\textquotesingle{}inventari. Pes i volum total es posen a 0. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{61                               \{}
+\DoxyCodeLine{62     \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.clear();}
+\DoxyCodeLine{63     \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} = 0;}
+\DoxyCodeLine{64     \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} = 0;}
+\DoxyCodeLine{65 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a15d7920b62c2c9dd41b51527748401a0}\label{classCiutat_a15d7920b62c2c9dd41b51527748401a0}} 
+\index{Ciutat@{Ciutat}!escriure@{escriure}}
+\index{escriure@{escriure}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{escriure()}{escriure()}}
+{\footnotesize\ttfamily void Ciutat\+::escriure (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Mostra informació (Inventari, Pes i Volum total) de la ciutat. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Es mostra per terminal cada producte de l\textquotesingle{}inventari amb la seva oferta i demanda. Després es mostra el pes i volum total de la ciutat. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{158                             \{}
+\DoxyCodeLine{159     \textcolor{keywordflow}{if} (not \mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}()) \{}
+\DoxyCodeLine{160         cout << \textcolor{stringliteral}{"{}0 0"{}} << endl;}
+\DoxyCodeLine{161         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{162     \}}
+\DoxyCodeLine{163     }
+\DoxyCodeLine{164     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.begin(); it != \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.end(); it++) \{}
+\DoxyCodeLine{165         cout << it-\/>first << \textcolor{charliteral}{' '} << it-\/>second.first.first << \textcolor{charliteral}{' '} << it-\/>second.first.second << endl;}
+\DoxyCodeLine{166     \}}
+\DoxyCodeLine{167     cout << \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} << endl;}
+\DoxyCodeLine{168 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}\label{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}} 
+\index{Ciutat@{Ciutat}!modificarOfertaProd@{modificarOfertaProd}}
+\index{modificarOfertaProd@{modificarOfertaProd}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{modificarOfertaProd()}{modificarOfertaProd()}}
+{\footnotesize\ttfamily void Ciutat\+::modificar\+Oferta\+Prod (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prod,  }\item[{int}]{oferta,  }\item[{int}]{pes,  }\item[{int}]{volum }\end{DoxyParamCaption})}
+
+
+
+Modifica la quantitat d\textquotesingle{}oferta d\textquotesingle{}un producte determinat. 
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat té el producte. id\+\_\+prod, quantitat, pes i volum són valors vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+La ciutat té la nova quantitat d\textquotesingle{}oferta d\textquotesingle{}aquell producte. S\textquotesingle{}actualitzen el pes i volum totals. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43                                                                                \{}
+\DoxyCodeLine{44     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.find(id\_prod);}
+\DoxyCodeLine{45     }
+\DoxyCodeLine{46     \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += quantitat*pes;}
+\DoxyCodeLine{47     \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += quantitat*volum;}
+\DoxyCodeLine{48     }
+\DoxyCodeLine{49     it-\/>second.first.first += quantitat;  \textcolor{comment}{// Afegir la nova quantitat d'oferta}}
+\DoxyCodeLine{50     it-\/>second.second += quantitat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
+\DoxyCodeLine{51 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a00e9c276bdb0b901394c146ed24d45c6}\label{classCiutat_a00e9c276bdb0b901394c146ed24d45c6}} 
+\index{Ciutat@{Ciutat}!modificarProdDelInventari@{modificarProdDelInventari}}
+\index{modificarProdDelInventari@{modificarProdDelInventari}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{modificarProdDelInventari()}{modificarProdDelInventari()}}
+{\footnotesize\ttfamily void Ciutat\+::modificar\+Prod\+Del\+Inventari (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prod,  }\item[{int}]{oferta,  }\item[{int}]{demanda,  }\item[{int}]{pes,  }\item[{int}]{volum }\end{DoxyParamCaption})}
+
+
+
+Modifica les dades d\textquotesingle{}un producte existent a l\textquotesingle{}inventari de la ciutat. 
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat té el producte. Pes i Volum són valors vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Les dades del producte són actualitzades, incloent pes\+\_\+total i volum\+\_\+total. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                                                           \{}
+\DoxyCodeLine{29     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.find(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{30     }
+\DoxyCodeLine{31     \textcolor{keywordflow}{if} (it-\/>second.first.first!=oferta) \{  \textcolor{comment}{// No diferenciem entre casos perquè si la diferència és negativa, al fer la suma, ja farà resta.}}
+\DoxyCodeLine{32         \textcolor{keywordtype}{int} diferencia = oferta-\/(it-\/>second.first.first);}
+\DoxyCodeLine{33         \mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += diferencia*pes;}
+\DoxyCodeLine{34         \mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += diferencia*volum;}
+\DoxyCodeLine{35         it-\/>second.first.first = oferta;}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37     it-\/>second.first.second = demanda;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     it-\/>second.second = oferta-\/demanda;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
+\DoxyCodeLine{40 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a10e784c413229cb9a2481320fa3be2e2}\label{classCiutat_a10e784c413229cb9a2481320fa3be2e2}} 
+\index{Ciutat@{Ciutat}!teInventari@{teInventari}}
+\index{teInventari@{teInventari}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{teInventari()}{teInventari()}}
+{\footnotesize\ttfamily bool Ciutat\+::te\+Inventari (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Comprova si la ciutat té inventari. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna true si hi ha almenys un producte a l\textquotesingle{}inventari, en cas contrari retorna false. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{125                                \{}
+\DoxyCodeLine{126     \textcolor{keywordflow}{return} !\mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.empty();}
+\DoxyCodeLine{127 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCiutat_a21122021c79bcad356eee33dea257095}\label{classCiutat_a21122021c79bcad356eee33dea257095}} 
+\index{Ciutat@{Ciutat}!teProducte@{teProducte}}
+\index{teProducte@{teProducte}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{teProducte()}{teProducte()}}
+{\footnotesize\ttfamily bool Ciutat\+::te\+Producte (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prod }\end{DoxyParamCaption}) const}
+
+
+
+Comprova si la ciutat té un producte específic. 
+
+\begin{DoxyPrecond}{Precondición}
+L\textquotesingle{}id\+\_\+prod és vàlid. La ciutat pot no tenir inventari. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna true si la ciutat té el producte, en cas contrari retorna false. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{129                                          \{}
+\DoxyCodeLine{130     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.find(id\_prod)!=\mbox{\hyperlink{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}{inventari}}.end();}
+\DoxyCodeLine{131 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{classCiutat_a974a782da1bfbb54bd180e8bfff69f29}\label{classCiutat_a974a782da1bfbb54bd180e8bfff69f29}} 
+\index{Ciutat@{Ciutat}!id@{id}}
+\index{id@{id}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily string Ciutat\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identificador de la ciutat. 
+
+\mbox{\Hypertarget{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}\label{classCiutat_a301fd5db0f0f8e42312fd9c28547a8cc}} 
+\index{Ciutat@{Ciutat}!inventari@{inventari}}
+\index{inventari@{inventari}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{inventari}{inventari}}
+{\footnotesize\ttfamily map$<$int, pair$<$ pair$<$int,int$>$ ,int$>$ $>$ Ciutat\+::inventari\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Inventari de la ciutat. 
+
+\mbox{\Hypertarget{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}\label{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}} 
+\index{Ciutat@{Ciutat}!pes\_total@{pes\_total}}
+\index{pes\_total@{pes\_total}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{pes\_total}{pes\_total}}
+{\footnotesize\ttfamily int Ciutat\+::pes\+\_\+total\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pes total de la ciutat. 
+
+\mbox{\Hypertarget{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}\label{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}} 
+\index{Ciutat@{Ciutat}!volum\_total@{volum\_total}}
+\index{volum\_total@{volum\_total}!Ciutat@{Ciutat}}
+\doxysubsubsection{\texorpdfstring{volum\_total}{volum\_total}}
+{\footnotesize\ttfamily int Ciutat\+::volum\+\_\+total\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Volum total de la ciutat. 
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Ciutat_8hh}{Ciutat.\+hh}}\item 
+\mbox{\hyperlink{Ciutat_8cc}{Ciutat.\+cc}}\end{DoxyCompactItemize}

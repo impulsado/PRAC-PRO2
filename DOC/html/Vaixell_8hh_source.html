@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pràctica PRO2 2023-2024: Comerç Fluvial: Fichero Fuente Vaixell.hh</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Pràctica PRO2 2023-2024: Comerç Fluvial
+   &#160;<span id="projectnumber">Versió Primavera 2024</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Vaixell.hh</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Vaixell_8hh.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef VAIXELL_HH</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define VAIXELL_HH</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef NO_DIAGRAM</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Cjt__productes_8hh.html">Cjt_productes.hh</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Ciutat_8hh.html">Ciutat.hh</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classVaixell.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classVaixell.html">Vaixell</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classVaixell.html#afaf92a3700f500f905d750101ff71528">   31</a></span>&#160;    pair&lt;int,int&gt; <a class="code" href="classVaixell.html#afaf92a3700f500f905d750101ff71528">comprar</a>;  </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classVaixell.html#a31307c2dc07a75ba770eaa773a1335b7">   32</a></span>&#160;    pair&lt;int,int&gt; <a class="code" href="classVaixell.html#a31307c2dc07a75ba770eaa773a1335b7">vendre</a>;  </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classVaixell.html#a996b5a16138db5c3d551c320de0978c4">   33</a></span>&#160;    vector&lt;string&gt; <a class="code" href="classVaixell.html#a996b5a16138db5c3d551c320de0978c4">registre_ultimes_ciutats</a>;  </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">/* CONSTRUCTORS */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classVaixell.html">Vaixell</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">/* MODIFICADORS */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> modificarMercancia(<span class="keywordtype">int</span> id_compra, <span class="keywordtype">int</span> quant_compra, <span class="keywordtype">int</span> id_venta, <span class="keywordtype">int</span> quant_venta);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="program_8cc.html#a11af517e7df5c149749f0b33f3708504">comerciar</a>(<a class="code" href="classCiutat.html">Ciutat</a>&amp; city, <span class="keyword">const</span> <a class="code" href="classCjt__productes.html">Cjt_productes</a>&amp; productes, <span class="keywordtype">bool</span> modificar_ciutat);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> afegirCiutat(std::string id_city);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> eliminarRegistre();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">/* CONSULTORS */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">int</span> quantitatPerVendre();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">int</span> quantitatPerComprar();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">/* LECTURA */</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> llegir(<a class="code" href="classCjt__productes.html">Cjt_productes</a> productes);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">/* ESCRIPTURA */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> escriure();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aCiutat_8hh_html"><div class="ttname"><a href="Ciutat_8hh.html">Ciutat.hh</a></div><div class="ttdoc">Especificació de la classe Ciutat.</div></div>
+<div class="ttc" id="aCjt__productes_8hh_html"><div class="ttname"><a href="Cjt__productes_8hh.html">Cjt_productes.hh</a></div><div class="ttdoc">Especificació de la classe Cjt_productes.</div></div>
+<div class="ttc" id="aclassCiutat_html"><div class="ttname"><a href="classCiutat.html">Ciutat</a></div><div class="ttdoc">Representa una ciutat amb un inventari de productes.</div><div class="ttdef"><b>Definition:</b> Ciutat.hh:25</div></div>
+<div class="ttc" id="aclassCjt__productes_html"><div class="ttname"><a href="classCjt__productes.html">Cjt_productes</a></div><div class="ttdoc">Conjunt de productes.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.hh:24</div></div>
+<div class="ttc" id="aclassVaixell_html"><div class="ttname"><a href="classVaixell.html">Vaixell</a></div><div class="ttdoc">Representa un vaixell amb una determinada quantitat de productes per comprar i vendre.</div><div class="ttdef"><b>Definition:</b> Vaixell.hh:28</div></div>
+<div class="ttc" id="aclassVaixell_html_a31307c2dc07a75ba770eaa773a1335b7"><div class="ttname"><a href="classVaixell.html#a31307c2dc07a75ba770eaa773a1335b7">Vaixell::vendre</a></div><div class="ttdeci">pair&lt; int, int &gt; vendre</div><div class="ttdoc">Producte a vendre.</div><div class="ttdef"><b>Definition:</b> Vaixell.hh:32</div></div>
+<div class="ttc" id="aclassVaixell_html_a996b5a16138db5c3d551c320de0978c4"><div class="ttname"><a href="classVaixell.html#a996b5a16138db5c3d551c320de0978c4">Vaixell::registre_ultimes_ciutats</a></div><div class="ttdeci">vector&lt; string &gt; registre_ultimes_ciutats</div><div class="ttdoc">Registre de les últimes ciutats visitades.</div><div class="ttdef"><b>Definition:</b> Vaixell.hh:33</div></div>
+<div class="ttc" id="aclassVaixell_html_afaf92a3700f500f905d750101ff71528"><div class="ttname"><a href="classVaixell.html#afaf92a3700f500f905d750101ff71528">Vaixell::comprar</a></div><div class="ttdeci">pair&lt; int, int &gt; comprar</div><div class="ttdoc">Producte a comprar.</div><div class="ttdef"><b>Definition:</b> Vaixell.hh:31</div></div>
+<div class="ttc" id="aprogram_8cc_html_a11af517e7df5c149749f0b33f3708504"><div class="ttname"><a href="program_8cc.html#a11af517e7df5c149749f0b33f3708504">comerciar</a></div><div class="ttdeci">void comerciar(Cjt_ciutats &amp;ciutats, const Cjt_productes &amp;productes)</div><div class="ttdoc">Comerciar entre dues ciutats.</div><div class="ttdef"><b>Definition:</b> program.cc:388</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

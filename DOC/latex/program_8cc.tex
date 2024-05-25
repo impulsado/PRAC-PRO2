@@ -1,0 +1,716 @@
+\hypertarget{program_8cc}{}\doxysection{Referencia del Archivo program.\+cc}
+\label{program_8cc}\index{program.cc@{program.cc}}
+
+
+Programa principal de la pràctica.  
+
+
+{\ttfamily \#include \char`\"{}Viatge.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Bin\+Tree.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Vaixell.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cjt\+\_\+ciutats.\+hh\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cjt\+\_\+productes.\+hh\char`\"{}}\newline
+Dependencia gráfica adjunta para program.\+cc\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{program_8cc__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{program_8cc_a41dab7c6f6e59deeecf7df661899cd8a}{leer\+\_\+inventario}} (\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats, \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Llegir inventari d\textquotesingle{}una ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_afaa519c971d42977be3a7c7ba431c28e}{leer\+\_\+inventarios}} (\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats, \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Llegir inventaris de les ciutats que es van especificant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_ae6094e1e926fbe255417c48937dd8147}{modificar\+\_\+barco}} (\mbox{\hyperlink{classVaixell}{Vaixell}} \&barco, \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Modificar el vaixell amb les noves dades. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_ac2f5c2a778441ad478521671d5390f11}{escribir\+\_\+barco}} (\mbox{\hyperlink{classVaixell}{Vaixell}} \&barco)
+\begin{DoxyCompactList}\small\item\em Escriure les dades del vaixell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_aee38d111d27fceb494822eab89815462}{agregar\+\_\+productos}} (\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Afegir productes al conjunt de productes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_acc006f8b966e986ecd9e5b36ae33d5d3}{escribir\+\_\+producto}} (\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Escriure les dades d\textquotesingle{}un producte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_a3239cd3281a85609c385969d48a63b3c}{escribir\+\_\+ciudad}} (\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats)
+\begin{DoxyCompactList}\small\item\em Escriure les dades d\textquotesingle{}una ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_afe8b0fd4cf9875e371ce133268e84220}{poner\+\_\+prod}} (\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Afegir un producte a una ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_aca4524ac2462b5d561dd966e2613e41b}{modificar\+\_\+prod}} (\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Modificar un producte d\textquotesingle{}una ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_a4200cacc339f24b6a2f87a578da458a8}{quitar\+\_\+prod}} (\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Treure un producte d\textquotesingle{}una ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_a770cd237ebed8979e3b4dc709d9e539f}{consultar\+\_\+prod}} (\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats, \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Consultar les dades d\textquotesingle{}un producte d\textquotesingle{}una ciutat. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_a11af517e7df5c149749f0b33f3708504}{comerciar}} (\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes)
+\begin{DoxyCompactList}\small\item\em Comerciar entre dues ciutats. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{program_8cc_ab87caae14a212846fe28c280a16ca810}{hacer\+\_\+viaje}} (const Bin\+Tree$<$ string $>$ \&cuenca, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes, \mbox{\hyperlink{classVaixell}{Vaixell}} \&barco, \mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&ciutats)
+\begin{DoxyCompactList}\small\item\em Realitzar un viatge entre ciutats. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{program_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Funció principal del programa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Programa principal de la pràctica. 
+
+Aquest programa gestiona el comerç entre ciutats i un vaixell d\textquotesingle{}una cuenca fluvial. La cuenca és un arbre binari que representa les connexions entre les ciutats.
+
+Aquest arbre només té els id\textquotesingle{}s de les ciutats, després és fa servir un conjunt de ciutats per obtenir les dades de les ciutats. Una ciutat pot tindre 2 ciutats fills o cap. De la estructura d\textquotesingle{}arbre tradicional, el root seria l\textquotesingle{}ultima ciutat de la cuenca mentre que les fulles serien les ciutats d\textquotesingle{}on comença un afluent.
+
+Hi ha un conjunt de productes que no pot ser buit on es guarden els productes disponibles. El id comença per 1 i és incremental.
+
+Una ciutat pot tindre o no inventari de productes. Aquest inventari es pot modificar afegint, eliminant o modificant productes.
+
+Un vaixell sempre té un inventari valid on té una quantitat d\textquotesingle{}un determinat producte per a vendre i un altre per a comprar (diferents). Aquest inventari es pot modificar. El vaixell també té un registre de les ultimes ciutats on ha comerciat cada vegada que s\textquotesingle{}ha fet un viatge al llarg de la cuenca.
+
+La classe viatge ajuda a organitzar les dades per a realitzar un viatge entre ciutats. Conté la quantitat total de productes comerciats si es realitza el viatge i les ciutats per on passa.
+
+Les polítiques de programació són\+:
+\begin{DoxyItemize}
+\item Per a la classe \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} s\textquotesingle{}ha decidit fer servir un vector per a tenir un accés ràpid donat que el id és númeric i incremental.
+\item Per a la classe \mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} s\textquotesingle{}ha decidit fer servir un map per a tenir un accés més ràpid a les ciutats.
+\item Per a l\textquotesingle{}operació de viatge s\textquotesingle{}ha decidit crear una nova classe per millorar la llegibilitat del codi.
+\item No s\textquotesingle{}ha fet servir un Bin\+Tree de ciutats donat que modificar les ciutats dins de l\textquotesingle{}arbre gran perdem eficiencia.
+\item Els parametres que es passen a una mètode de la classe sempre són correctes menys quan es llegeixen les dades.
+\item NOTA\+: Tot i que s\textquotesingle{}hagués pogut tindre només la classe \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} i hagués fet el codi més eficient, s\textquotesingle{}ha decidit tenir una classe \mbox{\hyperlink{classProducte}{Producte}} per a tenir més control sobre els productes. 
+\end{DoxyItemize}
+
+\doxysubsection{Documentación de las funciones}
+\mbox{\Hypertarget{program_8cc_aee38d111d27fceb494822eab89815462}\label{program_8cc_aee38d111d27fceb494822eab89815462}} 
+\index{program.cc@{program.cc}!agregar\_productos@{agregar\_productos}}
+\index{agregar\_productos@{agregar\_productos}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{agregar\_productos()}{agregar\_productos()}}
+{\footnotesize\ttfamily void agregar\+\_\+productos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Afegir productes al conjunt de productes. 
+
+Es llegeix la quantitat de productes a afegir i s\textquotesingle{}afegeixen al conjunt de productes.
+
+\begin{DoxyPrecond}{Precondición}
+productes és vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Productes afegits al conjunt de productes. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{188                                                  \{}
+\DoxyCodeLine{189     \textcolor{keywordtype}{int} usr\_quant;}
+\DoxyCodeLine{190     cin >> usr\_quant;}
+\DoxyCodeLine{191     cout << \textcolor{charliteral}{' '} << usr\_quant << endl;}
+\DoxyCodeLine{192     productes.\mbox{\hyperlink{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}{llegir}}(usr\_quant);}
+\DoxyCodeLine{193 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_a11af517e7df5c149749f0b33f3708504}\label{program_8cc_a11af517e7df5c149749f0b33f3708504}} 
+\index{program.cc@{program.cc}!comerciar@{comerciar}}
+\index{comerciar@{comerciar}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{comerciar()}{comerciar()}}
+{\footnotesize\ttfamily void comerciar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Comerciar entre dues ciutats. 
+
+És llegeixen les dades de les dues ciutats a comerciar. És comprova que les dues ciutats existeixin i que no siguin la mateixa. Es realitza el comerç entre les dues ciutats.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats i productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Comerç realitzat entre les dues ciutats. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{388                                                                      \{}
+\DoxyCodeLine{389     \textcolor{keywordtype}{string} id\_city1, id\_city2;}
+\DoxyCodeLine{390     cin >> id\_city1 >> id\_city2;}
+\DoxyCodeLine{391     cout << \textcolor{charliteral}{' '} << id\_city1 << \textcolor{charliteral}{' '} << id\_city2 << endl;}
+\DoxyCodeLine{392 }
+\DoxyCodeLine{393     \textcolor{comment}{// Comprovar si les dades son correctes}}
+\DoxyCodeLine{394     \textcolor{keywordflow}{if} (id\_city1==id\_city2) \{cout << \textcolor{stringliteral}{"{}error: ciudad repetida"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{395     \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_city1)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{396     \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_city2)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{397     }
+\DoxyCodeLine{398     \textcolor{comment}{// Comerciar entre les ciutats}}
+\DoxyCodeLine{399     ciutats.\mbox{\hyperlink{classCjt__ciutats_a404c5324032b83e7a8c3f55544923fe7}{comerciar}}(id\_city1, id\_city2, productes);}
+\DoxyCodeLine{400 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_a770cd237ebed8979e3b4dc709d9e539f}\label{program_8cc_a770cd237ebed8979e3b4dc709d9e539f}} 
+\index{program.cc@{program.cc}!consultar\_prod@{consultar\_prod}}
+\index{consultar\_prod@{consultar\_prod}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{consultar\_prod()}{consultar\_prod()}}
+{\footnotesize\ttfamily void consultar\+\_\+prod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats,  }\item[{\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Consultar les dades d\textquotesingle{}un producte d\textquotesingle{}una ciutat. 
+
+És llegeixen les dades de la ciutat i del producte a consultar. És comprova si les dades són vàlides. Si la ciutat no té el producte, és mostra un error. Es mostren les dades del producte respecte la ciutat especificada.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats i productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Dades del producte mostrades per pantalla. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{360                                                                     \{}
+\DoxyCodeLine{361     \textcolor{keywordtype}{string} id\_city;}
+\DoxyCodeLine{362     \textcolor{keywordtype}{int} id\_prod;}
+\DoxyCodeLine{363     cin >> id\_city >> id\_prod;}
+\DoxyCodeLine{364     cout << \textcolor{charliteral}{' '} << id\_city << \textcolor{charliteral}{' '} << id\_prod << endl;}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{366     \textcolor{comment}{// Comprovar si les dades son correctes}}
+\DoxyCodeLine{367     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{368     \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_city)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{369     }
+\DoxyCodeLine{370     \textcolor{comment}{// Comprovar si la ciutat no té el producte}}
+\DoxyCodeLine{371     \mbox{\hyperlink{classCiutat}{Ciutat}} temp\_city = ciutats.\mbox{\hyperlink{classCjt__ciutats_a34a77a10e4fa9e9bbf9b6eb460b211eb}{consultarCiutat}}(id\_city);}
+\DoxyCodeLine{372     \textcolor{keywordflow}{if} (not temp\_city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: la ciudad no tiene el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{373     }
+\DoxyCodeLine{374     \textcolor{comment}{// Mostrar oferta i demanda del producte respecte la ciutat especificada}}
+\DoxyCodeLine{375     cout << temp\_city.\mbox{\hyperlink{classCiutat_aa09b8469ecf944323bbcf7a7b062f8b8}{consultarOferta}}(id\_prod) << \textcolor{charliteral}{' '} << temp\_city.\mbox{\hyperlink{classCiutat_a6667cb6dcd81adb2255aaf163b8bcb73}{consultarDemanda}}(id\_prod) << endl;}
+\DoxyCodeLine{376 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_ac2f5c2a778441ad478521671d5390f11}\label{program_8cc_ac2f5c2a778441ad478521671d5390f11}} 
+\index{program.cc@{program.cc}!escribir\_barco@{escribir\_barco}}
+\index{escribir\_barco@{escribir\_barco}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{escribir\_barco()}{escribir\_barco()}}
+{\footnotesize\ttfamily void escribir\+\_\+barco (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVaixell}{Vaixell}} \&}]{barco }\end{DoxyParamCaption})}
+
+
+
+Escriure les dades del vaixell. 
+
+Es mostren les dades del vaixell.
+
+\begin{DoxyPrecond}{Precondición}
+barco és vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Dades del vaixell mostrades per pantalla. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{176                                     \{}
+\DoxyCodeLine{177     barco.\mbox{\hyperlink{classVaixell_a4f6d9cb9511c241d37fac5d42ba355f0}{escriure}}();}
+\DoxyCodeLine{178 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_a3239cd3281a85609c385969d48a63b3c}\label{program_8cc_a3239cd3281a85609c385969d48a63b3c}} 
+\index{program.cc@{program.cc}!escribir\_ciudad@{escribir\_ciudad}}
+\index{escribir\_ciudad@{escribir\_ciudad}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{escribir\_ciudad()}{escribir\_ciudad()}}
+{\footnotesize\ttfamily void escribir\+\_\+ciudad (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats }\end{DoxyParamCaption})}
+
+
+
+Escriure les dades d\textquotesingle{}una ciutat. 
+
+Es llegeix l\textquotesingle{}identificador de la ciutat i es comprova si existeix. Si existeix es mostren les dades de la ciutat.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats és vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Dades de la ciutat mostrades per pantalla. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{222                                            \{}
+\DoxyCodeLine{223     \textcolor{keywordtype}{string} id\_city;}
+\DoxyCodeLine{224     cin >> id\_city;}
+\DoxyCodeLine{225     cout << \textcolor{charliteral}{' '} << id\_city << endl;}
+\DoxyCodeLine{226     \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_city)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{227     }
+\DoxyCodeLine{228     ciutats.\mbox{\hyperlink{classCjt__ciutats_aad4e8c2733a7ed8bf3a6d242d3567810}{escriureCiutat}}(id\_city);}
+\DoxyCodeLine{229 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_acc006f8b966e986ecd9e5b36ae33d5d3}\label{program_8cc_acc006f8b966e986ecd9e5b36ae33d5d3}} 
+\index{program.cc@{program.cc}!escribir\_producto@{escribir\_producto}}
+\index{escribir\_producto@{escribir\_producto}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{escribir\_producto()}{escribir\_producto()}}
+{\footnotesize\ttfamily void escribir\+\_\+producto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Escriure les dades d\textquotesingle{}un producte. 
+
+Es llegeix l\textquotesingle{}identificador del producte i es comprova si existeix. Si existeix es mostren les dades del producte.
+
+\begin{DoxyPrecond}{Precondición}
+productes és vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Dades del producte mostrades per pantalla. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{204                                                  \{}
+\DoxyCodeLine{205     \textcolor{keywordtype}{int} id\_prod;}
+\DoxyCodeLine{206     cin >> id\_prod;}
+\DoxyCodeLine{207     cout << \textcolor{charliteral}{' '} << id\_prod << endl;}
+\DoxyCodeLine{208     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{209     }
+\DoxyCodeLine{210     productes.\mbox{\hyperlink{classCjt__productes_a100b67065cd5d48333d4747e736e69bd}{escriureProd}}(id\_prod);}
+\DoxyCodeLine{211 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_ab87caae14a212846fe28c280a16ca810}\label{program_8cc_ab87caae14a212846fe28c280a16ca810}} 
+\index{program.cc@{program.cc}!hacer\_viaje@{hacer\_viaje}}
+\index{hacer\_viaje@{hacer\_viaje}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{hacer\_viaje()}{hacer\_viaje()}}
+{\footnotesize\ttfamily void hacer\+\_\+viaje (\begin{DoxyParamCaption}\item[{const Bin\+Tree$<$ string $>$ \&}]{cuenca,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes,  }\item[{\mbox{\hyperlink{classVaixell}{Vaixell}} \&}]{barco,  }\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats }\end{DoxyParamCaption})}
+
+
+
+Realitzar un viatge entre ciutats. 
+
+Es determina el millor viatge a realitzar i si es comercia algun producte es realitza.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats, productes i barco són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classViatge}{Viatge}} realitzat. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{410                                                                                                                       \{}
+\DoxyCodeLine{411     \textcolor{comment}{// Determinar el millor viatge a realitzar}}
+\DoxyCodeLine{412     \mbox{\hyperlink{classViatge}{Viatge}} ruta = ciutats.\mbox{\hyperlink{classCjt__ciutats_a154039754704c3cbd5b6a9784ccfc9b0}{determinar\_viatge}}(cuenca, productes, barco);}
+\DoxyCodeLine{413 }
+\DoxyCodeLine{414     \textcolor{comment}{// Consultar quantitat de productes comerciats en el millor viatge}}
+\DoxyCodeLine{415     \textcolor{keywordtype}{int} quantitat\_comerciat = ruta.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}();}
+\DoxyCodeLine{416     cout << quantitat\_comerciat << endl;}
+\DoxyCodeLine{417 }
+\DoxyCodeLine{418     \textcolor{comment}{// Realitzar el viatge si hi ha productes a comerciar}}
+\DoxyCodeLine{419     \textcolor{keywordflow}{if} (quantitat\_comerciat!=0) \{}
+\DoxyCodeLine{420         \textcolor{comment}{// Guardar l'última ciutat on s'ha comerciat}}
+\DoxyCodeLine{421         \textcolor{keywordtype}{string} id\_last\_city = ruta.\mbox{\hyperlink{classViatge_a2bdb9e677e4fc51136252fb1803945c0}{consultarUltimaCiutat}}();}
+\DoxyCodeLine{422         barco.\mbox{\hyperlink{classVaixell_ae58cdeb92a9ab720544b7641d4043c7a}{afegirCiutat}}(id\_last\_city);}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{424         \textcolor{comment}{// Realitzar el millor viatge modificant les ciutats però el vaixell no}}
+\DoxyCodeLine{425         ciutats.\mbox{\hyperlink{classCjt__ciutats_afaf8508376f993cf560c5b3ac855aa65}{realitzar\_viatge}}(productes, ruta, barco);}
+\DoxyCodeLine{426     \}}
+\DoxyCodeLine{427 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_a41dab7c6f6e59deeecf7df661899cd8a}\label{program_8cc_a41dab7c6f6e59deeecf7df661899cd8a}} 
+\index{program.cc@{program.cc}!leer\_inventario@{leer\_inventario}}
+\index{leer\_inventario@{leer\_inventario}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{leer\_inventario()}{leer\_inventario()}}
+{\footnotesize\ttfamily void leer\+\_\+inventario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats,  }\item[{\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Llegir inventari d\textquotesingle{}una ciutat. 
+
+Primer s\textquotesingle{}ha de llegir el nom de la ciutat i després la quantitat de productes a afegeir. És comprova si la ciutat existeix i les dades són vàlides. És modifica l\textquotesingle{}inventari de la ciutat amb els nous productes.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats i productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classCiutat}{Ciutat}} modificada amb els nous productes. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73                                                                      \{}
+\DoxyCodeLine{74     \textcolor{comment}{// Info sobre Ciutat}}
+\DoxyCodeLine{75     \textcolor{keywordtype}{string} id\_ciutat;}
+\DoxyCodeLine{76     cin >> id\_ciutat;}
+\DoxyCodeLine{77     cout << \textcolor{charliteral}{' '} << id\_ciutat << endl;}
+\DoxyCodeLine{78     \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_ciutat)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{79     ciutats.\mbox{\hyperlink{classCjt__ciutats_ac0598daaec347488cab32cb91d095abf}{eliminarTotsProdDeCiutat}}(id\_ciutat);}
+\DoxyCodeLine{80     }
+\DoxyCodeLine{81     \textcolor{comment}{// Info sobre els productes}}
+\DoxyCodeLine{82     \textcolor{keywordtype}{int} quant\_prod;}
+\DoxyCodeLine{83     cin >> quant\_prod;}
+\DoxyCodeLine{84     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j<quant\_prod; j++) \{}
+\DoxyCodeLine{85         \textcolor{comment}{// Info sobre el producte}}
+\DoxyCodeLine{86         \textcolor{keywordtype}{int} id\_prod, oferta, demanda;}
+\DoxyCodeLine{87         cin >> id\_prod >> oferta >> demanda;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89         \textcolor{comment}{// Comprovar si les dades son correctes}}
+\DoxyCodeLine{90         \textcolor{keywordflow}{if} (oferta<0) \{cout << \textcolor{stringliteral}{"{}error: oferta no valida"{}} << endl; \textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{91         \textcolor{keywordflow}{if} (demanda<=0) \{cout << \textcolor{stringliteral}{"{}error: demanda no valida"{}} << endl; \textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{92         \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{93         }
+\DoxyCodeLine{94         \textcolor{comment}{// Saber les dades sobre el producte a afegir}}
+\DoxyCodeLine{95         \mbox{\hyperlink{classProducte}{Producte}} temp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(id\_prod);}
+\DoxyCodeLine{96         \textcolor{keywordtype}{int} pes = temp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}();}
+\DoxyCodeLine{97         \textcolor{keywordtype}{int} volum = temp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}();}
+\DoxyCodeLine{98         }
+\DoxyCodeLine{99         \textcolor{comment}{// Afegir el producte a la ciutat directament}}
+\DoxyCodeLine{100         ciutats.\mbox{\hyperlink{classCjt__ciutats_a8c3938d9ddaead4c915f068e120205df}{afegirProdACiutat}}(id\_ciutat, id\_prod, oferta, demanda, pes, volum);}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_afaa519c971d42977be3a7c7ba431c28e}\label{program_8cc_afaa519c971d42977be3a7c7ba431c28e}} 
+\index{program.cc@{program.cc}!leer\_inventarios@{leer\_inventarios}}
+\index{leer\_inventarios@{leer\_inventarios}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{leer\_inventarios()}{leer\_inventarios()}}
+{\footnotesize\ttfamily void leer\+\_\+inventarios (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats,  }\item[{\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Llegir inventaris de les ciutats que es van especificant. 
+
+Mentre que la ciutat no sigui \char`\"{}\#\char`\"{} s\textquotesingle{}ha de llegir l\textquotesingle{}inventari de la ciutat. És comprova si la ciutat existeix i les dades són vàlides. S\textquotesingle{}esborra tots els productes de la ciutat i s\textquotesingle{}afegeixen els nous productes.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats i productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Ciutats modificades amb els nous productes. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{114                                                                       \{}
+\DoxyCodeLine{115     \textcolor{keywordtype}{string} id\_ciutat;}
+\DoxyCodeLine{116     \textcolor{keywordflow}{while} (cin >> id\_ciutat and id\_ciutat!=\textcolor{stringliteral}{"{}\#"{}}) \{}
+\DoxyCodeLine{117         \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_ciutat)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{118         ciutats.\mbox{\hyperlink{classCjt__ciutats_ac0598daaec347488cab32cb91d095abf}{eliminarTotsProdDeCiutat}}(id\_ciutat);}
+\DoxyCodeLine{119         }
+\DoxyCodeLine{120         \textcolor{comment}{// Info sobre els productes}}
+\DoxyCodeLine{121         \textcolor{keywordtype}{int} quant\_prod;}
+\DoxyCodeLine{122         cin >> quant\_prod;}
+\DoxyCodeLine{123         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j<quant\_prod; j++) \{}
+\DoxyCodeLine{124             \textcolor{comment}{// Info sobre el producte}}
+\DoxyCodeLine{125             \textcolor{keywordtype}{int} id\_prod, oferta, demanda;}
+\DoxyCodeLine{126             cin >> id\_prod >> oferta >> demanda;}
+\DoxyCodeLine{127             }
+\DoxyCodeLine{128             \textcolor{comment}{// Comprovar si les dades son correctes}}
+\DoxyCodeLine{129             \textcolor{keywordflow}{if} (oferta<0) \{cout << \textcolor{stringliteral}{"{}error: oferta no valida"{}} << endl; \textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{130             \textcolor{keywordflow}{if} (demanda<=0) \{cout << \textcolor{stringliteral}{"{}error: demanda no valida"{}} << endl; \textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{131             \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{continue};\}}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133             \textcolor{comment}{// Saber les dades sobre el producte a afegir}}
+\DoxyCodeLine{134             \mbox{\hyperlink{classProducte}{Producte}} temp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(id\_prod);}
+\DoxyCodeLine{135             \textcolor{keywordtype}{int} pes = temp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}();}
+\DoxyCodeLine{136             \textcolor{keywordtype}{int} volum = temp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}();}
+\DoxyCodeLine{137             }
+\DoxyCodeLine{138             \textcolor{comment}{// Afegir el producte a la ciutat directament}}
+\DoxyCodeLine{139             ciutats.\mbox{\hyperlink{classCjt__ciutats_a8c3938d9ddaead4c915f068e120205df}{afegirProdACiutat}}(id\_ciutat,id\_prod,oferta,demanda,pes,volum);}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141     \}}
+\DoxyCodeLine{142 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{program_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{program.cc@{program.cc}!main@{main}}
+\index{main@{main}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funció principal del programa. 
+
+El programa comença declarant els objectes necessaris. Un cop inicialitzades les variables prinicipals (productes, ciutats i vaixell) es comença a llegir les comandes.
+
+Les comandes poden ser de diferents tipus\+:
+\begin{DoxyItemize}
+\item Leer\+\_\+rio\+: Llegir la cuenca.
+\item Leer\+\_\+inventario\+: Llegir l\textquotesingle{}inventari d\textquotesingle{}una ciutat.
+\item Leer\+\_\+inventarios\+: Llegir els inventaris de les ciutats.
+\item Modificar\+\_\+barco\+: Modificar el vaixell.
+\item Escribir\+\_\+barco\+: Escriure les dades del vaixell.
+\item Consultar\+\_\+num\+: Consultar el nombre de productes.
+\item Agregar\+\_\+productos\+: Afegir productes al conjunt de productes.
+\item Escribir\+\_\+producto\+: Escriure les dades d\textquotesingle{}un producte.
+\item Escribir\+\_\+ciudad\+: Escriure les dades d\textquotesingle{}una ciutat.
+\item Poner\+\_\+prod\+: Afegir un producte a una ciutat.
+\item Modificar\+\_\+prod\+: Modificar un producte d\textquotesingle{}una ciutat.
+\item Quitar\+\_\+prod\+: Treure un producte d\textquotesingle{}una ciutat.
+\item Consultar\+\_\+prod\+: Consultar les dades d\textquotesingle{}un producte d\textquotesingle{}una ciutat.
+\item Comerciar\+: Comerciar entre dues ciutats.
+\item Redistribuir\+: Redistribuir els productes entre les ciutats.
+\item Hacer\+\_\+viaje\+: Realitzar el viatge que faci que el vaixell comercii més quantitat entre ciutats. Nota\+: Si una comanda no és vàlida, es deixa passar. 
+\end{DoxyItemize}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{455             \{}
+\DoxyCodeLine{456     \textcolor{comment}{// === Introducció}}
+\DoxyCodeLine{457     \textcolor{comment}{// Demanar productes}}
+\DoxyCodeLine{458     \mbox{\hyperlink{classCjt__productes}{Cjt\_productes}} productes;}
+\DoxyCodeLine{459     \textcolor{keywordtype}{int} quant\_prod;}
+\DoxyCodeLine{460     cin >> quant\_prod;}
+\DoxyCodeLine{461     productes.\mbox{\hyperlink{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}{llegir}}(quant\_prod);}
+\DoxyCodeLine{462 }
+\DoxyCodeLine{463     \textcolor{comment}{// Demanar cuenca}}
+\DoxyCodeLine{464     \mbox{\hyperlink{classCjt__ciutats}{Cjt\_ciutats}} ciutats;}
+\DoxyCodeLine{465     BinTree<string> cuenca = ciutats.\mbox{\hyperlink{classCjt__ciutats_a76d29cc0c90d734899fe349fcf242092}{leer\_rio}}();}
+\DoxyCodeLine{466 }
+\DoxyCodeLine{467     \textcolor{comment}{// Demanar vaixell}}
+\DoxyCodeLine{468     \mbox{\hyperlink{classVaixell}{Vaixell}} barco;}
+\DoxyCodeLine{469     barco.\mbox{\hyperlink{classVaixell_a5177959b74871d22e79eb1ae6b96a0c6}{llegir}}(productes);}
+\DoxyCodeLine{470 }
+\DoxyCodeLine{471     \textcolor{comment}{// === Commandes}}
+\DoxyCodeLine{472     \textcolor{keywordtype}{string} usr\_op;}
+\DoxyCodeLine{473     \textcolor{keywordflow}{while} (cin >> usr\_op and usr\_op!=\textcolor{stringliteral}{"{}fin"{}}) \{}
+\DoxyCodeLine{474         \textcolor{keywordflow}{if} (usr\_op == \textcolor{stringliteral}{"{}//"{}}) \{}
+\DoxyCodeLine{475             getline(cin, usr\_op);}
+\DoxyCodeLine{476             \textcolor{keywordflow}{continue}; \textcolor{comment}{// Anar a la següent iteració del bucle}}
+\DoxyCodeLine{477         \}}
+\DoxyCodeLine{478         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_rio"{}} or usr\_op==\textcolor{stringliteral}{"{}lr"{}}) \{}
+\DoxyCodeLine{479             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{480             barco.\mbox{\hyperlink{classVaixell_a6d3969acdc815b968b736b99c0da137f}{eliminarRegistre}}();}
+\DoxyCodeLine{481             cuenca = ciutats.\mbox{\hyperlink{classCjt__ciutats_a76d29cc0c90d734899fe349fcf242092}{leer\_rio}}();}
+\DoxyCodeLine{482         \}}
+\DoxyCodeLine{483         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_inventario"{}} or usr\_op==\textcolor{stringliteral}{"{}li"{}}) \{}
+\DoxyCodeLine{484             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{485             \mbox{\hyperlink{program_8cc_a41dab7c6f6e59deeecf7df661899cd8a}{leer\_inventario}}(ciutats, productes);}
+\DoxyCodeLine{486         \}}
+\DoxyCodeLine{487         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_inventarios"{}} or usr\_op==\textcolor{stringliteral}{"{}ls"{}}) \{}
+\DoxyCodeLine{488             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{489             \mbox{\hyperlink{program_8cc_afaa519c971d42977be3a7c7ba431c28e}{leer\_inventarios}}(ciutats, productes);}
+\DoxyCodeLine{490         \}}
+\DoxyCodeLine{491         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}modificar\_barco"{}} or usr\_op==\textcolor{stringliteral}{"{}mb"{}}) \{}
+\DoxyCodeLine{492             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{493             \mbox{\hyperlink{program_8cc_ae6094e1e926fbe255417c48937dd8147}{modificar\_barco}}(barco, productes);}
+\DoxyCodeLine{494         \}}
+\DoxyCodeLine{495         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_barco"{}} or usr\_op==\textcolor{stringliteral}{"{}eb"{}}) \{}
+\DoxyCodeLine{496             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{497             \mbox{\hyperlink{program_8cc_ac2f5c2a778441ad478521671d5390f11}{escribir\_barco}}(barco);}
+\DoxyCodeLine{498         \}}
+\DoxyCodeLine{499         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}consultar\_num"{}} or usr\_op==\textcolor{stringliteral}{"{}cn"{}}) \{}
+\DoxyCodeLine{500             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{501             cout << productes.\mbox{\hyperlink{classCjt__productes_aa15e98e1d3bdf1e22c50a07a93f5d6e3}{consultarQuantitatProd}}() << endl;}
+\DoxyCodeLine{502         \}}
+\DoxyCodeLine{503         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}agregar\_productos"{}} or usr\_op==\textcolor{stringliteral}{"{}ap"{}}) \{}
+\DoxyCodeLine{504             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{505             \mbox{\hyperlink{program_8cc_aee38d111d27fceb494822eab89815462}{agregar\_productos}}(productes);}
+\DoxyCodeLine{506         \}}
+\DoxyCodeLine{507         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_producto"{}} or usr\_op==\textcolor{stringliteral}{"{}ep"{}}) \{}
+\DoxyCodeLine{508             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{509             \mbox{\hyperlink{program_8cc_acc006f8b966e986ecd9e5b36ae33d5d3}{escribir\_producto}}(productes);}
+\DoxyCodeLine{510         \}}
+\DoxyCodeLine{511         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_ciudad"{}} or usr\_op==\textcolor{stringliteral}{"{}ec"{}}) \{}
+\DoxyCodeLine{512             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{513             \mbox{\hyperlink{program_8cc_a3239cd3281a85609c385969d48a63b3c}{escribir\_ciudad}}(ciutats);}
+\DoxyCodeLine{514         \}}
+\DoxyCodeLine{515         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}poner\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}pp"{}}) \{}
+\DoxyCodeLine{516             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{517             \mbox{\hyperlink{program_8cc_afe8b0fd4cf9875e371ce133268e84220}{poner\_prod}}(ciutats, productes);}
+\DoxyCodeLine{518         \}}
+\DoxyCodeLine{519         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}modificar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}mp"{}}) \{}
+\DoxyCodeLine{520             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{521             \mbox{\hyperlink{program_8cc_aca4524ac2462b5d561dd966e2613e41b}{modificar\_prod}}(ciutats, productes);}
+\DoxyCodeLine{522         \}}
+\DoxyCodeLine{523         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}quitar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}qp"{}}) \{}
+\DoxyCodeLine{524             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{525             \mbox{\hyperlink{program_8cc_a4200cacc339f24b6a2f87a578da458a8}{quitar\_prod}}(ciutats, productes);}
+\DoxyCodeLine{526         \}}
+\DoxyCodeLine{527         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}consultar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}cp"{}}) \{}
+\DoxyCodeLine{528             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{529             \mbox{\hyperlink{program_8cc_a770cd237ebed8979e3b4dc709d9e539f}{consultar\_prod}}(ciutats, productes);}
+\DoxyCodeLine{530         \}}
+\DoxyCodeLine{531         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}comerciar"{}} or usr\_op==\textcolor{stringliteral}{"{}co"{}}) \{}
+\DoxyCodeLine{532             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{533             \mbox{\hyperlink{program_8cc_a11af517e7df5c149749f0b33f3708504}{comerciar}}(ciutats, productes);}
+\DoxyCodeLine{534         \}}
+\DoxyCodeLine{535         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}redistribuir"{}} or usr\_op==\textcolor{stringliteral}{"{}re"{}}) \{}
+\DoxyCodeLine{536             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{537             ciutats.\mbox{\hyperlink{classCjt__ciutats_a0ae1d9250ef610303944d9ee3cfcdb73}{redistribuir}}(cuenca, productes);}
+\DoxyCodeLine{538         \}}
+\DoxyCodeLine{539         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op == \textcolor{stringliteral}{"{}hacer\_viaje"{}} or usr\_op == \textcolor{stringliteral}{"{}hv"{}}) \{}
+\DoxyCodeLine{540             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{541             \mbox{\hyperlink{program_8cc_ab87caae14a212846fe28c280a16ca810}{hacer\_viaje}}(cuenca, productes, barco, ciutats);}
+\DoxyCodeLine{542         \}}
+\DoxyCodeLine{543     \}}
+\DoxyCodeLine{544 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_ae6094e1e926fbe255417c48937dd8147}\label{program_8cc_ae6094e1e926fbe255417c48937dd8147}} 
+\index{program.cc@{program.cc}!modificar\_barco@{modificar\_barco}}
+\index{modificar\_barco@{modificar\_barco}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{modificar\_barco()}{modificar\_barco()}}
+{\footnotesize\ttfamily void modificar\+\_\+barco (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVaixell}{Vaixell}} \&}]{barco,  }\item[{\mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Modificar el vaixell amb les noves dades. 
+
+És llegeixen les dades de compra i venda de productes i es comprova si són vàlides. Si no són el mateix producte, es modifica el vaixell amb els nous productes.
+
+\begin{DoxyPrecond}{Precondición}
+barco i productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classVaixell}{Vaixell}} modificat amb els nous productes. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{153                                                                \{}
+\DoxyCodeLine{154     \textcolor{comment}{// Info sobre la Compra}}
+\DoxyCodeLine{155     \textcolor{keywordtype}{int} prod\_compra, quant\_compra;}
+\DoxyCodeLine{156     cin >> prod\_compra >> quant\_compra;}
+\DoxyCodeLine{157     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(prod\_compra)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{158     }
+\DoxyCodeLine{159     \textcolor{comment}{// Info sobre la Venta}}
+\DoxyCodeLine{160     \textcolor{keywordtype}{int} prod\_venta, quant\_venta;}
+\DoxyCodeLine{161     cin >> prod\_venta >> quant\_venta;}
+\DoxyCodeLine{162     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(prod\_venta)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164     \textcolor{keywordflow}{if} (prod\_compra==prod\_venta) \{cout<< \textcolor{stringliteral}{"{}error: no se puede comprar y vender el mismo producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{165     barco.\mbox{\hyperlink{classVaixell_a72bbb30083416053eb57b3eb03a19b34}{modificarMercancia}}(prod\_compra, quant\_compra, prod\_venta, quant\_venta);}
+\DoxyCodeLine{166 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_aca4524ac2462b5d561dd966e2613e41b}\label{program_8cc_aca4524ac2462b5d561dd966e2613e41b}} 
+\index{program.cc@{program.cc}!modificar\_prod@{modificar\_prod}}
+\index{modificar\_prod@{modificar\_prod}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{modificar\_prod()}{modificar\_prod()}}
+{\footnotesize\ttfamily void modificar\+\_\+prod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Modificar un producte d\textquotesingle{}una ciutat. 
+
+És llegeixen les dades de la ciutat i del producte a modificar. És comprova si les dades són vàlides. Si la ciutat no té el producte, és mostra un error. És modifica la ciutat amb el producte modificat i es mostra el nou pes i volum total de la ciutat.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats i productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classCiutat}{Ciutat}} modificada amb el producte modificat. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{282                                                                           \{}
+\DoxyCodeLine{283     \textcolor{keywordtype}{string} id\_city;}
+\DoxyCodeLine{284     \textcolor{keywordtype}{int} id\_prod, oferta, demanda;}
+\DoxyCodeLine{285     cin >> id\_city >> id\_prod >> oferta >> demanda;}
+\DoxyCodeLine{286     cout << \textcolor{charliteral}{' '} << id\_city << \textcolor{charliteral}{' '} << id\_prod << endl;}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288     \textcolor{comment}{// Comprovar si les dades son correctes}}
+\DoxyCodeLine{289     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{290     \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_city)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{291     \textcolor{keywordflow}{if} (oferta<0) \{cout << \textcolor{stringliteral}{"{}error: oferta no valida"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{292     \textcolor{keywordflow}{if} (demanda<=0) \{cout << \textcolor{stringliteral}{"{}error: demanda no valida"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{293     }
+\DoxyCodeLine{294     \textcolor{comment}{// Comprovar si la ciutat no té el producte}}
+\DoxyCodeLine{295     \mbox{\hyperlink{classCiutat}{Ciutat}} temp\_city = ciutats.\mbox{\hyperlink{classCjt__ciutats_a34a77a10e4fa9e9bbf9b6eb460b211eb}{consultarCiutat}}(id\_city);}
+\DoxyCodeLine{296     \textcolor{keywordflow}{if} (not temp\_city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: la ciudad no tiene el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{297     }
+\DoxyCodeLine{298     \textcolor{comment}{// Saber les dades sobre el producte a modiuficar}}
+\DoxyCodeLine{299     \mbox{\hyperlink{classProducte}{Producte}} temp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(id\_prod);}
+\DoxyCodeLine{300     \textcolor{keywordtype}{int} pes = temp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}();}
+\DoxyCodeLine{301     \textcolor{keywordtype}{int} volum = temp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}();}
+\DoxyCodeLine{302     }
+\DoxyCodeLine{303     \textcolor{comment}{// Modificar el producte a la ciutat}}
+\DoxyCodeLine{304     temp\_city.\mbox{\hyperlink{classCiutat_a00e9c276bdb0b901394c146ed24d45c6}{modificarProdDelInventari}}(id\_prod,oferta,demanda,pes,volum);}
+\DoxyCodeLine{305     ciutats.\mbox{\hyperlink{classCjt__ciutats_a1abf869164412a0f2705e6e75fe17607}{modificarCiutat}}(id\_city,temp\_city);}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{307     \textcolor{comment}{// Mostrar nou pes i volum total de la ciutat}}
+\DoxyCodeLine{308     cout << temp\_city.\mbox{\hyperlink{classCiutat_a34007a186f3c19466cd2e64dcc3c38e0}{consultarPesTotal}}() << \textcolor{charliteral}{' '} << temp\_city.\mbox{\hyperlink{classCiutat_a99f5d70b8c1f95d5203b247d4ef69f14}{consultarVolumTotal}}() << endl;}
+\DoxyCodeLine{309 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_afe8b0fd4cf9875e371ce133268e84220}\label{program_8cc_afe8b0fd4cf9875e371ce133268e84220}} 
+\index{program.cc@{program.cc}!poner\_prod@{poner\_prod}}
+\index{poner\_prod@{poner\_prod}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{poner\_prod()}{poner\_prod()}}
+{\footnotesize\ttfamily void poner\+\_\+prod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Afegir un producte a una ciutat. 
+
+És llegeixen les dades de la ciutat i del producte a afegir. És comprova si les dades són vàlides. Si la ciutat ja té el producte, és mostra un error. És modifica la ciutat amb el nou producte i es mostra el nou pes i volum total de la ciutat.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats i productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classCiutat}{Ciutat}} modificada amb el nou producte. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{242                                                                       \{}
+\DoxyCodeLine{243     \textcolor{keywordtype}{string} id\_city;}
+\DoxyCodeLine{244     \textcolor{keywordtype}{int} id\_prod, oferta, demanda;}
+\DoxyCodeLine{245     cin >> id\_city >> id\_prod >> oferta >> demanda;}
+\DoxyCodeLine{246     cout << \textcolor{charliteral}{' '} << id\_city << \textcolor{charliteral}{' '} << id\_prod << endl;}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248     \textcolor{comment}{// Comprovar si les dades son correctes}}
+\DoxyCodeLine{249     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{250     \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_city)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{251     \textcolor{keywordflow}{if} (oferta<0) \{cout << \textcolor{stringliteral}{"{}error: oferta no valida"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{252     \textcolor{keywordflow}{if} (demanda<=0) \{cout << \textcolor{stringliteral}{"{}error: demanda no valida"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{253     }
+\DoxyCodeLine{254     \textcolor{comment}{// Comprovar si la ciutat ja té el producte}}
+\DoxyCodeLine{255     \mbox{\hyperlink{classCiutat}{Ciutat}} temp\_city = ciutats.\mbox{\hyperlink{classCjt__ciutats_a34a77a10e4fa9e9bbf9b6eb460b211eb}{consultarCiutat}}(id\_city);}
+\DoxyCodeLine{256     \textcolor{keywordflow}{if} (temp\_city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: la ciudad ya tiene el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{257     }
+\DoxyCodeLine{258     \textcolor{comment}{// Saber les dades sobre el producte a afegir}}
+\DoxyCodeLine{259     \mbox{\hyperlink{classProducte}{Producte}} temp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(id\_prod);}
+\DoxyCodeLine{260     \textcolor{keywordtype}{int} pes = temp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}();}
+\DoxyCodeLine{261     \textcolor{keywordtype}{int} volum = temp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}();}
+\DoxyCodeLine{262 }
+\DoxyCodeLine{263     \textcolor{comment}{// Afegir el producte a la ciutat}}
+\DoxyCodeLine{264     temp\_city.\mbox{\hyperlink{classCiutat_a3ec16c600fceb969a833006cea0e5041}{afegirProdAlInventari}}(id\_prod, oferta, demanda, pes, volum);}
+\DoxyCodeLine{265     ciutats.\mbox{\hyperlink{classCjt__ciutats_a1abf869164412a0f2705e6e75fe17607}{modificarCiutat}}(id\_city, temp\_city);}
+\DoxyCodeLine{266     }
+\DoxyCodeLine{267     \textcolor{comment}{// Mostrar nou pes i volum total de la ciutat}}
+\DoxyCodeLine{268     cout << temp\_city.\mbox{\hyperlink{classCiutat_a34007a186f3c19466cd2e64dcc3c38e0}{consultarPesTotal}}() << \textcolor{charliteral}{' '} << temp\_city.\mbox{\hyperlink{classCiutat_a99f5d70b8c1f95d5203b247d4ef69f14}{consultarVolumTotal}}() << endl;}
+\DoxyCodeLine{269 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{program_8cc_a4200cacc339f24b6a2f87a578da458a8}\label{program_8cc_a4200cacc339f24b6a2f87a578da458a8}} 
+\index{program.cc@{program.cc}!quitar\_prod@{quitar\_prod}}
+\index{quitar\_prod@{quitar\_prod}!program.cc@{program.cc}}
+\doxysubsubsection{\texorpdfstring{quitar\_prod()}{quitar\_prod()}}
+{\footnotesize\ttfamily void quitar\+\_\+prod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} \&}]{ciutats,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes }\end{DoxyParamCaption})}
+
+
+
+Treure un producte d\textquotesingle{}una ciutat. 
+
+És llegeixen les dades de la ciutat i del producte a treure. És comprova si les dades són vàlides. Si la ciutat no té el producte, és mostra un error. És modifica la ciutat eliminant el producte i es mostra el nou pes i volum total de la ciutat.
+
+\begin{DoxyPrecond}{Precondición}
+ciutats i productes són vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classCiutat}{Ciutat}} modificada sense el producte. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{322                                                                        \{}
+\DoxyCodeLine{323     \textcolor{keywordtype}{string} id\_city;}
+\DoxyCodeLine{324     \textcolor{keywordtype}{int} id\_prod;}
+\DoxyCodeLine{325     cin >> id\_city >> id\_prod;}
+\DoxyCodeLine{326     cout << \textcolor{charliteral}{' '} << id\_city << \textcolor{charliteral}{' '} << id\_prod << endl;}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{328     \textcolor{comment}{// Comprovar si les dades son correctes}}
+\DoxyCodeLine{329     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: no existe el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{330     \textcolor{keywordflow}{if} (not ciutats.\mbox{\hyperlink{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}{existeixCiutat}}(id\_city)) \{cout << \textcolor{stringliteral}{"{}error: no existe la ciudad"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{331     }
+\DoxyCodeLine{332     \textcolor{comment}{// Comprovar si la ciutat no té el producte}}
+\DoxyCodeLine{333     \mbox{\hyperlink{classCiutat}{Ciutat}} temp\_city = ciutats.\mbox{\hyperlink{classCjt__ciutats_a34a77a10e4fa9e9bbf9b6eb460b211eb}{consultarCiutat}}(id\_city);}
+\DoxyCodeLine{334     \textcolor{keywordflow}{if} (not temp\_city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(id\_prod)) \{cout << \textcolor{stringliteral}{"{}error: la ciudad no tiene el producto"{}} << endl; \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{335     }
+\DoxyCodeLine{336     \textcolor{comment}{// Saber les dades sobre el producte a eliminar}}
+\DoxyCodeLine{337     \mbox{\hyperlink{classProducte}{Producte}} temp\_prod = productes.\mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultarProducte}}(id\_prod);}
+\DoxyCodeLine{338     \textcolor{keywordtype}{int} pes = temp\_prod.\mbox{\hyperlink{classProducte_a48b2239bec670495ac2697d600038d89}{consultarPes}}();}
+\DoxyCodeLine{339     \textcolor{keywordtype}{int} volum = temp\_prod.\mbox{\hyperlink{classProducte_a103d50a1ec894604e46b96c064bbaf2c}{consultarVolum}}();}
+\DoxyCodeLine{340     }
+\DoxyCodeLine{341     \textcolor{comment}{// Eliminar el producte de la ciutat}}
+\DoxyCodeLine{342     temp\_city.\mbox{\hyperlink{classCiutat_abfbd80bb78d24a9530f3e43fea7d839b}{eliminarProdDelInventari}}(id\_prod,pes,volum);}
+\DoxyCodeLine{343     ciutats.\mbox{\hyperlink{classCjt__ciutats_a1abf869164412a0f2705e6e75fe17607}{modificarCiutat}}(id\_city,temp\_city);}
+\DoxyCodeLine{344 }
+\DoxyCodeLine{345     \textcolor{comment}{// Mostrar nou pes i volum total de la ciutat}}
+\DoxyCodeLine{346     cout << temp\_city.\mbox{\hyperlink{classCiutat_a34007a186f3c19466cd2e64dcc3c38e0}{consultarPesTotal}}() << \textcolor{charliteral}{' '} << temp\_city.\mbox{\hyperlink{classCiutat_a99f5d70b8c1f95d5203b247d4ef69f14}{consultarVolumTotal}}() << endl;}
+\DoxyCodeLine{347 \}}
+
+\end{DoxyCode}
