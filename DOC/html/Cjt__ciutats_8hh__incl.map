@@ -1,9 +1,8 @@
 <map id="Cjt_ciutats.hh" name="Cjt_ciutats.hh">
 <area shape="rect" id="node1" title="Especificació de la classe Cjt_ciutats." alt="" coords="81,5,191,32"/>
 <area shape="rect" id="node2" href="$Cjt__productes_8hh.html" title="Especificació de la classe Cjt_productes." alt="" coords="5,229,136,256"/>
-<area shape="rect" id="node4" href="$Ciutat_8hh.html" title="Especificació de la classe Ciutat." alt="" coords="30,155,111,181"/>
-<area shape="rect" id="node5" href="$Vaixell_8hh.html" title="Especificació de la classe Vaixell." alt="" coords="93,80,179,107"/>
-<area shape="rect" id="node6" href="$Viatge_8hh.html" title="Especificació de la classe Viatge." alt="" coords="203,80,287,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="312,80,403,107"/>
-<area shape="rect" id="node3" href="$Producte_8hh.html" title="Especificació de la classe Producte." alt="" coords="21,304,120,331"/>
+<area shape="rect" id="node3" href="$Ciutat_8hh.html" title="Especificació de la classe Ciutat." alt="" coords="30,155,111,181"/>
+<area shape="rect" id="node4" href="$Vaixell_8hh.html" title="Especificació de la classe Vaixell." alt="" coords="93,80,179,107"/>
+<area shape="rect" id="node5" href="$Viatge_8hh.html" title="Especificació de la classe Viatge." alt="" coords="203,80,287,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="312,80,403,107"/>
 </map>

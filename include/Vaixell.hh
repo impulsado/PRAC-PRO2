@@ -54,12 +54,22 @@ public:
     /**
      * @brief Realitza l'operació de comerç amb una ciutat.
      * 
-     * @details Aquesta funció pot modificar la ciutat si es desitja. Això és per optimitzar el càlcul de la millor ruta.
+     * @details Aquesta funció si modifica la ciutat. Es crida quan ja es té determinada la millor ruta.
      * 
      * \pre La ciutat té un inventari vàlid. Els productes existeixen en el conjunt de productes.
      * \post Actualitza el vaixell i la ciutat segons l'operació de comerç. Retorna la quantitat total comerciada.
      */
-    int comerciar(Ciutat& city, const Cjt_productes& productes, bool modificar_ciutat);
+    int comerciar(Ciutat& city, const Cjt_productes& productes);
+    
+    /**
+     * @brief Realitza l'operació de comerç amb una ciutat sense modificar-la.
+     * 
+     * @details Aquesta funció no modifica la ciutat, és útil per determinar la millor ruta sense modificar les ciutats.
+     * 
+     * \pre La ciutat és vàlida.
+     * \post Retorna la quantitat total comerciada sense modificar la ciutat.
+     */
+    int comerciarSenseMod(Ciutat& city);
 
     /**
      * @brief Afegir una ciutat al registre de les últimes ciutats visitades.

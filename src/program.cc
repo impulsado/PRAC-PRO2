@@ -30,7 +30,7 @@
  * 
  * Una ciutat pot tindre o no inventari de productes. Aquest inventari es pot modificar afegint, eliminant o modificant productes.
  *
- * Un vaixell sempre té un inventari valid on té una quantitat d'un determinat producte per a vendre i un altre per a comprar (diferents). Aquest inventari es pot modificar.
+ * Un vaixell sempre té un inventari vàlid on té una quantitat d'un determinat producte per a vendre i un altre per a comprar (diferents). Aquest inventari es pot modificar.
  * El vaixell també té un registre de les ultimes ciutats on ha comerciat cada vegada que s'ha fet un viatge al llarg de la cuenca.
  * 
  * La classe viatge ajuda a organitzar les dades per a realitzar un viatge entre ciutats. Conté la quantitat total de productes comerciats si es realitza el viatge i les ciutats per on passa.
@@ -40,7 +40,7 @@
  * - Per a la classe Cjt_ciutats s'ha decidit fer servir un map per a tenir un accés més ràpid a les ciutats.
  * - Per a l'operació de viatge s'ha decidit crear una nova classe per millorar la llegibilitat del codi.
  * - No s'ha fet servir un BinTree de ciutats donat que modificar les ciutats dins de l'arbre gran perdem eficiencia.
- * - Els parametres que es passen a una mètode de la classe sempre són correctes menys quan es llegeixen les dades.
+ * - Els paràmetres que es passen a una mètode de la classe sempre són correctes.
  * 
  */
 
@@ -391,10 +391,10 @@ void comerciar(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
 /**
  * @brief Realitzar un viatge entre ciutats.
  * 
- * Es determina el millor viatge a realitzar i si es comercia algun producte es realitza.
+ * Es determina el millor viatge a realitzar i si es comercia algún producte es realitza.
  * 
- * \pre ciutats, productes i barco són vàlids.
- * \post Viatge realitzat.
+ * \pre cuenca, ciutats, productes i barco són vàlids.
+ * \post Viatge realitzat. Les ciutats són modificades però el vaixell no.
  */
 void hacer_viaje(const BinTree<string>& cuenca, const Cjt_productes& productes, Vaixell& barco, Cjt_ciutats& ciutats) {
     // Determinar el millor viatge a realitzar
@@ -441,6 +441,7 @@ void hacer_viaje(const BinTree<string>& cuenca, const Cjt_productes& productes, 
  * Nota: Si una comanda no és vàlida, es deixa passar.
  * 
  */
+
 int main () {
     // === Introducció
     // Demanar productes

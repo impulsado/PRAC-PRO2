@@ -52,7 +52,7 @@ void Cjt_ciutats::realitzar_viatge(const Cjt_productes& productes, const Viatge&
     while (it!=llist_ciutats.end()) {
         string id_city = *it;        
         // Comerç amb la ciutat
-        barco.comerciar(cmap[id_city], productes, true);
+        barco.comerciar(cmap[id_city], productes);
         
         ++it;
     }
@@ -67,7 +67,7 @@ Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_p
     string id_city = cuenca.value();
 
     // Fer intercanvi
-    int quant_comerciat = barco.comerciar(cmap[id_city], productes, false);
+    int quant_comerciat = barco.comerciarSenseMod(cmap[id_city]);
 
     // Actualitzar viatge actual
     viatge_act.afegirCiutat(id_city);

@@ -77,48 +77,44 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef NO_DIAGRAM</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Producte_8hh.html">Producte.hh</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classCjt__productes.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCjt__productes.html">Cjt_productes</a> {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classCjt__productes.html#a10227f9e0755a4c84e65353c9362c314">   27</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classCjt__productes.html#a10227f9e0755a4c84e65353c9362c314">quant_prod</a>;  </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classCjt__productes.html#ad701f0f80868fe2c7193e02b31e048ba">   28</a></span>&#160;    vector&lt;Producte&gt; <a class="code" href="classCjt__productes.html#ad701f0f80868fe2c7193e02b31e048ba">vprod</a>;  </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classCjt__productes.html#a165441f3f61ac181508b886513efaa3d">   28</a></span>&#160;    vector&lt;pair&lt;int,int&gt;&gt; <a class="code" href="classCjt__productes.html#a165441f3f61ac181508b886513efaa3d">vprod</a>;  </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">/* CONSTRUCTORS */</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classCjt__productes.html">Cjt_productes</a>();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classCjt__productes.html">Cjt_productes</a>(<span class="keywordtype">int</span> mida);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">/* MODIFICADORS */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> afegirProducte(<span class="keywordtype">int</span> pes, <span class="keywordtype">int</span> volumen);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">/* MODIFICADORS */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> afegirProducte(<span class="keywordtype">int</span> pes, <span class="keywordtype">int</span> volumen);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> modificarProducte(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">int</span> pes, <span class="keywordtype">int</span> volumen);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> modificarProducte(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keyword">const</span> <a class="code" href="classProducte.html">Producte</a>&amp; prod);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">/* CONSULTORS */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">bool</span> existeixProducte(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">/* CONSULTORS */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">bool</span> existeixProducte(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">int</span> consultarQuantitatProd() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">int</span> consultarQuantitatProd() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    pair&lt;int,int&gt; consultarProducte(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classProducte.html">Producte</a> consultarProducte(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">/* ESCRIPTURA */</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> escriureProd(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">/* LECTURA */</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> llegir(<span class="keywordtype">int</span> quant_prod);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aProducte_8hh_html"><div class="ttname"><a href="Producte_8hh.html">Producte.hh</a></div><div class="ttdoc">Especificació de la classe Producte.</div></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">/* ESCRIPTURA */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> escriureProd(<span class="keywordtype">int</span> <span class="keywordtype">id</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">/* LECTURA */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> llegir(<span class="keywordtype">int</span> quant_prod);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassCjt__productes_html"><div class="ttname"><a href="classCjt__productes.html">Cjt_productes</a></div><div class="ttdoc">Conjunt de productes.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.hh:24</div></div>
 <div class="ttc" id="aclassCjt__productes_html_a10227f9e0755a4c84e65353c9362c314"><div class="ttname"><a href="classCjt__productes.html#a10227f9e0755a4c84e65353c9362c314">Cjt_productes::quant_prod</a></div><div class="ttdeci">int quant_prod</div><div class="ttdoc">Quantitat de productes.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.hh:27</div></div>
-<div class="ttc" id="aclassCjt__productes_html_ad701f0f80868fe2c7193e02b31e048ba"><div class="ttname"><a href="classCjt__productes.html#ad701f0f80868fe2c7193e02b31e048ba">Cjt_productes::vprod</a></div><div class="ttdeci">vector&lt; Producte &gt; vprod</div><div class="ttdoc">Vector de productes.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.hh:28</div></div>
-<div class="ttc" id="aclassProducte_html"><div class="ttname"><a href="classProducte.html">Producte</a></div><div class="ttdoc">Representa un producte amb un identificador únic, pes i volum.</div><div class="ttdef"><b>Definition:</b> Producte.hh:20</div></div>
+<div class="ttc" id="aclassCjt__productes_html_a165441f3f61ac181508b886513efaa3d"><div class="ttname"><a href="classCjt__productes.html#a165441f3f61ac181508b886513efaa3d">Cjt_productes::vprod</a></div><div class="ttdeci">vector&lt; pair&lt; int, int &gt; &gt; vprod</div><div class="ttdoc">Vector de productes.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.hh:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

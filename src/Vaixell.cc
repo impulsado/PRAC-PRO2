@@ -16,7 +16,7 @@ void Vaixell::modificarMercancia(int id_compra, int quant_compra, int id_venta, 
     vendre = make_pair(id_venta, quant_venta);
 }
 
-int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes, bool modificar_ciutat) {
+int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
     // La ciutat no té inventari (Optimització)
     if (not city.teInventari()) return 0;
     
@@ -24,22 +24,20 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes, bool modifi
     int quant_total = 0;
 
     // Comprar de la ciutat
-    int id_prod_comprar = comprar.first;
-    int quant_comprar_barco = comprar.second;
     
     // La ciutat té el producte i el vaixell pot comprar
-    if (quant_comprar_barco>0 and city.teProducte(id_prod_comprar)) {
+    if (comprar.second>0 and city.teProducte(comprar.first)) {
         // Saber quantitat disponible a la ciutat
-        int dif = city.consultarDiferencia(id_prod_comprar);
+        int dif = city.consultarDiferencia(comprar.first);
 
         // La ciutat té quantitat per vendre al vaixell
         if (dif>0) {
             // Determinar la maxima quantitat a comerciar
-            int quant_comerciar = min(quant_comprar_barco, dif);
+            int quant_comerciar = min(comprar.second, dif);
             // Consultar el producte
-            pair<int,int> pesVol = productes.consultarProducte(id_prod_comprar);
+            pair<int,int> pesVol = productes.consultarProducte(comprar.first);
             // Treure la quantitat venuda per la ciutat
-            if (modificar_ciutat) city.modificarOfertaProd(id_prod_comprar, -quant_comerciar, pesVol.first, pesVol.second);
+            city.modificarOfertaProd(comprar.first, -quant_comerciar, pesVol.first, pesVol.second);
             // Actualitzar la nova quantitat necessària del vaixell
             comprar.second -= quant_comerciar;
             // Actualitzar la quantitat total comerciada
@@ -48,22 +46,64 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes, bool modifi
     }
 
     // Vendre a la ciutat
-    int id_prod_venta = vendre.first;
-    int quant_vendre_barco = vendre.second;
-
     // La ciutat necessita el producte i el vaixell pot vendre
-    if (quant_vendre_barco>0 and city.teProducte(id_prod_venta)) {
+    if (vendre.second>0 and city.teProducte(vendre.first)) {
         // Saber quantitat necessària a la ciutat
-        int dif = city.consultarDiferencia(id_prod_venta);
+        int dif = city.consultarDiferencia(vendre.first);
         
         // La ciutat té necessitat del producte
         if (dif<0) {
             // Determinar la maxima quantitat a comerciar
-            int quant_comerciar = min(quant_vendre_barco, -dif);
+            int quant_comerciar = min(vendre.second, -dif);
             // Consultar el producte
-            pair<int,int> pesVol = productes.consultarProducte(id_prod_venta);
+            pair<int,int> pesVol = productes.consultarProducte(vendre.first);
             // Afegir la quantitat venuda a la ciutat
-            if (modificar_ciutat) city.modificarOfertaProd(id_prod_venta, quant_comerciar, pesVol.first, pesVol.second);
+            city.modificarOfertaProd(vendre.first, quant_comerciar, pesVol.first, pesVol.second);
+            // Actualitzar la nova quantitat necessària del vaixell
+            vendre.second -= quant_comerciar;
+            // Actualitzar la quantitat total comerciada
+            quant_total += quant_comerciar;
+        }
+    }
+    
+    return quant_total;
+}
+
+int Vaixell::comerciarSenseMod(Ciutat& city) {
+    // La ciutat no té inventari (Optimització)
+    if (not city.teInventari()) return 0;
+    
+    // Total comerciat
+    int quant_total = 0;
+
+    // Comprar de la ciutat
+    
+    // La ciutat té el producte i el vaixell pot comprar
+    if (comprar.second>0 and city.teProducte(comprar.first)) {
+        // Saber quantitat disponible a la ciutat
+        int dif = city.consultarDiferencia(comprar.first);
+
+        // La ciutat té quantitat per vendre al vaixell
+        if (dif>0) {
+            // Determinar la maxima quantitat a comerciar
+            int quant_comerciar = min(comprar.second, dif);
+            // Actualitzar la nova quantitat necessària del vaixell
+            comprar.second -= quant_comerciar;
+            // Actualitzar la quantitat total comerciada
+            quant_total += quant_comerciar;
+        }
+    }
+
+    // Vendre a la ciutat
+    // La ciutat necessita el producte i el vaixell pot vendre
+    if (vendre.second>0 and city.teProducte(vendre.first)) {
+        // Saber quantitat necessària a la ciutat
+        int dif = city.consultarDiferencia(vendre.first);
+        
+        // La ciutat té necessitat del producte
+        if (dif<0) {
+            // Determinar la maxima quantitat a comerciar
+            int quant_comerciar = min(vendre.second, -dif);
             // Actualitzar la nova quantitat necessària del vaixell
             vendre.second -= quant_comerciar;
             // Actualitzar la quantitat total comerciada

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['producte_96',['Producte',['../classProducte.html',1,'']]]
+  ['vaixell_90',['Vaixell',['../classVaixell.html',1,'']]],
+  ['viatge_91',['Viatge',['../classViatge.html',1,'']]]
 ];

@@ -202,7 +202,7 @@ Retorna el viatge a realitzar.
 \DoxyCodeLine{67     \textcolor{keywordtype}{string} id\_city = cuenca.value();}
 \DoxyCodeLine{68 }
 \DoxyCodeLine{69     \textcolor{comment}{// Fer intercanvi}}
-\DoxyCodeLine{70     \textcolor{keywordtype}{int} quant\_comerciat = barco.\mbox{\hyperlink{classVaixell_ab806dd22cbd275c4b28f76079f210ed7}{comerciar}}(\mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}[id\_city], productes, \textcolor{keyword}{false});}
+\DoxyCodeLine{70     \textcolor{keywordtype}{int} quant\_comerciat = barco.\mbox{\hyperlink{classVaixell_a28022cdc527c782005c890f46193d6d2}{comerciarSenseMod}}(\mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}[id\_city]);}
 \DoxyCodeLine{71 }
 \DoxyCodeLine{72     \textcolor{comment}{// Actualitzar viatge actual}}
 \DoxyCodeLine{73     viatge\_act.\mbox{\hyperlink{classViatge_adfd63bc784d9dd3aba18290c5555441b}{afegirCiutat}}(id\_city);}
@@ -433,7 +433,7 @@ Les ciutats han intercanviat productes amb el vaixell.
 \DoxyCodeLine{52     \textcolor{keywordflow}{while} (it!=llist\_ciutats.end()) \{}
 \DoxyCodeLine{53         \textcolor{keywordtype}{string} id\_city = *it;        }
 \DoxyCodeLine{54         \textcolor{comment}{// Comerç amb la ciutat}}
-\DoxyCodeLine{55         barco.\mbox{\hyperlink{classVaixell_ab806dd22cbd275c4b28f76079f210ed7}{comerciar}}(\mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}[id\_city], productes, \textcolor{keyword}{true});}
+\DoxyCodeLine{55         barco.\mbox{\hyperlink{classVaixell_ad83e1d2c19999a3dd41c848b7b608a9c}{comerciar}}(\mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}[id\_city], productes);}
 \DoxyCodeLine{56         }
 \DoxyCodeLine{57         ++it;}
 \DoxyCodeLine{58     \}}

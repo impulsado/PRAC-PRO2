@@ -14,18 +14,16 @@ Conjunt de productes.
 \item 
 \mbox{\hyperlink{classCjt__productes_a31423e55514ad0805ba3806a5d5862b0}{Cjt\+\_\+productes}} ()
 \begin{DoxyCompactList}\small\item\em Constructora de \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} per defecte. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classCjt__productes_afb152b827c91aa68e0da42453e9f2828}{Cjt\+\_\+productes}} (int mida)
-\begin{DoxyCompactList}\small\item\em Constructora de \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} amb quantitat de productes determinada. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCjt__productes_a29110275aef3a6d9ec9c294bf5f56b04}{afegir\+Producte}} (int pes, int volumen)
 \begin{DoxyCompactList}\small\item\em Afegir nou producte al conjunt de productes. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classCjt__productes_a427bb2cd09d6531241988c5560dd7a00}{modificar\+Producte}} (int id, const \mbox{\hyperlink{classProducte}{Producte}} \&prod)
+void \mbox{\hyperlink{classCjt__productes_a5db70f49e07c7a9971cfc483c0f3231c}{modificar\+Producte}} (int id, int pes, int volumen)
 \begin{DoxyCompactList}\small\item\em Modificar producte existent dintre del conjunt. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeix\+Producte}} (int id) const
 \begin{DoxyCompactList}\small\item\em Comprovar si el producte existeix. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classCjt__productes_aa15e98e1d3bdf1e22c50a07a93f5d6e3}{consultar\+Quantitat\+Prod}} () const
 \begin{DoxyCompactList}\small\item\em Consultar la quantitat de productes que hi ha al conjunt. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classProducte}{Producte}} \mbox{\hyperlink{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}{consultar\+Producte}} (int id) const
-\begin{DoxyCompactList}\small\item\em Retornar el producte especificat. \end{DoxyCompactList}\item 
+pair$<$ int, int $>$ \mbox{\hyperlink{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}{consultar\+Producte}} (int id) const
+\begin{DoxyCompactList}\small\item\em Consultar producte. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCjt__productes_a100b67065cd5d48333d4747e736e69bd}{escriure\+Prod}} (int id) const
 \begin{DoxyCompactList}\small\item\em Escriure producte. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}{llegir}} (int \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\+\_\+prod}})
@@ -35,7 +33,7 @@ void \mbox{\hyperlink{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}{lle
 \item 
 int \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\+\_\+prod}}
 \begin{DoxyCompactList}\small\item\em Quantitat de productes. \end{DoxyCompactList}\item 
-vector$<$ \mbox{\hyperlink{classProducte}{Producte}} $>$ \mbox{\hyperlink{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}{vprod}}
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}
 \begin{DoxyCompactList}\small\item\em Vector de productes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -48,7 +46,7 @@ Un objecte de la classe \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes
 \mbox{\Hypertarget{classCjt__productes_a31423e55514ad0805ba3806a5d5862b0}\label{classCjt__productes_a31423e55514ad0805ba3806a5d5862b0}} 
 \index{Cjt\_productes@{Cjt\_productes}!Cjt\_productes@{Cjt\_productes}}
 \index{Cjt\_productes@{Cjt\_productes}!Cjt\_productes@{Cjt\_productes}}
-\doxysubsubsection{\texorpdfstring{Cjt\_productes()}{Cjt\_productes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{Cjt\_productes()}{Cjt\_productes()}}
 {\footnotesize\ttfamily Cjt\+\_\+productes\+::\+Cjt\+\_\+productes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -65,32 +63,8 @@ Conjunt de productes amb quantitat de productes igual a 0 i conjunt buit.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{6                              \{}
 \DoxyCodeLine{7     \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}} = 0;}
-\DoxyCodeLine{8     \mbox{\hyperlink{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}{vprod}} = vector<Producte>();}
+\DoxyCodeLine{8     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}} = vector<pair<int,int>>();}
 \DoxyCodeLine{9 \}}
-
-\end{DoxyCode}
-\mbox{\Hypertarget{classCjt__productes_afb152b827c91aa68e0da42453e9f2828}\label{classCjt__productes_afb152b827c91aa68e0da42453e9f2828}} 
-\index{Cjt\_productes@{Cjt\_productes}!Cjt\_productes@{Cjt\_productes}}
-\index{Cjt\_productes@{Cjt\_productes}!Cjt\_productes@{Cjt\_productes}}
-\doxysubsubsection{\texorpdfstring{Cjt\_productes()}{Cjt\_productes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Cjt\+\_\+productes\+::\+Cjt\+\_\+productes (\begin{DoxyParamCaption}\item[{int}]{mida }\end{DoxyParamCaption})}
-
-
-
-Constructora de \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} amb quantitat de productes determinada. 
-
-\begin{DoxyPrecond}{Precondición}
-mida és un valor vàlid. 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{Postcondición}
-Conjunt de productes amb quantitat igual a 0, però mida del vector = mida+1. 
-\end{DoxyPostcond}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{11                                      \{}
-\DoxyCodeLine{12     \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}} = 0;}
-\DoxyCodeLine{13     \mbox{\hyperlink{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}{vprod}} = vector<Producte>(mida+1);}
-\DoxyCodeLine{14 \}}
 
 \end{DoxyCode}
 
@@ -114,35 +88,33 @@ Existeix un nou producte amb id autoincrementat. quant\+\_\+prod actualitzat.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{18                                                      \{}
-\DoxyCodeLine{19     \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}++;}
-\DoxyCodeLine{20     \textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}};}
-\DoxyCodeLine{21     \mbox{\hyperlink{classProducte}{Producte}} temp(\textcolor{keywordtype}{id}, pes, volum);}
-\DoxyCodeLine{22     \mbox{\hyperlink{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}{vprod}}.push\_back(temp);}
-\DoxyCodeLine{23 \}}
+\DoxyCodeLine{13                                                      \{}
+\DoxyCodeLine{14     \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}++;}
+\DoxyCodeLine{15     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}.push\_back(make\_pair(pes,volum));}
+\DoxyCodeLine{16 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}\label{classCjt__productes_a2d8f11151bf8c231827f2c0f32a35863}} 
+\mbox{\Hypertarget{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}\label{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}} 
 \index{Cjt\_productes@{Cjt\_productes}!consultarProducte@{consultarProducte}}
 \index{consultarProducte@{consultarProducte}!Cjt\_productes@{Cjt\_productes}}
 \doxysubsubsection{\texorpdfstring{consultarProducte()}{consultarProducte()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classProducte}{Producte}} Cjt\+\_\+productes\+::consultar\+Producte (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily pair$<$ int, int $>$ Cjt\+\_\+productes\+::consultar\+Producte (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption}) const}
 
 
 
-Retornar el producte especificat. 
+Consultar producte. 
 
 \begin{DoxyPrecond}{Precondición}
 El producte existeix. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondición}
-Retorna una còpia del producte. 
+Retorna el pes i volum del producte. 
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{40                                                            \{}
-\DoxyCodeLine{41     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}{vprod}}[id\_prod-\/1];}
-\DoxyCodeLine{42 \}}
+\DoxyCodeLine{32                                                                 \{}
+\DoxyCodeLine{33     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[id\_prod-\/1];}
+\DoxyCodeLine{34 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_aa15e98e1d3bdf1e22c50a07a93f5d6e3}\label{classCjt__productes_aa15e98e1d3bdf1e22c50a07a93f5d6e3}} 
@@ -163,9 +135,9 @@ Retorna la quantitat de productes.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{36                                                 \{}
-\DoxyCodeLine{37     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}};}
-\DoxyCodeLine{38 \}}
+\DoxyCodeLine{28                                                 \{}
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}};}
+\DoxyCodeLine{30 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_a100b67065cd5d48333d4747e736e69bd}\label{classCjt__productes_a100b67065cd5d48333d4747e736e69bd}} 
@@ -186,9 +158,9 @@ S\textquotesingle{}ha escrit el producte.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{45                                              \{}
-\DoxyCodeLine{46     \mbox{\hyperlink{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}{vprod}}[\textcolor{keywordtype}{id}-\/1].escriure();}
-\DoxyCodeLine{47 \}}
+\DoxyCodeLine{38                                              \{}
+\DoxyCodeLine{39     cout << \textcolor{keywordtype}{id} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[\textcolor{keywordtype}{id}-\/1].first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[\textcolor{keywordtype}{id}-\/1].second << endl;}
+\DoxyCodeLine{40 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}\label{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}} 
@@ -209,10 +181,9 @@ Retorna true si el id\+\_\+prod està dintre dels valors vàlids (existeix), en 
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{31                                                       \{}
-\DoxyCodeLine{32     \textcolor{keywordflow}{if} (id\_prod<=0 or id\_prod>\mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{33     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{34 \}}
+\DoxyCodeLine{24                                                       \{}
+\DoxyCodeLine{25     \textcolor{keywordflow}{return} id\_prod>0 and id\_prod<=\mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}};}
+\DoxyCodeLine{26 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}\label{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}} 
@@ -233,20 +204,20 @@ El conjunt de productes és modificat amb els nous productes.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{52                                          \{}
-\DoxyCodeLine{53     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}; i++) \{}
-\DoxyCodeLine{54         \textcolor{keywordtype}{int} pes, volum;}
-\DoxyCodeLine{55         cin >> pes >> volum;}
-\DoxyCodeLine{56         \mbox{\hyperlink{classCjt__productes_a29110275aef3a6d9ec9c294bf5f56b04}{afegirProducte}}(pes,volum);}
-\DoxyCodeLine{57     \}}
-\DoxyCodeLine{58 \}}
+\DoxyCodeLine{44                                          \{}
+\DoxyCodeLine{45     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}; i++) \{}
+\DoxyCodeLine{46         \textcolor{keywordtype}{int} pes, volum;}
+\DoxyCodeLine{47         cin >> pes >> volum;}
+\DoxyCodeLine{48         \mbox{\hyperlink{classCjt__productes_a29110275aef3a6d9ec9c294bf5f56b04}{afegirProducte}}(pes, volum);}
+\DoxyCodeLine{49     \}}
+\DoxyCodeLine{50 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{classCjt__productes_a427bb2cd09d6531241988c5560dd7a00}\label{classCjt__productes_a427bb2cd09d6531241988c5560dd7a00}} 
+\mbox{\Hypertarget{classCjt__productes_a5db70f49e07c7a9971cfc483c0f3231c}\label{classCjt__productes_a5db70f49e07c7a9971cfc483c0f3231c}} 
 \index{Cjt\_productes@{Cjt\_productes}!modificarProducte@{modificarProducte}}
 \index{modificarProducte@{modificarProducte}!Cjt\_productes@{Cjt\_productes}}
 \doxysubsubsection{\texorpdfstring{modificarProducte()}{modificarProducte()}}
-{\footnotesize\ttfamily void Cjt\+\_\+productes\+::modificar\+Producte (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{const \mbox{\hyperlink{classProducte}{Producte}} \&}]{prod }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Cjt\+\_\+productes\+::modificar\+Producte (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{int}]{pes,  }\item[{int}]{volumen }\end{DoxyParamCaption})}
 
 
 
@@ -260,9 +231,9 @@ Conjunt modificat amb el nou producte.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{25                                                                        \{}
-\DoxyCodeLine{26     \mbox{\hyperlink{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}{vprod}}[id\_prod-\/1] = prod;}
-\DoxyCodeLine{27 \}}
+\DoxyCodeLine{18                                                                      \{}
+\DoxyCodeLine{19     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[id\_prod-\/1] = make\_pair(pes,volum);}
+\DoxyCodeLine{20 \}}
 
 \end{DoxyCode}
 
@@ -278,11 +249,11 @@ Conjunt modificat amb el nou producte.
 
 Quantitat de productes. 
 
-\mbox{\Hypertarget{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}\label{classCjt__productes_ad701f0f80868fe2c7193e02b31e048ba}} 
+\mbox{\Hypertarget{classCjt__productes_a165441f3f61ac181508b886513efaa3d}\label{classCjt__productes_a165441f3f61ac181508b886513efaa3d}} 
 \index{Cjt\_productes@{Cjt\_productes}!vprod@{vprod}}
 \index{vprod@{vprod}!Cjt\_productes@{Cjt\_productes}}
 \doxysubsubsection{\texorpdfstring{vprod}{vprod}}
-{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classProducte}{Producte}}$>$ Cjt\+\_\+productes\+::vprod\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily vector$<$pair$<$int,int$>$ $>$ Cjt\+\_\+productes\+::vprod\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
