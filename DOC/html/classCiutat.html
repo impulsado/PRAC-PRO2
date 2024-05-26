@@ -290,57 +290,80 @@ Atributos privados</h2></td></tr>
 <dl class="section pre"><dt>Precondición</dt><dd>Les ciutats tenen inventari. Els productes són vàlids. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Les ciutats intercanvien productes segons les seves necessitats. </dd></dl>
 <div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                                    {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (not this-&gt;<a class="code" href="classCiutat.html#a10e784c413229cb9a2481320fa3be2e2">teInventari</a>() or not other.<a class="code" href="classCiutat.html#a10e784c413229cb9a2481320fa3be2e2">teInventari</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">auto</span> it1 = this-&gt;<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.begin();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">auto</span> it2 = other.<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.begin();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">while</span> (it1!=this-&gt;<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.end() and it2!=other.<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.end()) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">int</span> prod_id1 = it1-&gt;first;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">int</span> prod_id2 = it2-&gt;first;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (prod_id1 == prod_id2) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordtype">int</span> dif1 = it1-&gt;second.second;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordtype">int</span> dif2 = it2-&gt;second.second;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="comment">// A la ciutat1 li falta, a la ciutat2 li sobra</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (dif1&lt;0 and dif2&gt;0) {  </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                pair&lt;int,int&gt; pesVol = productes.<a class="code" href="classCjt__productes.html#a2a9703ef9f499a730bde6eb7a86df5ae">consultarProducte</a>(prod_id1);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordtype">int</span> quantiat = min(abs(dif1), abs(dif2));</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                it1-&gt;second.first.first += quantiat;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                it1-&gt;second.second += quantiat;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                this-&gt;<a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> += quantiat*pesVol.first;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                this-&gt;<a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> += quantiat*pesVol.second;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                it2-&gt;second.first.first -= quantiat;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                it2-&gt;second.second -= quantiat;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                other.<a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> -= quantiat*pesVol.first;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                other.<a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> -= quantiat*pesVol.second;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="comment">// A la ciutat1 li sobra, a la ciutat2 li falta</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (dif1 &gt; 0 and dif2 &lt; 0) {  </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                pair&lt;int,int&gt; pesVol = productes.<a class="code" href="classCjt__productes.html#a2a9703ef9f499a730bde6eb7a86df5ae">consultarProducte</a>(prod_id1);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordtype">int</span> quantiat = min(abs(dif1), abs(dif2));</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Les ciutats no tenen inventari (Optimització)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (not this-&gt;<a class="code" href="classCiutat.html#a10e784c413229cb9a2481320fa3be2e2">teInventari</a>() or not other.<a class="code" href="classCiutat.html#a10e784c413229cb9a2481320fa3be2e2">teInventari</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// Iteradors per recórrer els inventaris</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">auto</span> it1 = this-&gt;<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.begin();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">auto</span> it2 = other.<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.begin();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// Comerç entre les ciutats</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">while</span> (it1!=this-&gt;<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.end() and it2!=other.<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.end()) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// Consultar els productes</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">int</span> prod_id1 = it1-&gt;first;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">int</span> prod_id2 = it2-&gt;first;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="comment">// Si els productes són iguals </span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (prod_id1 == prod_id2) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="comment">// Consultar les diferències del producte de cada ciutat</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordtype">int</span> dif1 = it1-&gt;second.second;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordtype">int</span> dif2 = it2-&gt;second.second;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="comment">// A la ciutat1 li falta, a la ciutat2 li sobra</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (dif1&lt;0 and dif2&gt;0) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="comment">// Consultar el pes i volum del producte</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                pair&lt;int,int&gt; pesVol = productes.<a class="code" href="classCjt__productes.html#a2a9703ef9f499a730bde6eb7a86df5ae">consultarProducte</a>(prod_id1);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="comment">// Determinar la màxima quantitat a intercanviar</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordtype">int</span> quantiat = min(abs(dif1), abs(dif2));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="comment">// Actualitzar l&#39;inventari de la ciutat1</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                it1-&gt;second.first.first += quantiat;  <span class="comment">// Afegir la nova quantitat d&#39;oferta</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                it1-&gt;second.second += quantiat;  <span class="comment">// Actualitzar la necessitat del producte</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                this-&gt;<a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> += quantiat*pesVol.first;  <span class="comment">// Actualitzar el pes total</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                this-&gt;<a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> += quantiat*pesVol.second;  <span class="comment">// Actualitzar el volum total</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                it1-&gt;second.first.first -= quantiat;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                it1-&gt;second.second -= quantiat;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                this-&gt;<a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> -= quantiat*pesVol.first;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                this-&gt;<a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> -= quantiat*pesVol.second;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                it2-&gt;second.first.first += quantiat;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                it2-&gt;second.second += quantiat;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                other.<a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> += quantiat*pesVol.first;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                other.<a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> += quantiat*pesVol.second;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            it1++;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            it2++;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (prod_id1&lt;prod_id2) it1 = this-&gt;<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.lower_bound(prod_id2);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">else</span> it2 = other.<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.lower_bound(prod_id1);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
-<div class="ttc" id="aclassCiutat_html_a10e784c413229cb9a2481320fa3be2e2"><div class="ttname"><a href="classCiutat.html#a10e784c413229cb9a2481320fa3be2e2">Ciutat::teInventari</a></div><div class="ttdeci">bool teInventari() const</div><div class="ttdoc">Comprova si la ciutat té inventari.</div><div class="ttdef"><b>Definition:</b> Ciutat.cc:121</div></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="comment">// Actualitzar l&#39;inventari de la ciutat2</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                it2-&gt;second.first.first -= quantiat;  <span class="comment">// Treure la quantitat venuda</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                it2-&gt;second.second -= quantiat;  <span class="comment">// Actualitzar la necessitat del producte</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                other.<a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> -= quantiat*pesVol.first;  <span class="comment">// Actualitzar el pes total</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                other.<a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> -= quantiat*pesVol.second;  <span class="comment">// Actualitzar el volum total</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="comment">// A la ciutat1 li sobra, a la ciutat2 li falta</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (dif1 &gt; 0 and dif2 &lt; 0) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="comment">// Consultar el pes i volum del producte</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                pair&lt;int,int&gt; pesVol = productes.<a class="code" href="classCjt__productes.html#a2a9703ef9f499a730bde6eb7a86df5ae">consultarProducte</a>(prod_id1);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="comment">// Determinar la màxima quantitat a intercanviar</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <span class="keywordtype">int</span> quantiat = min(abs(dif1), abs(dif2));</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="comment">// Actualitzar l&#39;inventari de la ciutat1</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                it1-&gt;second.first.first -= quantiat;  <span class="comment">// Treure la quantitat venuda</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                it1-&gt;second.second -= quantiat;  <span class="comment">// Actualitzar la necessitat del producte</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                this-&gt;<a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> -= quantiat*pesVol.first;  <span class="comment">// Actualitzar el pes total</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                this-&gt;<a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> -= quantiat*pesVol.second;  <span class="comment">// Actualitzar el volum total</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="comment">// Actualitzar l&#39;inventari de la ciutat2</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                it2-&gt;second.first.first += quantiat;  <span class="comment">// Afegir la nova quantitat d&#39;oferta</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                it2-&gt;second.second += quantiat;  <span class="comment">// Actualitzar la necessitat del producte</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                other.<a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> += quantiat*pesVol.first;  <span class="comment">// Actualitzar el pes total</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                other.<a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> += quantiat*pesVol.second;  <span class="comment">// Actualitzar el volum total</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="comment">// Avançar als següents productes</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            it1++;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            it2++;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (prod_id1&lt;prod_id2) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="comment">// Avançar els productes de la ciutat1 fins arribar a un producte comú amb la ciutat2</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            it1 = this-&gt;<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.lower_bound(prod_id2);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="comment">// Avançar els productes de la ciutat2 fins arribar a un producte comú amb la ciutat1</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            it2 = other.<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.lower_bound(prod_id1);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
+<div class="ttc" id="aclassCiutat_html_a10e784c413229cb9a2481320fa3be2e2"><div class="ttname"><a href="classCiutat.html#a10e784c413229cb9a2481320fa3be2e2">Ciutat::teInventari</a></div><div class="ttdeci">bool teInventari() const</div><div class="ttdoc">Comprova si la ciutat té inventari.</div><div class="ttdef"><b>Definition:</b> Ciutat.cc:144</div></div>
 <div class="ttc" id="aclassCjt__productes_html_a2a9703ef9f499a730bde6eb7a86df5ae"><div class="ttname"><a href="classCjt__productes.html#a2a9703ef9f499a730bde6eb7a86df5ae">Cjt_productes::consultarProducte</a></div><div class="ttdeci">pair&lt; int, int &gt; consultarProducte(int id) const</div><div class="ttdoc">Consultar producte.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.cc:32</div></div>
 </div><!-- fragment -->
 </div>
@@ -364,10 +387,10 @@ Atributos privados</h2></td></tr>
 <p>Consulta la demanda d'un producte específic. </p>
 <dl class="section pre"><dt>Precondición</dt><dd>La ciutat té el producte. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Retorna la quantitat de demanda del producte. </dd></dl>
-<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                              {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.find(id_prod);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">return</span> it-&gt;second.first.second;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                              {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.find(id_prod);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> it-&gt;second.first.second;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -390,10 +413,10 @@ Atributos privados</h2></td></tr>
 <p>Consulta la quantitat d'excés d'un producte a la ciutat. </p>
 <dl class="section pre"><dt>Precondición</dt><dd>La ciutat té el producte. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Retorna la quantitat d'excés del producte especificat. </dd></dl>
-<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                                                 { </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.find(id_prod);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">return</span> it-&gt;second.second;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                                 { </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.find(id_prod);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">return</span> it-&gt;second.second;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -416,10 +439,10 @@ Atributos privados</h2></td></tr>
 <p>Consulta l'oferta d'un producte específic. </p>
 <dl class="section pre"><dt>Precondición</dt><dd>La ciutat té el producte. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Retorna la quantitat d'oferta del producte. </dd></dl>
-<div class="fragment"><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                             {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.find(id_prod);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> it-&gt;second.first.first;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                             {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keyword">auto</span> it = <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.find(id_prod);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> it-&gt;second.first.first;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -441,9 +464,9 @@ Atributos privados</h2></td></tr>
 <p>Consulta el pes total de la ciutat. </p>
 <dl class="section pre"><dt>Precondición</dt><dd>Cert. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Retorna el pes total. </dd></dl>
-<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                    {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a>;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                                    {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -465,9 +488,9 @@ Atributos privados</h2></td></tr>
 <p>Consulta el volum total de la ciutat. </p>
 <dl class="section pre"><dt>Precondición</dt><dd>Cert. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Retorna el volum total. </dd></dl>
-<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                      {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a>;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                      {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -560,17 +583,17 @@ Atributos privados</h2></td></tr>
 <p>Mostra informació (Inventari, Pes i Volum total) de la ciutat. </p>
 <dl class="section pre"><dt>Precondición</dt><dd>Cert. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Es mostra per terminal cada producte de l'inventari amb la seva oferta i demanda. Després es mostra el pes i volum total de la ciutat. </dd></dl>
-<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                            {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">if</span> (not <a class="code" href="classCiutat.html#a10e784c413229cb9a2481320fa3be2e2">teInventari</a>()) {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;0 0&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.begin(); it != <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.end(); it++) {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; it-&gt;second.first.first &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; it-&gt;second.first.second &lt;&lt; endl;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    cout &lt;&lt; <a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; <a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> &lt;&lt; endl;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                            {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">if</span> (not <a class="code" href="classCiutat.html#a10e784c413229cb9a2481320fa3be2e2">teInventari</a>()) {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;0 0&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.begin(); it != <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.end(); it++) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; it-&gt;second.first.first &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; it-&gt;second.first.second &lt;&lt; endl;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    cout &lt;&lt; <a class="code" href="classCiutat.html#abd4885af9c76bf8edf1f213fdff5f4db">pes_total</a> &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; <a class="code" href="classCiutat.html#aa3a49cb39f9a280cbc22c1b432fb320f">volum_total</a> &lt;&lt; endl;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -708,9 +731,9 @@ Atributos privados</h2></td></tr>
 <p>Comprova si la ciutat té inventari. </p>
 <dl class="section pre"><dt>Precondición</dt><dd>Cert. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Retorna true si hi ha almenys un producte a l'inventari, en cas contrari retorna false. </dd></dl>
-<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                               {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.empty();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                               {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">return</span> !<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.empty();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -733,9 +756,9 @@ Atributos privados</h2></td></tr>
 <p>Comprova si la ciutat té un producte específic. </p>
 <dl class="section pre"><dt>Precondición</dt><dd>L'id_prod és vàlid. La ciutat pot no tenir inventari. </dd></dl>
 <dl class="section post"><dt>Postcondición</dt><dd>Retorna true si la ciutat té el producte, en cas contrari retorna false. </dd></dl>
-<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                         {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.find(id_prod)!=<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.end();</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                         {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.find(id_prod)!=<a class="code" href="classCiutat.html#a301fd5db0f0f8e42312fd9c28547a8cc">inventari</a>.end();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -65,54 +65,77 @@ void Ciutat::eliminarTotsProd() {
 }
 
 void Ciutat::comerciar(Ciutat& other, const Cjt_productes& productes) {
+    // Les ciutats no tenen inventari (Optimització)
     if (not this->teInventari() or not other.teInventari()) return;
 
+    // Iteradors per recórrer els inventaris
     auto it1 = this->inventari.begin();
     auto it2 = other.inventari.begin();
 
+    // Comerç entre les ciutats
     while (it1!=this->inventari.end() and it2!=other.inventari.end()) {
+        // Consultar els productes
         int prod_id1 = it1->first;
         int prod_id2 = it2->first;
 
+        // Si els productes són iguals 
         if (prod_id1 == prod_id2) {
+            // Consultar les diferències del producte de cada ciutat
             int dif1 = it1->second.second;
             int dif2 = it2->second.second;
             
             // A la ciutat1 li falta, a la ciutat2 li sobra
-            if (dif1<0 and dif2>0) {  
+            if (dif1<0 and dif2>0) {
+                // Consultar el pes i volum del producte
                 pair<int,int> pesVol = productes.consultarProducte(prod_id1);
+                
+                // Determinar la màxima quantitat a intercanviar
                 int quantiat = min(abs(dif1), abs(dif2));
                 
-                it1->second.first.first += quantiat;
-                it1->second.second += quantiat;
-                this->pes_total += quantiat*pesVol.first;
-                this->volum_total += quantiat*pesVol.second;
+                // Actualitzar l'inventari de la ciutat1
+                it1->second.first.first += quantiat;  // Afegir la nova quantitat d'oferta
+                it1->second.second += quantiat;  // Actualitzar la necessitat del producte
+                this->pes_total += quantiat*pesVol.first;  // Actualitzar el pes total
+                this->volum_total += quantiat*pesVol.second;  // Actualitzar el volum total
                 
-                it2->second.first.first -= quantiat;
-                it2->second.second -= quantiat;
-                other.pes_total -= quantiat*pesVol.first;
-                other.volum_total -= quantiat*pesVol.second;
+                // Actualitzar l'inventari de la ciutat2
+                it2->second.first.first -= quantiat;  // Treure la quantitat venuda
+                it2->second.second -= quantiat;  // Actualitzar la necessitat del producte
+                other.pes_total -= quantiat*pesVol.first;  // Actualitzar el pes total
+                other.volum_total -= quantiat*pesVol.second;  // Actualitzar el volum total
             }
             // A la ciutat1 li sobra, a la ciutat2 li falta
-            else if (dif1 > 0 and dif2 < 0) {  
+            else if (dif1 > 0 and dif2 < 0) {
+                // Consultar el pes i volum del producte
                 pair<int,int> pesVol = productes.consultarProducte(prod_id1);
+                
+                // Determinar la màxima quantitat a intercanviar
                 int quantiat = min(abs(dif1), abs(dif2));
                 
-                it1->second.first.first -= quantiat;
-                it1->second.second -= quantiat;
-                this->pes_total -= quantiat*pesVol.first;
-                this->volum_total -= quantiat*pesVol.second;
+                // Actualitzar l'inventari de la ciutat1
+                it1->second.first.first -= quantiat;  // Treure la quantitat venuda
+                it1->second.second -= quantiat;  // Actualitzar la necessitat del producte
+                this->pes_total -= quantiat*pesVol.first;  // Actualitzar el pes total
+                this->volum_total -= quantiat*pesVol.second;  // Actualitzar el volum total
                 
-                it2->second.first.first += quantiat;
-                it2->second.second += quantiat;
-                other.pes_total += quantiat*pesVol.first;
-                other.volum_total += quantiat*pesVol.second;
+                // Actualitzar l'inventari de la ciutat2
+                it2->second.first.first += quantiat;  // Afegir la nova quantitat d'oferta
+                it2->second.second += quantiat;  // Actualitzar la necessitat del producte
+                other.pes_total += quantiat*pesVol.first;  // Actualitzar el pes total
+                other.volum_total += quantiat*pesVol.second;  // Actualitzar el volum total
             }
+            // Avançar als següents productes
             it1++;
             it2++;
         }
-        else if (prod_id1<prod_id2) it1 = this->inventari.lower_bound(prod_id2);
-        else it2 = other.inventari.lower_bound(prod_id1);
+        else if (prod_id1<prod_id2) {
+            // Avançar els productes de la ciutat1 fins arribar a un producte comú amb la ciutat2
+            it1 = this->inventari.lower_bound(prod_id2);
+        }
+        else {
+            // Avançar els productes de la ciutat2 fins arribar a un producte comú amb la ciutat1
+            it2 = other.inventari.lower_bound(prod_id1);
+        }
     }
 }
 
