@@ -1,3 +1,7 @@
+/**
+ * @file Ciutat.cc
+ * @brief Implementació de la classe Ciutat
+ */
 #include "Ciutat.hh"
 using namespace std;
 

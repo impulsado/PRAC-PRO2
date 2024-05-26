@@ -67,11 +67,11 @@ Cert.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{6                  \{}
-\DoxyCodeLine{7     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(0, 0);}
-\DoxyCodeLine{8     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(0, 0);}
-\DoxyCodeLine{9     \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}} = vector<string>();}
-\DoxyCodeLine{10 \}}
+\DoxyCodeLine{10                  \{}
+\DoxyCodeLine{11     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(0, 0);}
+\DoxyCodeLine{12     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(0, 0);}
+\DoxyCodeLine{13     \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}} = vector<string>();}
+\DoxyCodeLine{14 \}}
 
 \end{DoxyCode}
 
@@ -95,9 +95,9 @@ El registre de les últimes ciutats conté id\+\_\+city.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{117                                          \{}
-\DoxyCodeLine{118     \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.push\_back(id\_city);}
-\DoxyCodeLine{119 \}}
+\DoxyCodeLine{121                                          \{}
+\DoxyCodeLine{122     \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.push\_back(id\_city);}
+\DoxyCodeLine{123 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classVaixell_ad83e1d2c19999a3dd41c848b7b608a9c}\label{classVaixell_ad83e1d2c19999a3dd41c848b7b608a9c}} 
@@ -120,58 +120,58 @@ Actualitza el vaixell i la ciutat segons l\textquotesingle{}operació de comerç
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{19                                                                    \{}
-\DoxyCodeLine{20     \textcolor{comment}{// La ciutat no té inventari (Optimització)}}
-\DoxyCodeLine{21     \textcolor{keywordflow}{if} (not city.\mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}()) \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{22     }
-\DoxyCodeLine{23     \textcolor{comment}{// Total comerciat}}
-\DoxyCodeLine{24     \textcolor{keywordtype}{int} quant\_total = 0;}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26     \textcolor{comment}{// Comprar de la ciutat}}
-\DoxyCodeLine{27     }
-\DoxyCodeLine{28     \textcolor{comment}{// La ciutat té el producte i el vaixell pot comprar}}
-\DoxyCodeLine{29     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first)) \{}
-\DoxyCodeLine{30         \textcolor{comment}{// Saber quantitat disponible a la ciutat}}
-\DoxyCodeLine{31         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first);}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33         \textcolor{comment}{// La ciutat té quantitat per vendre al vaixell}}
-\DoxyCodeLine{34         \textcolor{keywordflow}{if} (dif>0) \{}
-\DoxyCodeLine{35             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
-\DoxyCodeLine{36             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second, dif);}
-\DoxyCodeLine{37             \textcolor{comment}{// Consultar el producte}}
-\DoxyCodeLine{38             pair<int,int> pesVol = productes.\mbox{\hyperlink{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}{consultarProducte}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first);}
-\DoxyCodeLine{39             \textcolor{comment}{// Treure la quantitat venuda per la ciutat}}
-\DoxyCodeLine{40             city.\mbox{\hyperlink{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}{modificarOfertaProd}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first, -\/quant\_comerciar, pesVol.first, pesVol.second);}
-\DoxyCodeLine{41             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
-\DoxyCodeLine{42             \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second -\/= quant\_comerciar;}
-\DoxyCodeLine{43             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
-\DoxyCodeLine{44             quant\_total += quant\_comerciar;}
-\DoxyCodeLine{45         \}}
-\DoxyCodeLine{46     \}}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{48     \textcolor{comment}{// Vendre a la ciutat}}
-\DoxyCodeLine{49     \textcolor{comment}{// La ciutat necessita el producte i el vaixell pot vendre}}
-\DoxyCodeLine{50     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first)) \{}
-\DoxyCodeLine{51         \textcolor{comment}{// Saber quantitat necessària a la ciutat}}
-\DoxyCodeLine{52         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first);}
-\DoxyCodeLine{53         }
-\DoxyCodeLine{54         \textcolor{comment}{// La ciutat té necessitat del producte}}
-\DoxyCodeLine{55         \textcolor{keywordflow}{if} (dif<0) \{}
-\DoxyCodeLine{56             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
-\DoxyCodeLine{57             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second, -\/dif);}
-\DoxyCodeLine{58             \textcolor{comment}{// Consultar el producte}}
-\DoxyCodeLine{59             pair<int,int> pesVol = productes.\mbox{\hyperlink{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}{consultarProducte}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first);}
-\DoxyCodeLine{60             \textcolor{comment}{// Afegir la quantitat venuda a la ciutat}}
-\DoxyCodeLine{61             city.\mbox{\hyperlink{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}{modificarOfertaProd}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first, quant\_comerciar, pesVol.first, pesVol.second);}
-\DoxyCodeLine{62             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
-\DoxyCodeLine{63             \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second -\/= quant\_comerciar;}
-\DoxyCodeLine{64             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
-\DoxyCodeLine{65             quant\_total += quant\_comerciar;}
-\DoxyCodeLine{66         \}}
-\DoxyCodeLine{67     \}}
-\DoxyCodeLine{68     }
-\DoxyCodeLine{69     \textcolor{keywordflow}{return} quant\_total;}
-\DoxyCodeLine{70 \}}
+\DoxyCodeLine{23                                                                    \{}
+\DoxyCodeLine{24     \textcolor{comment}{// La ciutat no té inventari (Optimització)}}
+\DoxyCodeLine{25     \textcolor{keywordflow}{if} (not city.\mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}()) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{26     }
+\DoxyCodeLine{27     \textcolor{comment}{// Total comerciat}}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} quant\_total = 0;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{comment}{// Comprar de la ciutat}}
+\DoxyCodeLine{31     }
+\DoxyCodeLine{32     \textcolor{comment}{// La ciutat té el producte i el vaixell pot comprar}}
+\DoxyCodeLine{33     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first)) \{}
+\DoxyCodeLine{34         \textcolor{comment}{// Saber quantitat disponible a la ciutat}}
+\DoxyCodeLine{35         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         \textcolor{comment}{// La ciutat té quantitat per vendre al vaixell}}
+\DoxyCodeLine{38         \textcolor{keywordflow}{if} (dif>0) \{}
+\DoxyCodeLine{39             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
+\DoxyCodeLine{40             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second, dif);}
+\DoxyCodeLine{41             \textcolor{comment}{// Consultar el producte}}
+\DoxyCodeLine{42             pair<int,int> pesVol = productes.\mbox{\hyperlink{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}{consultarProducte}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first);}
+\DoxyCodeLine{43             \textcolor{comment}{// Treure la quantitat venuda per la ciutat}}
+\DoxyCodeLine{44             city.\mbox{\hyperlink{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}{modificarOfertaProd}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first, -\/quant\_comerciar, pesVol.first, pesVol.second);}
+\DoxyCodeLine{45             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
+\DoxyCodeLine{46             \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second -\/= quant\_comerciar;}
+\DoxyCodeLine{47             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
+\DoxyCodeLine{48             quant\_total += quant\_comerciar;}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{comment}{// Vendre a la ciutat}}
+\DoxyCodeLine{53     \textcolor{comment}{// La ciutat necessita el producte i el vaixell pot vendre}}
+\DoxyCodeLine{54     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first)) \{}
+\DoxyCodeLine{55         \textcolor{comment}{// Saber quantitat necessària a la ciutat}}
+\DoxyCodeLine{56         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first);}
+\DoxyCodeLine{57         }
+\DoxyCodeLine{58         \textcolor{comment}{// La ciutat té necessitat del producte}}
+\DoxyCodeLine{59         \textcolor{keywordflow}{if} (dif<0) \{}
+\DoxyCodeLine{60             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
+\DoxyCodeLine{61             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second, -\/dif);}
+\DoxyCodeLine{62             \textcolor{comment}{// Consultar el producte}}
+\DoxyCodeLine{63             pair<int,int> pesVol = productes.\mbox{\hyperlink{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}{consultarProducte}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first);}
+\DoxyCodeLine{64             \textcolor{comment}{// Afegir la quantitat venuda a la ciutat}}
+\DoxyCodeLine{65             city.\mbox{\hyperlink{classCiutat_a951a5680b521268d7f3ae3c8c5c38321}{modificarOfertaProd}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first, quant\_comerciar, pesVol.first, pesVol.second);}
+\DoxyCodeLine{66             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
+\DoxyCodeLine{67             \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second -\/= quant\_comerciar;}
+\DoxyCodeLine{68             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
+\DoxyCodeLine{69             quant\_total += quant\_comerciar;}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72     }
+\DoxyCodeLine{73     \textcolor{keywordflow}{return} quant\_total;}
+\DoxyCodeLine{74 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classVaixell_a28022cdc527c782005c890f46193d6d2}\label{classVaixell_a28022cdc527c782005c890f46193d6d2}} 
@@ -194,50 +194,50 @@ Retorna la quantitat total comerciada sense modificar la ciutat.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{72                                            \{}
-\DoxyCodeLine{73     \textcolor{comment}{// La ciutat no té inventari (Optimització)}}
-\DoxyCodeLine{74     \textcolor{keywordflow}{if} (not city.\mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}()) \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{75     }
-\DoxyCodeLine{76     \textcolor{comment}{// Total comerciat}}
-\DoxyCodeLine{77     \textcolor{keywordtype}{int} quant\_total = 0;}
-\DoxyCodeLine{78 }
-\DoxyCodeLine{79     \textcolor{comment}{// Comprar de la ciutat}}
-\DoxyCodeLine{80     }
-\DoxyCodeLine{81     \textcolor{comment}{// La ciutat té el producte i el vaixell pot comprar}}
-\DoxyCodeLine{82     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first)) \{}
-\DoxyCodeLine{83         \textcolor{comment}{// Saber quantitat disponible a la ciutat}}
-\DoxyCodeLine{84         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first);}
-\DoxyCodeLine{85 }
-\DoxyCodeLine{86         \textcolor{comment}{// La ciutat té quantitat per vendre al vaixell}}
-\DoxyCodeLine{87         \textcolor{keywordflow}{if} (dif>0) \{}
-\DoxyCodeLine{88             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
-\DoxyCodeLine{89             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second, dif);}
-\DoxyCodeLine{90             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
-\DoxyCodeLine{91             \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second -\/= quant\_comerciar;}
-\DoxyCodeLine{92             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
-\DoxyCodeLine{93             quant\_total += quant\_comerciar;}
-\DoxyCodeLine{94         \}}
-\DoxyCodeLine{95     \}}
-\DoxyCodeLine{96 }
-\DoxyCodeLine{97     \textcolor{comment}{// Vendre a la ciutat}}
-\DoxyCodeLine{98     \textcolor{comment}{// La ciutat necessita el producte i el vaixell pot vendre}}
-\DoxyCodeLine{99     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first)) \{}
-\DoxyCodeLine{100         \textcolor{comment}{// Saber quantitat necessària a la ciutat}}
-\DoxyCodeLine{101         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first);}
-\DoxyCodeLine{102         }
-\DoxyCodeLine{103         \textcolor{comment}{// La ciutat té necessitat del producte}}
-\DoxyCodeLine{104         \textcolor{keywordflow}{if} (dif<0) \{}
-\DoxyCodeLine{105             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
-\DoxyCodeLine{106             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second, -\/dif);}
-\DoxyCodeLine{107             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
-\DoxyCodeLine{108             \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second -\/= quant\_comerciar;}
-\DoxyCodeLine{109             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
-\DoxyCodeLine{110             quant\_total += quant\_comerciar;}
-\DoxyCodeLine{111         \}}
-\DoxyCodeLine{112     \}}
-\DoxyCodeLine{113     }
-\DoxyCodeLine{114     \textcolor{keywordflow}{return} quant\_total;}
-\DoxyCodeLine{115 \}}
+\DoxyCodeLine{76                                            \{}
+\DoxyCodeLine{77     \textcolor{comment}{// La ciutat no té inventari (Optimització)}}
+\DoxyCodeLine{78     \textcolor{keywordflow}{if} (not city.\mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}()) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{79     }
+\DoxyCodeLine{80     \textcolor{comment}{// Total comerciat}}
+\DoxyCodeLine{81     \textcolor{keywordtype}{int} quant\_total = 0;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{comment}{// Comprar de la ciutat}}
+\DoxyCodeLine{84     }
+\DoxyCodeLine{85     \textcolor{comment}{// La ciutat té el producte i el vaixell pot comprar}}
+\DoxyCodeLine{86     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first)) \{}
+\DoxyCodeLine{87         \textcolor{comment}{// Saber quantitat disponible a la ciutat}}
+\DoxyCodeLine{88         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90         \textcolor{comment}{// La ciutat té quantitat per vendre al vaixell}}
+\DoxyCodeLine{91         \textcolor{keywordflow}{if} (dif>0) \{}
+\DoxyCodeLine{92             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
+\DoxyCodeLine{93             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second, dif);}
+\DoxyCodeLine{94             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
+\DoxyCodeLine{95             \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second -\/= quant\_comerciar;}
+\DoxyCodeLine{96             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
+\DoxyCodeLine{97             quant\_total += quant\_comerciar;}
+\DoxyCodeLine{98         \}}
+\DoxyCodeLine{99     \}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101     \textcolor{comment}{// Vendre a la ciutat}}
+\DoxyCodeLine{102     \textcolor{comment}{// La ciutat necessita el producte i el vaixell pot vendre}}
+\DoxyCodeLine{103     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first)) \{}
+\DoxyCodeLine{104         \textcolor{comment}{// Saber quantitat necessària a la ciutat}}
+\DoxyCodeLine{105         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first);}
+\DoxyCodeLine{106         }
+\DoxyCodeLine{107         \textcolor{comment}{// La ciutat té necessitat del producte}}
+\DoxyCodeLine{108         \textcolor{keywordflow}{if} (dif<0) \{}
+\DoxyCodeLine{109             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
+\DoxyCodeLine{110             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second, -\/dif);}
+\DoxyCodeLine{111             \textcolor{comment}{// Actualitzar la nova quantitat necessària del vaixell}}
+\DoxyCodeLine{112             \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second -\/= quant\_comerciar;}
+\DoxyCodeLine{113             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
+\DoxyCodeLine{114             quant\_total += quant\_comerciar;}
+\DoxyCodeLine{115         \}}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117     }
+\DoxyCodeLine{118     \textcolor{keywordflow}{return} quant\_total;}
+\DoxyCodeLine{119 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classVaixell_a6d3969acdc815b968b736b99c0da137f}\label{classVaixell_a6d3969acdc815b968b736b99c0da137f}} 
@@ -258,9 +258,9 @@ El vaixell no conté cap registre de les últimes ciutats visitades.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{121                                \{}
-\DoxyCodeLine{122     \textcolor{keywordflow}{if} (not \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.empty()) \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.clear();}
-\DoxyCodeLine{123 \}}
+\DoxyCodeLine{125                                \{}
+\DoxyCodeLine{126     \textcolor{keywordflow}{if} (not \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.empty()) \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.clear();}
+\DoxyCodeLine{127 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classVaixell_a4f6d9cb9511c241d37fac5d42ba355f0}\label{classVaixell_a4f6d9cb9511c241d37fac5d42ba355f0}} 
@@ -281,16 +281,16 @@ Mostra per consola el producte a comprar i vendre, juntament amb les respectives
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{161                        \{}
-\DoxyCodeLine{162     \textcolor{comment}{// Mostrar la informació sobre els productes a comprar i vendre}}
-\DoxyCodeLine{163     cout << \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second;}
-\DoxyCodeLine{164     cout << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second << endl;}
-\DoxyCodeLine{165     }
-\DoxyCodeLine{166     \textcolor{comment}{// Mostrar les ciutats visitades}}
-\DoxyCodeLine{167     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i<\mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.size(); i++) \{}
-\DoxyCodeLine{168         cout << \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}[i] << endl;}
-\DoxyCodeLine{169     \}}
-\DoxyCodeLine{170 \}}
+\DoxyCodeLine{165                        \{}
+\DoxyCodeLine{166     \textcolor{comment}{// Mostrar la informació sobre els productes a comprar i vendre}}
+\DoxyCodeLine{167     cout << \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second;}
+\DoxyCodeLine{168     cout << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second << endl;}
+\DoxyCodeLine{169     }
+\DoxyCodeLine{170     \textcolor{comment}{// Mostrar les ciutats visitades}}
+\DoxyCodeLine{171     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i<\mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}.size(); i++) \{}
+\DoxyCodeLine{172         cout << \mbox{\hyperlink{classVaixell_a996b5a16138db5c3d551c320de0978c4}{registre\_ultimes\_ciutats}}[i] << endl;}
+\DoxyCodeLine{173     \}}
+\DoxyCodeLine{174 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classVaixell_a5177959b74871d22e79eb1ae6b96a0c6}\label{classVaixell_a5177959b74871d22e79eb1ae6b96a0c6}} 
@@ -311,27 +311,27 @@ El vaixell té com atributs les dades llegides.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{137                                             \{}
-\DoxyCodeLine{138     \textcolor{comment}{// Demanar informació producte a comprar}}
-\DoxyCodeLine{139     \textcolor{keywordtype}{int} id\_prod\_comprar, quant\_prod\_comprar;}
-\DoxyCodeLine{140     cin >> id\_prod\_comprar >> quant\_prod\_comprar;}
-\DoxyCodeLine{141     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod\_comprar)) \{}
-\DoxyCodeLine{142         cout << \textcolor{stringliteral}{"{}Error: El producte no existeix"{}} << endl;}
-\DoxyCodeLine{143         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{144     \}}
-\DoxyCodeLine{145     }
-\DoxyCodeLine{146     \textcolor{comment}{// Demanar informació producte a vendre}}
-\DoxyCodeLine{147     \textcolor{keywordtype}{int} id\_prod\_vendre, quant\_prod\_vendre;}
-\DoxyCodeLine{148     cin >> id\_prod\_vendre >> quant\_prod\_vendre;}
-\DoxyCodeLine{149     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod\_vendre)) \{}
-\DoxyCodeLine{150         cout << \textcolor{stringliteral}{"{}Error: El producte no existeix"{}} << endl;}
-\DoxyCodeLine{151         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{152     \}}
-\DoxyCodeLine{153     }
-\DoxyCodeLine{154     \textcolor{comment}{// Actualitzar la informació del vaixell}}
-\DoxyCodeLine{155     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(id\_prod\_comprar, quant\_prod\_comprar);}
-\DoxyCodeLine{156     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(id\_prod\_vendre, quant\_prod\_vendre);}
-\DoxyCodeLine{157 \}}
+\DoxyCodeLine{141                                             \{}
+\DoxyCodeLine{142     \textcolor{comment}{// Demanar informació producte a comprar}}
+\DoxyCodeLine{143     \textcolor{keywordtype}{int} id\_prod\_comprar, quant\_prod\_comprar;}
+\DoxyCodeLine{144     cin >> id\_prod\_comprar >> quant\_prod\_comprar;}
+\DoxyCodeLine{145     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod\_comprar)) \{}
+\DoxyCodeLine{146         cout << \textcolor{stringliteral}{"{}Error: El producte no existeix"{}} << endl;}
+\DoxyCodeLine{147         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{148     \}}
+\DoxyCodeLine{149     }
+\DoxyCodeLine{150     \textcolor{comment}{// Demanar informació producte a vendre}}
+\DoxyCodeLine{151     \textcolor{keywordtype}{int} id\_prod\_vendre, quant\_prod\_vendre;}
+\DoxyCodeLine{152     cin >> id\_prod\_vendre >> quant\_prod\_vendre;}
+\DoxyCodeLine{153     \textcolor{keywordflow}{if} (not productes.\mbox{\hyperlink{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}{existeixProducte}}(id\_prod\_vendre)) \{}
+\DoxyCodeLine{154         cout << \textcolor{stringliteral}{"{}Error: El producte no existeix"{}} << endl;}
+\DoxyCodeLine{155         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{156     \}}
+\DoxyCodeLine{157     }
+\DoxyCodeLine{158     \textcolor{comment}{// Actualitzar la informació del vaixell}}
+\DoxyCodeLine{159     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(id\_prod\_comprar, quant\_prod\_comprar);}
+\DoxyCodeLine{160     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(id\_prod\_vendre, quant\_prod\_vendre);}
+\DoxyCodeLine{161 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classVaixell_a72bbb30083416053eb57b3eb03a19b34}\label{classVaixell_a72bbb30083416053eb57b3eb03a19b34}} 
@@ -352,10 +352,10 @@ El vaixell té les dades sobre el producte a comprar i vendre actualitzades.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{14                                                                                                \{}
-\DoxyCodeLine{15     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(id\_compra, quant\_compra);}
-\DoxyCodeLine{16     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(id\_venta, quant\_venta);}
-\DoxyCodeLine{17 \}}
+\DoxyCodeLine{18                                                                                                \{}
+\DoxyCodeLine{19     \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}} = make\_pair(id\_compra, quant\_compra);}
+\DoxyCodeLine{20     \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}} = make\_pair(id\_venta, quant\_venta);}
+\DoxyCodeLine{21 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classVaixell_af611b40c85d678118661792832b34303}\label{classVaixell_af611b40c85d678118661792832b34303}} 
@@ -376,9 +376,9 @@ Retorna la quantitat d\textquotesingle{}unitats restants per comprar.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{131                                  \{}
-\DoxyCodeLine{132     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second;}
-\DoxyCodeLine{133 \}}
+\DoxyCodeLine{135                                  \{}
+\DoxyCodeLine{136     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVaixell_afaf92a3700f500f905d750101ff71528}{comprar}}.second;}
+\DoxyCodeLine{137 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classVaixell_aae3bd285c51ebbb32ead0703249a4415}\label{classVaixell_aae3bd285c51ebbb32ead0703249a4415}} 
@@ -399,9 +399,9 @@ Retorna la quantitat d\textquotesingle{}unitats restants per vendre.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{127                                 \{}
-\DoxyCodeLine{128     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second;}
-\DoxyCodeLine{129 \}}
+\DoxyCodeLine{131                                 \{}
+\DoxyCodeLine{132     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVaixell_a31307c2dc07a75ba770eaa773a1335b7}{vendre}}.second;}
+\DoxyCodeLine{133 \}}
 
 \end{DoxyCode}
 

@@ -63,11 +63,11 @@ Cert.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{6                \{}
-\DoxyCodeLine{7     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}} = list<string>();}
-\DoxyCodeLine{8     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} = 0;}
-\DoxyCodeLine{9     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}} = 0;}
-\DoxyCodeLine{10 \}}
+\DoxyCodeLine{10                \{}
+\DoxyCodeLine{11     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}} = list<string>();}
+\DoxyCodeLine{12     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} = 0;}
+\DoxyCodeLine{13     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}} = 0;}
+\DoxyCodeLine{14 \}}
 
 \end{DoxyCode}
 
@@ -91,9 +91,9 @@ S\textquotesingle{}ha incrementat la quantitat comerciada pel valor de quant.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{19                                \{}
-\DoxyCodeLine{20     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} += quant;}
-\DoxyCodeLine{21 \}}
+\DoxyCodeLine{23                                \{}
+\DoxyCodeLine{24     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} += quant;}
+\DoxyCodeLine{25 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classViatge_ab313588a14b32e853895d0345b32f251}\label{classViatge_ab313588a14b32e853895d0345b32f251}} 
@@ -114,13 +114,13 @@ S\textquotesingle{}ha actualitzat el viatge amb les dades del subviatge.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{23                                 \{}
-\DoxyCodeLine{24     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} += v.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}};}
-\DoxyCodeLine{25     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}} += v.\mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}};}
-\DoxyCodeLine{26     \textcolor{comment}{// Afegir ciutats del subviatge}}
-\DoxyCodeLine{27     \textcolor{comment}{// NOTA: Aquesta funció simplement modifica els punters en comptes d'anar eliminant i afegint.}}
-\DoxyCodeLine{28     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.splice(\mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.end(), v.\mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}});}
-\DoxyCodeLine{29 \}}
+\DoxyCodeLine{27                                 \{}
+\DoxyCodeLine{28     \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}} += v.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}};}
+\DoxyCodeLine{29     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}} += v.\mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}};}
+\DoxyCodeLine{30     \textcolor{comment}{// Afegir ciutats del subviatge}}
+\DoxyCodeLine{31     \textcolor{comment}{// NOTA: Aquesta funció simplement modifica els punters en comptes d'anar eliminant i afegint.}}
+\DoxyCodeLine{32     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.splice(\mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.end(), v.\mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}});}
+\DoxyCodeLine{33 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classViatge_adfd63bc784d9dd3aba18290c5555441b}\label{classViatge_adfd63bc784d9dd3aba18290c5555441b}} 
@@ -141,10 +141,10 @@ La ciutat s\textquotesingle{}ha afegit a la ruta i s\textquotesingle{}ha actuali
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{14                                         \{}
-\DoxyCodeLine{15     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.push\_back(id\_city);}
-\DoxyCodeLine{16     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}}++;}
-\DoxyCodeLine{17 \}}
+\DoxyCodeLine{18                                         \{}
+\DoxyCodeLine{19     \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.push\_back(id\_city);}
+\DoxyCodeLine{20     \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}}++;}
+\DoxyCodeLine{21 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classViatge_ad615727140707685e07093a605be2660}\label{classViatge_ad615727140707685e07093a605be2660}} 
@@ -165,9 +165,9 @@ Retorna la distància total recorreguda.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{41                                 \{}
-\DoxyCodeLine{42     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}};}
-\DoxyCodeLine{43 \}}
+\DoxyCodeLine{45                                 \{}
+\DoxyCodeLine{46     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}};}
+\DoxyCodeLine{47 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classViatge_a9a91de1f64452016cda3190d45fdee47}\label{classViatge_a9a91de1f64452016cda3190d45fdee47}} 
@@ -188,9 +188,9 @@ Retorna la quantitat total comerciada.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{37                                  \{}
-\DoxyCodeLine{38     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}};}
-\DoxyCodeLine{39 \}}
+\DoxyCodeLine{41                                  \{}
+\DoxyCodeLine{42     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}};}
+\DoxyCodeLine{43 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classViatge_a64e70653d734a187e23379e7744cef07}\label{classViatge_a64e70653d734a187e23379e7744cef07}} 
@@ -211,9 +211,9 @@ Retorna la llista de ciutats visitades.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{33                                          \{}
-\DoxyCodeLine{34     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}};}
-\DoxyCodeLine{35 \}}
+\DoxyCodeLine{37                                          \{}
+\DoxyCodeLine{38     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}};}
+\DoxyCodeLine{39 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classViatge_a2bdb9e677e4fc51136252fb1803945c0}\label{classViatge_a2bdb9e677e4fc51136252fb1803945c0}} 
@@ -234,9 +234,9 @@ Retorna el id de l\textquotesingle{}última ciutat visitada.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{45                                            \{}
-\DoxyCodeLine{46     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.back();}
-\DoxyCodeLine{47 \}}
+\DoxyCodeLine{49                                            \{}
+\DoxyCodeLine{50     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.back();}
+\DoxyCodeLine{51 \}}
 
 \end{DoxyCode}
 

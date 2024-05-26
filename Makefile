@@ -28,5 +28,10 @@ Viatge.o: src/Viatge.cc
 entrega:
 	tar -cvf practica.tar Makefile src/*.cc include/*.hh
 
+entrega_final:
+	doxygen Doxyfile
+	(cd DOC/html && zip -r ../../html.zip .)
+	tar -cvf entrega.tar Makefile src/*.cc include/*.hh Justificacio_Final.pdf html.zip
+
 clean:
 	rm -rf *.o main.exe

@@ -1,3 +1,4 @@
+# Fet per: Pau Bru Ribes
 # Funció `comerciar`
 ## Implementació
 Per permetre el comerç entre dues ciutats, ``comerciar`` actualitza els inventaris de les ciutats implicades (una implícita i l'altra passada com a paràmetre) basant-se en les diferències disponibles o necessàries dels productes comuns. La funció itera a través dels inventaris de les ciutats, ajustant les quantitats de productes fins que ja no hi ha més comuns.

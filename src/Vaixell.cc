@@ -1,3 +1,7 @@
+/**
+ * @file Vaixell.cc
+ * @brief Implementació de la classe Vaixell
+ */
 #include "Vaixell.hh"
 using namespace std;
 

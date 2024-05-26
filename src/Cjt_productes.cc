@@ -1,3 +1,7 @@
+/**
+ * @file Cjt_productes.cc
+ * @brief Implementació de la classe Cjt_productes
+ */
 #include "Cjt_productes.hh"
 using namespace std;
 

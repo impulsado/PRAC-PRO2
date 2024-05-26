@@ -61,10 +61,10 @@ Conjunt de productes amb quantitat de productes igual a 0 i conjunt buit.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{6                              \{}
-\DoxyCodeLine{7     \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}} = 0;}
-\DoxyCodeLine{8     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}} = vector<pair<int,int>>();}
-\DoxyCodeLine{9 \}}
+\DoxyCodeLine{10                              \{}
+\DoxyCodeLine{11     \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}} = 0;}
+\DoxyCodeLine{12     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}} = vector<pair<int,int>>();}
+\DoxyCodeLine{13 \}}
 
 \end{DoxyCode}
 
@@ -88,10 +88,10 @@ Existeix un nou producte amb id autoincrementat. quant\+\_\+prod actualitzat.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{13                                                      \{}
-\DoxyCodeLine{14     \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}++;}
-\DoxyCodeLine{15     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}.push\_back(make\_pair(pes,volum));}
-\DoxyCodeLine{16 \}}
+\DoxyCodeLine{17                                                      \{}
+\DoxyCodeLine{18     \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}++;}
+\DoxyCodeLine{19     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}.push\_back(make\_pair(pes,volum));}
+\DoxyCodeLine{20 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}\label{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}} 
@@ -112,9 +112,9 @@ Retorna el pes i volum del producte.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{32                                                                 \{}
-\DoxyCodeLine{33     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[id\_prod-\/1];}
-\DoxyCodeLine{34 \}}
+\DoxyCodeLine{36                                                                 \{}
+\DoxyCodeLine{37     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[id\_prod-\/1];}
+\DoxyCodeLine{38 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_aa15e98e1d3bdf1e22c50a07a93f5d6e3}\label{classCjt__productes_aa15e98e1d3bdf1e22c50a07a93f5d6e3}} 
@@ -135,9 +135,9 @@ Retorna la quantitat de productes.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{28                                                 \{}
-\DoxyCodeLine{29     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}};}
-\DoxyCodeLine{30 \}}
+\DoxyCodeLine{32                                                 \{}
+\DoxyCodeLine{33     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}};}
+\DoxyCodeLine{34 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_a100b67065cd5d48333d4747e736e69bd}\label{classCjt__productes_a100b67065cd5d48333d4747e736e69bd}} 
@@ -158,9 +158,9 @@ S\textquotesingle{}ha escrit el producte.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{38                                              \{}
-\DoxyCodeLine{39     cout << \textcolor{keywordtype}{id} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[\textcolor{keywordtype}{id}-\/1].first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[\textcolor{keywordtype}{id}-\/1].second << endl;}
-\DoxyCodeLine{40 \}}
+\DoxyCodeLine{42                                              \{}
+\DoxyCodeLine{43     cout << \textcolor{keywordtype}{id} << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[\textcolor{keywordtype}{id}-\/1].first << \textcolor{charliteral}{' '} << \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[\textcolor{keywordtype}{id}-\/1].second << endl;}
+\DoxyCodeLine{44 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}\label{classCjt__productes_a1348e4f259d06a4516aa93577c41d9b4}} 
@@ -181,9 +181,9 @@ Retorna true si el id\+\_\+prod està dintre dels valors vàlids (existeix), en 
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{24                                                       \{}
-\DoxyCodeLine{25     \textcolor{keywordflow}{return} id\_prod>0 and id\_prod<=\mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}};}
-\DoxyCodeLine{26 \}}
+\DoxyCodeLine{28                                                       \{}
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} id\_prod>0 and id\_prod<=\mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}};}
+\DoxyCodeLine{30 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}\label{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}} 
@@ -204,13 +204,13 @@ El conjunt de productes és modificat amb els nous productes.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{44                                          \{}
-\DoxyCodeLine{45     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}; i++) \{}
-\DoxyCodeLine{46         \textcolor{keywordtype}{int} pes, volum;}
-\DoxyCodeLine{47         cin >> pes >> volum;}
-\DoxyCodeLine{48         \mbox{\hyperlink{classCjt__productes_a29110275aef3a6d9ec9c294bf5f56b04}{afegirProducte}}(pes, volum);}
-\DoxyCodeLine{49     \}}
-\DoxyCodeLine{50 \}}
+\DoxyCodeLine{48                                          \{}
+\DoxyCodeLine{49     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{classCjt__productes_a10227f9e0755a4c84e65353c9362c314}{quant\_prod}}; i++) \{}
+\DoxyCodeLine{50         \textcolor{keywordtype}{int} pes, volum;}
+\DoxyCodeLine{51         cin >> pes >> volum;}
+\DoxyCodeLine{52         \mbox{\hyperlink{classCjt__productes_a29110275aef3a6d9ec9c294bf5f56b04}{afegirProducte}}(pes, volum);}
+\DoxyCodeLine{53     \}}
+\DoxyCodeLine{54 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__productes_a5db70f49e07c7a9971cfc483c0f3231c}\label{classCjt__productes_a5db70f49e07c7a9971cfc483c0f3231c}} 
@@ -231,9 +231,9 @@ Conjunt modificat amb el nou producte.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{18                                                                      \{}
-\DoxyCodeLine{19     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[id\_prod-\/1] = make\_pair(pes,volum);}
-\DoxyCodeLine{20 \}}
+\DoxyCodeLine{22                                                                      \{}
+\DoxyCodeLine{23     \mbox{\hyperlink{classCjt__productes_a165441f3f61ac181508b886513efaa3d}{vprod}}[id\_prod-\/1] = make\_pair(pes,volum);}
+\DoxyCodeLine{24 \}}
 
 \end{DoxyCode}
 

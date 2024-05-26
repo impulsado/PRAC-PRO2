@@ -1,3 +1,7 @@
+/**
+ * @file Viatge.cc
+ * @brief Implementació de la classe Viatge
+ */
 #include "Viatge.hh"
 using namespace std;
 

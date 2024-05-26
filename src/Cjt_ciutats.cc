@@ -1,3 +1,7 @@
+/**
+ * @file Cjt_ciutats.cc
+ * @brief Implementació de la classe Cjt_ciutats
+ */
 #include "Cjt_ciutats.hh"
 using namespace std;
 
