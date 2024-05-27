@@ -94,19 +94,19 @@ void Ciutat::comerciar(Ciutat& other, const Cjt_productes& productes) {
                 pair<int,int> pesVol = productes.consultarProducte(prod_id1);
                 
                 // Determinar la màxima quantitat a intercanviar
-                int quantiat = min(abs(dif1), abs(dif2));
+                int quantitat = min(abs(dif1), abs(dif2));
                 
                 // Actualitzar l'inventari de la ciutat1
-                it1->second.first.first += quantiat;  // Afegir la nova quantitat d'oferta
-                it1->second.second += quantiat;  // Actualitzar la necessitat del producte
-                this->pes_total += quantiat*pesVol.first;  // Actualitzar el pes total
-                this->volum_total += quantiat*pesVol.second;  // Actualitzar el volum total
+                it1->second.first.first += quantitat;  // Afegir la nova quantitat d'oferta
+                it1->second.second += quantitat;  // Actualitzar la necessitat del producte
+                this->pes_total += quantitat*pesVol.first;  // Actualitzar el pes total
+                this->volum_total += quantitat*pesVol.second;  // Actualitzar el volum total
                 
                 // Actualitzar l'inventari de la ciutat2
-                it2->second.first.first -= quantiat;  // Treure la quantitat venuda
-                it2->second.second -= quantiat;  // Actualitzar la necessitat del producte
-                other.pes_total -= quantiat*pesVol.first;  // Actualitzar el pes total
-                other.volum_total -= quantiat*pesVol.second;  // Actualitzar el volum total
+                it2->second.first.first -= quantitat;  // Treure la quantitat venuda
+                it2->second.second -= quantitat;  // Actualitzar la necessitat del producte
+                other.pes_total -= quantitat*pesVol.first;  // Actualitzar el pes total
+                other.volum_total -= quantitat*pesVol.second;  // Actualitzar el volum total
             }
             // A la ciutat1 li sobra, a la ciutat2 li falta
             else if (dif1 > 0 and dif2 < 0) {
@@ -114,19 +114,19 @@ void Ciutat::comerciar(Ciutat& other, const Cjt_productes& productes) {
                 pair<int,int> pesVol = productes.consultarProducte(prod_id1);
                 
                 // Determinar la màxima quantitat a intercanviar
-                int quantiat = min(abs(dif1), abs(dif2));
+                int quantitat = min(abs(dif1), abs(dif2));
                 
                 // Actualitzar l'inventari de la ciutat1
-                it1->second.first.first -= quantiat;  // Treure la quantitat venuda
-                it1->second.second -= quantiat;  // Actualitzar la necessitat del producte
-                this->pes_total -= quantiat*pesVol.first;  // Actualitzar el pes total
-                this->volum_total -= quantiat*pesVol.second;  // Actualitzar el volum total
+                it1->second.first.first -= quantitat;  // Treure la quantitat venuda
+                it1->second.second -= quantitat;  // Actualitzar la necessitat del producte
+                this->pes_total -= quantitat*pesVol.first;  // Actualitzar el pes total
+                this->volum_total -= quantitat*pesVol.second;  // Actualitzar el volum total
                 
                 // Actualitzar l'inventari de la ciutat2
-                it2->second.first.first += quantiat;  // Afegir la nova quantitat d'oferta
-                it2->second.second += quantiat;  // Actualitzar la necessitat del producte
-                other.pes_total += quantiat*pesVol.first;  // Actualitzar el pes total
-                other.volum_total += quantiat*pesVol.second;  // Actualitzar el volum total
+                it2->second.first.first += quantitat;  // Afegir la nova quantitat d'oferta
+                it2->second.second += quantitat;  // Actualitzar la necessitat del producte
+                other.pes_total += quantitat*pesVol.first;  // Actualitzar el pes total
+                other.volum_total += quantitat*pesVol.second;  // Actualitzar el volum total
             }
             // Avançar als següents productes
             it1++;

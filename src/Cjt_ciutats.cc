@@ -62,7 +62,7 @@ void Cjt_ciutats::realitzar_viatge(const Cjt_productes& productes, const Viatge&
     }
 }
 
-Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Vaixell barco) {
+Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Llanxa lancha) {
     // === Base Case
     if (cuenca.empty()) return Viatge();
     
@@ -71,52 +71,24 @@ Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_p
     string id_city = cuenca.value();
 
     // Fer intercanvi
-    int quant_comerciat = barco.comerciarSenseMod(cmap[id_city]);
+    int quant_comerciat = lancha.comerciarSenseMod(cmap[id_city]);
 
     // Actualitzar viatge actual
     viatge_act.afegirCiutat(id_city);
     viatge_act.actQuant(quant_comerciat);
 
     // Si el barco ja no té unitats per intercanviar, es para tot.
-    if (barco.quantitatPerComprar()==0 and barco.quantitatPerVendre()==0) return viatge_act;
+    if (lancha.quantitatPerComprar()==0 and lancha.quantitatPerVendre()==0) return viatge_act;
 
     // Recursivitat
     Viatge viatge_esquerra, viatge_dreta;
     // Explorar ciutat de l'esquerra
-    if (not cuenca.left().empty()) viatge_esquerra = determinar_viatge(cuenca.left(), productes, barco);
+    if (not cuenca.left().empty()) viatge_esquerra = determinar_viatge(cuenca.left(), productes, lancha);
     // Explorar ciutat de la dreta
-    if (not cuenca.right().empty()) viatge_dreta = determinar_viatge(cuenca.right(), productes, barco);
+    if (not cuenca.right().empty()) viatge_dreta = determinar_viatge(cuenca.right(), productes, lancha);
 
     // Determinar millor viatge
-    // Casos:
-    // 1. No hi ha viatges a l'esquerra ni a la dreta
-    if (viatge_esquerra.consultarQuant()==0 and viatge_dreta.consultarQuant()==0) return viatge_act;
-    // 2. No hi ha comerç a l'esquerra
-    else if (viatge_esquerra.consultarQuant()==0) {
-        viatge_act.actViatge(viatge_dreta);
-        return viatge_act;
-    }
-    // 3. No hi ha comerç a la dreta
-    else if (viatge_dreta.consultarQuant()==0) {
-        viatge_act.actViatge(viatge_esquerra);
-        return viatge_act;
-    }
-    // 4. Hi ha comerç a ambdues bandes
-    // 4.1. La quantitat de la esquerra és més gran
-    else if (viatge_esquerra.consultarQuant()>viatge_dreta.consultarQuant()) {
-        viatge_act.actViatge(viatge_esquerra);
-        return viatge_act;
-    }
-    // 4.1 Tenen la mateixa quantitat
-    else if (viatge_esquerra.consultarQuant()==viatge_dreta.consultarQuant()) {
-        // 4.1.1 La distància de la esquerra és més petita o igual
-        if (viatge_esquerra.consultarDist()<=viatge_dreta.consultarDist()) {
-            viatge_act.actViatge(viatge_esquerra);
-            return viatge_act;
-        }
-    }
-    // 4.2. La quantitat de la dreta és més gran
-    viatge_act.actViatge(viatge_dreta);
+    viatge_act.millorViatge(viatge_esquerra, viatge_dreta);
     
     return viatge_act;
 }

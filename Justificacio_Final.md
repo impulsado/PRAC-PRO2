@@ -14,23 +14,21 @@ void Ciutat::comerciar(Ciutat& other, const Cjt_productes& productes);
 ```c++
 void Ciutat::comerciar(Ciutat& other, const Cjt_productes& productes) {
     // Les ciutats no tenen inventari (Optimització)
-    // Les ciutats no tenen inventari (Optimització)
     if (not this->teInventari() or not other.teInventari()) return;
 
-    // Iterators per recórrer els inventaris
-    auto it1 = this->inventari.begin();taris
-    // Iterators per recórrer els inventaris
+    // Iteradors per recórrer els inventaris
     auto it1 = this->inventari.begin();
     auto it2 = other.inventari.begin();
 
-    // Comerç entre les ciutats    while (it1!=this->inventari.end() and it2!=other.inventari.end()) {
+    // Comerç entre les ciutats
+    while (it1!=this->inventari.end() and it2!=other.inventari.end()) {
         // Consultar els productes
         int prod_id1 = it1->first;
         int prod_id2 = it2->first;
 
         // Si els productes són iguals 
         if (prod_id1 == prod_id2) {
-            // Consultar les diferències de productes de cada ciutat
+            // Consultar les diferències del producte de cada ciutat
             int dif1 = it1->second.second;
             int dif2 = it2->second.second;
             
@@ -133,18 +131,20 @@ Quan el bucle finalitza, els iteradors ``it1`` i ``it2`` han recorregut tots els
 
 # Funció `determinar_viatge`
 ## Implementació
-La funció ``determinar_viatge`` busca determinar el millor viatge possible maximitzant la quantitat de comerç entre el vaixell i les respectives ciutats. Això es fa explorant un arbre binari de ciutats (``cuenca``) i realitzant intercanvis amb un vaixell (``barco``). La funció utilitza la recursivitat per explorar totes les possibilitats i seleccionar la millor opció.
+La funció ``determinar_viatge`` busca determinar el millor viatge possible maximitzant la quantitat de comerç entre el vaixell i les respectives ciutats. Això es fa explorant un arbre binari de ciutats (``cuenca``) i realitzant intercanvis amb un llanxa (``llanxa``). La funció utilitza la recursivitat per explorar totes les possibilitats i seleccionar la millor opció.
+És important notar que no faig servir la classe `Vaixell` donada que aquesta conté una `list` amb les ciutats que ha visitat (en altres viatges). Pel plantejament de la recursivitat s'hauria de passar el vaixell sense referència i això faria que hagués de fer una còpia de tota la llista sencera.
+S'ha optat per fer una nova classe ``Llanxa`` (tot i que es pot pensar com una subclasse de Vaixell) que només conté els atributs i mètodes necessaris per calcular el millor viatge.
 
 ## Especificació
 ```c++
-/* Pre: cuenca és un arbre binari amb id's de ciutats vàlides, productes és un conjunt de productes vàlids i no buit, barco és un vaixell inicialitzat */
+/* Pre: cuenca és un arbre binari amb id's de ciutats vàlides, productes és un conjunt de productes vàlids i no buit, lancha és un llanxa amb els paràmetres de compra i venta del vaixell */
 /* Post: Retorna el millor viatge possible maximitzant la quantitat de comerç realitzat */
-Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Vaixell barco);
+Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Llanxa lancha);
 ```
 
 ## Codi
 ```c++
-Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Vaixell barco) {
+Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Llanxa lancha) {
     // === Base Case
     if (cuenca.empty()) return Viatge();
     
@@ -153,62 +153,30 @@ Viatge Cjt_ciutats::determinar_viatge(const BinTree<string>& cuenca, const Cjt_p
     string id_city = cuenca.value();
 
     // Fer intercanvi
-    int quant_comerciat = barco.comerciarSenseMod(cmap[id_city]);
+    int quant_comerciat = lancha.comerciarSenseMod(cmap[id_city]);
 
     // Actualitzar viatge actual
     viatge_act.afegirCiutat(id_city);
     viatge_act.actQuant(quant_comerciat);
 
     // Si el barco ja no té unitats per intercanviar, es para tot.
-    if (barco.quantitatPerComprar()==0 and barco.quantitatPerVendre()==0) return viatge_act;
+    if (lancha.quantitatPerComprar()==0 and lancha.quantitatPerVendre()==0) return viatge_act;
 
     // Recursivitat
     Viatge viatge_esquerra, viatge_dreta;
     // Explorar ciutat de l'esquerra
-    if (not cuenca.left().empty()) viatge_esquerra = determinar_viatge(cuenca.left(), productes, barco);
+    if (not cuenca.left().empty()) viatge_esquerra = determinar_viatge(cuenca.left(), productes, lancha);
     // Explorar ciutat de la dreta
-    if (not cuenca.right().empty()) viatge_dreta = determinar_viatge(cuenca.right(), productes, barco);
+    if (not cuenca.right().empty()) viatge_dreta = determinar_viatge(cuenca.right(), productes, lancha);
 
     // Determinar millor viatge
-    // Casos:
-    // 1. No hi ha viatges a l'esquerra ni a la dreta
-    if (viatge_esquerra.consultarQuant()==0 and viatge_dreta.consultarQuant()==0) return viatge_act;
-    // 2. No hi ha comerç a l'esquerra
-    else if (viatge_esquerra.consultarQuant()==0) {
-        viatge_act.actViatge(viatge_dreta);
-        return viatge_act;
-    }
-    // 3. No hi ha comerç a la dreta
-    else if (viatge_dreta.consultarQuant()==0) {
-        viatge_act.actViatge(viatge_esquerra);
-        return viatge_act;
-    }
-    // 4. Hi ha comerç a ambdues bandes
-    // 4.1. La quantitat de la esquerra és més gran
-    else if (viatge_esquerra.consultarQuant()>viatge_dreta.consultarQuant()) {
-        viatge_act.actViatge(viatge_esquerra);
-        return viatge_act;
-    }
-    // 4.1 Tenen la mateixa quantitat
-    else if (viatge_esquerra.consultarQuant()==viatge_dreta.consultarQuant()) {
-        // 4.1.1 La distància de la esquerra és més petita o igual
-        if (viatge_esquerra.consultarDist()<=viatge_dreta.consultarDist()) {
-            viatge_act.actViatge(viatge_esquerra);
-            return viatge_act;
-        }
-    }
-    // 4.2. La quantitat de la dreta és més gran
-    viatge_act.actViatge(viatge_dreta);
+    viatge_act.millorViatge(viatge_esquerra, viatge_dreta);
     
     return viatge_act;
 }
 ```
 
 ## Justificació
-### Invariant
-Durant cada crida recursiva de la funció, es manté l'invariant que les ciutats explorades fins al moment estan correctament processades, i les decisions de comerç són òptimes respecte a les condicions donades. Definim l'invariant com: <br>
-
-Invariant: $I: \forall \text{node} \in \text{cuenca}, \text{viatge\_act} \text{ representa el millor viatge possible fins a aquest punt}$
 
 ### 1. Inicialitzacions
 - Si ``cuenca`` està buit (``cuenca.empty()``), es retorna un viatge buit (``Viatge()``). Això cobreix el cas base de la recursió.
@@ -216,9 +184,9 @@ Invariant: $I: \forall \text{node} \in \text{cuenca}, \text{viatge\_act} \text{ 
 - S'agafa el valor del node actual de ``cuenca`` (``id_city``).
 
 ### 2. Intercanvi i actualització del viatge
-- Es realitza un intercanvi de mercaderies amb la ciutat actual (``cmap[id_city]``) utilitzant el vaixell (``barco.comerciarSenseMod``), i es guarda la quantitat comerciada. Aquesta funció no requereix de la classe `Cjt_productes` donat que no modificarà la ciutat (Millorar eficiència).
+- Es realitza un intercanvi de mercaderies amb la ciutat actual (``cmap[id_city]``) utilitzant la llanxa (``lancha.comerciarSenseMod``), i es guarda la quantitat comerciada. Aquesta funció no requereix de la classe `Cjt_productes` donat que no modificarà la ciutat (Millorar eficiència).
 -  S'afegeix la ciutat al viatge actual (``viatge_act.afegirCiutat(id_city)``) i s'actualitza la quantitat comerciada (``viatge_act.actQuant(quant_comerciat)``). Aquesta pot ser 0, però més endavant discutirem perquè es continua ficant a la llista.
-- Si el vaixell ja no té unitats per intercanviar (``barco.quantitatPerComprar() == 0 and barco.quantitatPerVendre() == 0``), es retorna el viatge actual.
+- Si el vaixell ja no té unitats per intercanviar (``lancha.quantitatPerComprar() == 0 and lancha.quantitatPerVendre() == 0``), es retorna el viatge actual.
 
 ### 3. Exploració recursiva
 - Es defineixen dos objectes ``Viatge`` per als viatges de l'esquerra (``viatge_esquerra``) i la dreta (``viatge_dreta``).
@@ -226,13 +194,14 @@ Invariant: $I: \forall \text{node} \in \text{cuenca}, \text{viatge\_act} \text{ 
 - Si hi ha una ciutat a la dreta (``not cuenca.right().empty()``), es crida recursivament la funció ``determinar_viatge`` per explorar aquesta ciutat.
 
 ### 4. Determinació del millor viatge
-- Es comparen els viatges obtinguts de l'esquerra i la dreta per determinar quin és el millor viatge basant-se en la quantitat de comerç realitzat i la distància recorreguda.
-- Si no hi ha comerç ni a l'esquerra ni a la dreta (``viatge_esquerra.consultarQuant() == 0 and viatge_dreta.consultarQuant() == 0``), es retorna el viatge actual. Això farà que en la llista no hi hagi ciutats posteriors on son redundants donat que no hi ha comerç.
-- Si només hi ha comerç a una banda (``viatge_esquerra.consultarQuant() == 0 o viatge_dreta.consultarQuant() == 0``), es selecciona aquesta banda.
-- Si hi ha comerç a ambdues bandes, es comparen les quantitats comerciades i, si són iguals, les distàncies, per determinar el millor viatge. En ultima instancia, si tant la quantitat com la distància és la mateixa, es selecciona la que sigui més cap a la dreta mirant el riu cap amunt.
+- Al viatge actual (paràmetre implícit a l'hora de decidir) se li passen per referència tots dos viatges (independentment de com siguis). Dins d'aquest mètode `millorViatge()` es fa:
+  - Comparen els viatges de l'esquerra i la dreta per determinar quin és el millor viatge basant-se en la quantitat de comerç realitzat i la distància recorreguda.
+  - Si no hi ha comerç ni a l'esquerra ni a la dreta (``viatge_esquerra.consultarQuant() == 0 and viatge_dreta.consultarQuant() == 0``), es retorna el viatge actual. Això farà que en la llista no hi hagi ciutats posteriors on son redundants donat que no hi ha comerç.
+  - Si només hi ha comerç a una banda (``viatge_esquerra.consultarQuant() == 0 o viatge_dreta.consultarQuant() == 0``), es selecciona aquesta banda.
+  - Si hi ha comerç a ambdues bandes, es comparen les quantitats comerciades i, si són iguals, les distàncies, per determinar el millor viatge. En ultima instancia, si tant la quantitat com la distància és la mateixa, es selecciona la que sigui més cap a la dreta mirant el riu cap amunt.
 
 ### 5. Acabament
-A cada crida recursiva, l'arbre ``cuenca`` es redueix en mida, assegurant que la recursió finalitza després d'un nombre finit de passos.
+Un cop determinat el millor viatge, l'arbre ``cuenca`` es redueix en mida, assegurant que la recursió finalitza després d'un nombre finit de passos.
 
 ### Funció de fita
 La funció de fita és la profunditat de l'arbre cuenca restant per explorar. Definim la funció de fita com:
@@ -270,11 +239,11 @@ Si ``cuenca`` està buit, la funció retorna un viatge buit (``Viatge()``), el q
 #### 1. Inicialitzacions
 - Es crea un objecte Viatge buit anomenat viatge_act per representar el viatge actual.
 - S'agafa el valor del node actual de cuenca (id_city).
-- Es realitza un intercanvi de productes amb la ciutat actual (``cmap[id_city]``) utilitzant el vaixell (``barco.comerciarSenseMod``).
+- Es realitza un intercanvi de productes amb la ciutat actual (``cmap[id_city]``) utilitzant la llanxa (``llanxa.comerciarSenseMod``).
 - S'afegeix la ciutat al viatge actual (``viatge_act.afegirCiutat(id_city)``) i s'actualitza la quantitat comerciada (``viatge_act.actQuant(quant_comerciat)``).
   
 #### 2. Intercanvi i actualització del viatge
-Si el vaixell ja no té unitats per intercanviar (``barco.quantitatPerComprar() == 0 and barco.quantitatPerVendre() == 0``), es retorna el viatge actualitzat (viatge_act).
+Si el llanxa ja no té unitats per intercanviar (``llanxa.quantitatPerComprar() == 0 and llanxa.quantitatPerVendre() == 0``), es retorna el viatge actualitzat (viatge_act).
 
 **Raonament:** Això significa que no hi ha més comerç possible, el viatge actual és el millor possible fins ara.
 
@@ -290,12 +259,13 @@ Si el vaixell ja no té unitats per intercanviar (``barco.quantitatPerComprar() 
 **Matemàticament:** $Q(x) \land \neg c(x) \Rightarrow Q(g(x))$
 
 #### 4. Determinació del millor viatge
-- **Cas 1:** Si no hi ha viatges comercials a l'esquerra ni a la dreta (``viatge_esquerra.consultarQuant() == 0 and viatge_dreta.consultarQuant() == 0``), es retorna viatge_act.
-- **Cas 2 i Cas 3:** Si només hi ha comerç a una banda (``viatge_esquerra.consultarQuant() == 0 o viatge_dreta.consultarQuant() == 0``), es selecciona aquesta banda.
-- **Cas 4:** Hi ha comerç a ambdues bandes
-  - **Cas 4.1:** Si la quantitat de comerç a l'esquerra és major (``viatge_esquerra.consultarQuant() > viatge_dreta.consultarQuant()``), es selecciona ``viatge_esquerra``.
-    - **Cas 4.1.1:** Si la quantitat comerciat es la mateixa (`viatge_esquerra.consultarQuant()==viatge_dreta.consultarQuant()`) es selecciona la de menor distancia. En cas d'empat en distancia (`viatge_esquerra.consultarDist()<=viatge_dreta.consultarDist()`) es selecciona l'esquerra.
-  - **Cas 4.2:** Altrament s'agafa el viatge de la subruta dreta.
+Mostrem en detall l'algorisme per determinar el millor viatge dins de la classe `Viatge`. Donat que podem accedir als camps privats dels viatges passats per referència, amb un mètode `void` anomenat `millorViatge()` podem afegir la informació del millor viatge al viatge implícit (`viatge_actual`).
+- **Cas 1:** Si no hi ha viatges comercials a l'esquerra ni a la dreta (``viatge_esquerra.quant_comerciat == 0 and viatge_dreta.quant_comerciat == 0``), no es fa res.
+- **Cas 2 i Cas 3:** Si només hi ha comerç a una banda (``viatge_esquerra.quant_comerciat == 0 o viatge_dreta.quant_comerciat == 0``), s'afegeix la informació d'aquesta banda.
+- **Cas 4:** Hi ha comerç a ambdues bandes:
+  - **Cas 4.1:** Si la quantitat de comerç a l'esquerra és major (``viatge_esquerra.quant_comerciat > viatge_dreta.quant_comerciat``), es selecciona afegir la informació de ``viatge_esquerra``.
+    - **Cas 4.1.1:** Si la quantitat comerciat es la mateixa (`viatge_esquerra.quant_comerciat==viatge_dreta.quant_comerciat`) es selecciona la de menor distancia. En cas d'empat en distancia (`viatge_esquerra.distancia <= viatge_dreta.distancia`) es selecciona afegir la informació l'esquerra.
+  - **Cas 4.2:** Altrament s'afegeix la informació del viatge de la dreta.
   
 **Raonament:** Això assegura que el viatge seleccionat maximitza la quantitat de comerç i minimitza la distància recorreguda.
 

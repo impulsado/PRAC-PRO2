@@ -3,8 +3,8 @@ INCLUDES = -I include
 
 all: program.exe
 
-program.exe: program.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o
-	g++ $(OPCIONS) -o program.exe program.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o
+program.exe: program.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o Llanxa.o
+	g++ $(OPCIONS) -o program.exe program.o Ciutat.o Cjt_ciutats.o Cjt_productes.o Vaixell.o Viatge.o Llanxa.o
 	rm *.o
 
 program.o: src/program.cc
@@ -25,13 +25,16 @@ Vaixell.o: src/Vaixell.cc
 Viatge.o: src/Viatge.cc
 	g++ $(OPCIONS) -c src/Viatge.cc -o Viatge.o $(INCLUDES)
 
+Llanxa.o: src/Llanxa.cc
+	g++ $(OPCIONS) -c src/Llanxa.cc -o Llanxa.o $(INCLUDES)
+
 entrega:
-	tar -cvf practica.tar Makefile src/*.cc include/*.hh
+	tar -cvf entrega.tar Makefile src/*.cc include/*.hh
 
 entrega_final:
 	doxygen Doxyfile
 	(cd DOC/html && zip -r ../../html.zip .)
-	tar -cvf entrega.tar Makefile src/*.cc include/*.hh Justificacio_Final.pdf html.zip
+	tar -cvf entrega_final.tar Makefile src/*.cc include/*.hh Justificacio_Final.pdf html.zip
 
 clean:
 	rm -rf *.o main.exe

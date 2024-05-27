@@ -10,7 +10,7 @@
 
 #ifndef NO_DIAGRAM
 #include <iostream>
-#include <vector>
+#include <list>
 #include <string>
 #include <utility>
 #endif
@@ -30,7 +30,7 @@ class Vaixell {
 private:
     pair<int,int> comprar;  ///< Producte a comprar
     pair<int,int> vendre;  ///< Producte a vendre
-    vector<string> registre_ultimes_ciutats;  ///< Registre de les últimes ciutats visitades
+    list<string> registre_ultimes_ciutats;  ///< Registre de les últimes ciutats visitades
 
 public:
     /* CONSTRUCTORS */
@@ -103,6 +103,22 @@ public:
      * \post Retorna la quantitat d'unitats restants per comprar.
      */
     int quantitatPerComprar();
+
+    /**
+     * @brief Consultar el producte a comprar.
+     * 
+     * \pre Cert.
+     * \post Retorna el producte a comprar.
+     */
+    pair<int,int> consultarCompra();
+
+    /**
+     * @brief Consultar el producte a vendre.
+     * 
+     * \pre Cert.
+     * \post Retorna el producte a vendre.
+     */
+    pair<int,int> consultarVenda();
 
     /* LECTURA */
     /**

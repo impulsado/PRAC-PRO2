@@ -10,7 +10,7 @@ using namespace std;
 Vaixell::Vaixell() {
     comprar = make_pair(0, 0);
     vendre = make_pair(0, 0);
-    registre_ultimes_ciutats = vector<string>();
+    registre_ultimes_ciutats = list<string>();
 }
 
 /* === MODIFICADORS === */
@@ -73,51 +73,6 @@ int Vaixell::comerciar(Ciutat& city, const Cjt_productes& productes) {
     return quant_total;
 }
 
-int Vaixell::comerciarSenseMod(Ciutat& city) {
-    // La ciutat no té inventari (Optimització)
-    if (not city.teInventari()) return 0;
-    
-    // Total comerciat
-    int quant_total = 0;
-
-    // Comprar de la ciutat
-    
-    // La ciutat té el producte i el vaixell pot comprar
-    if (comprar.second>0 and city.teProducte(comprar.first)) {
-        // Saber quantitat disponible a la ciutat
-        int dif = city.consultarDiferencia(comprar.first);
-
-        // La ciutat té quantitat per vendre al vaixell
-        if (dif>0) {
-            // Determinar la maxima quantitat a comerciar
-            int quant_comerciar = min(comprar.second, dif);
-            // Actualitzar la nova quantitat necessària del vaixell
-            comprar.second -= quant_comerciar;
-            // Actualitzar la quantitat total comerciada
-            quant_total += quant_comerciar;
-        }
-    }
-
-    // Vendre a la ciutat
-    // La ciutat necessita el producte i el vaixell pot vendre
-    if (vendre.second>0 and city.teProducte(vendre.first)) {
-        // Saber quantitat necessària a la ciutat
-        int dif = city.consultarDiferencia(vendre.first);
-        
-        // La ciutat té necessitat del producte
-        if (dif<0) {
-            // Determinar la maxima quantitat a comerciar
-            int quant_comerciar = min(vendre.second, -dif);
-            // Actualitzar la nova quantitat necessària del vaixell
-            vendre.second -= quant_comerciar;
-            // Actualitzar la quantitat total comerciada
-            quant_total += quant_comerciar;
-        }
-    }
-    
-    return quant_total;
-}
-
 void Vaixell::afegirCiutat(string id_city) {
     registre_ultimes_ciutats.push_back(id_city);
 }
@@ -134,6 +89,14 @@ int Vaixell::quantitatPerVendre() {
 
 int Vaixell::quantitatPerComprar() {
     return comprar.second;
+}
+
+pair<int,int> Vaixell::consultarCompra() {
+    return comprar;
+}
+
+pair<int,int> Vaixell::consultarVenda() {
+    return vendre;
 }
 
 /* === LECTURA === */
@@ -168,7 +131,7 @@ void Vaixell::escriure() {
     cout << ' ' << vendre.first << ' ' << vendre.second << endl;
     
     // Mostrar les ciutats visitades
-    for (int i = 0; i<registre_ultimes_ciutats.size(); i++) {
-        cout << registre_ultimes_ciutats[i] << endl;
+    for (auto it = registre_ultimes_ciutats.begin(); it!=registre_ultimes_ciutats.end(); it++) {
+        cout << *it << endl;
     }
 }

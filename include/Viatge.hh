@@ -97,6 +97,14 @@ public:
 	 * \post Retorna el id de l'última ciutat visitada.
 	 */
 	string consultarUltimaCiutat() const;
+
+	/**
+	 * @brief Comprovar dos viatges i retornar el millor.
+	 * 
+	 * \pre viatge_esquerra i viatge_dreta són viatges vàlids.
+	 * \post Afegeix el millor viatge al viatge implícit.
+	 */
+	void millorViatge(Viatge& viatge_esquerra, Viatge& viatge_dreta);
 };
 
 #endif

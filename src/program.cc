@@ -3,17 +3,13 @@
  * 
  * @brief Programa que simula el comerç entre ciutats i/o amb un vaixell en una cuenca fluvial.
  * 
- * El programa té una estructura tal que:
- * - \b include/ : Carpeta on es troben els fitxers .hh amb les classes.
- * - \b src/ : Carpeta on es troben els fitxers .cc amb la implementació de les classes.
- * - \b samples/ : Carpeta on es troben els fitxers de prova.
- * 
  * Les classes principals del programa són:
- * - Ciutat: Classe que representa una ciutat amb un identificador i un inventari de productes.
- * - Cjt_ciutats: Classe que representa un conjunt de ciutats.
- * - Cjt_productes: Classe que representa un conjunt de productes.
- * - Vaixell: Classe que representa un vaixell amb un inventari de productes.
- * - Viatge: Classe que representa un viatge entre ciutats.
+ * - \b Ciutat: Classe que representa una ciutat amb un identificador i un inventari de productes.
+ * - \b Cjt_ciutats: Classe que representa un conjunt de ciutats.
+ * - \b Cjt_productes: Classe que representa un conjunt de productes.
+ * - \b Llanxa: Classe que representa una llanxa (vaixell petit) només destinat a calcular el millor viatge.
+ * - \b Vaixell: Classe que representa un vaixell amb un inventari de productes.
+ * - \b Viatge: Classe que representa un viatge entre ciutats.
  * 
  */
 
@@ -33,10 +29,13 @@
  * Un vaixell sempre té un inventari vàlid on té una quantitat d'un determinat producte per a vendre i un altre per a comprar (diferents). Aquest inventari es pot modificar.
  * El vaixell també té un registre de les ultimes ciutats on ha comerciat cada vegada que s'ha fet un viatge al llarg de la cuenca.
  * 
+ * La classe Llanxa representa una versió del vaixell més reduïda que només s'utilitza per a calcular el millor viatge a realitzar.
+ * Això implica que només té la informació sobre els productes de compra i venta del vaixell juntament amb mètodes modificats per a ser més optims.
+ * 
  * La classe viatge ajuda a organitzar les dades per a realitzar un viatge entre ciutats. Conté la quantitat total de productes comerciats si es realitza el viatge i les ciutats per on passa.
  * 
  * \details Les polítiques de programació són:
- * - Per a la classe Cjt_productes s'ha decidit fer servir un vector per a tenir un accés ràpid donat que el id és númeric i incremental.
+ * - Per a la classe Cjt_productes s'ha decidit fer servir un vector per a tenir un accés ràpid donat que el id és numèric i incremental.
  * - Per a la classe Cjt_ciutats s'ha decidit fer servir un map per a tenir un accés més ràpid a les ciutats.
  * - Per a l'operació de viatge s'ha decidit crear una nova classe per millorar la llegibilitat del codi.
  * - No s'ha fet servir un BinTree de ciutats donat que modificar les ciutats dins de l'arbre gran perdem eficiencia.
@@ -51,6 +50,7 @@
 #include <utility>
 #endif
 
+#include "Llanxa.hh"
 #include "Viatge.hh"
 #include "BinTree.hh"
 #include "Vaixell.hh"
@@ -398,7 +398,8 @@ void comerciar(Cjt_ciutats& ciutats, const Cjt_productes& productes) {
  */
 void hacer_viaje(const BinTree<string>& cuenca, const Cjt_productes& productes, Vaixell& barco, Cjt_ciutats& ciutats) {
     // Determinar el millor viatge a realitzar
-    Viatge ruta = ciutats.determinar_viatge(cuenca, productes, barco);
+    Llanxa lancha(barco);
+    Viatge ruta = ciutats.determinar_viatge(cuenca, productes, lancha);
 
     // Consultar quantitat de productes comerciats en el millor viatge
     int quantitat_comerciat = ruta.consultarQuant();
@@ -419,7 +420,7 @@ void hacer_viaje(const BinTree<string>& cuenca, const Cjt_productes& productes, 
  * @brief Funció principal del programa.
  * 
  * El programa comença declarant els objectes necessaris.
- * Un cop inicialitzades les variables prinicipals (productes, ciutats i vaixell) es comença a llegir les comandes.
+ * Un cop inicialitzades les variables principals (productes, ciutats i vaixell) es comença a llegir les comandes.
  * 
  * Les comandes poden ser de diferents tipus:
  * - Leer_rio: Llegir la cuenca.

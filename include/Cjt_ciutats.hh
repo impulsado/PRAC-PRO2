@@ -13,11 +13,12 @@
 #include <string>
 #endif
 
-#include "Cjt_productes.hh"
+#include "Llanxa.hh"
+#include "Viatge.hh"
 #include "Ciutat.hh"
 #include "Vaixell.hh"
-#include "Viatge.hh"
 #include "BinTree.hh"
+#include "Cjt_productes.hh"
 using namespace std;
 
 /**
@@ -105,7 +106,7 @@ public:
      * \pre El conjunt de ciutats és vàlid. El conjunt de productes és vàlid. El vaixell és vàlid.
      * \post Retorna el viatge a realitzar.
      */
-    Viatge determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Vaixell barco);
+    Viatge determinar_viatge(const BinTree<string>& cuenca, const Cjt_productes& productes, Llanxa lancha);
 
     /**
      * @brief Eliminar tots els productes d'una ciutat.
