@@ -102,6 +102,9 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a2bdb9e677e4fc51136252fb1803945c0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classViatge.html#a2bdb9e677e4fc51136252fb1803945c0">consultarUltimaCiutat</a> () const</td></tr>
 <tr class="memdesc:a2bdb9e677e4fc51136252fb1803945c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Consultar l'última ciutat visitada.  <a href="classViatge.html#a2bdb9e677e4fc51136252fb1803945c0">Más...</a><br /></td></tr>
 <tr class="separator:a2bdb9e677e4fc51136252fb1803945c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a054401d82ed762d65bf336bb82c18eab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classViatge.html#a054401d82ed762d65bf336bb82c18eab">millorViatge</a> (<a class="el" href="classViatge.html">Viatge</a> &amp;viatge_esquerra, <a class="el" href="classViatge.html">Viatge</a> &amp;viatge_dreta)</td></tr>
+<tr class="memdesc:a054401d82ed762d65bf336bb82c18eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprovar dos viatges i retornar el millor.  <a href="classViatge.html#a054401d82ed762d65bf336bb82c18eab">Más...</a><br /></td></tr>
+<tr class="separator:a054401d82ed762d65bf336bb82c18eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Atributos privados</h2></td></tr>
@@ -322,6 +325,70 @@ Atributos privados</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                           {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classViatge.html#af511af2e6f2970e70ae63784fc2d8059">ruta</a>.back();</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a054401d82ed762d65bf336bb82c18eab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a054401d82ed762d65bf336bb82c18eab">&#9670;&nbsp;</a></span>millorViatge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Viatge::millorViatge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classViatge.html">Viatge</a> &amp;&#160;</td>
+          <td class="paramname"><em>viatge_esquerra</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classViatge.html">Viatge</a> &amp;&#160;</td>
+          <td class="paramname"><em>viatge_dreta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Comprovar dos viatges i retornar el millor. </p>
+<dl class="section pre"><dt>Precondición</dt><dd>viatge_esquerra i viatge_dreta són viatges vàlids. </dd></dl>
+<dl class="section post"><dt>Postcondición</dt><dd>Afegeix el millor viatge al viatge implícit. </dd></dl>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                                       {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// 1. No hi ha viatges a l&#39;esquerra ni a la dreta</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (viatge_esquerra.<a class="code" href="classViatge.html#abb14c5265d87a108b644afc9d5204930">quant_comerciat</a>==0 and viatge_dreta.<a class="code" href="classViatge.html#abb14c5265d87a108b644afc9d5204930">quant_comerciat</a>==0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// 2. No hi ha comerç a l&#39;esquerra</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (viatge_esquerra.<a class="code" href="classViatge.html#abb14c5265d87a108b644afc9d5204930">quant_comerciat</a>==0) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classViatge.html#ab313588a14b32e853895d0345b32f251">actViatge</a>(viatge_dreta);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// 3. No hi ha comerç a la dreta</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (viatge_dreta.<a class="code" href="classViatge.html#abb14c5265d87a108b644afc9d5204930">quant_comerciat</a>==0) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="classViatge.html#ab313588a14b32e853895d0345b32f251">actViatge</a>(viatge_esquerra);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// 4. Hi ha comerç a ambdues bandes</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// 4.1. La quantitat de la esquerra és més gran</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (viatge_esquerra.<a class="code" href="classViatge.html#abb14c5265d87a108b644afc9d5204930">quant_comerciat</a>&gt;viatge_dreta.<a class="code" href="classViatge.html#abb14c5265d87a108b644afc9d5204930">quant_comerciat</a>) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="classViatge.html#ab313588a14b32e853895d0345b32f251">actViatge</a>(viatge_esquerra);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// 4.1 Tenen la mateixa quantitat</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (viatge_esquerra.<a class="code" href="classViatge.html#abb14c5265d87a108b644afc9d5204930">quant_comerciat</a>==viatge_dreta.<a class="code" href="classViatge.html#abb14c5265d87a108b644afc9d5204930">quant_comerciat</a>) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">// 4.1.1 La distància de la esquerra és més petita o igual</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span> (viatge_esquerra.<a class="code" href="classViatge.html#ab0befd4984e44af7df0e6c2ca7b36412">distancia</a> &lt;= viatge_dreta.<a class="code" href="classViatge.html#ab0befd4984e44af7df0e6c2ca7b36412">distancia</a>) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="classViatge.html#ab313588a14b32e853895d0345b32f251">actViatge</a>(viatge_esquerra);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// 4.2. La quantitat de la dreta és més gran</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classViatge.html#ab313588a14b32e853895d0345b32f251">actViatge</a>(viatge_dreta);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="ttc" id="aclassViatge_html_ab313588a14b32e853895d0345b32f251"><div class="ttname"><a href="classViatge.html#ab313588a14b32e853895d0345b32f251">Viatge::actViatge</a></div><div class="ttdeci">void actViatge(Viatge &amp;v)</div><div class="ttdoc">Incorporar millor subviatge al viatge actual.</div><div class="ttdef"><b>Definition:</b> Viatge.cc:27</div></div>
 </div><!-- fragment -->
 </div>
 </div>

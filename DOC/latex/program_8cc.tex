@@ -5,6 +5,7 @@
 Programa principal de la pràctica.  
 
 
+{\ttfamily \#include \char`\"{}Llanxa.\+hh\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Viatge.\+hh\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Bin\+Tree.\+hh\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}Vaixell.\+hh\char`\"{}}\newline
@@ -63,11 +64,13 @@ Una ciutat pot tindre o no inventari de productes. Aquest inventari es pot modif
 
 Un vaixell sempre té un inventari vàlid on té una quantitat d\textquotesingle{}un determinat producte per a vendre i un altre per a comprar (diferents). Aquest inventari es pot modificar. El vaixell també té un registre de les ultimes ciutats on ha comerciat cada vegada que s\textquotesingle{}ha fet un viatge al llarg de la cuenca.
 
+La classe \mbox{\hyperlink{classLlanxa}{Llanxa}} representa una versió del vaixell més reduïda que només s\textquotesingle{}utilitza per a calcular el millor viatge a realitzar. Això implica que només té la informació sobre els productes de compra i venta del vaixell juntament amb mètodes modificats per a ser més optims.
+
 La classe viatge ajuda a organitzar les dades per a realitzar un viatge entre ciutats. Conté la quantitat total de productes comerciats si es realitza el viatge i les ciutats per on passa.
 
 Les polítiques de programació són\+:
 \begin{DoxyItemize}
-\item Per a la classe \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} s\textquotesingle{}ha decidit fer servir un vector per a tenir un accés ràpid donat que el id és númeric i incremental.
+\item Per a la classe \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} s\textquotesingle{}ha decidit fer servir un vector per a tenir un accés ràpid donat que el id és numèric i incremental.
 \item Per a la classe \mbox{\hyperlink{classCjt__ciutats}{Cjt\+\_\+ciutats}} s\textquotesingle{}ha decidit fer servir un map per a tenir un accés més ràpid a les ciutats.
 \item Per a l\textquotesingle{}operació de viatge s\textquotesingle{}ha decidit crear una nova classe per millorar la llegibilitat del codi.
 \item No s\textquotesingle{}ha fet servir un Bin\+Tree de ciutats donat que modificar les ciutats dins de l\textquotesingle{}arbre gran perdem eficiencia.
@@ -284,22 +287,23 @@ cuenca, ciutats, productes i barco són vàlids.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{399                                                                                                                       \{}
 \DoxyCodeLine{400     \textcolor{comment}{// Determinar el millor viatge a realitzar}}
-\DoxyCodeLine{401     \mbox{\hyperlink{classViatge}{Viatge}} ruta = ciutats.\mbox{\hyperlink{classCjt__ciutats_a154039754704c3cbd5b6a9784ccfc9b0}{determinar\_viatge}}(cuenca, productes, barco);}
-\DoxyCodeLine{402 }
-\DoxyCodeLine{403     \textcolor{comment}{// Consultar quantitat de productes comerciats en el millor viatge}}
-\DoxyCodeLine{404     \textcolor{keywordtype}{int} quantitat\_comerciat = ruta.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}();}
-\DoxyCodeLine{405     cout << quantitat\_comerciat << endl;}
-\DoxyCodeLine{406 }
-\DoxyCodeLine{407     \textcolor{comment}{// Realitzar el viatge si hi ha productes a comerciar}}
-\DoxyCodeLine{408     \textcolor{keywordflow}{if} (quantitat\_comerciat!=0) \{}
-\DoxyCodeLine{409         \textcolor{comment}{// Guardar l'última ciutat on s'ha comerciat}}
-\DoxyCodeLine{410         \textcolor{keywordtype}{string} id\_last\_city = ruta.\mbox{\hyperlink{classViatge_a2bdb9e677e4fc51136252fb1803945c0}{consultarUltimaCiutat}}();}
-\DoxyCodeLine{411         barco.\mbox{\hyperlink{classVaixell_ae58cdeb92a9ab720544b7641d4043c7a}{afegirCiutat}}(id\_last\_city);}
-\DoxyCodeLine{412 }
-\DoxyCodeLine{413         \textcolor{comment}{// Realitzar el millor viatge modificant les ciutats però el vaixell no}}
-\DoxyCodeLine{414         ciutats.\mbox{\hyperlink{classCjt__ciutats_afaf8508376f993cf560c5b3ac855aa65}{realitzar\_viatge}}(productes, ruta, barco);}
-\DoxyCodeLine{415     \}}
-\DoxyCodeLine{416 \}}
+\DoxyCodeLine{401     \mbox{\hyperlink{classLlanxa}{Llanxa}} lancha(barco);}
+\DoxyCodeLine{402     \mbox{\hyperlink{classViatge}{Viatge}} ruta = ciutats.\mbox{\hyperlink{classCjt__ciutats_a0cd4b523f4fbc979323eaf9471b1f7f0}{determinar\_viatge}}(cuenca, productes, lancha);}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404     \textcolor{comment}{// Consultar quantitat de productes comerciats en el millor viatge}}
+\DoxyCodeLine{405     \textcolor{keywordtype}{int} quantitat\_comerciat = ruta.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}();}
+\DoxyCodeLine{406     cout << quantitat\_comerciat << endl;}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{408     \textcolor{comment}{// Realitzar el viatge si hi ha productes a comerciar}}
+\DoxyCodeLine{409     \textcolor{keywordflow}{if} (quantitat\_comerciat!=0) \{}
+\DoxyCodeLine{410         \textcolor{comment}{// Guardar l'última ciutat on s'ha comerciat}}
+\DoxyCodeLine{411         \textcolor{keywordtype}{string} id\_last\_city = ruta.\mbox{\hyperlink{classViatge_a2bdb9e677e4fc51136252fb1803945c0}{consultarUltimaCiutat}}();}
+\DoxyCodeLine{412         barco.\mbox{\hyperlink{classVaixell_ae58cdeb92a9ab720544b7641d4043c7a}{afegirCiutat}}(id\_last\_city);}
+\DoxyCodeLine{413 }
+\DoxyCodeLine{414         \textcolor{comment}{// Realitzar el millor viatge modificant les ciutats però el vaixell no}}
+\DoxyCodeLine{415         ciutats.\mbox{\hyperlink{classCjt__ciutats_afaf8508376f993cf560c5b3ac855aa65}{realitzar\_viatge}}(productes, ruta, barco);}
+\DoxyCodeLine{416     \}}
+\DoxyCodeLine{417 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{program_8cc_a41dab7c6f6e59deeecf7df661899cd8a}\label{program_8cc_a41dab7c6f6e59deeecf7df661899cd8a}} 
@@ -411,7 +415,7 @@ Ciutats modificades amb els nous productes.
 
 Funció principal del programa. 
 
-El programa comença declarant els objectes necessaris. Un cop inicialitzades les variables prinicipals (productes, ciutats i vaixell) es comença a llegir les comandes.
+El programa comença declarant els objectes necessaris. Un cop inicialitzades les variables principals (productes, ciutats i vaixell) es comença a llegir les comandes.
 
 Les comandes poden ser de diferents tipus\+:
 \begin{DoxyItemize}
@@ -433,96 +437,96 @@ Les comandes poden ser de diferents tipus\+:
 \item Hacer\+\_\+viaje\+: Realitzar el viatge que faci que el vaixell comercii més quantitat entre ciutats. Nota\+: Si una comanda no és vàlida, es deixa passar. 
 \end{DoxyItemize}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{445             \{}
-\DoxyCodeLine{446     \textcolor{comment}{// === Introducció}}
-\DoxyCodeLine{447     \textcolor{comment}{// Demanar productes}}
-\DoxyCodeLine{448     \mbox{\hyperlink{classCjt__productes}{Cjt\_productes}} productes;}
-\DoxyCodeLine{449     \textcolor{keywordtype}{int} quant\_prod;}
-\DoxyCodeLine{450     cin >> quant\_prod;}
-\DoxyCodeLine{451     productes.\mbox{\hyperlink{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}{llegir}}(quant\_prod);}
-\DoxyCodeLine{452 }
-\DoxyCodeLine{453     \textcolor{comment}{// Demanar cuenca}}
-\DoxyCodeLine{454     \mbox{\hyperlink{classCjt__ciutats}{Cjt\_ciutats}} ciutats;}
-\DoxyCodeLine{455     BinTree<string> cuenca = ciutats.\mbox{\hyperlink{classCjt__ciutats_a76d29cc0c90d734899fe349fcf242092}{leer\_rio}}();}
-\DoxyCodeLine{456 }
-\DoxyCodeLine{457     \textcolor{comment}{// Demanar vaixell}}
-\DoxyCodeLine{458     \mbox{\hyperlink{classVaixell}{Vaixell}} barco;}
-\DoxyCodeLine{459     barco.\mbox{\hyperlink{classVaixell_a5177959b74871d22e79eb1ae6b96a0c6}{llegir}}(productes);}
-\DoxyCodeLine{460 }
-\DoxyCodeLine{461     \textcolor{comment}{// === Commandes}}
-\DoxyCodeLine{462     \textcolor{keywordtype}{string} usr\_op;}
-\DoxyCodeLine{463     \textcolor{keywordflow}{while} (cin >> usr\_op and usr\_op!=\textcolor{stringliteral}{"{}fin"{}}) \{}
-\DoxyCodeLine{464         \textcolor{keywordflow}{if} (usr\_op == \textcolor{stringliteral}{"{}//"{}}) \{}
-\DoxyCodeLine{465             getline(cin, usr\_op);}
-\DoxyCodeLine{466             \textcolor{keywordflow}{continue}; \textcolor{comment}{// Anar a la següent iteració del bucle}}
-\DoxyCodeLine{467         \}}
-\DoxyCodeLine{468         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_rio"{}} or usr\_op==\textcolor{stringliteral}{"{}lr"{}}) \{}
-\DoxyCodeLine{469             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
-\DoxyCodeLine{470             barco.\mbox{\hyperlink{classVaixell_a6d3969acdc815b968b736b99c0da137f}{eliminarRegistre}}();}
-\DoxyCodeLine{471             cuenca = ciutats.\mbox{\hyperlink{classCjt__ciutats_a76d29cc0c90d734899fe349fcf242092}{leer\_rio}}();}
-\DoxyCodeLine{472         \}}
-\DoxyCodeLine{473         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_inventario"{}} or usr\_op==\textcolor{stringliteral}{"{}li"{}}) \{}
-\DoxyCodeLine{474             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{475             \mbox{\hyperlink{program_8cc_a41dab7c6f6e59deeecf7df661899cd8a}{leer\_inventario}}(ciutats, productes);}
-\DoxyCodeLine{476         \}}
-\DoxyCodeLine{477         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_inventarios"{}} or usr\_op==\textcolor{stringliteral}{"{}ls"{}}) \{}
-\DoxyCodeLine{478             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
-\DoxyCodeLine{479             \mbox{\hyperlink{program_8cc_afaa519c971d42977be3a7c7ba431c28e}{leer\_inventarios}}(ciutats, productes);}
-\DoxyCodeLine{480         \}}
-\DoxyCodeLine{481         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}modificar\_barco"{}} or usr\_op==\textcolor{stringliteral}{"{}mb"{}}) \{}
-\DoxyCodeLine{482             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
-\DoxyCodeLine{483             \mbox{\hyperlink{program_8cc_ae6094e1e926fbe255417c48937dd8147}{modificar\_barco}}(barco, productes);}
-\DoxyCodeLine{484         \}}
-\DoxyCodeLine{485         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_barco"{}} or usr\_op==\textcolor{stringliteral}{"{}eb"{}}) \{}
-\DoxyCodeLine{486             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
-\DoxyCodeLine{487             \mbox{\hyperlink{program_8cc_ac2f5c2a778441ad478521671d5390f11}{escribir\_barco}}(barco);}
-\DoxyCodeLine{488         \}}
-\DoxyCodeLine{489         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}consultar\_num"{}} or usr\_op==\textcolor{stringliteral}{"{}cn"{}}) \{}
-\DoxyCodeLine{490             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
-\DoxyCodeLine{491             cout << productes.\mbox{\hyperlink{classCjt__productes_aa15e98e1d3bdf1e22c50a07a93f5d6e3}{consultarQuantitatProd}}() << endl;}
-\DoxyCodeLine{492         \}}
-\DoxyCodeLine{493         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}agregar\_productos"{}} or usr\_op==\textcolor{stringliteral}{"{}ap"{}}) \{}
-\DoxyCodeLine{494             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{495             \mbox{\hyperlink{program_8cc_aee38d111d27fceb494822eab89815462}{agregar\_productos}}(productes);}
-\DoxyCodeLine{496         \}}
-\DoxyCodeLine{497         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_producto"{}} or usr\_op==\textcolor{stringliteral}{"{}ep"{}}) \{}
-\DoxyCodeLine{498             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{499             \mbox{\hyperlink{program_8cc_acc006f8b966e986ecd9e5b36ae33d5d3}{escribir\_producto}}(productes);}
-\DoxyCodeLine{500         \}}
-\DoxyCodeLine{501         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_ciudad"{}} or usr\_op==\textcolor{stringliteral}{"{}ec"{}}) \{}
-\DoxyCodeLine{502             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{503             \mbox{\hyperlink{program_8cc_a3239cd3281a85609c385969d48a63b3c}{escribir\_ciudad}}(ciutats);}
-\DoxyCodeLine{504         \}}
-\DoxyCodeLine{505         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}poner\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}pp"{}}) \{}
-\DoxyCodeLine{506             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{507             \mbox{\hyperlink{program_8cc_afe8b0fd4cf9875e371ce133268e84220}{poner\_prod}}(ciutats, productes);}
-\DoxyCodeLine{508         \}}
-\DoxyCodeLine{509         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}modificar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}mp"{}}) \{}
-\DoxyCodeLine{510             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{511             \mbox{\hyperlink{program_8cc_aca4524ac2462b5d561dd966e2613e41b}{modificar\_prod}}(ciutats, productes);}
-\DoxyCodeLine{512         \}}
-\DoxyCodeLine{513         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}quitar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}qp"{}}) \{}
-\DoxyCodeLine{514             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{515             \mbox{\hyperlink{program_8cc_a4200cacc339f24b6a2f87a578da458a8}{quitar\_prod}}(ciutats, productes);}
-\DoxyCodeLine{516         \}}
-\DoxyCodeLine{517         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}consultar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}cp"{}}) \{}
-\DoxyCodeLine{518             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{519             \mbox{\hyperlink{program_8cc_a770cd237ebed8979e3b4dc709d9e539f}{consultar\_prod}}(ciutats, productes);}
-\DoxyCodeLine{520         \}}
-\DoxyCodeLine{521         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}comerciar"{}} or usr\_op==\textcolor{stringliteral}{"{}co"{}}) \{}
-\DoxyCodeLine{522             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
-\DoxyCodeLine{523             \mbox{\hyperlink{program_8cc_a11af517e7df5c149749f0b33f3708504}{comerciar}}(ciutats, productes);}
-\DoxyCodeLine{524         \}}
-\DoxyCodeLine{525         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}redistribuir"{}} or usr\_op==\textcolor{stringliteral}{"{}re"{}}) \{}
-\DoxyCodeLine{526             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
-\DoxyCodeLine{527             ciutats.\mbox{\hyperlink{classCjt__ciutats_a0ae1d9250ef610303944d9ee3cfcdb73}{redistribuir}}(cuenca, productes);}
-\DoxyCodeLine{528         \}}
-\DoxyCodeLine{529         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op == \textcolor{stringliteral}{"{}hacer\_viaje"{}} or usr\_op == \textcolor{stringliteral}{"{}hv"{}}) \{}
-\DoxyCodeLine{530             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
-\DoxyCodeLine{531             \mbox{\hyperlink{program_8cc_ab87caae14a212846fe28c280a16ca810}{hacer\_viaje}}(cuenca, productes, barco, ciutats);}
-\DoxyCodeLine{532         \}}
-\DoxyCodeLine{533     \}}
-\DoxyCodeLine{534 \}}
+\DoxyCodeLine{446             \{}
+\DoxyCodeLine{447     \textcolor{comment}{// === Introducció}}
+\DoxyCodeLine{448     \textcolor{comment}{// Demanar productes}}
+\DoxyCodeLine{449     \mbox{\hyperlink{classCjt__productes}{Cjt\_productes}} productes;}
+\DoxyCodeLine{450     \textcolor{keywordtype}{int} quant\_prod;}
+\DoxyCodeLine{451     cin >> quant\_prod;}
+\DoxyCodeLine{452     productes.\mbox{\hyperlink{classCjt__productes_af14ded2bd91157a925f0ca510710db0f}{llegir}}(quant\_prod);}
+\DoxyCodeLine{453 }
+\DoxyCodeLine{454     \textcolor{comment}{// Demanar cuenca}}
+\DoxyCodeLine{455     \mbox{\hyperlink{classCjt__ciutats}{Cjt\_ciutats}} ciutats;}
+\DoxyCodeLine{456     BinTree<string> cuenca = ciutats.\mbox{\hyperlink{classCjt__ciutats_a76d29cc0c90d734899fe349fcf242092}{leer\_rio}}();}
+\DoxyCodeLine{457 }
+\DoxyCodeLine{458     \textcolor{comment}{// Demanar vaixell}}
+\DoxyCodeLine{459     \mbox{\hyperlink{classVaixell}{Vaixell}} barco;}
+\DoxyCodeLine{460     barco.\mbox{\hyperlink{classVaixell_a5177959b74871d22e79eb1ae6b96a0c6}{llegir}}(productes);}
+\DoxyCodeLine{461 }
+\DoxyCodeLine{462     \textcolor{comment}{// === Commandes}}
+\DoxyCodeLine{463     \textcolor{keywordtype}{string} usr\_op;}
+\DoxyCodeLine{464     \textcolor{keywordflow}{while} (cin >> usr\_op and usr\_op!=\textcolor{stringliteral}{"{}fin"{}}) \{}
+\DoxyCodeLine{465         \textcolor{keywordflow}{if} (usr\_op == \textcolor{stringliteral}{"{}//"{}}) \{}
+\DoxyCodeLine{466             getline(cin, usr\_op);}
+\DoxyCodeLine{467             \textcolor{keywordflow}{continue}; \textcolor{comment}{// Anar a la següent iteració del bucle}}
+\DoxyCodeLine{468         \}}
+\DoxyCodeLine{469         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_rio"{}} or usr\_op==\textcolor{stringliteral}{"{}lr"{}}) \{}
+\DoxyCodeLine{470             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{471             barco.\mbox{\hyperlink{classVaixell_a6d3969acdc815b968b736b99c0da137f}{eliminarRegistre}}();}
+\DoxyCodeLine{472             cuenca = ciutats.\mbox{\hyperlink{classCjt__ciutats_a76d29cc0c90d734899fe349fcf242092}{leer\_rio}}();}
+\DoxyCodeLine{473         \}}
+\DoxyCodeLine{474         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_inventario"{}} or usr\_op==\textcolor{stringliteral}{"{}li"{}}) \{}
+\DoxyCodeLine{475             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{476             \mbox{\hyperlink{program_8cc_a41dab7c6f6e59deeecf7df661899cd8a}{leer\_inventario}}(ciutats, productes);}
+\DoxyCodeLine{477         \}}
+\DoxyCodeLine{478         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}leer\_inventarios"{}} or usr\_op==\textcolor{stringliteral}{"{}ls"{}}) \{}
+\DoxyCodeLine{479             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{480             \mbox{\hyperlink{program_8cc_afaa519c971d42977be3a7c7ba431c28e}{leer\_inventarios}}(ciutats, productes);}
+\DoxyCodeLine{481         \}}
+\DoxyCodeLine{482         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}modificar\_barco"{}} or usr\_op==\textcolor{stringliteral}{"{}mb"{}}) \{}
+\DoxyCodeLine{483             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{484             \mbox{\hyperlink{program_8cc_ae6094e1e926fbe255417c48937dd8147}{modificar\_barco}}(barco, productes);}
+\DoxyCodeLine{485         \}}
+\DoxyCodeLine{486         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_barco"{}} or usr\_op==\textcolor{stringliteral}{"{}eb"{}}) \{}
+\DoxyCodeLine{487             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{488             \mbox{\hyperlink{program_8cc_ac2f5c2a778441ad478521671d5390f11}{escribir\_barco}}(barco);}
+\DoxyCodeLine{489         \}}
+\DoxyCodeLine{490         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}consultar\_num"{}} or usr\_op==\textcolor{stringliteral}{"{}cn"{}}) \{}
+\DoxyCodeLine{491             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{492             cout << productes.\mbox{\hyperlink{classCjt__productes_aa15e98e1d3bdf1e22c50a07a93f5d6e3}{consultarQuantitatProd}}() << endl;}
+\DoxyCodeLine{493         \}}
+\DoxyCodeLine{494         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}agregar\_productos"{}} or usr\_op==\textcolor{stringliteral}{"{}ap"{}}) \{}
+\DoxyCodeLine{495             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{496             \mbox{\hyperlink{program_8cc_aee38d111d27fceb494822eab89815462}{agregar\_productos}}(productes);}
+\DoxyCodeLine{497         \}}
+\DoxyCodeLine{498         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_producto"{}} or usr\_op==\textcolor{stringliteral}{"{}ep"{}}) \{}
+\DoxyCodeLine{499             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{500             \mbox{\hyperlink{program_8cc_acc006f8b966e986ecd9e5b36ae33d5d3}{escribir\_producto}}(productes);}
+\DoxyCodeLine{501         \}}
+\DoxyCodeLine{502         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}escribir\_ciudad"{}} or usr\_op==\textcolor{stringliteral}{"{}ec"{}}) \{}
+\DoxyCodeLine{503             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{504             \mbox{\hyperlink{program_8cc_a3239cd3281a85609c385969d48a63b3c}{escribir\_ciudad}}(ciutats);}
+\DoxyCodeLine{505         \}}
+\DoxyCodeLine{506         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}poner\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}pp"{}}) \{}
+\DoxyCodeLine{507             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{508             \mbox{\hyperlink{program_8cc_afe8b0fd4cf9875e371ce133268e84220}{poner\_prod}}(ciutats, productes);}
+\DoxyCodeLine{509         \}}
+\DoxyCodeLine{510         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}modificar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}mp"{}}) \{}
+\DoxyCodeLine{511             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{512             \mbox{\hyperlink{program_8cc_aca4524ac2462b5d561dd966e2613e41b}{modificar\_prod}}(ciutats, productes);}
+\DoxyCodeLine{513         \}}
+\DoxyCodeLine{514         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}quitar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}qp"{}}) \{}
+\DoxyCodeLine{515             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{516             \mbox{\hyperlink{program_8cc_a4200cacc339f24b6a2f87a578da458a8}{quitar\_prod}}(ciutats, productes);}
+\DoxyCodeLine{517         \}}
+\DoxyCodeLine{518         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}consultar\_prod"{}} or usr\_op==\textcolor{stringliteral}{"{}cp"{}}) \{}
+\DoxyCodeLine{519             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{520             \mbox{\hyperlink{program_8cc_a770cd237ebed8979e3b4dc709d9e539f}{consultar\_prod}}(ciutats, productes);}
+\DoxyCodeLine{521         \}}
+\DoxyCodeLine{522         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}comerciar"{}} or usr\_op==\textcolor{stringliteral}{"{}co"{}}) \{}
+\DoxyCodeLine{523             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op;}
+\DoxyCodeLine{524             \mbox{\hyperlink{program_8cc_a11af517e7df5c149749f0b33f3708504}{comerciar}}(ciutats, productes);}
+\DoxyCodeLine{525         \}}
+\DoxyCodeLine{526         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op==\textcolor{stringliteral}{"{}redistribuir"{}} or usr\_op==\textcolor{stringliteral}{"{}re"{}}) \{}
+\DoxyCodeLine{527             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{528             ciutats.\mbox{\hyperlink{classCjt__ciutats_a0ae1d9250ef610303944d9ee3cfcdb73}{redistribuir}}(cuenca, productes);}
+\DoxyCodeLine{529         \}}
+\DoxyCodeLine{530         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (usr\_op == \textcolor{stringliteral}{"{}hacer\_viaje"{}} or usr\_op == \textcolor{stringliteral}{"{}hv"{}}) \{}
+\DoxyCodeLine{531             cout << \textcolor{stringliteral}{"{}\#"{}} << usr\_op << endl;}
+\DoxyCodeLine{532             \mbox{\hyperlink{program_8cc_ab87caae14a212846fe28c280a16ca810}{hacer\_viaje}}(cuenca, productes, barco, ciutats);}
+\DoxyCodeLine{533         \}}
+\DoxyCodeLine{534     \}}
+\DoxyCodeLine{535 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{program_8cc_ae6094e1e926fbe255417c48937dd8147}\label{program_8cc_ae6094e1e926fbe255417c48937dd8147}} 

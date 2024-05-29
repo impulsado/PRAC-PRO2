@@ -1,9 +1,10 @@
 <map id="program.cc" name="program.cc">
-<area shape="rect" id="node1" title="Programa principal de la pràctica." alt="" coords="205,5,300,32"/>
-<area shape="rect" id="node2" href="$Viatge_8hh.html" title="Especificació de la classe Viatge." alt="" coords="5,155,89,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="114,155,205,181"/>
-<area shape="rect" id="node4" href="$Vaixell_8hh.html" title="Especificació de la classe Vaixell." alt="" coords="330,155,415,181"/>
-<area shape="rect" id="node5" href="$Cjt__productes_8hh.html" title="Especificació de la classe Cjt_productes." alt="" coords="294,304,425,331"/>
-<area shape="rect" id="node7" href="$Cjt__ciutats_8hh.html" title="Especificació de la classe Cjt_ciutats." alt="" coords="197,80,308,107"/>
-<area shape="rect" id="node6" href="$Ciutat_8hh.html" title="Especificació de la classe Ciutat." alt="" coords="280,229,361,256"/>
+<area shape="rect" id="node1" title="Programa principal de la pràctica." alt="" coords="186,5,281,32"/>
+<area shape="rect" id="node2" href="$Llanxa_8hh.html" title="Especificació de la classe Llanxa." alt="" coords="144,155,229,181"/>
+<area shape="rect" id="node4" href="$Cjt__productes_8hh.html" title="Especificació de la classe Cjt_productes." alt="" coords="81,379,212,405"/>
+<area shape="rect" id="node5" href="$Vaixell_8hh.html" title="Especificació de la classe Vaixell." alt="" coords="64,229,149,256"/>
+<area shape="rect" id="node6" href="$Viatge_8hh.html" title="Especificació de la classe Viatge." alt="" coords="355,155,439,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="464,155,555,181"/>
+<area shape="rect" id="node8" href="$Cjt__ciutats_8hh.html" title="Especificació de la classe Cjt_ciutats." alt="" coords="225,80,335,107"/>
+<area shape="rect" id="node3" href="$Ciutat_8hh.html" title="Especificació de la classe Ciutat." alt="" coords="146,304,227,331"/>
 </map>

@@ -259,12 +259,15 @@ Si el llanxa ja no té unitats per intercanviar (``llanxa.quantitatPerComprar() 
 **Matemàticament:** $Q(x) \land \neg c(x) \Rightarrow Q(g(x))$
 
 #### 4. Determinació del millor viatge
-Mostrem en detall l'algorisme per determinar el millor viatge dins de la classe `Viatge`. Donat que podem accedir als camps privats dels viatges passats per referència, amb un mètode `void` anomenat `millorViatge()` podem afegir la informació del millor viatge al viatge implícit (`viatge_actual`).
-- **Cas 1:** Si no hi ha viatges comercials a l'esquerra ni a la dreta (``viatge_esquerra.quant_comerciat == 0 and viatge_dreta.quant_comerciat == 0``), no es fa res.
+Mostrem en detall l'algorisme per determinar el millor viatge dins de la classe `Viatge`. Donat que podem accedir als camps privats dels viatges passats per referència, amb un mètode `void` anomenat `millorViatge()` podem afegir la informació del millor viatge al viatge implícit (`viatge_actual`):
+<br>
+- **Cas 1:** Si no hi ha viatges comercials a l'esquerra ni a la dreta (``viatge_esquerra.quant_comerciat == 0 and viatge_dreta.quant_comerciat == 0``), no es fa res. 
+<br>
 - **Cas 2 i Cas 3:** Si només hi ha comerç a una banda (``viatge_esquerra.quant_comerciat == 0 o viatge_dreta.quant_comerciat == 0``), s'afegeix la informació d'aquesta banda.
-- **Cas 4:** Hi ha comerç a ambdues bandes:
-  - **Cas 4.1:** Si la quantitat de comerç a l'esquerra és major (``viatge_esquerra.quant_comerciat > viatge_dreta.quant_comerciat``), es selecciona afegir la informació de ``viatge_esquerra``.
-    - **Cas 4.1.1:** Si la quantitat comerciat es la mateixa (`viatge_esquerra.quant_comerciat==viatge_dreta.quant_comerciat`) es selecciona la de menor distancia. En cas d'empat en distancia (`viatge_esquerra.distancia <= viatge_dreta.distancia`) es selecciona afegir la informació l'esquerra.
+<br>
+- **Cas 4:** Hi ha comerç a ambdues bandes: <br>
+  - **Cas 4.1:** Si la quantitat de comerç a l'esquerra és major (``viatge_esquerra.quant_comerciat > viatge_dreta.quant_comerciat``), es selecciona afegir la informació de ``viatge_esquerra``. <br>
+    - **Cas 4.1.1:** Si la quantitat comerciat es la mateixa (`viatge_esquerra.quant_comerciat==viatge_dreta.quant_comerciat`) es selecciona la de menor distancia. En cas d'empat en distancia (`viatge_esquerra.distancia <= viatge_dreta.distancia`) es selecciona afegir la informació l'esquerra.<br>
   - **Cas 4.2:** Altrament s'afegeix la informació del viatge de la dreta.
   
 **Raonament:** Això assegura que el viatge seleccionat maximitza la quantitat de comerç i minimitza la distància recorreguda.

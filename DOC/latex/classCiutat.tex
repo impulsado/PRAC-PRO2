@@ -187,19 +187,19 @@ Les ciutats intercanvien productes segons les seves necessitats.
 \DoxyCodeLine{94                 pair<int,int> pesVol = productes.\mbox{\hyperlink{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}{consultarProducte}}(prod\_id1);}
 \DoxyCodeLine{95                 }
 \DoxyCodeLine{96                 \textcolor{comment}{// Determinar la màxima quantitat a intercanviar}}
-\DoxyCodeLine{97                 \textcolor{keywordtype}{int} quantiat = min(abs(dif1), abs(dif2));}
+\DoxyCodeLine{97                 \textcolor{keywordtype}{int} quantitat = min(abs(dif1), abs(dif2));}
 \DoxyCodeLine{98                 }
 \DoxyCodeLine{99                 \textcolor{comment}{// Actualitzar l'inventari de la ciutat1}}
-\DoxyCodeLine{100                 it1-\/>second.first.first += quantiat;  \textcolor{comment}{// Afegir la nova quantitat d'oferta}}
-\DoxyCodeLine{101                 it1-\/>second.second += quantiat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
-\DoxyCodeLine{102                 this-\/>\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += quantiat*pesVol.first;  \textcolor{comment}{// Actualitzar el pes total}}
-\DoxyCodeLine{103                 this-\/>\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += quantiat*pesVol.second;  \textcolor{comment}{// Actualitzar el volum total}}
+\DoxyCodeLine{100                 it1-\/>second.first.first += quantitat;  \textcolor{comment}{// Afegir la nova quantitat d'oferta}}
+\DoxyCodeLine{101                 it1-\/>second.second += quantitat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
+\DoxyCodeLine{102                 this-\/>\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += quantitat*pesVol.first;  \textcolor{comment}{// Actualitzar el pes total}}
+\DoxyCodeLine{103                 this-\/>\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += quantitat*pesVol.second;  \textcolor{comment}{// Actualitzar el volum total}}
 \DoxyCodeLine{104                 }
 \DoxyCodeLine{105                 \textcolor{comment}{// Actualitzar l'inventari de la ciutat2}}
-\DoxyCodeLine{106                 it2-\/>second.first.first -\/= quantiat;  \textcolor{comment}{// Treure la quantitat venuda}}
-\DoxyCodeLine{107                 it2-\/>second.second -\/= quantiat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
-\DoxyCodeLine{108                 other.\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} -\/= quantiat*pesVol.first;  \textcolor{comment}{// Actualitzar el pes total}}
-\DoxyCodeLine{109                 other.\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} -\/= quantiat*pesVol.second;  \textcolor{comment}{// Actualitzar el volum total}}
+\DoxyCodeLine{106                 it2-\/>second.first.first -\/= quantitat;  \textcolor{comment}{// Treure la quantitat venuda}}
+\DoxyCodeLine{107                 it2-\/>second.second -\/= quantitat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
+\DoxyCodeLine{108                 other.\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} -\/= quantitat*pesVol.first;  \textcolor{comment}{// Actualitzar el pes total}}
+\DoxyCodeLine{109                 other.\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} -\/= quantitat*pesVol.second;  \textcolor{comment}{// Actualitzar el volum total}}
 \DoxyCodeLine{110             \}}
 \DoxyCodeLine{111             \textcolor{comment}{// A la ciutat1 li sobra, a la ciutat2 li falta}}
 \DoxyCodeLine{112             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dif1 > 0 and dif2 < 0) \{}
@@ -207,19 +207,19 @@ Les ciutats intercanvien productes segons les seves necessitats.
 \DoxyCodeLine{114                 pair<int,int> pesVol = productes.\mbox{\hyperlink{classCjt__productes_a2a9703ef9f499a730bde6eb7a86df5ae}{consultarProducte}}(prod\_id1);}
 \DoxyCodeLine{115                 }
 \DoxyCodeLine{116                 \textcolor{comment}{// Determinar la màxima quantitat a intercanviar}}
-\DoxyCodeLine{117                 \textcolor{keywordtype}{int} quantiat = min(abs(dif1), abs(dif2));}
+\DoxyCodeLine{117                 \textcolor{keywordtype}{int} quantitat = min(abs(dif1), abs(dif2));}
 \DoxyCodeLine{118                 }
 \DoxyCodeLine{119                 \textcolor{comment}{// Actualitzar l'inventari de la ciutat1}}
-\DoxyCodeLine{120                 it1-\/>second.first.first -\/= quantiat;  \textcolor{comment}{// Treure la quantitat venuda}}
-\DoxyCodeLine{121                 it1-\/>second.second -\/= quantiat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
-\DoxyCodeLine{122                 this-\/>\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} -\/= quantiat*pesVol.first;  \textcolor{comment}{// Actualitzar el pes total}}
-\DoxyCodeLine{123                 this-\/>\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} -\/= quantiat*pesVol.second;  \textcolor{comment}{// Actualitzar el volum total}}
+\DoxyCodeLine{120                 it1-\/>second.first.first -\/= quantitat;  \textcolor{comment}{// Treure la quantitat venuda}}
+\DoxyCodeLine{121                 it1-\/>second.second -\/= quantitat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
+\DoxyCodeLine{122                 this-\/>\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} -\/= quantitat*pesVol.first;  \textcolor{comment}{// Actualitzar el pes total}}
+\DoxyCodeLine{123                 this-\/>\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} -\/= quantitat*pesVol.second;  \textcolor{comment}{// Actualitzar el volum total}}
 \DoxyCodeLine{124                 }
 \DoxyCodeLine{125                 \textcolor{comment}{// Actualitzar l'inventari de la ciutat2}}
-\DoxyCodeLine{126                 it2-\/>second.first.first += quantiat;  \textcolor{comment}{// Afegir la nova quantitat d'oferta}}
-\DoxyCodeLine{127                 it2-\/>second.second += quantiat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
-\DoxyCodeLine{128                 other.\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += quantiat*pesVol.first;  \textcolor{comment}{// Actualitzar el pes total}}
-\DoxyCodeLine{129                 other.\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += quantiat*pesVol.second;  \textcolor{comment}{// Actualitzar el volum total}}
+\DoxyCodeLine{126                 it2-\/>second.first.first += quantitat;  \textcolor{comment}{// Afegir la nova quantitat d'oferta}}
+\DoxyCodeLine{127                 it2-\/>second.second += quantitat;  \textcolor{comment}{// Actualitzar la necessitat del producte}}
+\DoxyCodeLine{128                 other.\mbox{\hyperlink{classCiutat_abd4885af9c76bf8edf1f213fdff5f4db}{pes\_total}} += quantitat*pesVol.first;  \textcolor{comment}{// Actualitzar el pes total}}
+\DoxyCodeLine{129                 other.\mbox{\hyperlink{classCiutat_aa3a49cb39f9a280cbc22c1b432fb320f}{volum\_total}} += quantitat*pesVol.second;  \textcolor{comment}{// Actualitzar el volum total}}
 \DoxyCodeLine{130             \}}
 \DoxyCodeLine{131             \textcolor{comment}{// Avançar als següents productes}}
 \DoxyCodeLine{132             it1++;}

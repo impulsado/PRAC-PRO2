@@ -17,8 +17,8 @@
 using namespace std;
 
 /**
- * @class llanxa
- * @brief Representa un vaixell però que només conté la informació necessària per calcular el millor viatge.
+ * @class Llanxa
+ * @brief Representa un vaixell però que només conté els mètodes i atributs necessaris per calcular el millor viatge.
  * 
  * Un objecte de la classe llanxa conté una parella de productes per comprar i vendre.
  */

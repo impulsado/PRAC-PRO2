@@ -1,0 +1,231 @@
+\hypertarget{classLlanxa}{}\doxysection{Referencia de la Clase Llanxa}
+\label{classLlanxa}\index{Llanxa@{Llanxa}}
+
+
+Representa un vaixell però que només conté els mètodes i atributs necessaris per calcular el millor viatge.  
+
+
+
+
+{\ttfamily \#include $<$Llanxa.\+hh$>$}
+
+\doxysubsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLlanxa_a67805c4b37e616f9f3779e4c27dd5e64}{Llanxa}} ()
+\begin{DoxyCompactList}\small\item\em Constructora per defecte de la classe \mbox{\hyperlink{classVaixell}{Vaixell}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLlanxa_ab624376e3491b0a87aebc2865d6c2728}{Llanxa}} (\mbox{\hyperlink{classVaixell}{Vaixell}} \&barco)
+\begin{DoxyCompactList}\small\item\em Constructora amb paràmetres de la classe \mbox{\hyperlink{classVaixell}{Vaixell}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLlanxa_a7ce7a535909cc329172a205a419a6797}{comerciar\+Sense\+Mod}} (const \mbox{\hyperlink{classCiutat}{Ciutat}} \&city)
+\begin{DoxyCompactList}\small\item\em Realitza l\textquotesingle{}operació de comerç amb una ciutat sense modificar-\/la. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLlanxa_af74289df0a10b94354da2dd203fb61b6}{quantitat\+Per\+Vendre}} ()
+\begin{DoxyCompactList}\small\item\em Quantitat d\textquotesingle{}unitats restants per vendre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLlanxa_ae991f3f460eb22338e63aded382140a4}{quantitat\+Per\+Comprar}} ()
+\begin{DoxyCompactList}\small\item\em Quantitat d\textquotesingle{}unitats restants per comprar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+pair$<$ int, int $>$ \mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}}
+\begin{DoxyCompactList}\small\item\em Producte a comprar. \end{DoxyCompactList}\item 
+pair$<$ int, int $>$ \mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}}
+\begin{DoxyCompactList}\small\item\em Producte a vendre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Representa un vaixell però que només conté els mètodes i atributs necessaris per calcular el millor viatge. 
+
+Un objecte de la classe llanxa conté una parella de productes per comprar i vendre. 
+
+\doxysubsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classLlanxa_a67805c4b37e616f9f3779e4c27dd5e64}\label{classLlanxa_a67805c4b37e616f9f3779e4c27dd5e64}} 
+\index{Llanxa@{Llanxa}!Llanxa@{Llanxa}}
+\index{Llanxa@{Llanxa}!Llanxa@{Llanxa}}
+\doxysubsubsection{\texorpdfstring{Llanxa()}{Llanxa()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Llanxa\+::\+Llanxa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructora per defecte de la classe \mbox{\hyperlink{classVaixell}{Vaixell}}. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+\mbox{\hyperlink{classVaixell}{Vaixell}} amb tots els paràmetres inicialitzats a 0 o buits. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10                \{}
+\DoxyCodeLine{11     \mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}} = make\_pair(0, 0);}
+\DoxyCodeLine{12     \mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}} = make\_pair(0, 0);}
+\DoxyCodeLine{13 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLlanxa_ab624376e3491b0a87aebc2865d6c2728}\label{classLlanxa_ab624376e3491b0a87aebc2865d6c2728}} 
+\index{Llanxa@{Llanxa}!Llanxa@{Llanxa}}
+\index{Llanxa@{Llanxa}!Llanxa@{Llanxa}}
+\doxysubsubsection{\texorpdfstring{Llanxa()}{Llanxa()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Llanxa\+::\+Llanxa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVaixell}{Vaixell}} \&}]{barco }\end{DoxyParamCaption})}
+
+
+
+Constructora amb paràmetres de la classe \mbox{\hyperlink{classVaixell}{Vaixell}}. 
+
+\begin{DoxyPrecond}{Precondición}
+El vaixell és vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Crea una llanxa amb la informació de compra i venta del vaixell. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15                              \{}
+\DoxyCodeLine{16     \mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}} = barco.\mbox{\hyperlink{classVaixell_a52ddaaf70f593aa3a455f22d09705957}{consultarCompra}}();}
+\DoxyCodeLine{17     \mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}} = barco.\mbox{\hyperlink{classVaixell_a16fc3c5406e00da469d3f60f7c2fbb8a}{consultarVenda}}();}
+\DoxyCodeLine{18 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classLlanxa_a7ce7a535909cc329172a205a419a6797}\label{classLlanxa_a7ce7a535909cc329172a205a419a6797}} 
+\index{Llanxa@{Llanxa}!comerciarSenseMod@{comerciarSenseMod}}
+\index{comerciarSenseMod@{comerciarSenseMod}!Llanxa@{Llanxa}}
+\doxysubsubsection{\texorpdfstring{comerciarSenseMod()}{comerciarSenseMod()}}
+{\footnotesize\ttfamily int Llanxa\+::comerciar\+Sense\+Mod (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCiutat}{Ciutat}} \&}]{city }\end{DoxyParamCaption})}
+
+
+
+Realitza l\textquotesingle{}operació de comerç amb una ciutat sense modificar-\/la. 
+
+Aquesta funció no modifica la ciutat, és útil per determinar la millor ruta sense modificar les ciutats.
+
+\begin{DoxyPrecond}{Precondición}
+La ciutat és vàlida. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat total comerciada sense modificar la ciutat. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22                                                 \{}
+\DoxyCodeLine{23     \textcolor{comment}{// La ciutat no té inventari (Optimització)}}
+\DoxyCodeLine{24     \textcolor{keywordflow}{if} (not city.\mbox{\hyperlink{classCiutat_a10e784c413229cb9a2481320fa3be2e2}{teInventari}}()) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{25     }
+\DoxyCodeLine{26     \textcolor{comment}{// Total comerciat}}
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} quant\_total = 0;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{comment}{// Comprar de la ciutat}}
+\DoxyCodeLine{30     }
+\DoxyCodeLine{31     \textcolor{comment}{// La ciutat té el producte i el llanxa pot comprar}}
+\DoxyCodeLine{32     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}}.first)) \{}
+\DoxyCodeLine{33         \textcolor{comment}{// Saber quantitat disponible a la ciutat}}
+\DoxyCodeLine{34         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}}.first);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{comment}{// La ciutat té quantitat per vendre al llanxa}}
+\DoxyCodeLine{37         \textcolor{keywordflow}{if} (dif>0) \{}
+\DoxyCodeLine{38             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
+\DoxyCodeLine{39             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}}.second, dif);}
+\DoxyCodeLine{40             \textcolor{comment}{// Actualitzar la nova quantitat necessària del llanxa}}
+\DoxyCodeLine{41             \mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}}.second -\/= quant\_comerciar;}
+\DoxyCodeLine{42             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
+\DoxyCodeLine{43             quant\_total += quant\_comerciar;}
+\DoxyCodeLine{44         \}}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{comment}{// Vendre a la ciutat}}
+\DoxyCodeLine{48     \textcolor{comment}{// La ciutat necessita el producte i el llanxa pot vendre}}
+\DoxyCodeLine{49     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}}.second>0 and city.\mbox{\hyperlink{classCiutat_a21122021c79bcad356eee33dea257095}{teProducte}}(\mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}}.first)) \{}
+\DoxyCodeLine{50         \textcolor{comment}{// Saber quantitat necessària a la ciutat}}
+\DoxyCodeLine{51         \textcolor{keywordtype}{int} dif = city.\mbox{\hyperlink{classCiutat_a7b3231f2b0328919430991da4421e683}{consultarDiferencia}}(\mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}}.first);}
+\DoxyCodeLine{52         }
+\DoxyCodeLine{53         \textcolor{comment}{// La ciutat té necessitat del producte}}
+\DoxyCodeLine{54         \textcolor{keywordflow}{if} (dif<0) \{}
+\DoxyCodeLine{55             \textcolor{comment}{// Determinar la maxima quantitat a comerciar}}
+\DoxyCodeLine{56             \textcolor{keywordtype}{int} quant\_comerciar = min(\mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}}.second, -\/dif);}
+\DoxyCodeLine{57             \textcolor{comment}{// Actualitzar la nova quantitat necessària del llanxa}}
+\DoxyCodeLine{58             \mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}}.second -\/= quant\_comerciar;}
+\DoxyCodeLine{59             \textcolor{comment}{// Actualitzar la quantitat total comerciada}}
+\DoxyCodeLine{60             quant\_total += quant\_comerciar;}
+\DoxyCodeLine{61         \}}
+\DoxyCodeLine{62     \}}
+\DoxyCodeLine{63     }
+\DoxyCodeLine{64     \textcolor{keywordflow}{return} quant\_total;}
+\DoxyCodeLine{65 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLlanxa_ae991f3f460eb22338e63aded382140a4}\label{classLlanxa_ae991f3f460eb22338e63aded382140a4}} 
+\index{Llanxa@{Llanxa}!quantitatPerComprar@{quantitatPerComprar}}
+\index{quantitatPerComprar@{quantitatPerComprar}!Llanxa@{Llanxa}}
+\doxysubsubsection{\texorpdfstring{quantitatPerComprar()}{quantitatPerComprar()}}
+{\footnotesize\ttfamily int Llanxa\+::quantitat\+Per\+Comprar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Quantitat d\textquotesingle{}unitats restants per comprar. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat d\textquotesingle{}unitats restants per comprar. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73                                 \{}
+\DoxyCodeLine{74     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLlanxa_a7cea7627c727342593ea88fa991dde5d}{comprar}}.second;}
+\DoxyCodeLine{75 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLlanxa_af74289df0a10b94354da2dd203fb61b6}\label{classLlanxa_af74289df0a10b94354da2dd203fb61b6}} 
+\index{Llanxa@{Llanxa}!quantitatPerVendre@{quantitatPerVendre}}
+\index{quantitatPerVendre@{quantitatPerVendre}!Llanxa@{Llanxa}}
+\doxysubsubsection{\texorpdfstring{quantitatPerVendre()}{quantitatPerVendre()}}
+{\footnotesize\ttfamily int Llanxa\+::quantitat\+Per\+Vendre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Quantitat d\textquotesingle{}unitats restants per vendre. 
+
+\begin{DoxyPrecond}{Precondición}
+Cert. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Retorna la quantitat d\textquotesingle{}unitats restants per vendre. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69                                \{}
+\DoxyCodeLine{70     \textcolor{keywordflow}{return} \mbox{\hyperlink{classLlanxa_a679ee3b571d428997997593ae4ba7599}{vendre}}.second;}
+\DoxyCodeLine{71 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{classLlanxa_a7cea7627c727342593ea88fa991dde5d}\label{classLlanxa_a7cea7627c727342593ea88fa991dde5d}} 
+\index{Llanxa@{Llanxa}!comprar@{comprar}}
+\index{comprar@{comprar}!Llanxa@{Llanxa}}
+\doxysubsubsection{\texorpdfstring{comprar}{comprar}}
+{\footnotesize\ttfamily pair$<$int,int$>$ Llanxa\+::comprar\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Producte a comprar. 
+
+\mbox{\Hypertarget{classLlanxa_a679ee3b571d428997997593ae4ba7599}\label{classLlanxa_a679ee3b571d428997997593ae4ba7599}} 
+\index{Llanxa@{Llanxa}!vendre@{vendre}}
+\index{vendre@{vendre}!Llanxa@{Llanxa}}
+\doxysubsubsection{\texorpdfstring{vendre}{vendre}}
+{\footnotesize\ttfamily pair$<$int,int$>$ Llanxa\+::vendre\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Producte a vendre. 
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Llanxa_8hh}{Llanxa.\+hh}}\item 
+\mbox{\hyperlink{Llanxa_8cc}{Llanxa.\+cc}}\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['distancia_167',['distancia',['../classViatge.html#ab0befd4984e44af7df0e6c2ca7b36412',1,'Viatge']]]
+  ['distancia_180',['distancia',['../classViatge.html#ab0befd4984e44af7df0e6c2ca7b36412',1,'Viatge']]]
 ];

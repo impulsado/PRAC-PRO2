@@ -26,7 +26,7 @@ void \mbox{\hyperlink{classCjt__ciutats_a0ae1d9250ef610303944d9ee3cfcdb73}{redis
 \begin{DoxyCompactList}\small\item\em Comerciar entre ciutats. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCjt__ciutats_afaf8508376f993cf560c5b3ac855aa65}{realitzar\+\_\+viatge}} (const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes, const \mbox{\hyperlink{classViatge}{Viatge}} \&viatge\+\_\+top, \mbox{\hyperlink{classVaixell}{Vaixell}} barco)
 \begin{DoxyCompactList}\small\item\em Realitzar un viatge entre ciutats. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classViatge}{Viatge}} \mbox{\hyperlink{classCjt__ciutats_a154039754704c3cbd5b6a9784ccfc9b0}{determinar\+\_\+viatge}} (const Bin\+Tree$<$ string $>$ \&cuenca, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes, \mbox{\hyperlink{classVaixell}{Vaixell}} barco)
+\mbox{\hyperlink{classViatge}{Viatge}} \mbox{\hyperlink{classCjt__ciutats_a0cd4b523f4fbc979323eaf9471b1f7f0}{determinar\+\_\+viatge}} (const Bin\+Tree$<$ string $>$ \&cuenca, const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&productes, \mbox{\hyperlink{classLlanxa}{Llanxa}} lancha)
 \begin{DoxyCompactList}\small\item\em Determinar el viatge a realitzar. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCjt__ciutats_ac0598daaec347488cab32cb91d095abf}{eliminar\+Tots\+Prod\+De\+Ciutat}} (string id\+\_\+city)
 \begin{DoxyCompactList}\small\item\em Eliminar tots els productes d\textquotesingle{}una ciutat. \end{DoxyCompactList}\item 
@@ -169,17 +169,17 @@ Retorna una còpia de la ciutat.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{134                                                         \{}
-\DoxyCodeLine{135     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.find(id\_city);}
-\DoxyCodeLine{136     \textcolor{keywordflow}{return} it-\/>second;}
-\DoxyCodeLine{137 \}}
+\DoxyCodeLine{106                                                         \{}
+\DoxyCodeLine{107     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.find(id\_city);}
+\DoxyCodeLine{108     \textcolor{keywordflow}{return} it-\/>second;}
+\DoxyCodeLine{109 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{classCjt__ciutats_a154039754704c3cbd5b6a9784ccfc9b0}\label{classCjt__ciutats_a154039754704c3cbd5b6a9784ccfc9b0}} 
+\mbox{\Hypertarget{classCjt__ciutats_a0cd4b523f4fbc979323eaf9471b1f7f0}\label{classCjt__ciutats_a0cd4b523f4fbc979323eaf9471b1f7f0}} 
 \index{Cjt\_ciutats@{Cjt\_ciutats}!determinar\_viatge@{determinar\_viatge}}
 \index{determinar\_viatge@{determinar\_viatge}!Cjt\_ciutats@{Cjt\_ciutats}}
 \doxysubsubsection{\texorpdfstring{determinar\_viatge()}{determinar\_viatge()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classViatge}{Viatge}} Cjt\+\_\+ciutats\+::determinar\+\_\+viatge (\begin{DoxyParamCaption}\item[{const Bin\+Tree$<$ string $>$ \&}]{cuenca,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes,  }\item[{\mbox{\hyperlink{classVaixell}{Vaixell}}}]{barco }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classViatge}{Viatge}} Cjt\+\_\+ciutats\+::determinar\+\_\+viatge (\begin{DoxyParamCaption}\item[{const Bin\+Tree$<$ string $>$ \&}]{cuenca,  }\item[{const \mbox{\hyperlink{classCjt__productes}{Cjt\+\_\+productes}} \&}]{productes,  }\item[{\mbox{\hyperlink{classLlanxa}{Llanxa}}}]{lancha }\end{DoxyParamCaption})}
 
 
 
@@ -202,55 +202,27 @@ Retorna el viatge a realitzar.
 \DoxyCodeLine{71     \textcolor{keywordtype}{string} id\_city = cuenca.value();}
 \DoxyCodeLine{72 }
 \DoxyCodeLine{73     \textcolor{comment}{// Fer intercanvi}}
-\DoxyCodeLine{74     \textcolor{keywordtype}{int} quant\_comerciat = barco.\mbox{\hyperlink{classVaixell_a28022cdc527c782005c890f46193d6d2}{comerciarSenseMod}}(\mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}[id\_city]);}
+\DoxyCodeLine{74     \textcolor{keywordtype}{int} quant\_comerciat = lancha.\mbox{\hyperlink{classLlanxa_a7ce7a535909cc329172a205a419a6797}{comerciarSenseMod}}(\mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}[id\_city]);}
 \DoxyCodeLine{75 }
 \DoxyCodeLine{76     \textcolor{comment}{// Actualitzar viatge actual}}
 \DoxyCodeLine{77     viatge\_act.\mbox{\hyperlink{classViatge_adfd63bc784d9dd3aba18290c5555441b}{afegirCiutat}}(id\_city);}
 \DoxyCodeLine{78     viatge\_act.\mbox{\hyperlink{classViatge_afa84ab6a9b842d058b6efe3902954b18}{actQuant}}(quant\_comerciat);}
 \DoxyCodeLine{79 }
 \DoxyCodeLine{80     \textcolor{comment}{// Si el barco ja no té unitats per intercanviar, es para tot.}}
-\DoxyCodeLine{81     \textcolor{keywordflow}{if} (barco.\mbox{\hyperlink{classVaixell_af611b40c85d678118661792832b34303}{quantitatPerComprar}}()==0 and barco.\mbox{\hyperlink{classVaixell_aae3bd285c51ebbb32ead0703249a4415}{quantitatPerVendre}}()==0) \textcolor{keywordflow}{return} viatge\_act;}
+\DoxyCodeLine{81     \textcolor{keywordflow}{if} (lancha.\mbox{\hyperlink{classLlanxa_ae991f3f460eb22338e63aded382140a4}{quantitatPerComprar}}()==0 and lancha.\mbox{\hyperlink{classLlanxa_af74289df0a10b94354da2dd203fb61b6}{quantitatPerVendre}}()==0) \textcolor{keywordflow}{return} viatge\_act;}
 \DoxyCodeLine{82 }
 \DoxyCodeLine{83     \textcolor{comment}{// Recursivitat}}
 \DoxyCodeLine{84     \mbox{\hyperlink{classViatge}{Viatge}} viatge\_esquerra, viatge\_dreta;}
 \DoxyCodeLine{85     \textcolor{comment}{// Explorar ciutat de l'esquerra}}
-\DoxyCodeLine{86     \textcolor{keywordflow}{if} (not cuenca.left().empty()) viatge\_esquerra = \mbox{\hyperlink{classCjt__ciutats_a154039754704c3cbd5b6a9784ccfc9b0}{determinar\_viatge}}(cuenca.left(), productes, barco);}
+\DoxyCodeLine{86     \textcolor{keywordflow}{if} (not cuenca.left().empty()) viatge\_esquerra = \mbox{\hyperlink{classCjt__ciutats_a0cd4b523f4fbc979323eaf9471b1f7f0}{determinar\_viatge}}(cuenca.left(), productes, lancha);}
 \DoxyCodeLine{87     \textcolor{comment}{// Explorar ciutat de la dreta}}
-\DoxyCodeLine{88     \textcolor{keywordflow}{if} (not cuenca.right().empty()) viatge\_dreta = \mbox{\hyperlink{classCjt__ciutats_a154039754704c3cbd5b6a9784ccfc9b0}{determinar\_viatge}}(cuenca.right(), productes, barco);}
+\DoxyCodeLine{88     \textcolor{keywordflow}{if} (not cuenca.right().empty()) viatge\_dreta = \mbox{\hyperlink{classCjt__ciutats_a0cd4b523f4fbc979323eaf9471b1f7f0}{determinar\_viatge}}(cuenca.right(), productes, lancha);}
 \DoxyCodeLine{89 }
 \DoxyCodeLine{90     \textcolor{comment}{// Determinar millor viatge}}
-\DoxyCodeLine{91     \textcolor{comment}{// Casos:}}
-\DoxyCodeLine{92     \textcolor{comment}{// 1. No hi ha viatges a l'esquerra ni a la dreta}}
-\DoxyCodeLine{93     \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}()==0 and viatge\_dreta.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}()==0) \textcolor{keywordflow}{return} viatge\_act;}
-\DoxyCodeLine{94     \textcolor{comment}{// 2. No hi ha comerç a l'esquerra}}
-\DoxyCodeLine{95     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}()==0) \{}
-\DoxyCodeLine{96         viatge\_act.\mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_dreta);}
-\DoxyCodeLine{97         \textcolor{keywordflow}{return} viatge\_act;}
-\DoxyCodeLine{98     \}}
-\DoxyCodeLine{99     \textcolor{comment}{// 3. No hi ha comerç a la dreta}}
-\DoxyCodeLine{100     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (viatge\_dreta.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}()==0) \{}
-\DoxyCodeLine{101         viatge\_act.\mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_esquerra);}
-\DoxyCodeLine{102         \textcolor{keywordflow}{return} viatge\_act;}
-\DoxyCodeLine{103     \}}
-\DoxyCodeLine{104     \textcolor{comment}{// 4. Hi ha comerç a ambdues bandes}}
-\DoxyCodeLine{105     \textcolor{comment}{// 4.1. La quantitat de la esquerra és més gran}}
-\DoxyCodeLine{106     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}()>viatge\_dreta.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}()) \{}
-\DoxyCodeLine{107         viatge\_act.\mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_esquerra);}
-\DoxyCodeLine{108         \textcolor{keywordflow}{return} viatge\_act;}
-\DoxyCodeLine{109     \}}
-\DoxyCodeLine{110     \textcolor{comment}{// 4.1 Tenen la mateixa quantitat}}
-\DoxyCodeLine{111     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}()==viatge\_dreta.\mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultarQuant}}()) \{}
-\DoxyCodeLine{112         \textcolor{comment}{// 4.1.1 La distància de la esquerra és més petita o igual}}
-\DoxyCodeLine{113         \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_ad615727140707685e07093a605be2660}{consultarDist}}()<=viatge\_dreta.\mbox{\hyperlink{classViatge_ad615727140707685e07093a605be2660}{consultarDist}}()) \{}
-\DoxyCodeLine{114             viatge\_act.\mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_esquerra);}
-\DoxyCodeLine{115             \textcolor{keywordflow}{return} viatge\_act;}
-\DoxyCodeLine{116         \}}
-\DoxyCodeLine{117     \}}
-\DoxyCodeLine{118     \textcolor{comment}{// 4.2. La quantitat de la dreta és més gran}}
-\DoxyCodeLine{119     viatge\_act.\mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_dreta);}
-\DoxyCodeLine{120     }
-\DoxyCodeLine{121     \textcolor{keywordflow}{return} viatge\_act;}
-\DoxyCodeLine{122 \}}
+\DoxyCodeLine{91     viatge\_act.\mbox{\hyperlink{classViatge_a054401d82ed762d65bf336bb82c18eab}{millorViatge}}(viatge\_esquerra, viatge\_dreta);}
+\DoxyCodeLine{92     }
+\DoxyCodeLine{93     \textcolor{keywordflow}{return} viatge\_act;}
+\DoxyCodeLine{94 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__ciutats_ac0598daaec347488cab32cb91d095abf}\label{classCjt__ciutats_ac0598daaec347488cab32cb91d095abf}} 
@@ -271,9 +243,9 @@ La ciutat no té cap producte al seu inventari. Pes i volum total a 0.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{124                                                          \{}
-\DoxyCodeLine{125     \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}[id\_city].eliminarTotsProd();}
-\DoxyCodeLine{126 \}}
+\DoxyCodeLine{96                                                          \{}
+\DoxyCodeLine{97     \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}[id\_city].eliminarTotsProd();}
+\DoxyCodeLine{98 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__ciutats_aad4e8c2733a7ed8bf3a6d242d3567810}\label{classCjt__ciutats_aad4e8c2733a7ed8bf3a6d242d3567810}} 
@@ -294,10 +266,10 @@ La ciutat és escrita per pantalla.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{140                                                      \{}
-\DoxyCodeLine{141     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.find(id\_city);}
-\DoxyCodeLine{142     it-\/>second.escriure();}
-\DoxyCodeLine{143 \}}
+\DoxyCodeLine{112                                                      \{}
+\DoxyCodeLine{113     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.find(id\_city);}
+\DoxyCodeLine{114     it-\/>second.escriure();}
+\DoxyCodeLine{115 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}\label{classCjt__ciutats_a5c032c7c019d191ff00718f4bb556521}} 
@@ -318,9 +290,9 @@ Retorna true si la ciutat existeix, en cas contrari retorna false.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{130                                                      \{}
-\DoxyCodeLine{131     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.find(id\_city) != \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.end();}
-\DoxyCodeLine{132 \}}
+\DoxyCodeLine{102                                                      \{}
+\DoxyCodeLine{103     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.find(id\_city) != \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.end();}
+\DoxyCodeLine{104 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__ciutats_a76d29cc0c90d734899fe349fcf242092}\label{classCjt__ciutats_a76d29cc0c90d734899fe349fcf242092}} 
@@ -341,10 +313,10 @@ El conjunt de ciutats és modificat amb les noves ciutats.
 \end{DoxyPostcond}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{163                                       \{}
-\DoxyCodeLine{164     \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.clear();}
-\DoxyCodeLine{165     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__ciutats_ae2d685e9277b435183134896c2b6fcb2}{leer\_rio\_aux}}();}
-\DoxyCodeLine{166 \}}
+\DoxyCodeLine{135                                       \{}
+\DoxyCodeLine{136     \mbox{\hyperlink{classCjt__ciutats_a74b12d4cb260f05bc18b7ac9afe3414a}{cmap}}.clear();}
+\DoxyCodeLine{137     \textcolor{keywordflow}{return} \mbox{\hyperlink{classCjt__ciutats_ae2d685e9277b435183134896c2b6fcb2}{leer\_rio\_aux}}();}
+\DoxyCodeLine{138 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__ciutats_ae2d685e9277b435183134896c2b6fcb2}\label{classCjt__ciutats_ae2d685e9277b435183134896c2b6fcb2}} 
@@ -368,21 +340,21 @@ Bin\+Tree$<$std\+::string$>$
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{147                                           \{}
-\DoxyCodeLine{148     \textcolor{keywordtype}{string} id\_city;}
-\DoxyCodeLine{149     cin >> id\_city;}
-\DoxyCodeLine{150 }
-\DoxyCodeLine{151     \textcolor{comment}{// Base Case}}
-\DoxyCodeLine{152     \textcolor{keywordflow}{if} (id\_city==\textcolor{stringliteral}{"{}\#"{}}) \textcolor{keywordflow}{return} BinTree<string>();}
-\DoxyCodeLine{153 }
-\DoxyCodeLine{154     \textcolor{comment}{// General Case}}
-\DoxyCodeLine{155     \mbox{\hyperlink{classCiutat}{Ciutat}} node(id\_city);}
-\DoxyCodeLine{156     \mbox{\hyperlink{classCjt__ciutats_a9de83b7c9fd99144589c2efa480fdbcd}{afegirCiutat}}(id\_city, node);}
-\DoxyCodeLine{157     BinTree<string> esq = \mbox{\hyperlink{classCjt__ciutats_ae2d685e9277b435183134896c2b6fcb2}{leer\_rio\_aux}}();}
-\DoxyCodeLine{158     BinTree<string> dret = \mbox{\hyperlink{classCjt__ciutats_ae2d685e9277b435183134896c2b6fcb2}{leer\_rio\_aux}}();}
-\DoxyCodeLine{159     }
-\DoxyCodeLine{160     \textcolor{keywordflow}{return} BinTree<string>(id\_city,esq,dret);}
-\DoxyCodeLine{161 \}}
+\DoxyCodeLine{119                                           \{}
+\DoxyCodeLine{120     \textcolor{keywordtype}{string} id\_city;}
+\DoxyCodeLine{121     cin >> id\_city;}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     \textcolor{comment}{// Base Case}}
+\DoxyCodeLine{124     \textcolor{keywordflow}{if} (id\_city==\textcolor{stringliteral}{"{}\#"{}}) \textcolor{keywordflow}{return} BinTree<string>();}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     \textcolor{comment}{// General Case}}
+\DoxyCodeLine{127     \mbox{\hyperlink{classCiutat}{Ciutat}} node(id\_city);}
+\DoxyCodeLine{128     \mbox{\hyperlink{classCjt__ciutats_a9de83b7c9fd99144589c2efa480fdbcd}{afegirCiutat}}(id\_city, node);}
+\DoxyCodeLine{129     BinTree<string> esq = \mbox{\hyperlink{classCjt__ciutats_ae2d685e9277b435183134896c2b6fcb2}{leer\_rio\_aux}}();}
+\DoxyCodeLine{130     BinTree<string> dret = \mbox{\hyperlink{classCjt__ciutats_ae2d685e9277b435183134896c2b6fcb2}{leer\_rio\_aux}}();}
+\DoxyCodeLine{131     }
+\DoxyCodeLine{132     \textcolor{keywordflow}{return} BinTree<string>(id\_city,esq,dret);}
+\DoxyCodeLine{133 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classCjt__ciutats_a1abf869164412a0f2705e6e75fe17607}\label{classCjt__ciutats_a1abf869164412a0f2705e6e75fe17607}} 

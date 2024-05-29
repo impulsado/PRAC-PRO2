@@ -75,7 +75,8 @@ $(function() {
 
 <p>Programa principal de la pràctica.  
 <a href="#details">Más...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="Viatge_8hh_source.html">Viatge.hh</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Llanxa_8hh_source.html">Llanxa.hh</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Viatge_8hh_source.html">Viatge.hh</a>&quot;</code><br />
 <code>#include &quot;BinTree.hh&quot;</code><br />
 <code>#include &quot;<a class="el" href="Vaixell_8hh_source.html">Vaixell.hh</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Cjt__ciutats_8hh_source.html">Cjt_ciutats.hh</a>&quot;</code><br />
@@ -85,13 +86,14 @@ Dependencia gráfica adjunta para program.cc:</div>
 <div class="dyncontent">
 <div class="center"><img src="program_8cc__incl.png" border="0" usemap="#aprogram_8cc" alt=""/></div>
 <map name="aprogram_8cc" id="aprogram_8cc">
-<area shape="rect" title="Programa principal de la pràctica." alt="" coords="205,5,300,32"/>
-<area shape="rect" href="Viatge_8hh.html" title="Especificació de la classe Viatge." alt="" coords="5,155,89,181"/>
-<area shape="rect" title=" " alt="" coords="114,155,205,181"/>
-<area shape="rect" href="Vaixell_8hh.html" title="Especificació de la classe Vaixell." alt="" coords="330,155,415,181"/>
-<area shape="rect" href="Cjt__productes_8hh.html" title="Especificació de la classe Cjt_productes." alt="" coords="294,304,425,331"/>
-<area shape="rect" href="Cjt__ciutats_8hh.html" title="Especificació de la classe Cjt_ciutats." alt="" coords="197,80,308,107"/>
-<area shape="rect" href="Ciutat_8hh.html" title="Especificació de la classe Ciutat." alt="" coords="280,229,361,256"/>
+<area shape="rect" title="Programa principal de la pràctica." alt="" coords="186,5,281,32"/>
+<area shape="rect" href="Llanxa_8hh.html" title="Especificació de la classe Llanxa." alt="" coords="144,155,229,181"/>
+<area shape="rect" href="Cjt__productes_8hh.html" title="Especificació de la classe Cjt_productes." alt="" coords="81,379,212,405"/>
+<area shape="rect" href="Vaixell_8hh.html" title="Especificació de la classe Vaixell." alt="" coords="64,229,149,256"/>
+<area shape="rect" href="Viatge_8hh.html" title="Especificació de la classe Viatge." alt="" coords="355,155,439,181"/>
+<area shape="rect" title=" " alt="" coords="464,155,555,181"/>
+<area shape="rect" href="Cjt__ciutats_8hh.html" title="Especificació de la classe Cjt_ciutats." alt="" coords="225,80,335,107"/>
+<area shape="rect" href="Ciutat_8hh.html" title="Especificació de la classe Ciutat." alt="" coords="146,304,227,331"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -147,9 +149,10 @@ Funciones</h2></td></tr>
 <p>Hi ha un conjunt de productes que no pot ser buit on es guarden els productes disponibles. El id comença per 1 i és incremental.</p>
 <p>Una ciutat pot tindre o no inventari de productes. Aquest inventari es pot modificar afegint, eliminant o modificant productes.</p>
 <p>Un vaixell sempre té un inventari vàlid on té una quantitat d'un determinat producte per a vendre i un altre per a comprar (diferents). Aquest inventari es pot modificar. El vaixell també té un registre de les ultimes ciutats on ha comerciat cada vegada que s'ha fet un viatge al llarg de la cuenca.</p>
+<p>La classe <a class="el" href="classLlanxa.html" title="Representa un vaixell però que només conté els mètodes i atributs necessaris per calcular el millor v...">Llanxa</a> representa una versió del vaixell més reduïda que només s'utilitza per a calcular el millor viatge a realitzar. Això implica que només té la informació sobre els productes de compra i venta del vaixell juntament amb mètodes modificats per a ser més optims.</p>
 <p>La classe viatge ajuda a organitzar les dades per a realitzar un viatge entre ciutats. Conté la quantitat total de productes comerciats si es realitza el viatge i les ciutats per on passa.</p>
 <p>Les polítiques de programació són:</p><ul>
-<li>Per a la classe <a class="el" href="classCjt__productes.html" title="Conjunt de productes.">Cjt_productes</a> s'ha decidit fer servir un vector per a tenir un accés ràpid donat que el id és númeric i incremental.</li>
+<li>Per a la classe <a class="el" href="classCjt__productes.html" title="Conjunt de productes.">Cjt_productes</a> s'ha decidit fer servir un vector per a tenir un accés ràpid donat que el id és numèric i incremental.</li>
 <li>Per a la classe <a class="el" href="classCjt__ciutats.html" title="Conjunt de ciutats.">Cjt_ciutats</a> s'ha decidit fer servir un map per a tenir un accés més ràpid a les ciutats.</li>
 <li>Per a l'operació de viatge s'ha decidit crear una nova classe per millorar la llegibilitat del codi.</li>
 <li>No s'ha fet servir un BinTree de ciutats donat que modificar les ciutats dins de l'arbre gran perdem eficiencia.</li>
@@ -230,7 +233,7 @@ Funciones</h2></td></tr>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    ciutats.<a class="code" href="classCjt__ciutats.html#a404c5324032b83e7a8c3f55544923fe7">comerciar</a>(id_city1, id_city2, productes);</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;}</div>
 <div class="ttc" id="aclassCjt__ciutats_html_a404c5324032b83e7a8c3f55544923fe7"><div class="ttname"><a href="classCjt__ciutats.html#a404c5324032b83e7a8c3f55544923fe7">Cjt_ciutats::comerciar</a></div><div class="ttdeci">void comerciar(string &amp;id_city1, string &amp;id_city2, const Cjt_productes &amp;productes)</div><div class="ttdoc">Comerciar entre dues ciutats.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:28</div></div>
-<div class="ttc" id="aclassCjt__ciutats_html_a5c032c7c019d191ff00718f4bb556521"><div class="ttname"><a href="classCjt__ciutats.html#a5c032c7c019d191ff00718f4bb556521">Cjt_ciutats::existeixCiutat</a></div><div class="ttdeci">bool existeixCiutat(string id_city) const</div><div class="ttdoc">Comprovar si la ciutat amb l'ID especificada existeix.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:130</div></div>
+<div class="ttc" id="aclassCjt__ciutats_html_a5c032c7c019d191ff00718f4bb556521"><div class="ttname"><a href="classCjt__ciutats.html#a5c032c7c019d191ff00718f4bb556521">Cjt_ciutats::existeixCiutat</a></div><div class="ttdeci">bool existeixCiutat(string id_city) const</div><div class="ttdoc">Comprovar si la ciutat amb l'ID especificada existeix.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:102</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -285,7 +288,7 @@ Funciones</h2></td></tr>
 <div class="ttc" id="aclassCiutat_html_a21122021c79bcad356eee33dea257095"><div class="ttname"><a href="classCiutat.html#a21122021c79bcad356eee33dea257095">Ciutat::teProducte</a></div><div class="ttdeci">bool teProducte(int id_prod) const</div><div class="ttdoc">Comprova si la ciutat té un producte específic.</div><div class="ttdef"><b>Definition:</b> Ciutat.cc:152</div></div>
 <div class="ttc" id="aclassCiutat_html_a6667cb6dcd81adb2255aaf163b8bcb73"><div class="ttname"><a href="classCiutat.html#a6667cb6dcd81adb2255aaf163b8bcb73">Ciutat::consultarDemanda</a></div><div class="ttdeci">int consultarDemanda(int id_prod) const</div><div class="ttdoc">Consulta la demanda d'un producte específic.</div><div class="ttdef"><b>Definition:</b> Ciutat.cc:161</div></div>
 <div class="ttc" id="aclassCiutat_html_aa09b8469ecf944323bbcf7a7b062f8b8"><div class="ttname"><a href="classCiutat.html#aa09b8469ecf944323bbcf7a7b062f8b8">Ciutat::consultarOferta</a></div><div class="ttdeci">int consultarOferta(int id_prod) const</div><div class="ttdoc">Consulta l'oferta d'un producte específic.</div><div class="ttdef"><b>Definition:</b> Ciutat.cc:156</div></div>
-<div class="ttc" id="aclassCjt__ciutats_html_a34a77a10e4fa9e9bbf9b6eb460b211eb"><div class="ttname"><a href="classCjt__ciutats.html#a34a77a10e4fa9e9bbf9b6eb460b211eb">Cjt_ciutats::consultarCiutat</a></div><div class="ttdeci">Ciutat consultarCiutat(string id_city) const</div><div class="ttdoc">Retorna la ciutat especificada.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:134</div></div>
+<div class="ttc" id="aclassCjt__ciutats_html_a34a77a10e4fa9e9bbf9b6eb460b211eb"><div class="ttname"><a href="classCjt__ciutats.html#a34a77a10e4fa9e9bbf9b6eb460b211eb">Cjt_ciutats::consultarCiutat</a></div><div class="ttdeci">Ciutat consultarCiutat(string id_city) const</div><div class="ttdoc">Retorna la ciutat especificada.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:106</div></div>
 <div class="ttc" id="aclassCjt__productes_html_a1348e4f259d06a4516aa93577c41d9b4"><div class="ttname"><a href="classCjt__productes.html#a1348e4f259d06a4516aa93577c41d9b4">Cjt_productes::existeixProducte</a></div><div class="ttdeci">bool existeixProducte(int id) const</div><div class="ttdoc">Comprovar si el producte existeix.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.cc:28</div></div>
 </div><!-- fragment -->
 </div>
@@ -313,7 +316,7 @@ Funciones</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                    {</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    barco.<a class="code" href="classVaixell.html#a4f6d9cb9511c241d37fac5d42ba355f0">escriure</a>();</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
-<div class="ttc" id="aclassVaixell_html_a4f6d9cb9511c241d37fac5d42ba355f0"><div class="ttname"><a href="classVaixell.html#a4f6d9cb9511c241d37fac5d42ba355f0">Vaixell::escriure</a></div><div class="ttdeci">void escriure()</div><div class="ttdoc">Mostra tota la informació del vaixell.</div><div class="ttdef"><b>Definition:</b> Vaixell.cc:165</div></div>
+<div class="ttc" id="aclassVaixell_html_a4f6d9cb9511c241d37fac5d42ba355f0"><div class="ttname"><a href="classVaixell.html#a4f6d9cb9511c241d37fac5d42ba355f0">Vaixell::escriure</a></div><div class="ttdeci">void escriure()</div><div class="ttdoc">Mostra tota la informació del vaixell.</div><div class="ttdef"><b>Definition:</b> Vaixell.cc:128</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -345,7 +348,7 @@ Funciones</h2></td></tr>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    </div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    ciutats.<a class="code" href="classCjt__ciutats.html#aad4e8c2733a7ed8bf3a6d242d3567810">escriureCiutat</a>(id_city);</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
-<div class="ttc" id="aclassCjt__ciutats_html_aad4e8c2733a7ed8bf3a6d242d3567810"><div class="ttname"><a href="classCjt__ciutats.html#aad4e8c2733a7ed8bf3a6d242d3567810">Cjt_ciutats::escriureCiutat</a></div><div class="ttdeci">void escriureCiutat(string id_city) const</div><div class="ttdoc">Escriure la ciutat especificada.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:140</div></div>
+<div class="ttc" id="aclassCjt__ciutats_html_aad4e8c2733a7ed8bf3a6d242d3567810"><div class="ttname"><a href="classCjt__ciutats.html#aad4e8c2733a7ed8bf3a6d242d3567810">Cjt_ciutats::escriureCiutat</a></div><div class="ttdeci">void escriureCiutat(string id_city) const</div><div class="ttdoc">Escriure la ciutat especificada.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:112</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -425,25 +428,27 @@ Funciones</h2></td></tr>
 <dl class="section post"><dt>Postcondición</dt><dd><a class="el" href="classViatge.html" title="Representa un viatge amb una ruta, una quantitat de productes comerciats i una distància recorreguda.">Viatge</a> realitzat. Les ciutats són modificades però el vaixell no. </dd></dl>
 <div class="fragment"><div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                                                                                                                      {</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="comment">// Determinar el millor viatge a realitzar</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <a class="code" href="classViatge.html">Viatge</a> ruta = ciutats.<a class="code" href="classCjt__ciutats.html#a154039754704c3cbd5b6a9784ccfc9b0">determinar_viatge</a>(cuenca, productes, barco);</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="comment">// Consultar quantitat de productes comerciats en el millor viatge</span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="keywordtype">int</span> quantitat_comerciat = ruta.<a class="code" href="classViatge.html#a9a91de1f64452016cda3190d45fdee47">consultarQuant</a>();</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    cout &lt;&lt; quantitat_comerciat &lt;&lt; endl;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="comment">// Realitzar el viatge si hi ha productes a comerciar</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="keywordflow">if</span> (quantitat_comerciat!=0) {</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="comment">// Guardar l&#39;última ciutat on s&#39;ha comerciat</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="keywordtype">string</span> id_last_city = ruta.<a class="code" href="classViatge.html#a2bdb9e677e4fc51136252fb1803945c0">consultarUltimaCiutat</a>();</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        barco.<a class="code" href="classVaixell.html#ae58cdeb92a9ab720544b7641d4043c7a">afegirCiutat</a>(id_last_city);</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="comment">// Realitzar el millor viatge modificant les ciutats però el vaixell no</span></div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        ciutats.<a class="code" href="classCjt__ciutats.html#afaf8508376f993cf560c5b3ac855aa65">realitzar_viatge</a>(productes, ruta, barco);</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    }</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;}</div>
-<div class="ttc" id="aclassCjt__ciutats_html_a154039754704c3cbd5b6a9784ccfc9b0"><div class="ttname"><a href="classCjt__ciutats.html#a154039754704c3cbd5b6a9784ccfc9b0">Cjt_ciutats::determinar_viatge</a></div><div class="ttdeci">Viatge determinar_viatge(const BinTree&lt; string &gt; &amp;cuenca, const Cjt_productes &amp;productes, Vaixell barco)</div><div class="ttdoc">Determinar el viatge a realitzar.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:65</div></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <a class="code" href="classLlanxa.html">Llanxa</a> lancha(barco);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <a class="code" href="classViatge.html">Viatge</a> ruta = ciutats.<a class="code" href="classCjt__ciutats.html#a0cd4b523f4fbc979323eaf9471b1f7f0">determinar_viatge</a>(cuenca, productes, lancha);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="comment">// Consultar quantitat de productes comerciats en el millor viatge</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keywordtype">int</span> quantitat_comerciat = ruta.<a class="code" href="classViatge.html#a9a91de1f64452016cda3190d45fdee47">consultarQuant</a>();</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    cout &lt;&lt; quantitat_comerciat &lt;&lt; endl;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <span class="comment">// Realitzar el viatge si hi ha productes a comerciar</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">if</span> (quantitat_comerciat!=0) {</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="comment">// Guardar l&#39;última ciutat on s&#39;ha comerciat</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="keywordtype">string</span> id_last_city = ruta.<a class="code" href="classViatge.html#a2bdb9e677e4fc51136252fb1803945c0">consultarUltimaCiutat</a>();</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        barco.<a class="code" href="classVaixell.html#ae58cdeb92a9ab720544b7641d4043c7a">afegirCiutat</a>(id_last_city);</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <span class="comment">// Realitzar el millor viatge modificant les ciutats però el vaixell no</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        ciutats.<a class="code" href="classCjt__ciutats.html#afaf8508376f993cf560c5b3ac855aa65">realitzar_viatge</a>(productes, ruta, barco);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;}</div>
+<div class="ttc" id="aclassCjt__ciutats_html_a0cd4b523f4fbc979323eaf9471b1f7f0"><div class="ttname"><a href="classCjt__ciutats.html#a0cd4b523f4fbc979323eaf9471b1f7f0">Cjt_ciutats::determinar_viatge</a></div><div class="ttdeci">Viatge determinar_viatge(const BinTree&lt; string &gt; &amp;cuenca, const Cjt_productes &amp;productes, Llanxa lancha)</div><div class="ttdoc">Determinar el viatge a realitzar.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:65</div></div>
 <div class="ttc" id="aclassCjt__ciutats_html_afaf8508376f993cf560c5b3ac855aa65"><div class="ttname"><a href="classCjt__ciutats.html#afaf8508376f993cf560c5b3ac855aa65">Cjt_ciutats::realitzar_viatge</a></div><div class="ttdeci">void realitzar_viatge(const Cjt_productes &amp;productes, const Viatge &amp;viatge_top, Vaixell barco)</div><div class="ttdoc">Realitzar un viatge entre ciutats.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:52</div></div>
-<div class="ttc" id="aclassVaixell_html_ae58cdeb92a9ab720544b7641d4043c7a"><div class="ttname"><a href="classVaixell.html#ae58cdeb92a9ab720544b7641d4043c7a">Vaixell::afegirCiutat</a></div><div class="ttdeci">void afegirCiutat(std::string id_city)</div><div class="ttdoc">Afegir una ciutat al registre de les últimes ciutats visitades.</div><div class="ttdef"><b>Definition:</b> Vaixell.cc:121</div></div>
+<div class="ttc" id="aclassLlanxa_html"><div class="ttname"><a href="classLlanxa.html">Llanxa</a></div><div class="ttdoc">Representa un vaixell però que només conté els mètodes i atributs necessaris per calcular el millor v...</div><div class="ttdef"><b>Definition:</b> Llanxa.hh:25</div></div>
+<div class="ttc" id="aclassVaixell_html_ae58cdeb92a9ab720544b7641d4043c7a"><div class="ttname"><a href="classVaixell.html#ae58cdeb92a9ab720544b7641d4043c7a">Vaixell::afegirCiutat</a></div><div class="ttdeci">void afegirCiutat(std::string id_city)</div><div class="ttdoc">Afegir una ciutat al registre de les últimes ciutats visitades.</div><div class="ttdef"><b>Definition:</b> Vaixell.cc:76</div></div>
 <div class="ttc" id="aclassViatge_html"><div class="ttname"><a href="classViatge.html">Viatge</a></div><div class="ttdoc">Representa un viatge amb una ruta, una quantitat de productes comerciats i una distància recorreguda.</div><div class="ttdef"><b>Definition:</b> Viatge.hh:26</div></div>
 <div class="ttc" id="aclassViatge_html_a2bdb9e677e4fc51136252fb1803945c0"><div class="ttname"><a href="classViatge.html#a2bdb9e677e4fc51136252fb1803945c0">Viatge::consultarUltimaCiutat</a></div><div class="ttdeci">string consultarUltimaCiutat() const</div><div class="ttdoc">Consultar l'última ciutat visitada.</div><div class="ttdef"><b>Definition:</b> Viatge.cc:49</div></div>
 <div class="ttc" id="aclassViatge_html_a9a91de1f64452016cda3190d45fdee47"><div class="ttname"><a href="classViatge.html#a9a91de1f64452016cda3190d45fdee47">Viatge::consultarQuant</a></div><div class="ttdeci">int consultarQuant() const</div><div class="ttdoc">Consultar la quantitat total comerciada.</div><div class="ttdef"><b>Definition:</b> Viatge.cc:41</div></div>
@@ -509,7 +514,7 @@ Funciones</h2></td></tr>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 <div class="ttc" id="aclassCjt__ciutats_html_a8c3938d9ddaead4c915f068e120205df"><div class="ttname"><a href="classCjt__ciutats.html#a8c3938d9ddaead4c915f068e120205df">Cjt_ciutats::afegirProdACiutat</a></div><div class="ttdeci">void afegirProdACiutat(const string &amp;id_city, int id_prod, int oferta, int demanda, int pes, int volum)</div><div class="ttdoc">Afegir un nou producte a la ciutat.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:24</div></div>
-<div class="ttc" id="aclassCjt__ciutats_html_ac0598daaec347488cab32cb91d095abf"><div class="ttname"><a href="classCjt__ciutats.html#ac0598daaec347488cab32cb91d095abf">Cjt_ciutats::eliminarTotsProdDeCiutat</a></div><div class="ttdeci">void eliminarTotsProdDeCiutat(string id_city)</div><div class="ttdoc">Eliminar tots els productes d'una ciutat.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:124</div></div>
+<div class="ttc" id="aclassCjt__ciutats_html_ac0598daaec347488cab32cb91d095abf"><div class="ttname"><a href="classCjt__ciutats.html#ac0598daaec347488cab32cb91d095abf">Cjt_ciutats::eliminarTotsProdDeCiutat</a></div><div class="ttdeci">void eliminarTotsProdDeCiutat(string id_city)</div><div class="ttdoc">Eliminar tots els productes d'una ciutat.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:96</div></div>
 <div class="ttc" id="aclassCjt__productes_html_a2a9703ef9f499a730bde6eb7a86df5ae"><div class="ttname"><a href="classCjt__productes.html#a2a9703ef9f499a730bde6eb7a86df5ae">Cjt_productes::consultarProducte</a></div><div class="ttdeci">pair&lt; int, int &gt; consultarProducte(int id) const</div><div class="ttdoc">Consultar producte.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.cc:36</div></div>
 </div><!-- fragment -->
 </div>
@@ -590,7 +595,7 @@ Funciones</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Funció principal del programa. </p>
-<p>El programa comença declarant els objectes necessaris. Un cop inicialitzades les variables prinicipals (productes, ciutats i vaixell) es comença a llegir les comandes.</p>
+<p>El programa comença declarant els objectes necessaris. Un cop inicialitzades les variables principals (productes, ciutats i vaixell) es comença a llegir les comandes.</p>
 <p>Les comandes poden ser de diferents tipus:</p><ul>
 <li>Leer_rio: Llegir la cuenca.</li>
 <li>Leer_inventario: Llegir l'inventari d'una ciutat.</li>
@@ -609,104 +614,104 @@ Funciones</h2></td></tr>
 <li>Redistribuir: Redistribuir els productes entre les ciutats.</li>
 <li>Hacer_viaje: Realitzar el viatge que faci que el vaixell comercii més quantitat entre ciutats. Nota: Si una comanda no és vàlida, es deixa passar. </li>
 </ul>
-<div class="fragment"><div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            {</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="comment">// === Introducció</span></div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="comment">// Demanar productes</span></div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <a class="code" href="classCjt__productes.html">Cjt_productes</a> productes;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordtype">int</span> quant_prod;</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    cin &gt;&gt; quant_prod;</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    productes.<a class="code" href="classCjt__productes.html#af14ded2bd91157a925f0ca510710db0f">llegir</a>(quant_prod);</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="comment">// Demanar cuenca</span></div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    <a class="code" href="classCjt__ciutats.html">Cjt_ciutats</a> ciutats;</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    BinTree&lt;string&gt; cuenca = ciutats.<a class="code" href="classCjt__ciutats.html#a76d29cc0c90d734899fe349fcf242092">leer_rio</a>();</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <span class="comment">// Demanar vaixell</span></div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <a class="code" href="classVaixell.html">Vaixell</a> barco;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    barco.<a class="code" href="classVaixell.html#a5177959b74871d22e79eb1ae6b96a0c6">llegir</a>(productes);</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="comment">// === Commandes</span></div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordtype">string</span> usr_op;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keywordflow">while</span> (cin &gt;&gt; usr_op and usr_op!=<span class="stringliteral">&quot;fin&quot;</span>) {</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="keywordflow">if</span> (usr_op == <span class="stringliteral">&quot;//&quot;</span>) {</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            getline(cin, usr_op);</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            <span class="keywordflow">continue</span>; <span class="comment">// Anar a la següent iteració del bucle</span></div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        }</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;leer_rio&quot;</span> or usr_op==<span class="stringliteral">&quot;lr&quot;</span>) {</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            barco.<a class="code" href="classVaixell.html#a6d3969acdc815b968b736b99c0da137f">eliminarRegistre</a>();</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            cuenca = ciutats.<a class="code" href="classCjt__ciutats.html#a76d29cc0c90d734899fe349fcf242092">leer_rio</a>();</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        }</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;leer_inventario&quot;</span> or usr_op==<span class="stringliteral">&quot;li&quot;</span>) {</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <a class="code" href="program_8cc.html#a41dab7c6f6e59deeecf7df661899cd8a">leer_inventario</a>(ciutats, productes);</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        }</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;leer_inventarios&quot;</span> or usr_op==<span class="stringliteral">&quot;ls&quot;</span>) {</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            <a class="code" href="program_8cc.html#afaa519c971d42977be3a7c7ba431c28e">leer_inventarios</a>(ciutats, productes);</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        }</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;modificar_barco&quot;</span> or usr_op==<span class="stringliteral">&quot;mb&quot;</span>) {</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            <a class="code" href="program_8cc.html#ae6094e1e926fbe255417c48937dd8147">modificar_barco</a>(barco, productes);</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        }</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;escribir_barco&quot;</span> or usr_op==<span class="stringliteral">&quot;eb&quot;</span>) {</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            <a class="code" href="program_8cc.html#ac2f5c2a778441ad478521671d5390f11">escribir_barco</a>(barco);</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        }</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;consultar_num&quot;</span> or usr_op==<span class="stringliteral">&quot;cn&quot;</span>) {</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            cout &lt;&lt; productes.<a class="code" href="classCjt__productes.html#aa15e98e1d3bdf1e22c50a07a93f5d6e3">consultarQuantitatProd</a>() &lt;&lt; endl;</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        }</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;agregar_productos&quot;</span> or usr_op==<span class="stringliteral">&quot;ap&quot;</span>) {</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            <a class="code" href="program_8cc.html#aee38d111d27fceb494822eab89815462">agregar_productos</a>(productes);</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        }</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;escribir_producto&quot;</span> or usr_op==<span class="stringliteral">&quot;ep&quot;</span>) {</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            <a class="code" href="program_8cc.html#acc006f8b966e986ecd9e5b36ae33d5d3">escribir_producto</a>(productes);</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        }</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;escribir_ciudad&quot;</span> or usr_op==<span class="stringliteral">&quot;ec&quot;</span>) {</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            <a class="code" href="program_8cc.html#a3239cd3281a85609c385969d48a63b3c">escribir_ciudad</a>(ciutats);</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        }</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;poner_prod&quot;</span> or usr_op==<span class="stringliteral">&quot;pp&quot;</span>) {</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            <a class="code" href="program_8cc.html#afe8b0fd4cf9875e371ce133268e84220">poner_prod</a>(ciutats, productes);</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        }</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;modificar_prod&quot;</span> or usr_op==<span class="stringliteral">&quot;mp&quot;</span>) {</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            <a class="code" href="program_8cc.html#aca4524ac2462b5d561dd966e2613e41b">modificar_prod</a>(ciutats, productes);</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        }</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;quitar_prod&quot;</span> or usr_op==<span class="stringliteral">&quot;qp&quot;</span>) {</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <a class="code" href="program_8cc.html#a4200cacc339f24b6a2f87a578da458a8">quitar_prod</a>(ciutats, productes);</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        }</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;consultar_prod&quot;</span> or usr_op==<span class="stringliteral">&quot;cp&quot;</span>) {</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            <a class="code" href="program_8cc.html#a770cd237ebed8979e3b4dc709d9e539f">consultar_prod</a>(ciutats, productes);</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        }</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;comerciar&quot;</span> or usr_op==<span class="stringliteral">&quot;co&quot;</span>) {</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            <a class="code" href="program_8cc.html#a11af517e7df5c149749f0b33f3708504">comerciar</a>(ciutats, productes);</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        }</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;redistribuir&quot;</span> or usr_op==<span class="stringliteral">&quot;re&quot;</span>) {</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            ciutats.<a class="code" href="classCjt__ciutats.html#a0ae1d9250ef610303944d9ee3cfcdb73">redistribuir</a>(cuenca, productes);</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        }</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op == <span class="stringliteral">&quot;hacer_viaje&quot;</span> or usr_op == <span class="stringliteral">&quot;hv&quot;</span>) {</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            <a class="code" href="program_8cc.html#ab87caae14a212846fe28c280a16ca810">hacer_viaje</a>(cuenca, productes, barco, ciutats);</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        }</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    }</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;}</div>
-<div class="ttc" id="aclassCjt__ciutats_html"><div class="ttname"><a href="classCjt__ciutats.html">Cjt_ciutats</a></div><div class="ttdoc">Conjunt de ciutats.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.hh:29</div></div>
+<div class="fragment"><div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="comment">// === Introducció</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <span class="comment">// Demanar productes</span></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <a class="code" href="classCjt__productes.html">Cjt_productes</a> productes;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keywordtype">int</span> quant_prod;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    cin &gt;&gt; quant_prod;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    productes.<a class="code" href="classCjt__productes.html#af14ded2bd91157a925f0ca510710db0f">llegir</a>(quant_prod);</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    <span class="comment">// Demanar cuenca</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <a class="code" href="classCjt__ciutats.html">Cjt_ciutats</a> ciutats;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    BinTree&lt;string&gt; cuenca = ciutats.<a class="code" href="classCjt__ciutats.html#a76d29cc0c90d734899fe349fcf242092">leer_rio</a>();</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <span class="comment">// Demanar vaixell</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <a class="code" href="classVaixell.html">Vaixell</a> barco;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    barco.<a class="code" href="classVaixell.html#a5177959b74871d22e79eb1ae6b96a0c6">llegir</a>(productes);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="comment">// === Commandes</span></div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keywordtype">string</span> usr_op;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    <span class="keywordflow">while</span> (cin &gt;&gt; usr_op and usr_op!=<span class="stringliteral">&quot;fin&quot;</span>) {</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        <span class="keywordflow">if</span> (usr_op == <span class="stringliteral">&quot;//&quot;</span>) {</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            getline(cin, usr_op);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            <span class="keywordflow">continue</span>; <span class="comment">// Anar a la següent iteració del bucle</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        }</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;leer_rio&quot;</span> or usr_op==<span class="stringliteral">&quot;lr&quot;</span>) {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            barco.<a class="code" href="classVaixell.html#a6d3969acdc815b968b736b99c0da137f">eliminarRegistre</a>();</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            cuenca = ciutats.<a class="code" href="classCjt__ciutats.html#a76d29cc0c90d734899fe349fcf242092">leer_rio</a>();</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        }</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;leer_inventario&quot;</span> or usr_op==<span class="stringliteral">&quot;li&quot;</span>) {</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            <a class="code" href="program_8cc.html#a41dab7c6f6e59deeecf7df661899cd8a">leer_inventario</a>(ciutats, productes);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        }</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;leer_inventarios&quot;</span> or usr_op==<span class="stringliteral">&quot;ls&quot;</span>) {</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            <a class="code" href="program_8cc.html#afaa519c971d42977be3a7c7ba431c28e">leer_inventarios</a>(ciutats, productes);</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        }</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;modificar_barco&quot;</span> or usr_op==<span class="stringliteral">&quot;mb&quot;</span>) {</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;            <a class="code" href="program_8cc.html#ae6094e1e926fbe255417c48937dd8147">modificar_barco</a>(barco, productes);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        }</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;escribir_barco&quot;</span> or usr_op==<span class="stringliteral">&quot;eb&quot;</span>) {</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            <a class="code" href="program_8cc.html#ac2f5c2a778441ad478521671d5390f11">escribir_barco</a>(barco);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        }</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;consultar_num&quot;</span> or usr_op==<span class="stringliteral">&quot;cn&quot;</span>) {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            cout &lt;&lt; productes.<a class="code" href="classCjt__productes.html#aa15e98e1d3bdf1e22c50a07a93f5d6e3">consultarQuantitatProd</a>() &lt;&lt; endl;</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        }</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;agregar_productos&quot;</span> or usr_op==<span class="stringliteral">&quot;ap&quot;</span>) {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            <a class="code" href="program_8cc.html#aee38d111d27fceb494822eab89815462">agregar_productos</a>(productes);</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        }</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;escribir_producto&quot;</span> or usr_op==<span class="stringliteral">&quot;ep&quot;</span>) {</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            <a class="code" href="program_8cc.html#acc006f8b966e986ecd9e5b36ae33d5d3">escribir_producto</a>(productes);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        }</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;escribir_ciudad&quot;</span> or usr_op==<span class="stringliteral">&quot;ec&quot;</span>) {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            <a class="code" href="program_8cc.html#a3239cd3281a85609c385969d48a63b3c">escribir_ciudad</a>(ciutats);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        }</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;poner_prod&quot;</span> or usr_op==<span class="stringliteral">&quot;pp&quot;</span>) {</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            <a class="code" href="program_8cc.html#afe8b0fd4cf9875e371ce133268e84220">poner_prod</a>(ciutats, productes);</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        }</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;modificar_prod&quot;</span> or usr_op==<span class="stringliteral">&quot;mp&quot;</span>) {</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            <a class="code" href="program_8cc.html#aca4524ac2462b5d561dd966e2613e41b">modificar_prod</a>(ciutats, productes);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        }</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;quitar_prod&quot;</span> or usr_op==<span class="stringliteral">&quot;qp&quot;</span>) {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <a class="code" href="program_8cc.html#a4200cacc339f24b6a2f87a578da458a8">quitar_prod</a>(ciutats, productes);</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        }</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;consultar_prod&quot;</span> or usr_op==<span class="stringliteral">&quot;cp&quot;</span>) {</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            <a class="code" href="program_8cc.html#a770cd237ebed8979e3b4dc709d9e539f">consultar_prod</a>(ciutats, productes);</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        }</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;comerciar&quot;</span> or usr_op==<span class="stringliteral">&quot;co&quot;</span>) {</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            <a class="code" href="program_8cc.html#a11af517e7df5c149749f0b33f3708504">comerciar</a>(ciutats, productes);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op==<span class="stringliteral">&quot;redistribuir&quot;</span> or usr_op==<span class="stringliteral">&quot;re&quot;</span>) {</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;            ciutats.<a class="code" href="classCjt__ciutats.html#a0ae1d9250ef610303944d9ee3cfcdb73">redistribuir</a>(cuenca, productes);</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        }</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (usr_op == <span class="stringliteral">&quot;hacer_viaje&quot;</span> or usr_op == <span class="stringliteral">&quot;hv&quot;</span>) {</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            cout &lt;&lt; <span class="stringliteral">&quot;#&quot;</span> &lt;&lt; usr_op &lt;&lt; endl;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            <a class="code" href="program_8cc.html#ab87caae14a212846fe28c280a16ca810">hacer_viaje</a>(cuenca, productes, barco, ciutats);</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        }</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    }</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;}</div>
+<div class="ttc" id="aclassCjt__ciutats_html"><div class="ttname"><a href="classCjt__ciutats.html">Cjt_ciutats</a></div><div class="ttdoc">Conjunt de ciutats.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.hh:30</div></div>
 <div class="ttc" id="aclassCjt__ciutats_html_a0ae1d9250ef610303944d9ee3cfcdb73"><div class="ttname"><a href="classCjt__ciutats.html#a0ae1d9250ef610303944d9ee3cfcdb73">Cjt_ciutats::redistribuir</a></div><div class="ttdeci">void redistribuir(const BinTree&lt; string &gt; &amp;Cuenca, const Cjt_productes &amp;productes)</div><div class="ttdoc">Comerciar entre ciutats.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:32</div></div>
-<div class="ttc" id="aclassCjt__ciutats_html_a76d29cc0c90d734899fe349fcf242092"><div class="ttname"><a href="classCjt__ciutats.html#a76d29cc0c90d734899fe349fcf242092">Cjt_ciutats::leer_rio</a></div><div class="ttdeci">BinTree&lt; string &gt; leer_rio()</div><div class="ttdoc">Eliminar les ciutats actuals i llegir un nou conjunt de ciutats.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:163</div></div>
+<div class="ttc" id="aclassCjt__ciutats_html_a76d29cc0c90d734899fe349fcf242092"><div class="ttname"><a href="classCjt__ciutats.html#a76d29cc0c90d734899fe349fcf242092">Cjt_ciutats::leer_rio</a></div><div class="ttdeci">BinTree&lt; string &gt; leer_rio()</div><div class="ttdoc">Eliminar les ciutats actuals i llegir un nou conjunt de ciutats.</div><div class="ttdef"><b>Definition:</b> Cjt_ciutats.cc:135</div></div>
 <div class="ttc" id="aclassCjt__productes_html"><div class="ttname"><a href="classCjt__productes.html">Cjt_productes</a></div><div class="ttdoc">Conjunt de productes.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.hh:24</div></div>
 <div class="ttc" id="aclassCjt__productes_html_aa15e98e1d3bdf1e22c50a07a93f5d6e3"><div class="ttname"><a href="classCjt__productes.html#aa15e98e1d3bdf1e22c50a07a93f5d6e3">Cjt_productes::consultarQuantitatProd</a></div><div class="ttdeci">int consultarQuantitatProd() const</div><div class="ttdoc">Consultar la quantitat de productes que hi ha al conjunt.</div><div class="ttdef"><b>Definition:</b> Cjt_productes.cc:32</div></div>
 <div class="ttc" id="aclassVaixell_html"><div class="ttname"><a href="classVaixell.html">Vaixell</a></div><div class="ttdoc">Representa un vaixell amb una determinada quantitat de productes per comprar i vendre.</div><div class="ttdef"><b>Definition:</b> Vaixell.hh:28</div></div>
-<div class="ttc" id="aclassVaixell_html_a5177959b74871d22e79eb1ae6b96a0c6"><div class="ttname"><a href="classVaixell.html#a5177959b74871d22e79eb1ae6b96a0c6">Vaixell::llegir</a></div><div class="ttdeci">void llegir(Cjt_productes productes)</div><div class="ttdoc">Llegir els valors necessaris del vaixell des de l'entrada estàndard.</div><div class="ttdef"><b>Definition:</b> Vaixell.cc:141</div></div>
-<div class="ttc" id="aclassVaixell_html_a6d3969acdc815b968b736b99c0da137f"><div class="ttname"><a href="classVaixell.html#a6d3969acdc815b968b736b99c0da137f">Vaixell::eliminarRegistre</a></div><div class="ttdeci">void eliminarRegistre()</div><div class="ttdoc">Eliminar totes les ciutats del registre.</div><div class="ttdef"><b>Definition:</b> Vaixell.cc:125</div></div>
+<div class="ttc" id="aclassVaixell_html_a5177959b74871d22e79eb1ae6b96a0c6"><div class="ttname"><a href="classVaixell.html#a5177959b74871d22e79eb1ae6b96a0c6">Vaixell::llegir</a></div><div class="ttdeci">void llegir(Cjt_productes productes)</div><div class="ttdoc">Llegir els valors necessaris del vaixell des de l'entrada estàndard.</div><div class="ttdef"><b>Definition:</b> Vaixell.cc:104</div></div>
+<div class="ttc" id="aclassVaixell_html_a6d3969acdc815b968b736b99c0da137f"><div class="ttname"><a href="classVaixell.html#a6d3969acdc815b968b736b99c0da137f">Vaixell::eliminarRegistre</a></div><div class="ttdeci">void eliminarRegistre()</div><div class="ttdoc">Eliminar totes les ciutats del registre.</div><div class="ttdef"><b>Definition:</b> Vaixell.cc:80</div></div>
 <div class="ttc" id="aprogram_8cc_html_a11af517e7df5c149749f0b33f3708504"><div class="ttname"><a href="program_8cc.html#a11af517e7df5c149749f0b33f3708504">comerciar</a></div><div class="ttdeci">void comerciar(Cjt_ciutats &amp;ciutats, const Cjt_productes &amp;productes)</div><div class="ttdoc">Comerciar entre dues ciutats.</div><div class="ttdef"><b>Definition:</b> program.cc:377</div></div>
 <div class="ttc" id="aprogram_8cc_html_a3239cd3281a85609c385969d48a63b3c"><div class="ttname"><a href="program_8cc.html#a3239cd3281a85609c385969d48a63b3c">escribir_ciudad</a></div><div class="ttdeci">void escribir_ciudad(Cjt_ciutats &amp;ciutats)</div><div class="ttdoc">Escriure les dades d'una ciutat.</div><div class="ttdef"><b>Definition:</b> program.cc:217</div></div>
 <div class="ttc" id="aprogram_8cc_html_a41dab7c6f6e59deeecf7df661899cd8a"><div class="ttname"><a href="program_8cc.html#a41dab7c6f6e59deeecf7df661899cd8a">leer_inventario</a></div><div class="ttdeci">void leer_inventario(Cjt_ciutats &amp;ciutats, Cjt_productes &amp;productes)</div><div class="ttdoc">Llegir inventari d'una ciutat.</div><div class="ttdef"><b>Definition:</b> program.cc:72</div></div>

@@ -27,7 +27,9 @@ int \mbox{\hyperlink{classViatge_a9a91de1f64452016cda3190d45fdee47}{consultar\+Q
 int \mbox{\hyperlink{classViatge_ad615727140707685e07093a605be2660}{consultar\+Dist}} () const
 \begin{DoxyCompactList}\small\item\em Consultar la distància total recorreguda. \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{classViatge_a2bdb9e677e4fc51136252fb1803945c0}{consultar\+Ultima\+Ciutat}} () const
-\begin{DoxyCompactList}\small\item\em Consultar l\textquotesingle{}última ciutat visitada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Consultar l\textquotesingle{}última ciutat visitada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classViatge_a054401d82ed762d65bf336bb82c18eab}{millor\+Viatge}} (\mbox{\hyperlink{classViatge}{Viatge}} \&viatge\+\_\+esquerra, \mbox{\hyperlink{classViatge}{Viatge}} \&viatge\+\_\+dreta)
+\begin{DoxyCompactList}\small\item\em Comprovar dos viatges i retornar el millor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Atributos privados}
 \begin{DoxyCompactItemize}
 \item 
@@ -237,6 +239,57 @@ Retorna el id de l\textquotesingle{}última ciutat visitada.
 \DoxyCodeLine{49                                            \{}
 \DoxyCodeLine{50     \textcolor{keywordflow}{return} \mbox{\hyperlink{classViatge_af511af2e6f2970e70ae63784fc2d8059}{ruta}}.back();}
 \DoxyCodeLine{51 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classViatge_a054401d82ed762d65bf336bb82c18eab}\label{classViatge_a054401d82ed762d65bf336bb82c18eab}} 
+\index{Viatge@{Viatge}!millorViatge@{millorViatge}}
+\index{millorViatge@{millorViatge}!Viatge@{Viatge}}
+\doxysubsubsection{\texorpdfstring{millorViatge()}{millorViatge()}}
+{\footnotesize\ttfamily void Viatge\+::millor\+Viatge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classViatge}{Viatge}} \&}]{viatge\+\_\+esquerra,  }\item[{\mbox{\hyperlink{classViatge}{Viatge}} \&}]{viatge\+\_\+dreta }\end{DoxyParamCaption})}
+
+
+
+Comprovar dos viatges i retornar el millor. 
+
+\begin{DoxyPrecond}{Precondición}
+viatge\+\_\+esquerra i viatge\+\_\+dreta són viatges vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondición}
+Afegeix el millor viatge al viatge implícit. 
+\end{DoxyPostcond}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53                                                                        \{}
+\DoxyCodeLine{54     \textcolor{comment}{// 1. No hi ha viatges a l'esquerra ni a la dreta}}
+\DoxyCodeLine{55     \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}}==0 and viatge\_dreta.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}}==0) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{56     \textcolor{comment}{// 2. No hi ha comerç a l'esquerra}}
+\DoxyCodeLine{57     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}}==0) \{}
+\DoxyCodeLine{58         \mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_dreta);}
+\DoxyCodeLine{59         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61     \textcolor{comment}{// 3. No hi ha comerç a la dreta}}
+\DoxyCodeLine{62     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (viatge\_dreta.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}}==0) \{}
+\DoxyCodeLine{63         \mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_esquerra);}
+\DoxyCodeLine{64         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66     \textcolor{comment}{// 4. Hi ha comerç a ambdues bandes}}
+\DoxyCodeLine{67     \textcolor{comment}{// 4.1. La quantitat de la esquerra és més gran}}
+\DoxyCodeLine{68     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}}>viatge\_dreta.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}}) \{}
+\DoxyCodeLine{69         \mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_esquerra);}
+\DoxyCodeLine{70         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72     \textcolor{comment}{// 4.1 Tenen la mateixa quantitat}}
+\DoxyCodeLine{73     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}}==viatge\_dreta.\mbox{\hyperlink{classViatge_abb14c5265d87a108b644afc9d5204930}{quant\_comerciat}}) \{}
+\DoxyCodeLine{74         \textcolor{comment}{// 4.1.1 La distància de la esquerra és més petita o igual}}
+\DoxyCodeLine{75         \textcolor{keywordflow}{if} (viatge\_esquerra.\mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}} <= viatge\_dreta.\mbox{\hyperlink{classViatge_ab0befd4984e44af7df0e6c2ca7b36412}{distancia}}) \{}
+\DoxyCodeLine{76             \mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_esquerra);}
+\DoxyCodeLine{77             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{78         \}}
+\DoxyCodeLine{79     \}}
+\DoxyCodeLine{80     \textcolor{comment}{// 4.2. La quantitat de la dreta és més gran}}
+\DoxyCodeLine{81     \mbox{\hyperlink{classViatge_ab313588a14b32e853895d0345b32f251}{actViatge}}(viatge\_dreta);}
+\DoxyCodeLine{82     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{83 \}}
 
 \end{DoxyCode}
 

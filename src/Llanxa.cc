@@ -1,6 +1,6 @@
 /**
  * @file Llanxa.cc
- * @brief Implementació de la classe Llanxa
+ * @brief Implementació de la classe Llanxa.
  */
 #include "Llanxa.hh"
 using namespace std;
