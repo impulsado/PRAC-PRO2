@@ -2,7 +2,7 @@
 # GENERAL
 | TÍTOL | CURS | DIFICULTAT | TESTS | NOTA |
 | --- | --- | --- | --- | --- |
-| Cuenca Fluvial | 2023-2024 Q2 | 7/10 | 4/4 | x/10 |
+| Cuenca Fluvial | 2023-2024 Q2 | 7/10 | 4/4 | 8.4/10 |
 
 <br>
 
